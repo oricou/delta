@@ -16,22 +16,38 @@ class HautDebit():
     START = 'Start'
     STOP  = 'Stop'
 
-    ## geojson source : https://github.com/gregoiredavid/france-geojson
+    # Data
+    urls = ['https://www.data.gouv.fr/fr/datasets/r/d538685a-b9cb-4a3e-b90d-ad6f0a13920b',
+            'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions-avec-outre-mer.geojson',
+            'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements-avec-outre-mer.geojson']
+
+    paths = ['./data/2021t4-obs-hd-thd-deploiement.xlsx',
+             'data/regions.geojson',
+             'data/departements.geojson']
+
+    def download_data(self):
+        for i in range (len(self.paths)):
+            path, url = self.paths[i], self.urls[i]
+            if not os.path.isfile(path):
+                print(f"Downloading {path} from {url}.")
+                urllib.request.urlretrieve(url, path)
+
     def init_region(self):
-        self.data_region = pd.read_excel(self.data_path,
+        self.data_region = pd.read_excel(self.paths[0],
                                     sheet_name='Régions',
                                     header=4,
                                     usecols="B,F:W")
-        self.geo_region = json.load(open('data/regions-version-simplifiee.geojson'))
+        self.geo_region = json.load(open(self.paths[1]))
+
     def init_departement(self):
-        self.data_departement = pd.read_excel(self.data_path,
+        self.data_departement = pd.read_excel(self.paths[0],
                                     sheet_name='Départements',
                                     header=4,
                                     usecols="B,G:X")
-        self.geo_departement = json.load(open('data/departements-version-simplifiee.geojson'))
+        self.geo_departement = json.load(open(self.paths[2]))
 
     # def init_commune(self):
-    #     self.data_commune = pd.read_excel(self.data_path,
+    #     self.data_commune = pd.read_excel(self.paths[0],
     #                                 sheet_name='Communes',
     #                                 header=4,
     #                                 usecols="B,K,R:AH")
@@ -41,15 +57,8 @@ class HautDebit():
         self.data_region, self.geo_region = None, None
         self.data_departement, self.geo_departement = None, None
         # self.data_commune = None
-        
-        url = 'https://www.data.gouv.fr/fr/datasets/r/d538685a-b9cb-4a3e-b90d-ad6f0a13920b'
-        self.data_path = "./data/2021t4-obs-hd-thd-deploiement.xlsx"
-        
-        if not os.path.isfile(self.data_path):
-            print("Downloading data ...")
-            urllib.request.urlretrieve(url, self.data_path)
-            print("Data downloaded.")
-
+              
+        self.download_data()
 
         self.init_region()
         self.init_departement()
