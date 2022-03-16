@@ -1,4 +1,5 @@
 import sys
+import urllib.request 
 import dash
 import flask
 import json
@@ -8,6 +9,7 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objs as go
 import plotly.express as px
+import os.path
 import folium
 
 class HautDebit():
@@ -16,20 +18,20 @@ class HautDebit():
 
     ## geojson source : https://github.com/gregoiredavid/france-geojson
     def init_region(self):
-        self.data_region = pd.read_excel(self.file,
+        self.data_region = pd.read_excel(self.data_path,
                                     sheet_name='Régions',
                                     header=4,
                                     usecols="B,F:W")
         self.geo_region = json.load(open('data/regions-version-simplifiee.geojson'))
     def init_departement(self):
-        self.data_departement = pd.read_excel(self.file,
+        self.data_departement = pd.read_excel(self.data_path,
                                     sheet_name='Départements',
                                     header=4,
                                     usecols="B,G:X")
         self.geo_departement = json.load(open('data/departements-version-simplifiee.geojson'))
 
     # def init_commune(self):
-    #     self.data_commune = pd.read_excel(self.file,
+    #     self.data_commune = pd.read_excel(self.data_path,
     #                                 sheet_name='Communes',
     #                                 header=4,
     #                                 usecols="B,K,R:AH")
@@ -40,7 +42,14 @@ class HautDebit():
         self.data_departement, self.geo_departement = None, None
         # self.data_commune = None
         
-        self.file = 'https://www.data.gouv.fr/fr/datasets/r/d538685a-b9cb-4a3e-b90d-ad6f0a13920b'
+        url = 'https://www.data.gouv.fr/fr/datasets/r/d538685a-b9cb-4a3e-b90d-ad6f0a13920b'
+        self.data_path = "./data/2021t4-obs-hd-thd-deploiement.xlsx"
+        
+        if not os.path.isfile(self.data_path):
+            print("Downloading data ...")
+            urllib.request.urlretrieve(url, self.data_path)
+            print("Data downloaded.")
+
 
         self.init_region()
         self.init_departement()
@@ -99,7 +108,7 @@ class HautDebit():
                 ),
                 dcc.Interval(            # fire a callback periodically
                     id='debit-auto-stepper',
-                    interval=500,       # in milliseconds
+                    interval=1500,       # in milliseconds
                     max_intervals = -1,  # start running
                     n_intervals = 0
                 ),
