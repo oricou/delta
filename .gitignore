@@ -128,7 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Debit data
-data/regions.geojson
-data/departements.geojson
-data/2021t4-obs-hd-thd-deploiement.xlsx
+# PBBB data
+PBBB_sujet/data

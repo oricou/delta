@@ -20,7 +20,6 @@ class Echelle():
         self.id = id
         self.short = short
 
-
 class HautDebit():
     START = 'Start'
     STOP = 'Stop'
@@ -31,20 +30,24 @@ class HautDebit():
             'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements-version-simplifiee.geojson',
             'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/metropole-et-outre-mer.geojson']
 
-    paths = ['./data/2021t4-obs-hd-thd-deploiement.xlsx',
-             'data/regions.geojson',
-             'data/departements.geojson',
-             'data/france.geojson']
+    dossier_data = "./PBBB_sujet/data/"
+    paths = ['2021t4-obs-hd-thd-deploiement.xlsx',
+             'regions.geojson',
+             'departements.geojson',
+             'france.geojson']
 
     def download_data(self):
+        if not os.path.isdir(self.dossier_data):
+            os.mkdir(self.dossier_data)
+
         for i in range(len(self.paths)):
             path, url = self.paths[i], self.urls[i]
-            if not os.path.isfile(path):
-                print(f"Downloading {path} from {url}.")
-                urllib.request.urlretrieve(url, path)
+            if not os.path.isfile(self.dossier_data + path):
+                print(f"Téléchargement {path} depuis {url}.")
+                urllib.request.urlretrieve(url, self.dossier_data + path)
 
     def init_nationale(self):
-        df = pd.read_excel(self.paths[0],
+        df = pd.read_excel(self.dossier_data + self.paths[0],
                            sheet_name='Régions',
                            header=4,
                            usecols="B,F,G:W")
@@ -55,7 +58,7 @@ class HautDebit():
         df.rename(columns={'Nom région' : 'Nom'}, inplace=True)
         df['Nom'] = 'France'
 
-        geojson = json.load(open(self.paths[3]))
+        geojson = json.load(open(self.dossier_data + self.paths[3]))
         geojson["properties"] = {"nom": "France"}
         geojson = {
             "type": "FeatureCollection",
@@ -67,20 +70,20 @@ class HautDebit():
         return Echelle(df, geojson, 'Nom', 'Nat.')
 
     def init_region(self):
-        return Echelle(pd.read_excel(self.paths[0],
+        return Echelle(pd.read_excel(self.dossier_data + self.paths[0],
                                      sheet_name='Régions',
                                      header=4,
                                      usecols="B,F,G:W"),
-                       json.load(open(self.paths[1])),
+                       json.load(open(self.dossier_data + self.paths[1])),
                        'Nom région',
                        'Rég.')
 
     def init_departement(self):
-        return Echelle(pd.read_excel(self.paths[0],
+        return Echelle(pd.read_excel(self.dossier_data + self.paths[0],
                                      sheet_name='Départements',
                                      header=4,
                                      usecols="B,G,H:X"),
-                       json.load(open(self.paths[2])),
+                       json.load(open(self.dossier_data + self.paths[2])),
                        'Nom département',
                        'Dép')
 
