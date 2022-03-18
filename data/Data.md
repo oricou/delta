@@ -1,0 +1,10 @@
+- [X] le nbr d'habitants / région / ville / quartiers https://www.insee.fr/fr/statistiques/1893198
+- [X] le prix du metre carré / région / ville / quartiers https://www.data.gouv.fr/fr/datasets/demandes-de-valeurs-foncieres-geolocalisees/ and https://www.data.gouv.fr/fr/datasets/prix-moyen-au-m2-des-ventes-de-maisons-et-dappartements-par-commune-en-2018/
+- [x] revenu moyen par foyer / ville / quartiers https://www.data.gouv.fr/fr/datasets/niveau-de-vie-des-francais-par-commune/
+- [X] couts de la vie https://www.data.gouv.fr/fr/datasets/prix-et-indices-de-prix/
+- [ ] proximité des transports
+- [ ] fréquences des transports
+- [X] prix de l essence / gaz https://www.prix-carburants.gouv.fr/rubrique/opendata/
+- [X] ecole par secteur https://www.data.gouv.fr/fr/datasets/adresse-et-geolocalisation-des-etablissements-denseignement-du-premier-et-second-degres-1/ and https://www.data.gouv.fr/fr/datasets/implantations-des-etablissements-denseignement-superieur-publics/
+- [X] concentration de musée / cinéma https://www.insee.fr/fr/statistiques/5039867?sommaire=5040030 and https://www.data.gouv.fr/fr/datasets/liste-des-musees-de-france/
+- [X] mariages /naissances / décès https://www.data.gouv.fr/fr/datasets/population/
