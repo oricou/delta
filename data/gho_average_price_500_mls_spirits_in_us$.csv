@@ -1,0 +1,68 @@
+IndicatorCode,Indicator,ValueType,ParentLocationCode,ParentLocation,Location type,SpatialDimValueCode,Location,Period type,Period,IsLatestYear,Dim1 type,Dim1,Dim1ValueCode,Dim2 type,Dim2,Dim2ValueCode,Dim3 type,Dim3,Dim3ValueCode,DataSourceDimValueCode,DataSource,FactValueNumericPrefix,FactValueNumeric,FactValueUoM,FactValueNumericLowPrefix,FactValueNumericLow,FactValueNumericHighPrefix,FactValueNumericHigh,Value,FactValueTranslationID,FactComments,Language,DateModified
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,GEO,Georgia,Year,2016,true,,,,,,,,,,SA_0000001831_GEO,Data source,,10.1,,,,,,10.1,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,HRV,Croatia,Year,2016,true,,,,,,,,,,SA_0000001831_HRV,Data source,,10.17,,,,,,10.17,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,SRB,Serbia,Year,2016,true,,,,,,,,,,SA_0000001831_SRB,Data source,,10.87,,,,,,10.87,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AMR,Americas,Country,MEX,Mexico,Year,2016,true,,,,,,,,,,SA_0000001831_MEX,Data source,,10.96,,,,,,10.96,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,POL,Poland,Year,2016,true,,,,,,,,,,SA_0000001831_POL,Data source,,11.38,,,,,,11.38,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,MLT,Malta,Year,2016,true,,,,,,,,,,SA_0000001831_MLT,Data source,,11.54,,,,,,11.54,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AFR,Africa,Country,ZAF,South Africa,Year,2016,true,,,,,,,,,,SA_0000001831_ZAF,Data source,,11.58,,,,,,11.58,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AMR,Americas,Country,PER,Peru,Year,2016,true,,,,,,,,,,SA_0000001831_PER,Data source,,11.61,,,,,,11.61,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AMR,Americas,Country,BRA,Brazil,Year,2016,true,,,,,,,,,,SA_0000001831_BRA,Data source,,11.65,,,,,,11.65,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,WPR,Western Pacific,Country,CHN,China,Year,2016,true,,,,,,,,,,SA_0000001831_CHN,Data source,,11.71,,,,,,11.71,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AFR,Africa,Country,KEN,Kenya,Year,2016,true,,,,,,,,,,SA_0000001831_KEN,Data source,,11.82,,,,,,11.82,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,ESP,Spain,Year,2016,true,,,,,,,,,,SA_0000001831_ESP,Data source,,11.86,,,,,,11.86,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,LUX,Luxembourg,Year,2016,true,,,,,,,,,,SA_0000001831_LUX,Data source,,11.95,,,,,,11.95,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,ITA,Italy,Year,2016,true,,,,,,,,,,SA_0000001831_ITA,Data source,,12.35,,,,,,12.35,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AMR,Americas,Country,PRY,Paraguay,Year,2016,true,,,,,,,,,,SA_0000001831_PRY,Data source,,12.42,,,,,,12.42,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,BGR,Bulgaria,Year,2016,true,,,,,,,,,,SA_0000001831_BGR,Data source,,12.92,,,,,,12.92,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,DEU,Germany,Year,2016,true,,,,,,,,,,SA_0000001831_DEU,Data source,,12.97,,,,,,12.97,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,NLD,Netherlands,Year,2016,true,,,,,,,,,,SA_0000001831_NLD,Data source,,13.06,,,,,,13.06,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,BIH,Bosnia and Herzegovina,Year,2016,true,,,,,,,,,,SA_0000001831_BIH,Data source,,13.23,,,,,,13.23,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,PRT,Portugal,Year,2016,true,,,,,,,,,,SA_0000001831_PRT,Data source,,13.32,,,,,,13.32,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,ROU,Romania,Year,2016,true,,,,,,,,,,SA_0000001831_ROU,Data source,,13.42,,,,,,13.42,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,CYP,Cyprus,Year,2016,true,,,,,,,,,,SA_0000001831_CYP,Data source,,13.43,,,,,,13.43,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,AZE,Azerbaijan,Year,2016,true,,,,,,,,,,SA_0000001831_AZE,Data source,,13.44,,,,,,13.44,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,MNE,Montenegro,Year,2016,true,,,,,,,,,,SA_0000001831_MNE,Data source,,13.65,,,,,,13.65,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,MKD,The former Yugoslav Republic of Macedonia,Year,2016,true,,,,,,,,,,SA_0000001831_MKD,Data source,,13.85,,,,,,13.85,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,HUN,Hungary,Year,2016,true,,,,,,,,,,SA_0000001831_HUN,Data source,,13.93,,,,,,13.93,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,UKR,Ukraine,Year,2016,true,,,,,,,,,,SA_0000001831_UKR,Data source,,13.96,,,,,,13.96,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AMR,Americas,Country,ARG,Argentina,Year,2016,true,,,,,,,,,,SA_0000001831_ARG,Data source,,14.18,,,,,,14.18,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AMR,Americas,Country,CHL,Chile,Year,2016,true,,,,,,,,,,SA_0000001831_CHL,Data source,,14.27,,,,,,14.27,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AMR,Americas,Country,DOM,Dominican Republic,Year,2016,true,,,,,,,,,,SA_0000001831_DOM,Data source,,14.55,,,,,,14.55,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,SVN,Slovenia,Year,2016,true,,,,,,,,,,SA_0000001831_SVN,Data source,,14.89,,,,,,14.89,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,SVK,Slovakia,Year,2016,true,,,,,,,,,,SA_0000001831_SVK,Data source,,15.39,,,,,,15.39,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AMR,Americas,Country,COL,Colombia,Year,2016,true,,,,,,,,,,SA_0000001831_COL,Data source,,15.48,,,,,,15.48,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,BEL,Belgium,Year,2016,true,,,,,,,,,,SA_0000001831_BEL,Data source,,15.75,,,,,,15.75,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,AUT,Austria,Year,2016,true,,,,,,,,,,SA_0000001831_AUT,Data source,,15.77,,,,,,15.77,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,ARM,Armenia,Year,2016,true,,,,,,,,,,SA_0000001831_ARM,Data source,,15.89,,,,,,15.89,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,CZE,Czechia,Year,2016,true,,,,,,,,,,SA_0000001831_CZE,Data source,,16.7,,,,,,16.7,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,LTU,Lithuania,Year,2016,true,,,,,,,,,,SA_0000001831_LTU,Data source,,17.13,,,,,,17.13,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,SEAR,South-East Asia,Country,THA,Thailand,Year,2016,true,,,,,,,,,,SA_0000001831_THA,Data source,,17.22,,,,,,17.22,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,FRA,France,Year,2016,true,,,,,,,,,,SA_0000001831_FRA,Data source,,17.61,,,,,,17.61,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,GRC,Greece,Year,2016,true,,,,,,,,,,SA_0000001831_GRC,Data source,,17.63,,,,,,17.63,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,RUS,Russian Federation,Year,2016,true,,,,,,,,,,SA_0000001831_RUS,Data source,,18.11,,,,,,18.11,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,BLR,Belarus,Year,2016,true,,,,,,,,,,SA_0000001831_BLR,Data source,,18.85,,,,,,18.85,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,ISR,Israel,Year,2016,true,,,,,,,,,,SA_0000001831_ISR,Data source,,19.13,,,,,,19.13,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,DNK,Denmark,Year,2016,true,,,,,,,,,,SA_0000001831_DNK,Data source,,19.24,,,,,,19.24,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,EST,Estonia,Year,2016,true,,,,,,,,,,SA_0000001831_EST,Data source,,19.77,,,,,,19.77,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,LVA,Latvia,Year,2016,true,,,,,,,,,,SA_0000001831_LVA,Data source,,19.79,,,,,,19.79,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AMR,Americas,Country,NIC,Nicaragua,Year,2016,true,,,,,,,,,,SA_0000001831_NIC,Data source,,19.82,,,,,,19.82,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,CHE,Switzerland,Year,2016,true,,,,,,,,,,SA_0000001831_CHE,Data source,,19.96,,,,,,19.96,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AMR,Americas,Country,CAN,Canada,Year,2016,true,,,,,,,,,,SA_0000001831_CAN,Data source,,20.8,,,,,,20.8,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,SEAR,South-East Asia,Country,IDN,Indonesia,Year,2016,true,,,,,,,,,,SA_0000001831_IDN,Data source,,23.3,,,,,,23.3,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AMR,Americas,Country,TTO,Trinidad and Tobago,Year,2016,true,,,,,,,,,,SA_0000001831_TTO,Data source,,24.46,,,,,,24.46,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,WPR,Western Pacific,Country,NZL,New Zealand,Year,2016,true,,,,,,,,,,SA_0000001831_NZL,Data source,,24.6,,,,,,24.6,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AMR,Americas,Country,USA,United States of America,Year,2016,true,,,,,,,,,,SA_0000001831_USA,Data source,,25.35,,,,,,25.35,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,TUR,Turkey,Year,2016,true,,,,,,,,,,SA_0000001831_TUR,Data source,,25.72,,,,,,25.72,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,WPR,Western Pacific,Country,AUS,Australia,Year,2016,true,,,,,,,,,,SA_0000001831_AUS,Data source,,25.9,,,,,,25.9,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,SWE,Sweden,Year,2016,true,,,,,,,,,,SA_0000001831_SWE,Data source,,27.25,,,,,,27.25,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,FIN,Finland,Year,2016,true,,,,,,,,,,SA_0000001831_FIN,Data source,,27.63,,,,,,27.63,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,IRL,Ireland,Year,2016,true,,,,,,,,,,SA_0000001831_IRL,Data source,,28.82,,,,,,28.82,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,NOR,Norway,Year,2016,true,,,,,,,,,,SA_0000001831_NOR,Data source,,37.27,,,,,,37.27,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,WPR,Western Pacific,Country,SGP,Singapore,Year,2016,true,,,,,,,,,,SA_0000001831_SGP,Data source,,39.31,,,,,,39.31,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,ISL,Iceland,Year,2016,true,,,,,,,,,,SA_0000001831_ISL,Data source,,43.38,,,,,,43.38,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AFR,Africa,Country,ZMB,Zambia,Year,2016,true,,,,,,,,,,SA_0000001831_ZMB,Data source,,5.11,,,,,,5.11,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AMR,Americas,Country,CRI,Costa Rica,Year,2016,true,,,,,,,,,,SA_0000001831_CRI,Data source,,5.86,,,,,,5.86,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,AFR,Africa,Country,NGA,Nigeria,Year,2016,true,,,,,,,,,,SA_0000001831_NGA,Data source,,8.5,,,,,,8.5,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,KAZ,Kazakhstan,Year,2016,true,,,,,,,,,,SA_0000001831_KAZ,Data source,,8.68,,,,,,8.68,,,EN,2018-10-25T22:00:00.000Z
+SA_0000001831,Average price 500 mls Spirits in US$,numeric,EUR,Europe,Country,ALB,Albania,Year,2016,true,,,,,,,,,,SA_0000001831_ALB,Data source,,9.59,,,,,,9.59,,,EN,2018-10-25T22:00:00.000Z
