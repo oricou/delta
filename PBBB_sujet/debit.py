@@ -27,14 +27,12 @@ class HautDebit():
     # Data
     urls = ['https://www.data.gouv.fr/fr/datasets/r/d538685a-b9cb-4a3e-b90d-ad6f0a13920b',
             'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions-avec-outre-mer.geojson',
-            'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements-version-simplifiee.geojson',
-            'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/metropole-et-outre-mer.geojson']
+            'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements-version-simplifiee.geojson']
 
     dossier_data = "./PBBB_sujet/data/"
     paths = ['2021t4-obs-hd-thd-deploiement.xlsx',
              'regions.geojson',
-             'departements.geojson',
-             'france.geojson']
+             'departements.geojson']
 
     def download_data(self):
         if not os.path.isdir(self.dossier_data):
@@ -45,29 +43,6 @@ class HautDebit():
             if not os.path.isfile(self.dossier_data + path):
                 print(f"Téléchargement {path} depuis {url}.")
                 urllib.request.urlretrieve(url, self.dossier_data + path)
-
-    def init_nationale(self):
-        df = pd.read_excel(self.dossier_data + self.paths[0],
-                           sheet_name='Régions',
-                           header=4,
-                           usecols="B,F,G:W")
-
-        df = df.sum(axis=0)
-        df[1:].astype(int, copy = False)
-        df = pd.DataFrame(df).T
-        df.rename(columns={'Nom région' : 'Nom'}, inplace=True)
-        df['Nom'] = 'France'
-
-        geojson = json.load(open(self.dossier_data + self.paths[3]))
-        geojson["properties"] = {"nom": "France"}
-        geojson = {
-            "type": "FeatureCollection",
-            "features": [
-                geojson,
-            ]
-        }
-
-        return Echelle(df, geojson, 'Nom', 'Nat.')
 
     def init_region(self):
         return Echelle(pd.read_excel(self.dossier_data + self.paths[0],
@@ -92,9 +67,8 @@ class HautDebit():
 
         self.region = self.init_region()
         self.departement = self.init_departement()
-        self.nationale = self.init_nationale()
 
-        self.echelles = [self.nationale, self.region, self.departement]
+        self.echelles = [self.region, self.departement]
 
         self.year = self.region.data.columns[2:]
 
@@ -141,6 +115,24 @@ class HautDebit():
             html.Div([
                 html.Div(
                     dcc.Slider(
+                        id='debit-crossfilter-logement-slider',
+                        min=0,
+                        max=5,
+                        step=1,
+                        value=0,
+                        marks={i: '{}'.format(10 ** i) for i in range(6)}
+                    ),
+                    style={'display': 'inline-block', 'width': "90%"}
+                ),
+            ], style={
+                'padding': '0px 50px',
+                'width': '100%'
+            }),
+
+            html.Br(),
+            html.Div([
+                html.Div(
+                    dcc.Slider(
                         id='debit-crossfilter-year-slider',
                         min=0,
                         max=len(self.year) - 1,
@@ -151,21 +143,24 @@ class HautDebit():
                     ),
                     style={'display': 'inline-block', 'width': "90%"}
                 ),
-                dcc.Interval(            # fire a callback periodically
-                    id='debit-auto-stepper',
-                    interval=1500,       # in milliseconds
-                    max_intervals=-1,  # start running
-                    n_intervals=0
-                ),
+                # dcc.Interval(            # fire a callback periodically
+                #     id='debit-auto-stepper',
+                #     interval=1500,       # in milliseconds
+                #     max_intervals=-1,  # start running
+                #     n_intervals=0
+                # ),
             ], style={
                 'padding': '0px 50px',
                 'width': '100%'
             }),
 
+
+
+
             html.Br(),
             dcc.Markdown("""
             Le graphique est interactif. En passant la souris sur les régions/départements, vous avez une infobulle.
-            A l'echelle nationale et régionale, vous pouvez zoomer/dézoomer pour voir les outres-mer.
+            A l'echelle régionale, vous pouvez zoomer/dézoomer pour voir les outres-mer.
 
             Sources : https://www.data.gouv.fr/fr/datasets/le-marche-du-haut-et-tres-haut-debit-fixe-deploiements/
             """)
@@ -190,7 +185,8 @@ class HautDebit():
             dash.dependencies.Output('debit-main-map', 'figure'),
             [dash.dependencies.Input('debit-crossfilter-scale-type', 'value'),
              dash.dependencies.Input('debit-crossfilter-type-type', 'value'),
-             dash.dependencies.Input('debit-crossfilter-year-slider', 'value')])(self.update_map)
+             dash.dependencies.Input('debit-crossfilter-year-slider', 'value'),
+             dash.dependencies.Input('debit-crossfilter-logement-slider', 'value')])(self.update_map)
         self.app.callback(
             dash.dependencies.Output('debit-button-start-stop', 'children'),
             dash.dependencies.Input('debit-button-start-stop', 'n_clicks'),
@@ -206,13 +202,15 @@ class HautDebit():
             [dash.dependencies.State('debit-crossfilter-year-slider', 'value'),
              dash.dependencies.State('debit-button-start-stop', 'children')])(self.on_interval)
 
-    def update_map(self, scale, type, year):
+    def update_map(self, scale, type, year, logement):
+
         def get_good_scale(scale):
             for echelle in self.echelles:
                 if echelle.short == scale:
                     return echelle
             return None
-
+        
+        pop = 10**(int(logement))
         echelle = get_good_scale(scale)
         data, goejson, keyDF = echelle.data.copy(), echelle.geojson, echelle.id
 
@@ -235,13 +233,13 @@ class HautDebit():
 
         return fig
 
-    def get_country(self, hoverData):
-        if hoverData == None:  # init value
-            return self.df['Country Name'].iloc[np.random.randint(len(self.df))]
-        return hoverData['points'][0]['hovertext']
+    # def get_country(self, hoverData):
+    #     if hoverData == None:  # init value
+    #         return self.df['Country Name'].iloc[np.random.randint(len(self.df))]
+    #     return hoverData['points'][0]['hovertext']
 
-    def country_chosen(self, hoverData):
-        return self.get_country(hoverData)
+    # def country_chosen(self, hoverData):
+    #     return self.get_country(hoverData)
 
     # start and stop the movie
     def button_on_click(self, n_clicks, text):
