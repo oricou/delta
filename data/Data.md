@@ -6,6 +6,5 @@
 - [X] ecole par secteur https://www.data.gouv.fr/fr/datasets/adresse-et-geolocalisation-des-etablissements-denseignement-du-premier-et-second-degres-1/ and https://www.data.gouv.fr/fr/datasets/implantations-des-etablissements-denseignement-superieur-publics/
 - [X] concentration de musée / cinéma https://www.insee.fr/fr/statistiques/5039867?sommaire=5040030 and https://www.data.gouv.fr/fr/datasets/liste-des-musees-de-france/
 - [X] mariages /naissances / décès https://www.data.gouv.fr/fr/datasets/population/
-- [ ] classement du bonheur des gens
-- [ ] classement taille ville 
-- [ ] nombre de jardins / parc par ville  
+- [X] classement taille ville  https://sql.sh/736-base-donnees-villes-francaises
+- [X] taux de chômages par région / ville https://www.insee.fr/fr/statistiques/2044266/?geo=REG-04
