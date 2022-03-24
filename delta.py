@@ -4,7 +4,7 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
-from bonheur import bonheur
+from pdlr_mg_sujet import bonheur
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
