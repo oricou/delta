@@ -16,7 +16,7 @@ df_hr_col_fr = ["Pays","Année","Echelle de vie","log PIB par habitant","Support
               "Espérance de vie","Liberté de vivre","Générosité","Perception de la corruption",
               "Effets positifs","Effets négatifs"]
 df_hr.columns = df_hr_col_fr
-
+## df_hr.interpolate(method = 'linear', inplace = True)
 
 # <--------------------IMPORT ET TRAITEMENT DU DATASET Countries-Continents-------------------->
 
