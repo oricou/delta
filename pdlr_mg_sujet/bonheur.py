@@ -23,11 +23,9 @@ class Bonheur():
     continent_list_fr = ["Afrique", "Asie", "Europe", "Amérique du Nord", "Océanie", "Amérique du Sud"]
     
     primary_default = "Echelle de vie"
-
-    mode = 1
     
     def __init__(self, application = None):
-        
+        self.mode = 1
         self.main_layout = html.Div([
             html.H3("Étude du bonheur mondial de 2005 à 2020"),
             dcc.Markdown(md_introduction),
@@ -79,6 +77,7 @@ class Bonheur():
             
     
     def _update_graph(self, point, graphtype):
+        # Ce moyen de faire est un cul de sac, j'ai besoin de recup l'état du graphe (sinon refresh => self.mode pas maj)  
         if not point:
             return self._init_graph_primary(graphtype)
         else :
@@ -104,6 +103,7 @@ class Bonheur():
         primary_figure = px.bar(
             x = self.continent_list_fr,
             y = primary_figure_values,
+            title = f'{graphtype}',
             labels=dict(x = graphtype, y = "Continents"),
             template='plotly_white'
         )
@@ -121,6 +121,7 @@ class Bonheur():
         primary_figure = px.histogram(
             x = df_hr_cnpv.columns,
             y = df_hr_cnpv.values.tolist()[0],
+            title = f'{graphtype}, {continent}',
             labels=dict(x = graphtype, y = "Pays"),
             template='plotly_white'
         )
@@ -138,6 +139,7 @@ class Bonheur():
         primary_figure = px.line(
             x = df_hr_pypv.columns,
             y = df_hr_pypv.values.tolist()[0],
+            title = f'{graphtype}, {country}',
             labels=dict(x = graphtype, y = "Années"),
             template='plotly_white'
         )
