@@ -1,5 +1,7 @@
 import os
 import pandas as pd
+from math import exp
+
 
 
 abs_path = os.path.dirname(os.path.realpath(__file__)) + "/"
@@ -35,5 +37,9 @@ df_hr.columns = df_hr_col_fr
 df_hr = df_hr.join(df_cc, on = "Pays")
 tmp = df_hr.pop("Continent")
 df_hr.insert(1, 'Continent', tmp)
+
+# Convertis le log du PIB en PIB 
+df_hr["PIB par habitant"] = df_hr.apply(lambda x: round(exp(x["log PIB par habitant"]),2), axis=1)
+
 
 ## df_hr.interpolate(method = 'linear', inplace = True)
