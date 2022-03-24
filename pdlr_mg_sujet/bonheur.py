@@ -25,16 +25,18 @@ class Bonheur():
     primary_default = "Echelle de vie"
     
     def __init__(self, application = None):
-        self.mode = 1
+        self.graph = dcc.Graph(
+                        id = 'bnh-graph',
+                        figure = { "data": [], "layout": {}, "frames": [],},
+                        config={'displayModeBar': False},
+                    )
+        
         self.main_layout = html.Div([
             html.H3("Étude du bonheur mondial de 2005 à 2020"),
             dcc.Markdown(md_introduction),
             html.Div([
                 html.Div([
-                    dcc.Graph(
-                        id = 'bnh-graph',
-                        config={'displayModeBar': False},
-                    )
+                    self.graph,
                 ], style = {'width' : '75%', 'display': 'inline-block'}),
                 html.Div([
                     dcc.RadioItems(
@@ -78,6 +80,7 @@ class Bonheur():
     
     def _update_graph(self, point, graphtype):
         # Ce moyen de faire est un cul de sac, j'ai besoin de recup l'état du graphe (sinon refresh => self.mode pas maj)  
+        print(self.graph.figure)
         if not point:
             return self._init_graph_primary(graphtype)
         else :
