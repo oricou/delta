@@ -1,7 +1,11 @@
+import os
 import pandas as pd
 
-path_hapiness_report = "data/Happiness-Report.csv"
-path_countries_continents = "data/Countries-Continents.csv"
+
+abs_path = os.path.dirname(os.path.realpath(__file__)) + "/"
+
+path_hapiness_report = abs_path + "data/Happiness-Report.csv"
+path_countries_continents = abs_path + "data/Countries-Continents.csv"
 
 
 # <----------------------IMPORT ET TRAITEMENT DU DATASET Happiness-Report---------------------->
