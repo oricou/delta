@@ -1,580 +1,580 @@
-,,,,ParentLocation,,,Location,,,,,Dim1,,,,,,,,,,,FactValueNumeric,,,,,,Value
-,,,,Western Pacific,,,Marshall Islands,,,,,Both sexes,,,,,,,,,,,,,,,,,.
-,,,,Western Pacific,,,Marshall Islands,,,,,Female,,,,,,,,,,,,,,,,,.
-,,,,Western Pacific,,,Marshall Islands,,,,,Male,,,,,,,,,,,,,,,,,.
-,,,,Europe,,,Monaco,,,,,Both sexes,,,,,,,,,,,,,,,,,.
-,,,,Europe,,,Monaco,,,,,Female,,,,,,,,,,,,,,,,,.
-,,,,Europe,,,Monaco,,,,,Male,,,,,,,,,,,,,,,,,.
-,,,,Western Pacific,,,Palau,,,,,Both sexes,,,,,,,,,,,,,,,,,.
-,,,,Western Pacific,,,Palau,,,,,Female,,,,,,,,,,,,,,,,,.
-,,,,Western Pacific,,,Palau,,,,,Male,,,,,,,,,,,,,,,,,.
-,,,,Europe,,,San Marino,,,,,Both sexes,,,,,,,,,,,,,,,,,.
-,,,,Europe,,,San Marino,,,,,Female,,,,,,,,,,,,,,,,,.
-,,,,Europe,,,San Marino,,,,,Male,,,,,,,,,,,,,,,,,.
-,,,,Africa,,,South Sudan,,,,,Both sexes,,,,,,,,,,,,,,,,,.
-,,,,Africa,,,South Sudan,,,,,Female,,,,,,,,,,,,,,,,,.
-,,,,Africa,,,South Sudan,,,,,Male,,,,,,,,,,,,,,,,,.
-,,,,Eastern Mediterranean,,,Libya,,,,,Both sexes,,,,,,,,,,,0.1,,,,,,0.1
-,,,,Eastern Mediterranean,,,Libya,,,,,Female,,,,,,,,,,,0.1,,,,,,0.1
-,,,,Eastern Mediterranean,,,Kuwait,,,,,Female,,,,,,,,,,,0.2,,,,,,0.2
-,,,,Eastern Mediterranean,,,Libya,,,,,Male,,,,,,,,,,,0.2,,,,,,0.2
-,,,,Eastern Mediterranean,,,Afghanistan,,,,,Female,,,,,,,,,,,0.3,,,,,,0.3
-,,,,Western Pacific,,,Solomon Islands,,,,,Female,,,,,,,,,,,0.3,,,,,,0.3
-,,,,Eastern Mediterranean,,,Yemen,,,,,Female,,,,,,,,,,,0.3,,,,,,0.3
-,,,,Africa,,,Mauritania,,,,,Female,,,,,,,,,,,0.5,,,,,,0.5
-,,,,Eastern Mediterranean,,,Kuwait,,,,,Both sexes,,,,,,,,,,,0.6,,,,,,0.6
-,,,,Eastern Mediterranean,,,Pakistan,,,,,Female,,,,,,,,,,,0.6,,,,,,0.6
-,,,,Eastern Mediterranean,,,Afghanistan,,,,,Both sexes,,,,,,,,,,,0.7,,,,,,0.7
-,,,,Western Pacific,,,Solomon Islands,,,,,Both sexes,,,,,,,,,,,0.7,,,,,,0.7
-,,,,Eastern Mediterranean,,,Syrian Arab Republic,,,,,Female,,,,,,,,,,,0.7,,,,,,0.7
-,,,,Eastern Mediterranean,,,Yemen,,,,,Both sexes,,,,,,,,,,,0.7,,,,,,0.7
-,,,,Eastern Mediterranean,,,Kuwait,,,,,Male,,,,,,,,,,,0.8,,,,,,0.8
-,,,,Africa,,,Mauritania,,,,,Both sexes,,,,,,,,,,,0.9,,,,,,0.9
-,,,,Eastern Mediterranean,,,Afghanistan,,,,,Male,,,,,,,,,,,1,,,,,,1
-,,,,South-East Asia,,,Bangladesh,,,,,Female,,,,,,,,,,,1,,,,,,1
-,,,,Eastern Mediterranean,,,Iran (Islamic Republic of),,,,,Female,,,,,,,,,,,1.1,,,,,,1.1
-,,,,Western Pacific,,,Solomon Islands,,,,,Male,,,,,,,,,,,1.1,,,,,,1.1
-,,,,Eastern Mediterranean,,,Sudan,,,,,Female,,,,,,,,,,,1.1,,,,,,1.1
-,,,,Eastern Mediterranean,,,Yemen,,,,,Male,,,,,,,,,,,1.1,,,,,,1.1
-,,,,Eastern Mediterranean,,,Pakistan,,,,,Both sexes,,,,,,,,,,,1.2,,,,,,1.2
-,,,,Eastern Mediterranean,,,Morocco,,,,,Female,,,,,,,,,,,1.3,,,,,,1.3
-,,,,Eastern Mediterranean,,,Egypt,,,,,Female,,,,,,,,,,,1.4,,,,,,1.4
-,,,,Eastern Mediterranean,,,Jordan,,,,,Female,,,,,,,,,,,1.4,,,,,,1.4
-,,,,Africa,,,Mauritania,,,,,Male,,,,,,,,,,,1.4,,,,,,1.4
-,,,,Africa,,,Algeria,,,,,Female,,,,,,,,,,,1.5,,,,,,1.5
-,,,,Eastern Mediterranean,,,Iraq,,,,,Female,,,,,,,,,,,1.5,,,,,,1.5
-,,,,Eastern Mediterranean,,,Tunisia,,,,,Female,,,,,,,,,,,1.6,,,,,,1.6
-,,,,Eastern Mediterranean,,,Pakistan,,,,,Male,,,,,,,,,,,1.8,,,,,,1.8
-,,,,Africa,,,Comoros,,,,,Female,,,,,,,,,,,1.9,,,,,,1.9
-,,,,Africa,,,Zimbabwe,,,,,Female,,,,,,,,,,,10,,,,,,10
-,,,,Eastern Mediterranean,,,Oman,,,,,Male,,,,,,,,,,,10.4,,,,,,10.4
-,,,,Europe,,,Turkey,,,,,Male,,,,,,,,,,,11,,,,,,11
-,,,,Eastern Mediterranean,,,Djibouti,,,,,Female,,,,,,,,,,,11.1,,,,,,11.1
-,,,,Eastern Mediterranean,,,Bahrain,,,,,Male,,,,,,,,,,,11.5,,,,,,11.5
-,,,,Africa,,,Eritrea,,,,,Female,,,,,,,,,,,11.6,,,,,,11.6
-,,,,Africa,,,Niger,,,,,Female,,,,,,,,,,,11.7,,,,,,11.7
-,,,,Europe,,,Tajikistan,,,,,Female,,,,,,,,,,,11.8,,,,,,11.8
-,,,,Africa,,,Madagascar,,,,,Female,,,,,,,,,,,12,,,,,,12
-,,,,Europe,,,Uzbekistan,,,,,Female,,,,,,,,,,,12,,,,,,12
-,,,,Western Pacific,,,Kiribati,,,,,Both sexes,,,,,,,,,,,12.1,,,,,,12.1
-,,,,South-East Asia,,,Maldives,,,,,Male,,,,,,,,,,,12.1,,,,,,12.1
-,,,,Africa,,,Mozambique,,,,,Female,,,,,,,,,,,12.3,,,,,,12.3
-,,,,South-East Asia,,,Timor-Leste,,,,,Female,,,,,,,,,,,12.4,,,,,,12.4
-,,,,Africa,,,Senegal,,,,,Female,,,,,,,,,,,12.5,,,,,,12.5
-,,,,Africa,,,Guinea,,,,,Female,,,,,,,,,,,12.6,,,,,,12.6
-,,,,Europe,,,Azerbaijan,,,,,Female,,,,,,,,,,,12.8,,,,,,12.8
-,,,,Africa,,,Mali,,,,,Female,,,,,,,,,,,12.8,,,,,,12.8
-,,,,Western Pacific,,,Nauru,,,,,Female,,,,,,,,,,,12.8,,,,,,12.8
-,,,,Africa,,,Chad,,,,,Female,,,,,,,,,,,13.1,,,,,,13.1
-,,,,Africa,,,Ethiopia,,,,,Female,,,,,,,,,,,13.2,,,,,,13.2
-,,,,South-East Asia,,,Indonesia,,,,,Female,,,,,,,,,,,13.2,,,,,,13.2
-,,,,Europe,,,Slovenia,,,,,Both sexes,,,,,,,,,,,13.5,,,,,,13.5
-,,,,Western Pacific,,,Vanuatu,,,,,Both sexes,,,,,,,,,,,13.6,,,,,,13.6
-,,,,Western Pacific,,,Papua New Guinea,,,,,Both sexes,,,,,,,,,,,13.7,,,,,,13.7
-,,,,Africa,,,Malawi,,,,,Female,,,,,,,,,,,13.9,,,,,,13.9
-,,,,Africa,,,Kenya,,,,,Female,,,,,,,,,,,14,,,,,,14
-,,,,Western Pacific,,,Tonga,,,,,Both sexes,,,,,,,,,,,14.2,,,,,,14.2
-,,,,Western Pacific,,,Tuvalu,,,,,Both sexes,,,,,,,,,,,14.4,,,,,,14.4
-,,,,Western Pacific,,,Micronesia (Federated States of),,,,,Both sexes,,,,,,,,,,,15.2,,,,,,15.2
-,,,,Africa,,,Togo,,,,,Female,,,,,,,,,,,15.2,,,,,,15.2
-,,,,Africa,,,Benin,,,,,Female,,,,,,,,,,,15.4,,,,,,15.4
-,,,,Europe,,,Kyrgyzstan,,,,,Female,,,,,,,,,,,15.5,,,,,,15.5
-,,,,Africa,,,Ghana,,,,,Female,,,,,,,,,,,15.7,,,,,,15.7
-,,,,Western Pacific,,,Samoa,,,,,Both sexes,,,,,,,,,,,16,,,,,,16
-,,,,Europe,,,Armenia,,,,,Female,,,,,,,,,,,16.2,,,,,,16.2
-,,,,Africa,,,Gambia,,,,,Female,,,,,,,,,,,16.2,,,,,,16.2
-,,,,South-East Asia,,,Myanmar,,,,,Female,,,,,,,,,,,16.5,,,,,,16.5
-,,,,Africa,,,Zambia,,,,,Female,,,,,,,,,,,16.5,,,,,,16.5
-,,,,Americas,,,Guatemala,,,,,Female,,,,,,,,,,,16.9,,,,,,16.9
-,,,,South-East Asia,,,Nepal,,,,,Female,,,,,,,,,,,17.1,,,,,,17.1
-,,,,South-East Asia,,,Bhutan,,,,,Female,,,,,,,,,,,17.3,,,,,,17.3
-,,,,Africa,,,Guinea-Bissau,,,,,Female,,,,,,,,,,,17.5,,,,,,17.5
-,,,,Africa,,,Zimbabwe,,,,,Both sexes,,,,,,,,,,,17.6,,,,,,17.6
-,,,,Africa,,,Eswatini,,,,,Female,,,,,,,,,,,17.7,,,,,,17.7
-,,,,Western Pacific,,,Fiji,,,,,Both sexes,,,,,,,,,,,17.7,,,,,,17.7
-,,,,Africa,,,Lesotho,,,,,Both sexes,,,,,,,,,,,17.8,,,,,,17.8
-,,,,South-East Asia,,,Sri Lanka,,,,,Female,,,,,,,,,,,17.9,,,,,,17.9
-,,,,Western Pacific,,,Kiribati,,,,,Male,,,,,,,,,,,18.1,,,,,,18.1
-,,,,Western Pacific,,,Malaysia,,,,,Female,,,,,,,,,,,18.2,,,,,,18.2
-,,,,Americas,,,Honduras,,,,,Female,,,,,,,,,,,18.5,,,,,,18.5
-,,,,Eastern Mediterranean,,,United Arab Emirates,,,,,Both sexes,,,,,,,,,,,18.5,,,,,,18.5
-,,,,Africa,,,Liberia,,,,,Female,,,,,,,,,,,18.9,,,,,,18.9
-,,,,Americas,,,El Salvador,,,,,Female,,,,,,,,,,,19,,,,,,19
-,,,,Europe,,,Turkmenistan,,,,,Female,,,,,,,,,,,19,,,,,,19
-,,,,Africa,,,Namibia,,,,,Female,,,,,,,,,,,19.1,,,,,,19.1
-,,,,Africa,,,Sierra Leone,,,,,Female,,,,,,,,,,,19.2,,,,,,19.2
-,,,,Eastern Mediterranean,,,Somalia,,,,,Female,,,,,,,,,,,19.4,,,,,,19.4
-,,,,Africa,,,Mauritius,,,,,Female,,,,,,,,,,,19.5,,,,,,19.5
-,,,,Western Pacific,,,Cambodia,,,,,Female,,,,,,,,,,,19.6,,,,,,19.6
-,,,,Eastern Mediterranean,,,Djibouti,,,,,Both sexes,,,,,,,,,,,19.7,,,,,,19.7
-,,,,Europe,,,Slovenia,,,,,Male,,,,,,,,,,,19.7,,,,,,19.7
-,,,,Western Pacific,,,Papua New Guinea,,,,,Male,,,,,,,,,,,19.9,,,,,,19.9
-,,,,Western Pacific,,,Vanuatu,,,,,Male,,,,,,,,,,,19.9,,,,,,19.9
-,,,,Eastern Mediterranean,,,Syrian Arab Republic,,,,,Both sexes,,,,,,,,,,,2,,,,,,2
-,,,,South-East Asia,,,Bangladesh,,,,,Both sexes,,,,,,,,,,,2.2,,,,,,2.2
-,,,,Eastern Mediterranean,,,Sudan,,,,,Both sexes,,,,,,,,,,,2.3,,,,,,2.3
-,,,,Eastern Mediterranean,,,Morocco,,,,,Both sexes,,,,,,,,,,,2.6,,,,,,2.6
-,,,,Eastern Mediterranean,,,Egypt,,,,,Both sexes,,,,,,,,,,,2.8,,,,,,2.8
-,,,,Africa,,,Botswana,,,,,Female,,,,,,,,,,,20,,,,,,20
-,,,,Africa,,,Burundi,,,,,Female,,,,,,,,,,,20,,,,,,20
-,,,,Africa,,,Niger,,,,,Both sexes,,,,,,,,,,,20.2,,,,,,20.2
-,,,,Africa,,,Eritrea,,,,,Both sexes,,,,,,,,,,,20.3,,,,,,20.3
-,,,,Europe,,,Tajikistan,,,,,Both sexes,,,,,,,,,,,20.7,,,,,,20.7
-,,,,Americas,,,Nicaragua,,,,,Female,,,,,,,,,,,20.8,,,,,,20.8
-,,,,Europe,,,Uzbekistan,,,,,Both sexes,,,,,,,,,,,20.8,,,,,,20.8
-,,,,Africa,,,Madagascar,,,,,Both sexes,,,,,,,,,,,20.9,,,,,,20.9
-,,,,Western Pacific,,,Tonga,,,,,Male,,,,,,,,,,,20.9,,,,,,20.9
-,,,,Africa,,,Mozambique,,,,,Both sexes,,,,,,,,,,,21,,,,,,21
-,,,,Western Pacific,,,Philippines,,,,,Female,,,,,,,,,,,21,,,,,,21
-,,,,Western Pacific,,,Niue,,,,,Female,,,,,,,,,,,21.1,,,,,,21.1
-,,,,Africa,,,Senegal,,,,,Both sexes,,,,,,,,,,,21.1,,,,,,21.1
-,,,,Western Pacific,,,Tuvalu,,,,,Male,,,,,,,,,,,21.1,,,,,,21.1
-,,,,Africa,,,Cameroon,,,,,Female,,,,,,,,,,,21.4,,,,,,21.4
-,,,,Western Pacific,,,Mongolia,,,,,Female,,,,,,,,,,,21.5,,,,,,21.5
-,,,,Africa,,,Sao Tome and Principe,,,,,Female,,,,,,,,,,,21.5,,,,,,21.5
-,,,,Africa,,,Guinea,,,,,Both sexes,,,,,,,,,,,21.6,,,,,,21.6
-,,,,South-East Asia,,,Timor-Leste,,,,,Both sexes,,,,,,,,,,,21.6,,,,,,21.6
-,,,,Eastern Mediterranean,,,United Arab Emirates,,,,,Male,,,,,,,,,,,21.7,,,,,,21.7
-,,,,Europe,,,Azerbaijan,,,,,Both sexes,,,,,,,,,,,21.9,,,,,,21.9
-,,,,Africa,,,Mali,,,,,Both sexes,,,,,,,,,,,21.9,,,,,,21.9
-,,,,Western Pacific,,,Micronesia (Federated States of),,,,,Male,,,,,,,,,,,22,,,,,,22
-,,,,Western Pacific,,,Nauru,,,,,Both sexes,,,,,,,,,,,22,,,,,,22
-,,,,Africa,,,Chad,,,,,Both sexes,,,,,,,,,,,22.4,,,,,,22.4
-,,,,Africa,,,Ethiopia,,,,,Both sexes,,,,,,,,,,,22.6,,,,,,22.6
-,,,,Americas,,,Jamaica,,,,,Female,,,,,,,,,,,22.6,,,,,,22.6
-,,,,South-East Asia,,,Indonesia,,,,,Both sexes,,,,,,,,,,,22.7,,,,,,22.7
-,,,,Americas,,,Haiti,,,,,Female,,,,,,,,,,,22.9,,,,,,22.9
-,,,,Western Pacific,,,Samoa,,,,,Male,,,,,,,,,,,22.9,,,,,,22.9
-,,,,Europe,,,Georgia,,,,,Female,,,,,,,,,,,23,,,,,,23
-,,,,Africa,,,Burkina Faso,,,,,Female,,,,,,,,,,,23.2,,,,,,23.2
-,,,,Americas,,,Paraguay,,,,,Female,,,,,,,,,,,23.2,,,,,,23.2
-,,,,Africa,,,Rwanda,,,,,Female,,,,,,,,,,,23.4,,,,,,23.4
-,,,,Africa,,,Malawi,,,,,Both sexes,,,,,,,,,,,23.7,,,,,,23.7
-,,,,Africa,,,Democratic Republic of the Congo,,,,,Female,,,,,,,,,,,23.8,,,,,,23.8
-,,,,Africa,,,Uganda,,,,,Female,,,,,,,,,,,23.8,,,,,,23.8
-,,,,Americas,,,Costa Rica,,,,,Female,,,,,,,,,,,23.9,,,,,,23.9
-,,,,Africa,,,Kenya,,,,,Both sexes,,,,,,,,,,,23.9,,,,,,23.9
-,,,,Western Pacific,,,Viet Nam,,,,,Female,,,,,,,,,,,23.9,,,,,,23.9
-,,,,Africa,,,United Republic of Tanzania,,,,,Female,,,,,,,,,,,24,,,,,,24
-,,,,Africa,,,Côte d’Ivoire,,,,,Female,,,,,,,,,,,24.1,,,,,,24.1
-,,,,Africa,,,Central African Republic,,,,,Female,,,,,,,,,,,24.9,,,,,,24.9
-,,,,Africa,,,Cabo Verde,,,,,Female,,,,,,,,,,,25,,,,,,25
-,,,,Eastern Mediterranean,,,Qatar,,,,,Female,,,,,,,,,,,25.2,,,,,,25.2
-,,,,Americas,,,Venezuela (Bolivarian Republic of),,,,,Female,,,,,,,,,,,25.2,,,,,,25.2
-,,,,South-East Asia,,,India,,,,,Female,,,,,,,,,,,25.4,,,,,,25.4
-,,,,Western Pacific,,,Fiji,,,,,Male,,,,,,,,,,,25.5,,,,,,25.5
-,,,,Americas,,,Colombia,,,,,Female,,,,,,,,,,,25.6,,,,,,25.6
-,,,,Africa,,,Togo,,,,,Both sexes,,,,,,,,,,,25.7,,,,,,25.7
-,,,,Africa,,,Zimbabwe,,,,,Male,,,,,,,,,,,25.7,,,,,,25.7
-,,,,Americas,,,Guyana,,,,,Female,,,,,,,,,,,25.9,,,,,,25.9
-,,,,Europe,,,Kyrgyzstan,,,,,Both sexes,,,,,,,,,,,25.9,,,,,,25.9
-,,,,Europe,,,Armenia,,,,,Both sexes,,,,,,,,,,,26,,,,,,26
-,,,,Africa,,,Ghana,,,,,Both sexes,,,,,,,,,,,26,,,,,,26
-,,,,Africa,,,Benin,,,,,Both sexes,,,,,,,,,,,26.1,,,,,,26.1
-,,,,Africa,,,Lesotho,,,,,Male,,,,,,,,,,,26.1,,,,,,26.1
-,,,,Africa,,,Gambia,,,,,Both sexes,,,,,,,,,,,26.7,,,,,,26.7
-,,,,Western Pacific,,,Lao People's Democratic Republic,,,,,Female,,,,,,,,,,,27,,,,,,27
-,,,,South-East Asia,,,Myanmar,,,,,Both sexes,,,,,,,,,,,27.1,,,,,,27.1
-,,,,South-East Asia,,,Nepal,,,,,Both sexes,,,,,,,,,,,27.1,,,,,,27.1
-,,,,Europe,,,Kazakhstan,,,,,Female,,,,,,,,,,,27.2,,,,,,27.2
-,,,,Americas,,,Brazil,,,,,Female,,,,,,,,,,,27.3,,,,,,27.3
-,,,,Americas,,,Guatemala,,,,,Both sexes,,,,,,,,,,,27.3,,,,,,27.3
-,,,,Africa,,,Zambia,,,,,Both sexes,,,,,,,,,,,27.3,,,,,,27.3
-,,,,South-East Asia,,,Democratic People's Republic of Korea,,,,,Female,,,,,,,,,,,27.7,,,,,,27.7
-,,,,South-East Asia,,,Thailand,,,,,Female,,,,,,,,,,,27.7,,,,,,27.7
-,,,,Eastern Mediterranean,,,Djibouti,,,,,Male,,,,,,,,,,,28.2,,,,,,28.2
-,,,,Americas,,,Belize,,,,,Female,,,,,,,,,,,28.4,,,,,,28.4
-,,,,South-East Asia,,,Sri Lanka,,,,,Both sexes,,,,,,,,,,,28.7,,,,,,28.7
-,,,,Americas,,,Suriname,,,,,Female,,,,,,,,,,,28.7,,,,,,28.7
-,,,,Africa,,,Eswatini,,,,,Both sexes,,,,,,,,,,,28.8,,,,,,28.8
-,,,,Africa,,,Guinea-Bissau,,,,,Both sexes,,,,,,,,,,,28.8,,,,,,28.8
-,,,,Africa,,,Niger,,,,,Male,,,,,,,,,,,28.8,,,,,,28.8
-,,,,Western Pacific,,,Brunei Darussalam,,,,,Female,,,,,,,,,,,29.1,,,,,,29.1
-,,,,Africa,,,Eritrea,,,,,Male,,,,,,,,,,,29.2,,,,,,29.2
-,,,,Americas,,,El Salvador,,,,,Both sexes,,,,,,,,,,,29.4,,,,,,29.4
-,,,,Americas,,,Mexico,,,,,Female,,,,,,,,,,,29.4,,,,,,29.4
-,,,,South-East Asia,,,Bhutan,,,,,Both sexes,,,,,,,,,,,29.6,,,,,,29.6
-,,,,Western Pacific,,,Malaysia,,,,,Both sexes,,,,,,,,,,,29.6,,,,,,29.6
-,,,,Europe,,,Tajikistan,,,,,Male,,,,,,,,,,,29.6,,,,,,29.6
-,,,,Americas,,,Dominican Republic,,,,,Female,,,,,,,,,,,29.7,,,,,,29.7
-,,,,Americas,,,Honduras,,,,,Both sexes,,,,,,,,,,,29.8,,,,,,29.8
-,,,,Eastern Mediterranean,,,Jordan,,,,,Both sexes,,,,,,,,,,,3,,,,,,3
-,,,,Eastern Mediterranean,,,Lebanon,,,,,Female,,,,,,,,,,,3,,,,,,3
-,,,,Europe,,,Turkey,,,,,Female,,,,,,,,,,,3,,,,,,3
-,,,,Eastern Mediterranean,,,Iraq,,,,,Both sexes,,,,,,,,,,,3.1,,,,,,3.1
-,,,,Africa,,,Algeria,,,,,Both sexes,,,,,,,,,,,3.2,,,,,,3.2
-,,,,Eastern Mediterranean,,,Oman,,,,,Female,,,,,,,,,,,3.3,,,,,,3.3
-,,,,Eastern Mediterranean,,,Sudan,,,,,Male,,,,,,,,,,,3.4,,,,,,3.4
-,,,,Eastern Mediterranean,,,Syrian Arab Republic,,,,,Male,,,,,,,,,,,3.4,,,,,,3.4
-,,,,South-East Asia,,,Bangladesh,,,,,Male,,,,,,,,,,,3.5,,,,,,3.5
-,,,,Eastern Mediterranean,,,Iran (Islamic Republic of),,,,,Both sexes,,,,,,,,,,,3.5,,,,,,3.5
-,,,,Eastern Mediterranean,,,Saudi Arabia,,,,,Female,,,,,,,,,,,3.5,,,,,,3.5
-,,,,Eastern Mediterranean,,,Bahrain,,,,,Female,,,,,,,,,,,3.8,,,,,,3.8
-,,,,South-East Asia,,,Maldives,,,,,Female,,,,,,,,,,,3.9,,,,,,3.9
-,,,,Eastern Mediterranean,,,Morocco,,,,,Male,,,,,,,,,,,3.9,,,,,,3.9
-,,,,Africa,,,Madagascar,,,,,Male,,,,,,,,,,,30,,,,,,30
-,,,,Europe,,,Uzbekistan,,,,,Male,,,,,,,,,,,30.1,,,,,,30.1
-,,,,Africa,,,Namibia,,,,,Both sexes,,,,,,,,,,,30.3,,,,,,30.3
-,,,,Africa,,,Senegal,,,,,Male,,,,,,,,,,,30.4,,,,,,30.4
-,,,,Europe,,,Turkmenistan,,,,,Both sexes,,,,,,,,,,,30.4,,,,,,30.4
-,,,,Americas,,,Bahamas,,,,,Female,,,,,,,,,,,30.5,,,,,,30.5
-,,,,Africa,,,Mozambique,,,,,Male,,,,,,,,,,,30.5,,,,,,30.5
-,,,,South-East Asia,,,Timor-Leste,,,,,Male,,,,,,,,,,,30.6,,,,,,30.6
-,,,,Africa,,,Guinea,,,,,Male,,,,,,,,,,,30.7,,,,,,30.7
-,,,,Africa,,,Liberia,,,,,Both sexes,,,,,,,,,,,30.8,,,,,,30.8
-,,,,Western Pacific,,,Cambodia,,,,,Both sexes,,,,,,,,,,,30.9,,,,,,30.9
-,,,,Africa,,,Sierra Leone,,,,,Both sexes,,,,,,,,,,,30.9,,,,,,30.9
-,,,,Eastern Mediterranean,,,Somalia,,,,,Both sexes,,,,,,,,,,,31,,,,,,31
-,,,,Africa,,,Mali,,,,,Male,,,,,,,,,,,31.1,,,,,,31.1
-,,,,Africa,,,Mauritius,,,,,Both sexes,,,,,,,,,,,31.2,,,,,,31.2
-,,,,Western Pacific,,,Nauru,,,,,Male,,,,,,,,,,,31.5,,,,,,31.5
-,,,,Europe,,,Azerbaijan,,,,,Male,,,,,,,,,,,31.6,,,,,,31.6
-,,,,Africa,,,Burundi,,,,,Both sexes,,,,,,,,,,,31.6,,,,,,31.6
-,,,,Africa,,,Chad,,,,,Male,,,,,,,,,,,31.7,,,,,,31.7
-,,,,Americas,,,Dominica,,,,,Female,,,,,,,,,,,31.7,,,,,,31.7
-,,,,Americas,,,Bolivia (Plurinational State of),,,,,Female,,,,,,,,,,,31.9,,,,,,31.9
-,,,,Africa,,,Botswana,,,,,Both sexes,,,,,,,,,,,32,,,,,,32
-,,,,Africa,,,Ethiopia,,,,,Male,,,,,,,,,,,32.1,,,,,,32.1
-,,,,Americas,,,Cuba,,,,,Female,,,,,,,,,,,32.3,,,,,,32.3
-,,,,South-East Asia,,,Indonesia,,,,,Male,,,,,,,,,,,32.3,,,,,,32.3
-,,,,Americas,,,Nicaragua,,,,,Both sexes,,,,,,,,,,,32.5,,,,,,32.5
-,,,,Americas,,,Saint Vincent and the Grenadines,,,,,Female,,,,,,,,,,,32.8,,,,,,32.8
-,,,,Americas,,,Ecuador,,,,,Female,,,,,,,,,,,32.9,,,,,,32.9
-,,,,Western Pacific,,,Philippines,,,,,Both sexes,,,,,,,,,,,33.1,,,,,,33.1
-,,,,Western Pacific,,,Niue,,,,,Both sexes,,,,,,,,,,,33.2,,,,,,33.2
-,,,,Western Pacific,,,Brunei Darussalam,,,,,Both sexes,,,,,,,,,,,33.3,,,,,,33.3
-,,,,Africa,,,Malawi,,,,,Male,,,,,,,,,,,33.6,,,,,,33.6
-,,,,Western Pacific,,,Mongolia,,,,,Both sexes,,,,,,,,,,,33.6,,,,,,33.6
-,,,,Africa,,,Cameroon,,,,,Both sexes,,,,,,,,,,,33.8,,,,,,33.8
-,,,,Africa,,,Kenya,,,,,Male,,,,,,,,,,,33.8,,,,,,33.8
-,,,,Europe,,,Bosnia and Herzegovina,,,,,Female,,,,,,,,,,,34,,,,,,34
-,,,,Americas,,,Panama,,,,,Female,,,,,,,,,,,34,,,,,,34
-,,,,Africa,,,Sao Tome and Principe,,,,,Both sexes,,,,,,,,,,,34,,,,,,34
-,,,,Africa,,,Angola,,,,,Female,,,,,,,,,,,34.3,,,,,,34.3
-,,,,Americas,,,Jamaica,,,,,Both sexes,,,,,,,,,,,34.9,,,,,,34.9
-,,,,Africa,,,Rwanda,,,,,Both sexes,,,,,,,,,,,35,,,,,,35
-,,,,Europe,,,Georgia,,,,,Both sexes,,,,,,,,,,,35.1,,,,,,35.1
-,,,,Americas,,,Haiti,,,,,Both sexes,,,,,,,,,,,35.1,,,,,,35.1
-,,,,Americas,,,Grenada,,,,,Female,,,,,,,,,,,35.7,,,,,,35.7
-,,,,Americas,,,Paraguay,,,,,Both sexes,,,,,,,,,,,36,,,,,,36
-,,,,Americas,,,Saint Lucia,,,,,Female,,,,,,,,,,,36.3,,,,,,36.3
-,,,,Africa,,,Uganda,,,,,Both sexes,,,,,,,,,,,36.3,,,,,,36.3
-,,,,Africa,,,Democratic Republic of the Congo,,,,,Both sexes,,,,,,,,,,,36.4,,,,,,36.4
-,,,,Africa,,,United Republic of Tanzania,,,,,Both sexes,,,,,,,,,,,36.4,,,,,,36.4
-,,,,Americas,,,Antigua and Barbuda,,,,,Female,,,,,,,,,,,36.5,,,,,,36.5
-,,,,Africa,,,Togo,,,,,Male,,,,,,,,,,,36.5,,,,,,36.5
-,,,,Americas,,,Costa Rica,,,,,Both sexes,,,,,,,,,,,36.6,,,,,,36.6
-,,,,Africa,,,Ghana,,,,,Male,,,,,,,,,,,36.8,,,,,,36.8
-,,,,Europe,,,Kyrgyzstan,,,,,Male,,,,,,,,,,,36.8,,,,,,36.8
-,,,,Africa,,,Burkina Faso,,,,,Both sexes,,,,,,,,,,,36.9,,,,,,36.9
-,,,,Africa,,,Benin,,,,,Male,,,,,,,,,,,37,,,,,,37
-,,,,Western Pacific,,,Cook Islands,,,,,Female,,,,,,,,,,,37,,,,,,37
-,,,,Western Pacific,,,Brunei Darussalam,,,,,Male,,,,,,,,,,,37.3,,,,,,37.3
-,,,,Americas,,,Barbados,,,,,Female,,,,,,,,,,,37.4,,,,,,37.4
-,,,,Europe,,,Albania,,,,,Female,,,,,,,,,,,37.6,,,,,,37.6
-,,,,Africa,,,Central African Republic,,,,,Both sexes,,,,,,,,,,,37.6,,,,,,37.6
-,,,,Africa,,,Nigeria,,,,,Female,,,,,,,,,,,37.7,,,,,,37.7
-,,,,Africa,,,Gambia,,,,,Male,,,,,,,,,,,37.8,,,,,,37.8
-,,,,Europe,,,Armenia,,,,,Male,,,,,,,,,,,38,,,,,,38
-,,,,Africa,,,Congo,,,,,Female,,,,,,,,,,,38,,,,,,38
-,,,,Americas,,,Venezuela (Bolivarian Republic of),,,,,Both sexes,,,,,,,,,,,38,,,,,,38
-,,,,Americas,,,Colombia,,,,,Both sexes,,,,,,,,,,,38.3,,,,,,38.3
-,,,,South-East Asia,,,Myanmar,,,,,Male,,,,,,,,,,,38.3,,,,,,38.3
-,,,,Africa,,,Zambia,,,,,Male,,,,,,,,,,,38.3,,,,,,38.3
-,,,,South-East Asia,,,Nepal,,,,,Male,,,,,,,,,,,38.4,,,,,,38.4
-,,,,Africa,,,Côte d’Ivoire,,,,,Both sexes,,,,,,,,,,,38.5,,,,,,38.5
-,,,,Americas,,,Guatemala,,,,,Male,,,,,,,,,,,38.6,,,,,,38.6
-,,,,South-East Asia,,,India,,,,,Both sexes,,,,,,,,,,,38.8,,,,,,38.8
-,,,,Americas,,,Guyana,,,,,Both sexes,,,,,,,,,,,39.1,,,,,,39.1
-,,,,Africa,,,Cabo Verde,,,,,Both sexes,,,,,,,,,,,39.4,,,,,,39.4
-,,,,Americas,,,Peru,,,,,Female,,,,,,,,,,,39.6,,,,,,39.6
-,,,,South-East Asia,,,Bhutan,,,,,Male,,,,,,,,,,,39.8,,,,,,39.8
-,,,,Europe,,,Kazakhstan,,,,,Both sexes,,,,,,,,,,,39.9,,,,,,39.9
-,,,,Europe,,,The former Yugoslav Republic of Macedonia,,,,,Female,,,,,,,,,,,39.9,,,,,,39.9
-,,,,Africa,,,Comoros,,,,,Both sexes,,,,,,,,,,,4.1,,,,,,4.1
-,,,,Eastern Mediterranean,,,Egypt,,,,,Male,,,,,,,,,,,4.2,,,,,,4.2
-,,,,Eastern Mediterranean,,,Jordan,,,,,Male,,,,,,,,,,,4.5,,,,,,4.5
-,,,,Eastern Mediterranean,,,Iraq,,,,,Male,,,,,,,,,,,4.7,,,,,,4.7
-,,,,Africa,,,Algeria,,,,,Male,,,,,,,,,,,4.8,,,,,,4.8
-,,,,Western Pacific,,,Lao People's Democratic Republic,,,,,Both sexes,,,,,,,,,,,40,,,,,,40
-,,,,Americas,,,Brazil,,,,,Both sexes,,,,,,,,,,,40.3,,,,,,40.3
-,,,,South-East Asia,,,Democratic People's Republic of Korea,,,,,Both sexes,,,,,,,,,,,40.3,,,,,,40.3
-,,,,Africa,,,Eswatini,,,,,Male,,,,,,,,,,,40.4,,,,,,40.4
-,,,,Europe,,,Montenegro,,,,,Female,,,,,,,,,,,40.4,,,,,,40.4
-,,,,Africa,,,Guinea-Bissau,,,,,Male,,,,,,,,,,,40.5,,,,,,40.5
-,,,,South-East Asia,,,Sri Lanka,,,,,Male,,,,,,,,,,,40.6,,,,,,40.6
-,,,,Africa,,,Seychelles,,,,,Female,,,,,,,,,,,40.9,,,,,,40.9
-,,,,South-East Asia,,,Thailand,,,,,Both sexes,,,,,,,,,,,40.9,,,,,,40.9
-,,,,Western Pacific,,,Malaysia,,,,,Male,,,,,,,,,,,41.2,,,,,,41.2
-,,,,Americas,,,Honduras,,,,,Male,,,,,,,,,,,41.3,,,,,,41.3
-,,,,Americas,,,Saint Kitts and Nevis,,,,,Female,,,,,,,,,,,41.3,,,,,,41.3
-,,,,Americas,,,Belize,,,,,Both sexes,,,,,,,,,,,41.5,,,,,,41.5
-,,,,Europe,,,Israel,,,,,Female,,,,,,,,,,,41.6,,,,,,41.6
-,,,,Americas,,,El Salvador,,,,,Male,,,,,,,,,,,41.8,,,,,,41.8
-,,,,Americas,,,Suriname,,,,,Both sexes,,,,,,,,,,,42.2,,,,,,42.2
-,,,,Africa,,,Namibia,,,,,Male,,,,,,,,,,,42.4,,,,,,42.4
-,,,,Europe,,,Turkmenistan,,,,,Male,,,,,,,,,,,42.5,,,,,,42.5
-,,,,Western Pacific,,,China,,,,,Female,,,,,,,,,,,42.6,,,,,,42.6
-,,,,Africa,,,Liberia,,,,,Male,,,,,,,,,,,42.7,,,,,,42.7
-,,,,Americas,,,Mexico,,,,,Both sexes,,,,,,,,,,,42.7,,,,,,42.7
-,,,,Americas,,,Dominican Republic,,,,,Both sexes,,,,,,,,,,,43,,,,,,43
-,,,,Africa,,,Sierra Leone,,,,,Male,,,,,,,,,,,43.1,,,,,,43.1
-,,,,Western Pacific,,,Cambodia,,,,,Male,,,,,,,,,,,43.2,,,,,,43.2
-,,,,Eastern Mediterranean,,,Somalia,,,,,Male,,,,,,,,,,,43.2,,,,,,43.2
-,,,,Africa,,,Mauritius,,,,,Male,,,,,,,,,,,43.4,,,,,,43.4
-,,,,Africa,,,Burundi,,,,,Male,,,,,,,,,,,43.7,,,,,,43.7
-,,,,Western Pacific,,,Japan,,,,,Female,,,,,,,,,,,43.7,,,,,,43.7
-,,,,Americas,,,Bahamas,,,,,Both sexes,,,,,,,,,,,43.8,,,,,,43.8
-,,,,Africa,,,Botswana,,,,,Male,,,,,,,,,,,44,,,,,,44
-,,,,Americas,,,Nicaragua,,,,,Male,,,,,,,,,,,44.9,,,,,,44.9
-,,,,Americas,,,Dominica,,,,,Both sexes,,,,,,,,,,,45.2,,,,,,45.2
-,,,,Western Pacific,,,Philippines,,,,,Male,,,,,,,,,,,45.3,,,,,,45.3
-,,,,Americas,,,Bolivia (Plurinational State of),,,,,Both sexes,,,,,,,,,,,45.4,,,,,,45.4
-,,,,Western Pacific,,,Niue,,,,,Male,,,,,,,,,,,45.5,,,,,,45.5
-,,,,Eastern Mediterranean,,,Qatar,,,,,Both sexes,,,,,,,,,,,45.6,,,,,,45.6
-,,,,Americas,,,Trinidad and Tobago,,,,,Female,,,,,,,,,,,45.6,,,,,,45.6
-,,,,Americas,,,Cuba,,,,,Both sexes,,,,,,,,,,,46.1,,,,,,46.1
-,,,,Western Pacific,,,Mongolia,,,,,Male,,,,,,,,,,,46.3,,,,,,46.3
-,,,,Americas,,,Ecuador,,,,,Both sexes,,,,,,,,,,,46.5,,,,,,46.5
-,,,,Americas,,,Saint Vincent and the Grenadines,,,,,Both sexes,,,,,,,,,,,46.6,,,,,,46.6
-,,,,Europe,,,Croatia,,,,,Female,,,,,,,,,,,46.8,,,,,,46.8
-,,,,Africa,,,Sao Tome and Principe,,,,,Male,,,,,,,,,,,46.8,,,,,,46.8
-,,,,Africa,,,Cameroon,,,,,Male,,,,,,,,,,,46.9,,,,,,46.9
-,,,,Europe,,,Serbia,,,,,Female,,,,,,,,,,,47,,,,,,47
-,,,,Americas,,,Jamaica,,,,,Male,,,,,,,,,,,47.4,,,,,,47.4
-,,,,Africa,,,Angola,,,,,Both sexes,,,,,,,,,,,47.7,,,,,,47.7
-,,,,Americas,,,Panama,,,,,Both sexes,,,,,,,,,,,47.7,,,,,,47.7
-,,,,Europe,,,Bosnia and Herzegovina,,,,,Both sexes,,,,,,,,,,,47.9,,,,,,47.9
-,,,,Americas,,,Haiti,,,,,Male,,,,,,,,,,,47.9,,,,,,47.9
-,,,,Americas,,,Paraguay,,,,,Male,,,,,,,,,,,48.4,,,,,,48.4
-,,,,Africa,,,Rwanda,,,,,Male,,,,,,,,,,,48.4,,,,,,48.4
-,,,,Europe,,,Georgia,,,,,Male,,,,,,,,,,,48.9,,,,,,48.9
-,,,,Africa,,,Uganda,,,,,Male,,,,,,,,,,,49.1,,,,,,49.1
-,,,,Africa,,,Democratic Republic of the Congo,,,,,Male,,,,,,,,,,,49.2,,,,,,49.2
-,,,,Africa,,,United Republic of Tanzania,,,,,Male,,,,,,,,,,,49.3,,,,,,49.3
-,,,,Americas,,,Antigua and Barbuda,,,,,Both sexes,,,,,,,,,,,49.4,,,,,,49.4
-,,,,Americas,,,Costa Rica,,,,,Male,,,,,,,,,,,49.5,,,,,,49.5
-,,,,Americas,,,Grenada,,,,,Both sexes,,,,,,,,,,,49.6,,,,,,49.6
-,,,,Americas,,,Saint Lucia,,,,,Both sexes,,,,,,,,,,,49.7,,,,,,49.7
-,,,,Eastern Mediterranean,,,Tunisia,,,,,Both sexes,,,,,,,,,,,5.2,,,,,,5.2
-,,,,Eastern Mediterranean,,,Saudi Arabia,,,,,Both sexes,,,,,,,,,,,5.8,,,,,,5.8
-,,,,Europe,,,Malta,,,,,Female,,,,,,,,,,,50,,,,,,50
-,,,,Western Pacific,,,Viet Nam,,,,,Male,,,,,,,,,,,50,,,,,,50
-,,,,Americas,,,Barbados,,,,,Both sexes,,,,,,,,,,,50.5,,,,,,50.5
-,,,,Western Pacific,,,Cook Islands,,,,,Both sexes,,,,,,,,,,,50.6,,,,,,50.6
-,,,,Africa,,,Central African Republic,,,,,Male,,,,,,,,,,,50.8,,,,,,50.8
-,,,,Europe,,,Albania,,,,,Both sexes,,,,,,,,,,,51,,,,,,51
-,,,,Africa,,,Burkina Faso,,,,,Male,,,,,,,,,,,51.2,,,,,,51.2
-,,,,Western Pacific,,,Republic of Korea,,,,,Female,,,,,,,,,,,51.2,,,,,,51.2
-,,,,Americas,,,Venezuela (Bolivarian Republic of),,,,,Male,,,,,,,,,,,51.2,,,,,,51.2
-,,,,South-East Asia,,,India,,,,,Male,,,,,,,,,,,51.4,,,,,,51.4
-,,,,Americas,,,Colombia,,,,,Male,,,,,,,,,,,51.7,,,,,,51.7
-,,,,Africa,,,Congo,,,,,Both sexes,,,,,,,,,,,51.7,,,,,,51.7
-,,,,Americas,,,Canada,,,,,Female,,,,,,,,,,,52.1,,,,,,52.1
-,,,,Eastern Mediterranean,,,Qatar,,,,,Male,,,,,,,,,,,52.1,,,,,,52.1
-,,,,Americas,,,Guyana,,,,,Male,,,,,,,,,,,52.2,,,,,,52.2
-,,,,Africa,,,Côte d’Ivoire,,,,,Male,,,,,,,,,,,52.3,,,,,,52.3
-,,,,Africa,,,Nigeria,,,,,Both sexes,,,,,,,,,,,52.6,,,,,,52.6
-,,,,Americas,,,Peru,,,,,Both sexes,,,,,,,,,,,53.2,,,,,,53.2
-,,,,Europe,,,Greece,,,,,Female,,,,,,,,,,,53.3,,,,,,53.3
-,,,,Western Pacific,,,Lao People's Democratic Republic,,,,,Male,,,,,,,,,,,53.4,,,,,,53.4
-,,,,South-East Asia,,,Democratic People's Republic of Korea,,,,,Male,,,,,,,,,,,53.7,,,,,,53.7
-,,,,Europe,,,The former Yugoslav Republic of Macedonia,,,,,Both sexes,,,,,,,,,,,53.7,,,,,,53.7
-,,,,Africa,,,Cabo Verde,,,,,Male,,,,,,,,,,,53.8,,,,,,53.8
-,,,,Europe,,,Bulgaria,,,,,Female,,,,,,,,,,,53.9,,,,,,53.9
-,,,,Americas,,,Brazil,,,,,Male,,,,,,,,,,,54,,,,,,54
-,,,,Europe,,,Montenegro,,,,,Both sexes,,,,,,,,,,,54,,,,,,54
-,,,,Africa,,,Gabon,,,,,Female,,,,,,,,,,,54.1,,,,,,54.1
-,,,,Europe,,,Kazakhstan,,,,,Male,,,,,,,,,,,54.3,,,,,,54.3
-,,,,Europe,,,Italy,,,,,Female,,,,,,,,,,,54.4,,,,,,54.4
-,,,,South-East Asia,,,Thailand,,,,,Male,,,,,,,,,,,54.6,,,,,,54.6
-,,,,Europe,,,Hungary,,,,,Female,,,,,,,,,,,54.8,,,,,,54.8
-,,,,Europe,,,Republic of Moldova,,,,,Female,,,,,,,,,,,54.8,,,,,,54.8
-,,,,Americas,,,Saint Kitts and Nevis,,,,,Both sexes,,,,,,,,,,,54.8,,,,,,54.8
-,,,,Americas,,,Belize,,,,,Male,,,,,,,,,,,54.9,,,,,,54.9
-,,,,Africa,,,Seychelles,,,,,Both sexes,,,,,,,,,,,54.9,,,,,,54.9
-,,,,Europe,,,Israel,,,,,Both sexes,,,,,,,,,,,55,,,,,,55
-,,,,Europe,,,Russian Federation,,,,,Female,,,,,,,,,,,55.4,,,,,,55.4
-,,,,Europe,,,Romania,,,,,Female,,,,,,,,,,,55.5,,,,,,55.5
-,,,,Americas,,,Argentina,,,,,Female,,,,,,,,,,,55.7,,,,,,55.7
-,,,,Americas,,,Chile,,,,,Female,,,,,,,,,,,55.8,,,,,,55.8
-,,,,Americas,,,Suriname,,,,,Male,,,,,,,,,,,55.8,,,,,,55.8
-,,,,Western Pacific,,,China,,,,,Both sexes,,,,,,,,,,,55.9,,,,,,55.9
-,,,,Europe,,,Ukraine,,,,,Female,,,,,,,,,,,56.1,,,,,,56.1
-,,,,Americas,,,Mexico,,,,,Male,,,,,,,,,,,56.4,,,,,,56.4
-,,,,Europe,,,Poland,,,,,Female,,,,,,,,,,,56.4,,,,,,56.4
-,,,,Europe,,,Cyprus,,,,,Female,,,,,,,,,,,56.6,,,,,,56.6
-,,,,Americas,,,Dominican Republic,,,,,Male,,,,,,,,,,,56.7,,,,,,56.7
-,,,,Western Pacific,,,Japan,,,,,Both sexes,,,,,,,,,,,57,,,,,,57
-,,,,Europe,,,Spain,,,,,Female,,,,,,,,,,,57,,,,,,57
-,,,,Americas,,,Uruguay,,,,,Female,,,,,,,,,,,57.6,,,,,,57.6
-,,,,Americas,,,Bahamas,,,,,Male,,,,,,,,,,,57.9,,,,,,57.9
-,,,,Europe,,,Russian Federation,,,,,Both sexes,,,,,,,,,,,58.1,,,,,,58.1
-,,,,Europe,,,Portugal,,,,,Female,,,,,,,,,,,58.3,,,,,,58.3
-,,,,Americas,,,Trinidad and Tobago,,,,,Both sexes,,,,,,,,,,,58.7,,,,,,58.7
-,,,,Western Pacific,,,Singapore,,,,,Female,,,,,,,,,,,58.8,,,,,,58.8
-,,,,Americas,,,Dominica,,,,,Male,,,,,,,,,,,59,,,,,,59
-,,,,Americas,,,Bolivia (Plurinational State of),,,,,Male,,,,,,,,,,,59.1,,,,,,59.1
-,,,,Europe,,,Croatia,,,,,Both sexes,,,,,,,,,,,59.7,,,,,,59.7
-,,,,Americas,,,Cuba,,,,,Male,,,,,,,,,,,59.9,,,,,,59.9
-,,,,Eastern Mediterranean,,,Iran (Islamic Republic of),,,,,Male,,,,,,,,,,,6,,,,,,6
-,,,,Eastern Mediterranean,,,Lebanon,,,,,Both sexes,,,,,,,,,,,6.1,,,,,,6.1
-,,,,Africa,,,Comoros,,,,,Male,,,,,,,,,,,6.2,,,,,,6.2
-,,,,Western Pacific,,,Kiribati,,,,,Female,,,,,,,,,,,6.5,,,,,,6.5
-,,,,Europe,,,Turkey,,,,,Both sexes,,,,,,,,,,,6.9,,,,,,6.9
-,,,,Europe,,,Serbia,,,,,Both sexes,,,,,,,,,,,60,,,,,,60
-,,,,Europe,,,Slovakia,,,,,Female,,,,,,,,,,,60,,,,,,60
-,,,,Americas,,,Ecuador,,,,,Male,,,,,,,,,,,60.3,,,,,,60.3
-,,,,Europe,,,Iceland,,,,,Female,,,,,,,,,,,60.3,,,,,,60.3
-,,,,Americas,,,Saint Vincent and the Grenadines,,,,,Male,,,,,,,,,,,60.3,,,,,,60.3
-,,,,Americas,,,United States of America,,,,,Female,,,,,,,,,,,60.7,,,,,,60.7
-,,,,Europe,,,Netherlands,,,,,Female,,,,,,,,,,,61.2,,,,,,61.2
-,,,,Europe,,,Russian Federation,,,,,Male,,,,,,,,,,,61.4,,,,,,61.4
-,,,,Americas,,,Panama,,,,,Male,,,,,,,,,,,61.5,,,,,,61.5
-,,,,Africa,,,Angola,,,,,Male,,,,,,,,,,,61.6,,,,,,61.6
-,,,,Africa,,,Equatorial Guinea,,,,,Female,,,,,,,,,,,61.7,,,,,,61.7
-,,,,Europe,,,Finland,,,,,Female,,,,,,,,,,,61.7,,,,,,61.7
-,,,,Europe,,,Ukraine,,,,,Both sexes,,,,,,,,,,,61.8,,,,,,61.8
-,,,,Europe,,,Bosnia and Herzegovina,,,,,Male,,,,,,,,,,,62.1,,,,,,62.1
-,,,,Europe,,,Sweden,,,,,Female,,,,,,,,,,,62.2,,,,,,62.2
-,,,,Europe,,,Estonia,,,,,Female,,,,,,,,,,,62.6,,,,,,62.6
-,,,,Europe,,,Malta,,,,,Both sexes,,,,,,,,,,,63,,,,,,63
-,,,,Europe,,,United Kingdom of Great Britain and Northern Ireland,,,,,Female,,,,,,,,,,,63,,,,,,63
-,,,,Americas,,,Grenada,,,,,Male,,,,,,,,,,,63.6,,,,,,63.6
-,,,,Americas,,,Antigua and Barbuda,,,,,Male,,,,,,,,,,,63.9,,,,,,63.9
-,,,,Western Pacific,,,Republic of Korea,,,,,Both sexes,,,,,,,,,,,63.9,,,,,,63.9
-,,,,Americas,,,Saint Lucia,,,,,Male,,,,,,,,,,,63.9,,,,,,63.9
-,,,,Europe,,,Denmark,,,,,Female,,,,,,,,,,,64.2,,,,,,64.2
-,,,,Europe,,,Andorra,,,,,Female,,,,,,,,,,,64.3,,,,,,64.3
-,,,,Americas,,,Canada,,,,,Both sexes,,,,,,,,,,,64.5,,,,,,64.5
-,,,,Western Pacific,,,Cook Islands,,,,,Male,,,,,,,,,,,64.5,,,,,,64.5
-,,,,Western Pacific,,,New Zealand,,,,,Female,,,,,,,,,,,64.8,,,,,,64.8
-,,,,Europe,,,Albania,,,,,Male,,,,,,,,,,,65,,,,,,65
-,,,,Americas,,,Barbados,,,,,Male,,,,,,,,,,,65.2,,,,,,65.2
-,,,,Europe,,,Czechia,,,,,Female,,,,,,,,,,,65.4,,,,,,65.4
-,,,,Europe,,,Greece,,,,,Both sexes,,,,,,,,,,,65.4,,,,,,65.4
-,,,,Africa,,,Congo,,,,,Male,,,,,,,,,,,65.5,,,,,,65.5
-,,,,Europe,,,Latvia,,,,,Female,,,,,,,,,,,65.5,,,,,,65.5
-,,,,Europe,,,France,,,,,Female,,,,,,,,,,,65.6,,,,,,65.6
-,,,,Europe,,,Bulgaria,,,,,Both sexes,,,,,,,,,,,66,,,,,,66
-,,,,Africa,,,Gabon,,,,,Both sexes,,,,,,,,,,,66.5,,,,,,66.5
-,,,,Europe,,,Hungary,,,,,Both sexes,,,,,,,,,,,66.6,,,,,,66.6
-,,,,Europe,,,Republic of Moldova,,,,,Both sexes,,,,,,,,,,,66.6,,,,,,66.6
-,,,,Europe,,,Belgium,,,,,Female,,,,,,,,,,,66.8,,,,,,66.8
-,,,,Africa,,,Nigeria,,,,,Male,,,,,,,,,,,67,,,,,,67
-,,,,Americas,,,Peru,,,,,Male,,,,,,,,,,,67.1,,,,,,67.1
-,,,,Europe,,,Romania,,,,,Both sexes,,,,,,,,,,,67.2,,,,,,67.2
-,,,,Americas,,,Argentina,,,,,Both sexes,,,,,,,,,,,67.4,,,,,,67.4
-,,,,Americas,,,Chile,,,,,Both sexes,,,,,,,,,,,67.6,,,,,,67.6
-,,,,Europe,,,The former Yugoslav Republic of Macedonia,,,,,Male,,,,,,,,,,,67.7,,,,,,67.7
-,,,,Europe,,,Italy,,,,,Both sexes,,,,,,,,,,,67.8,,,,,,67.8
-,,,,Europe,,,Poland,,,,,Both sexes,,,,,,,,,,,68,,,,,,68
-,,,,Europe,,,Montenegro,,,,,Male,,,,,,,,,,,68.2,,,,,,68.2
-,,,,Western Pacific,,,China,,,,,Male,,,,,,,,,,,68.6,,,,,,68.6
-,,,,Americas,,,Saint Kitts and Nevis,,,,,Male,,,,,,,,,,,68.6,,,,,,68.6
-,,,,Europe,,,Spain,,,,,Both sexes,,,,,,,,,,,68.6,,,,,,68.6
-,,,,Africa,,,Seychelles,,,,,Male,,,,,,,,,,,68.7,,,,,,68.7
-,,,,Europe,,,Ukraine,,,,,Male,,,,,,,,,,,68.7,,,,,,68.7
-,,,,Europe,,,Cyprus,,,,,Both sexes,,,,,,,,,,,68.8,,,,,,68.8
-,,,,Europe,,,Austria,,,,,Female,,,,,,,,,,,68.9,,,,,,68.9
-,,,,Europe,,,Israel,,,,,Male,,,,,,,,,,,68.9,,,,,,68.9
-,,,,Americas,,,Uruguay,,,,,Both sexes,,,,,,,,,,,68.9,,,,,,68.9
-,,,,Europe,,,Belarus,,,,,Female,,,,,,,,,,,69.2,,,,,,69.2
-,,,,Europe,,,Portugal,,,,,Both sexes,,,,,,,,,,,69.2,,,,,,69.2
-,,,,Europe,,,Norway,,,,,Female,,,,,,,,,,,69.8,,,,,,69.8
-,,,,Western Pacific,,,Papua New Guinea,,,,,Female,,,,,,,,,,,7.3,,,,,,7.3
-,,,,Eastern Mediterranean,,,Saudi Arabia,,,,,Male,,,,,,,,,,,7.3,,,,,,7.3
-,,,,Europe,,,Slovenia,,,,,Female,,,,,,,,,,,7.3,,,,,,7.3
-,,,,Western Pacific,,,Vanuatu,,,,,Female,,,,,,,,,,,7.4,,,,,,7.4
-,,,,Western Pacific,,,Tonga,,,,,Female,,,,,,,,,,,7.7,,,,,,7.7
-,,,,Western Pacific,,,Tuvalu,,,,,Female,,,,,,,,,,,7.8,,,,,,7.8
-,,,,South-East Asia,,,Maldives,,,,,Both sexes,,,,,,,,,,,7.9,,,,,,7.9
-,,,,Eastern Mediterranean,,,United Arab Emirates,,,,,Female,,,,,,,,,,,7.9,,,,,,7.9
-,,,,Western Pacific,,,Singapore,,,,,Both sexes,,,,,,,,,,,70,,,,,,70
-,,,,Western Pacific,,,Australia,,,,,Female,,,,,,,,,,,70.6,,,,,,70.6
-,,,,Europe,,,Germany,,,,,Female,,,,,,,,,,,70.6,,,,,,70.6
-,,,,Europe,,,Lithuania,,,,,Female,,,,,,,,,,,70.9,,,,,,70.9
-,,,,Western Pacific,,,Japan,,,,,Male,,,,,,,,,,,71.3,,,,,,71.3
-,,,,Europe,,,Slovakia,,,,,Both sexes,,,,,,,,,,,71.3,,,,,,71.3
-,,,,Europe,,,Iceland,,,,,Both sexes,,,,,,,,,,,71.5,,,,,,71.5
-,,,,Americas,,,United States of America,,,,,Both sexes,,,,,,,,,,,71.7,,,,,,71.7
-,,,,Europe,,,Netherlands,,,,,Both sexes,,,,,,,,,,,72.1,,,,,,72.1
-,,,,Europe,,,Finland,,,,,Both sexes,,,,,,,,,,,72.5,,,,,,72.5
-,,,,Americas,,,Trinidad and Tobago,,,,,Male,,,,,,,,,,,72.5,,,,,,72.5
-,,,,Europe,,,Estonia,,,,,Both sexes,,,,,,,,,,,72.8,,,,,,72.8
-,,,,Africa,,,Equatorial Guinea,,,,,Both sexes,,,,,,,,,,,72.9,,,,,,72.9
-,,,,Europe,,,Sweden,,,,,Both sexes,,,,,,,,,,,73,,,,,,73
-,,,,Europe,,,Switzerland,,,,,Female,,,,,,,,,,,73,,,,,,73
-,,,,Europe,,,Ireland,,,,,Female,,,,,,,,,,,73.1,,,,,,73.1
-,,,,Europe,,,United Kingdom of Great Britain and Northern Ireland,,,,,Both sexes,,,,,,,,,,,73.4,,,,,,73.4
-,,,,Europe,,,Belarus,,,,,Both sexes,,,,,,,,,,,73.6,,,,,,73.6
-,,,,Europe,,,Serbia,,,,,Male,,,,,,,,,,,73.8,,,,,,73.8
-,,,,Europe,,,Croatia,,,,,Male,,,,,,,,,,,73.9,,,,,,73.9
-,,,,Europe,,,Denmark,,,,,Both sexes,,,,,,,,,,,74.4,,,,,,74.4
-,,,,Europe,,,Andorra,,,,,Both sexes,,,,,,,,,,,74.6,,,,,,74.6
-,,,,Western Pacific,,,New Zealand,,,,,Both sexes,,,,,,,,,,,74.6,,,,,,74.6
-,,,,Europe,,,Latvia,,,,,Both sexes,,,,,,,,,,,75,,,,,,75
-,,,,Europe,,,France,,,,,Both sexes,,,,,,,,,,,75.3,,,,,,75.3
-,,,,Europe,,,Czechia,,,,,Both sexes,,,,,,,,,,,75.4,,,,,,75.4
-,,,,Europe,,,Malta,,,,,Male,,,,,,,,,,,76.2,,,,,,76.2
-,,,,Europe,,,Belgium,,,,,Both sexes,,,,,,,,,,,76.5,,,,,,76.5
-,,,,Western Pacific,,,Republic of Korea,,,,,Male,,,,,,,,,,,77,,,,,,77
-,,,,Americas,,,Canada,,,,,Male,,,,,,,,,,,77.3,,,,,,77.3
-,,,,Europe,,,Austria,,,,,Both sexes,,,,,,,,,,,78.1,,,,,,78.1
-,,,,Europe,,,Greece,,,,,Male,,,,,,,,,,,78.3,,,,,,78.3
-,,,,Africa,,,Gabon,,,,,Male,,,,,,,,,,,78.6,,,,,,78.6
-,,,,Europe,,,Belarus,,,,,Male,,,,,,,,,,,79,,,,,,79
-,,,,Europe,,,Norway,,,,,Both sexes,,,,,,,,,,,79,,,,,,79
-,,,,Europe,,,Lithuania,,,,,Both sexes,,,,,,,,,,,79.1,,,,,,79.1
-,,,,Europe,,,Bulgaria,,,,,Male,,,,,,,,,,,79.2,,,,,,79.2
-,,,,Western Pacific,,,Australia,,,,,Both sexes,,,,,,,,,,,79.4,,,,,,79.4
-,,,,Europe,,,Germany,,,,,Both sexes,,,,,,,,,,,79.4,,,,,,79.4
-,,,,Europe,,,Republic of Moldova,,,,,Male,,,,,,,,,,,79.6,,,,,,79.6
-,,,,Americas,,,Argentina,,,,,Male,,,,,,,,,,,79.9,,,,,,79.9
-,,,,Europe,,,Hungary,,,,,Male,,,,,,,,,,,79.9,,,,,,79.9
-,,,,Western Pacific,,,Micronesia (Federated States of),,,,,Female,,,,,,,,,,,8.1,,,,,,8.1
-,,,,Eastern Mediterranean,,,Oman,,,,,Both sexes,,,,,,,,,,,8.3,,,,,,8.3
-,,,,Western Pacific,,,Samoa,,,,,Female,,,,,,,,,,,8.5,,,,,,8.5
-,,,,Eastern Mediterranean,,,Bahrain,,,,,Both sexes,,,,,,,,,,,8.8,,,,,,8.8
-,,,,Eastern Mediterranean,,,Tunisia,,,,,Male,,,,,,,,,,,8.9,,,,,,8.9
-,,,,Americas,,,Chile,,,,,Male,,,,,,,,,,,80,,,,,,80
-,,,,Europe,,,Romania,,,,,Male,,,,,,,,,,,80.1,,,,,,80.1
-,,,,Europe,,,Cyprus,,,,,Male,,,,,,,,,,,80.6,,,,,,80.6
-,,,,Europe,,,Poland,,,,,Male,,,,,,,,,,,80.7,,,,,,80.7
-,,,,Europe,,,Spain,,,,,Male,,,,,,,,,,,80.9,,,,,,80.9
-,,,,Europe,,,Italy,,,,,Male,,,,,,,,,,,81.2,,,,,,81.2
-,,,,Europe,,,Switzerland,,,,,Both sexes,,,,,,,,,,,81.2,,,,,,81.2
-,,,,Europe,,,Ireland,,,,,Both sexes,,,,,,,,,,,81.3,,,,,,81.3
-,,,,Americas,,,Uruguay,,,,,Male,,,,,,,,,,,81.3,,,,,,81.3
-,,,,Europe,,,Portugal,,,,,Male,,,,,,,,,,,81.6,,,,,,81.6
-,,,,Western Pacific,,,Singapore,,,,,Male,,,,,,,,,,,81.7,,,,,,81.7
-,,,,Europe,,,Iceland,,,,,Male,,,,,,,,,,,82.6,,,,,,82.6
-,,,,Europe,,,Slovakia,,,,,Male,,,,,,,,,,,82.9,,,,,,82.9
-,,,,Americas,,,United States of America,,,,,Male,,,,,,,,,,,83,,,,,,83
-,,,,Africa,,,Equatorial Guinea,,,,,Male,,,,,,,,,,,83.3,,,,,,83.3
-,,,,Europe,,,Netherlands,,,,,Male,,,,,,,,,,,83.3,,,,,,83.3
-,,,,Europe,,,Finland,,,,,Male,,,,,,,,,,,83.8,,,,,,83.8
-,,,,Europe,,,Sweden,,,,,Male,,,,,,,,,,,83.9,,,,,,83.9
-,,,,Europe,,,United Kingdom of Great Britain and Northern Ireland,,,,,Male,,,,,,,,,,,84.3,,,,,,84.3
-,,,,Europe,,,Estonia,,,,,Male,,,,,,,,,,,84.9,,,,,,84.9
-,,,,Europe,,,Denmark,,,,,Male,,,,,,,,,,,85,,,,,,85
-,,,,Western Pacific,,,New Zealand,,,,,Male,,,,,,,,,,,85.1,,,,,,85.1
-,,,,Europe,,,Andorra,,,,,Male,,,,,,,,,,,85.2,,,,,,85.2
-,,,,Europe,,,France,,,,,Male,,,,,,,,,,,85.8,,,,,,85.8
-,,,,Europe,,,Czechia,,,,,Male,,,,,,,,,,,86,,,,,,86
-,,,,Europe,,,Latvia,,,,,Male,,,,,,,,,,,86.5,,,,,,86.5
-,,,,Europe,,,Belgium,,,,,Male,,,,,,,,,,,86.6,,,,,,86.6
-,,,,Europe,,,Austria,,,,,Male,,,,,,,,,,,87.7,,,,,,87.7
-,,,,Europe,,,Luxembourg,,,,,Female,,,,,,,,,,,87.7,,,,,,87.7
-,,,,Europe,,,Norway,,,,,Male,,,,,,,,,,,88,,,,,,88
-,,,,Western Pacific,,,Australia,,,,,Male,,,,,,,,,,,88.3,,,,,,88.3
-,,,,Europe,,,Germany,,,,,Male,,,,,,,,,,,88.5,,,,,,88.5
-,,,,Europe,,,Lithuania,,,,,Male,,,,,,,,,,,89.1,,,,,,89.1
-,,,,Europe,,,Ireland,,,,,Male,,,,,,,,,,,89.5,,,,,,89.5
-,,,,Europe,,,Switzerland,,,,,Male,,,,,,,,,,,89.6,,,,,,89.6
-,,,,Eastern Mediterranean,,,Lebanon,,,,,Male,,,,,,,,,,,9.2,,,,,,9.2
-,,,,Western Pacific,,,Fiji,,,,,Female,,,,,,,,,,,9.8,,,,,,9.8
-,,,,Africa,,,Lesotho,,,,,Female,,,,,,,,,,,9.9,,,,,,9.9
-,,,,Europe,,,Luxembourg,,,,,Both sexes,,,,,,,,,,,91.8,,,,,,91.8
-,,,,Europe,,,Luxembourg,,,,,Male,,,,,,,,,,,95.8,,,,,,95.8
-,,,,Western Pacific,,,Viet Nam,,,,,Both sexes,,,,,,,,,,,99.4,,,,,,99.4
+,,,,,,SpatialDimValueCode,Location,,,,,,Dim1ValueCode,,,,,,,,,,,,,,,,Value
+,,,,,,MHL,Marshall Islands,,,,,,BTSX,,,,,,,,,,,,,,,,.
+,,,,,,MHL,Marshall Islands,,,,,,FMLE,,,,,,,,,,,,,,,,.
+,,,,,,MHL,Marshall Islands,,,,,,MLE,,,,,,,,,,,,,,,,.
+,,,,,,MCO,Monaco,,,,,,BTSX,,,,,,,,,,,,,,,,.
+,,,,,,MCO,Monaco,,,,,,FMLE,,,,,,,,,,,,,,,,.
+,,,,,,MCO,Monaco,,,,,,MLE,,,,,,,,,,,,,,,,.
+,,,,,,PLW,Palau,,,,,,BTSX,,,,,,,,,,,,,,,,.
+,,,,,,PLW,Palau,,,,,,FMLE,,,,,,,,,,,,,,,,.
+,,,,,,PLW,Palau,,,,,,MLE,,,,,,,,,,,,,,,,.
+,,,,,,SMR,San Marino,,,,,,BTSX,,,,,,,,,,,,,,,,.
+,,,,,,SMR,San Marino,,,,,,FMLE,,,,,,,,,,,,,,,,.
+,,,,,,SMR,San Marino,,,,,,MLE,,,,,,,,,,,,,,,,.
+,,,,,,SSD,South Sudan,,,,,,BTSX,,,,,,,,,,,,,,,,.
+,,,,,,SSD,South Sudan,,,,,,FMLE,,,,,,,,,,,,,,,,.
+,,,,,,SSD,South Sudan,,,,,,MLE,,,,,,,,,,,,,,,,.
+,,,,,,LBY,Libya,,,,,,BTSX,,,,,,,,,,,,,,,,0.1
+,,,,,,LBY,Libya,,,,,,FMLE,,,,,,,,,,,,,,,,0.1
+,,,,,,KWT,Kuwait,,,,,,FMLE,,,,,,,,,,,,,,,,0.2
+,,,,,,LBY,Libya,,,,,,MLE,,,,,,,,,,,,,,,,0.2
+,,,,,,AFG,Afghanistan,,,,,,FMLE,,,,,,,,,,,,,,,,0.3
+,,,,,,SLB,Solomon Islands,,,,,,FMLE,,,,,,,,,,,,,,,,0.3
+,,,,,,YEM,Yemen,,,,,,FMLE,,,,,,,,,,,,,,,,0.3
+,,,,,,MRT,Mauritania,,,,,,FMLE,,,,,,,,,,,,,,,,0.5
+,,,,,,KWT,Kuwait,,,,,,BTSX,,,,,,,,,,,,,,,,0.6
+,,,,,,PAK,Pakistan,,,,,,FMLE,,,,,,,,,,,,,,,,0.6
+,,,,,,AFG,Afghanistan,,,,,,BTSX,,,,,,,,,,,,,,,,0.7
+,,,,,,SLB,Solomon Islands,,,,,,BTSX,,,,,,,,,,,,,,,,0.7
+,,,,,,SYR,Syrian Arab Republic,,,,,,FMLE,,,,,,,,,,,,,,,,0.7
+,,,,,,YEM,Yemen,,,,,,BTSX,,,,,,,,,,,,,,,,0.7
+,,,,,,KWT,Kuwait,,,,,,MLE,,,,,,,,,,,,,,,,0.8
+,,,,,,MRT,Mauritania,,,,,,BTSX,,,,,,,,,,,,,,,,0.9
+,,,,,,AFG,Afghanistan,,,,,,MLE,,,,,,,,,,,,,,,,1
+,,,,,,BGD,Bangladesh,,,,,,FMLE,,,,,,,,,,,,,,,,1
+,,,,,,IRN,Iran (Islamic Republic of),,,,,,FMLE,,,,,,,,,,,,,,,,1.1
+,,,,,,SLB,Solomon Islands,,,,,,MLE,,,,,,,,,,,,,,,,1.1
+,,,,,,SDN,Sudan,,,,,,FMLE,,,,,,,,,,,,,,,,1.1
+,,,,,,YEM,Yemen,,,,,,MLE,,,,,,,,,,,,,,,,1.1
+,,,,,,PAK,Pakistan,,,,,,BTSX,,,,,,,,,,,,,,,,1.2
+,,,,,,MAR,Morocco,,,,,,FMLE,,,,,,,,,,,,,,,,1.3
+,,,,,,EGY,Egypt,,,,,,FMLE,,,,,,,,,,,,,,,,1.4
+,,,,,,JOR,Jordan,,,,,,FMLE,,,,,,,,,,,,,,,,1.4
+,,,,,,MRT,Mauritania,,,,,,MLE,,,,,,,,,,,,,,,,1.4
+,,,,,,DZA,Algeria,,,,,,FMLE,,,,,,,,,,,,,,,,1.5
+,,,,,,IRQ,Iraq,,,,,,FMLE,,,,,,,,,,,,,,,,1.5
+,,,,,,TUN,Tunisia,,,,,,FMLE,,,,,,,,,,,,,,,,1.6
+,,,,,,PAK,Pakistan,,,,,,MLE,,,,,,,,,,,,,,,,1.8
+,,,,,,COM,Comoros,,,,,,FMLE,,,,,,,,,,,,,,,,1.9
+,,,,,,ZWE,Zimbabwe,,,,,,FMLE,,,,,,,,,,,,,,,,10
+,,,,,,OMN,Oman,,,,,,MLE,,,,,,,,,,,,,,,,10.4
+,,,,,,TUR,Turkey,,,,,,MLE,,,,,,,,,,,,,,,,11
+,,,,,,DJI,Djibouti,,,,,,FMLE,,,,,,,,,,,,,,,,11.1
+,,,,,,BHR,Bahrain,,,,,,MLE,,,,,,,,,,,,,,,,11.5
+,,,,,,ERI,Eritrea,,,,,,FMLE,,,,,,,,,,,,,,,,11.6
+,,,,,,NER,Niger,,,,,,FMLE,,,,,,,,,,,,,,,,11.7
+,,,,,,TJK,Tajikistan,,,,,,FMLE,,,,,,,,,,,,,,,,11.8
+,,,,,,MDG,Madagascar,,,,,,FMLE,,,,,,,,,,,,,,,,12
+,,,,,,UZB,Uzbekistan,,,,,,FMLE,,,,,,,,,,,,,,,,12
+,,,,,,KIR,Kiribati,,,,,,BTSX,,,,,,,,,,,,,,,,12.1
+,,,,,,MDV,Maldives,,,,,,MLE,,,,,,,,,,,,,,,,12.1
+,,,,,,MOZ,Mozambique,,,,,,FMLE,,,,,,,,,,,,,,,,12.3
+,,,,,,TLS,Timor-Leste,,,,,,FMLE,,,,,,,,,,,,,,,,12.4
+,,,,,,SEN,Senegal,,,,,,FMLE,,,,,,,,,,,,,,,,12.5
+,,,,,,GIN,Guinea,,,,,,FMLE,,,,,,,,,,,,,,,,12.6
+,,,,,,AZE,Azerbaijan,,,,,,FMLE,,,,,,,,,,,,,,,,12.8
+,,,,,,MLI,Mali,,,,,,FMLE,,,,,,,,,,,,,,,,12.8
+,,,,,,NRU,Nauru,,,,,,FMLE,,,,,,,,,,,,,,,,12.8
+,,,,,,TCD,Chad,,,,,,FMLE,,,,,,,,,,,,,,,,13.1
+,,,,,,ETH,Ethiopia,,,,,,FMLE,,,,,,,,,,,,,,,,13.2
+,,,,,,IDN,Indonesia,,,,,,FMLE,,,,,,,,,,,,,,,,13.2
+,,,,,,SVN,Slovenia,,,,,,BTSX,,,,,,,,,,,,,,,,13.5
+,,,,,,VUT,Vanuatu,,,,,,BTSX,,,,,,,,,,,,,,,,13.6
+,,,,,,PNG,Papua New Guinea,,,,,,BTSX,,,,,,,,,,,,,,,,13.7
+,,,,,,MWI,Malawi,,,,,,FMLE,,,,,,,,,,,,,,,,13.9
+,,,,,,KEN,Kenya,,,,,,FMLE,,,,,,,,,,,,,,,,14
+,,,,,,TON,Tonga,,,,,,BTSX,,,,,,,,,,,,,,,,14.2
+,,,,,,TUV,Tuvalu,,,,,,BTSX,,,,,,,,,,,,,,,,14.4
+,,,,,,FSM,Micronesia (Federated States of),,,,,,BTSX,,,,,,,,,,,,,,,,15.2
+,,,,,,TGO,Togo,,,,,,FMLE,,,,,,,,,,,,,,,,15.2
+,,,,,,BEN,Benin,,,,,,FMLE,,,,,,,,,,,,,,,,15.4
+,,,,,,KGZ,Kyrgyzstan,,,,,,FMLE,,,,,,,,,,,,,,,,15.5
+,,,,,,GHA,Ghana,,,,,,FMLE,,,,,,,,,,,,,,,,15.7
+,,,,,,WSM,Samoa,,,,,,BTSX,,,,,,,,,,,,,,,,16
+,,,,,,ARM,Armenia,,,,,,FMLE,,,,,,,,,,,,,,,,16.2
+,,,,,,GMB,Gambia,,,,,,FMLE,,,,,,,,,,,,,,,,16.2
+,,,,,,MMR,Myanmar,,,,,,FMLE,,,,,,,,,,,,,,,,16.5
+,,,,,,ZMB,Zambia,,,,,,FMLE,,,,,,,,,,,,,,,,16.5
+,,,,,,GTM,Guatemala,,,,,,FMLE,,,,,,,,,,,,,,,,16.9
+,,,,,,NPL,Nepal,,,,,,FMLE,,,,,,,,,,,,,,,,17.1
+,,,,,,BTN,Bhutan,,,,,,FMLE,,,,,,,,,,,,,,,,17.3
+,,,,,,GNB,Guinea-Bissau,,,,,,FMLE,,,,,,,,,,,,,,,,17.5
+,,,,,,ZWE,Zimbabwe,,,,,,BTSX,,,,,,,,,,,,,,,,17.6
+,,,,,,SWZ,Eswatini,,,,,,FMLE,,,,,,,,,,,,,,,,17.7
+,,,,,,FJI,Fiji,,,,,,BTSX,,,,,,,,,,,,,,,,17.7
+,,,,,,LSO,Lesotho,,,,,,BTSX,,,,,,,,,,,,,,,,17.8
+,,,,,,LKA,Sri Lanka,,,,,,FMLE,,,,,,,,,,,,,,,,17.9
+,,,,,,KIR,Kiribati,,,,,,MLE,,,,,,,,,,,,,,,,18.1
+,,,,,,MYS,Malaysia,,,,,,FMLE,,,,,,,,,,,,,,,,18.2
+,,,,,,HND,Honduras,,,,,,FMLE,,,,,,,,,,,,,,,,18.5
+,,,,,,ARE,United Arab Emirates,,,,,,BTSX,,,,,,,,,,,,,,,,18.5
+,,,,,,LBR,Liberia,,,,,,FMLE,,,,,,,,,,,,,,,,18.9
+,,,,,,SLV,El Salvador,,,,,,FMLE,,,,,,,,,,,,,,,,19
+,,,,,,TKM,Turkmenistan,,,,,,FMLE,,,,,,,,,,,,,,,,19
+,,,,,,NAM,Namibia,,,,,,FMLE,,,,,,,,,,,,,,,,19.1
+,,,,,,SLE,Sierra Leone,,,,,,FMLE,,,,,,,,,,,,,,,,19.2
+,,,,,,SOM,Somalia,,,,,,FMLE,,,,,,,,,,,,,,,,19.4
+,,,,,,MUS,Mauritius,,,,,,FMLE,,,,,,,,,,,,,,,,19.5
+,,,,,,KHM,Cambodia,,,,,,FMLE,,,,,,,,,,,,,,,,19.6
+,,,,,,DJI,Djibouti,,,,,,BTSX,,,,,,,,,,,,,,,,19.7
+,,,,,,SVN,Slovenia,,,,,,MLE,,,,,,,,,,,,,,,,19.7
+,,,,,,PNG,Papua New Guinea,,,,,,MLE,,,,,,,,,,,,,,,,19.9
+,,,,,,VUT,Vanuatu,,,,,,MLE,,,,,,,,,,,,,,,,19.9
+,,,,,,SYR,Syrian Arab Republic,,,,,,BTSX,,,,,,,,,,,,,,,,2
+,,,,,,BGD,Bangladesh,,,,,,BTSX,,,,,,,,,,,,,,,,2.2
+,,,,,,SDN,Sudan,,,,,,BTSX,,,,,,,,,,,,,,,,2.3
+,,,,,,MAR,Morocco,,,,,,BTSX,,,,,,,,,,,,,,,,2.6
+,,,,,,EGY,Egypt,,,,,,BTSX,,,,,,,,,,,,,,,,2.8
+,,,,,,BWA,Botswana,,,,,,FMLE,,,,,,,,,,,,,,,,20
+,,,,,,BDI,Burundi,,,,,,FMLE,,,,,,,,,,,,,,,,20
+,,,,,,NER,Niger,,,,,,BTSX,,,,,,,,,,,,,,,,20.2
+,,,,,,ERI,Eritrea,,,,,,BTSX,,,,,,,,,,,,,,,,20.3
+,,,,,,TJK,Tajikistan,,,,,,BTSX,,,,,,,,,,,,,,,,20.7
+,,,,,,NIC,Nicaragua,,,,,,FMLE,,,,,,,,,,,,,,,,20.8
+,,,,,,UZB,Uzbekistan,,,,,,BTSX,,,,,,,,,,,,,,,,20.8
+,,,,,,MDG,Madagascar,,,,,,BTSX,,,,,,,,,,,,,,,,20.9
+,,,,,,TON,Tonga,,,,,,MLE,,,,,,,,,,,,,,,,20.9
+,,,,,,MOZ,Mozambique,,,,,,BTSX,,,,,,,,,,,,,,,,21
+,,,,,,PHL,Philippines,,,,,,FMLE,,,,,,,,,,,,,,,,21
+,,,,,,NIU,Niue,,,,,,FMLE,,,,,,,,,,,,,,,,21.1
+,,,,,,SEN,Senegal,,,,,,BTSX,,,,,,,,,,,,,,,,21.1
+,,,,,,TUV,Tuvalu,,,,,,MLE,,,,,,,,,,,,,,,,21.1
+,,,,,,CMR,Cameroon,,,,,,FMLE,,,,,,,,,,,,,,,,21.4
+,,,,,,MNG,Mongolia,,,,,,FMLE,,,,,,,,,,,,,,,,21.5
+,,,,,,STP,Sao Tome and Principe,,,,,,FMLE,,,,,,,,,,,,,,,,21.5
+,,,,,,GIN,Guinea,,,,,,BTSX,,,,,,,,,,,,,,,,21.6
+,,,,,,TLS,Timor-Leste,,,,,,BTSX,,,,,,,,,,,,,,,,21.6
+,,,,,,ARE,United Arab Emirates,,,,,,MLE,,,,,,,,,,,,,,,,21.7
+,,,,,,AZE,Azerbaijan,,,,,,BTSX,,,,,,,,,,,,,,,,21.9
+,,,,,,MLI,Mali,,,,,,BTSX,,,,,,,,,,,,,,,,21.9
+,,,,,,FSM,Micronesia (Federated States of),,,,,,MLE,,,,,,,,,,,,,,,,22
+,,,,,,NRU,Nauru,,,,,,BTSX,,,,,,,,,,,,,,,,22
+,,,,,,TCD,Chad,,,,,,BTSX,,,,,,,,,,,,,,,,22.4
+,,,,,,ETH,Ethiopia,,,,,,BTSX,,,,,,,,,,,,,,,,22.6
+,,,,,,JAM,Jamaica,,,,,,FMLE,,,,,,,,,,,,,,,,22.6
+,,,,,,IDN,Indonesia,,,,,,BTSX,,,,,,,,,,,,,,,,22.7
+,,,,,,HTI,Haiti,,,,,,FMLE,,,,,,,,,,,,,,,,22.9
+,,,,,,WSM,Samoa,,,,,,MLE,,,,,,,,,,,,,,,,22.9
+,,,,,,GEO,Georgia,,,,,,FMLE,,,,,,,,,,,,,,,,23
+,,,,,,BFA,Burkina Faso,,,,,,FMLE,,,,,,,,,,,,,,,,23.2
+,,,,,,PRY,Paraguay,,,,,,FMLE,,,,,,,,,,,,,,,,23.2
+,,,,,,RWA,Rwanda,,,,,,FMLE,,,,,,,,,,,,,,,,23.4
+,,,,,,MWI,Malawi,,,,,,BTSX,,,,,,,,,,,,,,,,23.7
+,,,,,,COD,Democratic Republic of the Congo,,,,,,FMLE,,,,,,,,,,,,,,,,23.8
+,,,,,,UGA,Uganda,,,,,,FMLE,,,,,,,,,,,,,,,,23.8
+,,,,,,CRI,Costa Rica,,,,,,FMLE,,,,,,,,,,,,,,,,23.9
+,,,,,,KEN,Kenya,,,,,,BTSX,,,,,,,,,,,,,,,,23.9
+,,,,,,VNM,Viet Nam,,,,,,FMLE,,,,,,,,,,,,,,,,23.9
+,,,,,,TZA,United Republic of Tanzania,,,,,,FMLE,,,,,,,,,,,,,,,,24
+,,,,,,CIV,Côte d’Ivoire,,,,,,FMLE,,,,,,,,,,,,,,,,24.1
+,,,,,,CAF,Central African Republic,,,,,,FMLE,,,,,,,,,,,,,,,,24.9
+,,,,,,CPV,Cabo Verde,,,,,,FMLE,,,,,,,,,,,,,,,,25
+,,,,,,QAT,Qatar,,,,,,FMLE,,,,,,,,,,,,,,,,25.2
+,,,,,,VEN,Venezuela (Bolivarian Republic of),,,,,,FMLE,,,,,,,,,,,,,,,,25.2
+,,,,,,IND,India,,,,,,FMLE,,,,,,,,,,,,,,,,25.4
+,,,,,,FJI,Fiji,,,,,,MLE,,,,,,,,,,,,,,,,25.5
+,,,,,,COL,Colombia,,,,,,FMLE,,,,,,,,,,,,,,,,25.6
+,,,,,,TGO,Togo,,,,,,BTSX,,,,,,,,,,,,,,,,25.7
+,,,,,,ZWE,Zimbabwe,,,,,,MLE,,,,,,,,,,,,,,,,25.7
+,,,,,,GUY,Guyana,,,,,,FMLE,,,,,,,,,,,,,,,,25.9
+,,,,,,KGZ,Kyrgyzstan,,,,,,BTSX,,,,,,,,,,,,,,,,25.9
+,,,,,,ARM,Armenia,,,,,,BTSX,,,,,,,,,,,,,,,,26
+,,,,,,GHA,Ghana,,,,,,BTSX,,,,,,,,,,,,,,,,26
+,,,,,,BEN,Benin,,,,,,BTSX,,,,,,,,,,,,,,,,26.1
+,,,,,,LSO,Lesotho,,,,,,MLE,,,,,,,,,,,,,,,,26.1
+,,,,,,GMB,Gambia,,,,,,BTSX,,,,,,,,,,,,,,,,26.7
+,,,,,,LAO,Lao People's Democratic Republic,,,,,,FMLE,,,,,,,,,,,,,,,,27
+,,,,,,MMR,Myanmar,,,,,,BTSX,,,,,,,,,,,,,,,,27.1
+,,,,,,NPL,Nepal,,,,,,BTSX,,,,,,,,,,,,,,,,27.1
+,,,,,,KAZ,Kazakhstan,,,,,,FMLE,,,,,,,,,,,,,,,,27.2
+,,,,,,BRA,Brazil,,,,,,FMLE,,,,,,,,,,,,,,,,27.3
+,,,,,,GTM,Guatemala,,,,,,BTSX,,,,,,,,,,,,,,,,27.3
+,,,,,,ZMB,Zambia,,,,,,BTSX,,,,,,,,,,,,,,,,27.3
+,,,,,,PRK,Democratic People's Republic of Korea,,,,,,FMLE,,,,,,,,,,,,,,,,27.7
+,,,,,,THA,Thailand,,,,,,FMLE,,,,,,,,,,,,,,,,27.7
+,,,,,,DJI,Djibouti,,,,,,MLE,,,,,,,,,,,,,,,,28.2
+,,,,,,BLZ,Belize,,,,,,FMLE,,,,,,,,,,,,,,,,28.4
+,,,,,,LKA,Sri Lanka,,,,,,BTSX,,,,,,,,,,,,,,,,28.7
+,,,,,,SUR,Suriname,,,,,,FMLE,,,,,,,,,,,,,,,,28.7
+,,,,,,SWZ,Eswatini,,,,,,BTSX,,,,,,,,,,,,,,,,28.8
+,,,,,,GNB,Guinea-Bissau,,,,,,BTSX,,,,,,,,,,,,,,,,28.8
+,,,,,,NER,Niger,,,,,,MLE,,,,,,,,,,,,,,,,28.8
+,,,,,,BRN,Brunei Darussalam,,,,,,FMLE,,,,,,,,,,,,,,,,29.1
+,,,,,,ERI,Eritrea,,,,,,MLE,,,,,,,,,,,,,,,,29.2
+,,,,,,SLV,El Salvador,,,,,,BTSX,,,,,,,,,,,,,,,,29.4
+,,,,,,MEX,Mexico,,,,,,FMLE,,,,,,,,,,,,,,,,29.4
+,,,,,,BTN,Bhutan,,,,,,BTSX,,,,,,,,,,,,,,,,29.6
+,,,,,,MYS,Malaysia,,,,,,BTSX,,,,,,,,,,,,,,,,29.6
+,,,,,,TJK,Tajikistan,,,,,,MLE,,,,,,,,,,,,,,,,29.6
+,,,,,,DOM,Dominican Republic,,,,,,FMLE,,,,,,,,,,,,,,,,29.7
+,,,,,,HND,Honduras,,,,,,BTSX,,,,,,,,,,,,,,,,29.8
+,,,,,,JOR,Jordan,,,,,,BTSX,,,,,,,,,,,,,,,,3
+,,,,,,LBN,Lebanon,,,,,,FMLE,,,,,,,,,,,,,,,,3
+,,,,,,TUR,Turkey,,,,,,FMLE,,,,,,,,,,,,,,,,3
+,,,,,,IRQ,Iraq,,,,,,BTSX,,,,,,,,,,,,,,,,3.1
+,,,,,,DZA,Algeria,,,,,,BTSX,,,,,,,,,,,,,,,,3.2
+,,,,,,OMN,Oman,,,,,,FMLE,,,,,,,,,,,,,,,,3.3
+,,,,,,SDN,Sudan,,,,,,MLE,,,,,,,,,,,,,,,,3.4
+,,,,,,SYR,Syrian Arab Republic,,,,,,MLE,,,,,,,,,,,,,,,,3.4
+,,,,,,BGD,Bangladesh,,,,,,MLE,,,,,,,,,,,,,,,,3.5
+,,,,,,IRN,Iran (Islamic Republic of),,,,,,BTSX,,,,,,,,,,,,,,,,3.5
+,,,,,,SAU,Saudi Arabia,,,,,,FMLE,,,,,,,,,,,,,,,,3.5
+,,,,,,BHR,Bahrain,,,,,,FMLE,,,,,,,,,,,,,,,,3.8
+,,,,,,MDV,Maldives,,,,,,FMLE,,,,,,,,,,,,,,,,3.9
+,,,,,,MAR,Morocco,,,,,,MLE,,,,,,,,,,,,,,,,3.9
+,,,,,,MDG,Madagascar,,,,,,MLE,,,,,,,,,,,,,,,,30
+,,,,,,UZB,Uzbekistan,,,,,,MLE,,,,,,,,,,,,,,,,30.1
+,,,,,,NAM,Namibia,,,,,,BTSX,,,,,,,,,,,,,,,,30.3
+,,,,,,SEN,Senegal,,,,,,MLE,,,,,,,,,,,,,,,,30.4
+,,,,,,TKM,Turkmenistan,,,,,,BTSX,,,,,,,,,,,,,,,,30.4
+,,,,,,BHS,Bahamas,,,,,,FMLE,,,,,,,,,,,,,,,,30.5
+,,,,,,MOZ,Mozambique,,,,,,MLE,,,,,,,,,,,,,,,,30.5
+,,,,,,TLS,Timor-Leste,,,,,,MLE,,,,,,,,,,,,,,,,30.6
+,,,,,,GIN,Guinea,,,,,,MLE,,,,,,,,,,,,,,,,30.7
+,,,,,,LBR,Liberia,,,,,,BTSX,,,,,,,,,,,,,,,,30.8
+,,,,,,KHM,Cambodia,,,,,,BTSX,,,,,,,,,,,,,,,,30.9
+,,,,,,SLE,Sierra Leone,,,,,,BTSX,,,,,,,,,,,,,,,,30.9
+,,,,,,SOM,Somalia,,,,,,BTSX,,,,,,,,,,,,,,,,31
+,,,,,,MLI,Mali,,,,,,MLE,,,,,,,,,,,,,,,,31.1
+,,,,,,MUS,Mauritius,,,,,,BTSX,,,,,,,,,,,,,,,,31.2
+,,,,,,NRU,Nauru,,,,,,MLE,,,,,,,,,,,,,,,,31.5
+,,,,,,AZE,Azerbaijan,,,,,,MLE,,,,,,,,,,,,,,,,31.6
+,,,,,,BDI,Burundi,,,,,,BTSX,,,,,,,,,,,,,,,,31.6
+,,,,,,TCD,Chad,,,,,,MLE,,,,,,,,,,,,,,,,31.7
+,,,,,,DMA,Dominica,,,,,,FMLE,,,,,,,,,,,,,,,,31.7
+,,,,,,BOL,Bolivia (Plurinational State of),,,,,,FMLE,,,,,,,,,,,,,,,,31.9
+,,,,,,BWA,Botswana,,,,,,BTSX,,,,,,,,,,,,,,,,32
+,,,,,,ETH,Ethiopia,,,,,,MLE,,,,,,,,,,,,,,,,32.1
+,,,,,,CUB,Cuba,,,,,,FMLE,,,,,,,,,,,,,,,,32.3
+,,,,,,IDN,Indonesia,,,,,,MLE,,,,,,,,,,,,,,,,32.3
+,,,,,,NIC,Nicaragua,,,,,,BTSX,,,,,,,,,,,,,,,,32.5
+,,,,,,VCT,Saint Vincent and the Grenadines,,,,,,FMLE,,,,,,,,,,,,,,,,32.8
+,,,,,,ECU,Ecuador,,,,,,FMLE,,,,,,,,,,,,,,,,32.9
+,,,,,,PHL,Philippines,,,,,,BTSX,,,,,,,,,,,,,,,,33.1
+,,,,,,NIU,Niue,,,,,,BTSX,,,,,,,,,,,,,,,,33.2
+,,,,,,BRN,Brunei Darussalam,,,,,,BTSX,,,,,,,,,,,,,,,,33.3
+,,,,,,MWI,Malawi,,,,,,MLE,,,,,,,,,,,,,,,,33.6
+,,,,,,MNG,Mongolia,,,,,,BTSX,,,,,,,,,,,,,,,,33.6
+,,,,,,CMR,Cameroon,,,,,,BTSX,,,,,,,,,,,,,,,,33.8
+,,,,,,KEN,Kenya,,,,,,MLE,,,,,,,,,,,,,,,,33.8
+,,,,,,BIH,Bosnia and Herzegovina,,,,,,FMLE,,,,,,,,,,,,,,,,34
+,,,,,,PAN,Panama,,,,,,FMLE,,,,,,,,,,,,,,,,34
+,,,,,,STP,Sao Tome and Principe,,,,,,BTSX,,,,,,,,,,,,,,,,34
+,,,,,,AGO,Angola,,,,,,FMLE,,,,,,,,,,,,,,,,34.3
+,,,,,,JAM,Jamaica,,,,,,BTSX,,,,,,,,,,,,,,,,34.9
+,,,,,,RWA,Rwanda,,,,,,BTSX,,,,,,,,,,,,,,,,35
+,,,,,,GEO,Georgia,,,,,,BTSX,,,,,,,,,,,,,,,,35.1
+,,,,,,HTI,Haiti,,,,,,BTSX,,,,,,,,,,,,,,,,35.1
+,,,,,,GRD,Grenada,,,,,,FMLE,,,,,,,,,,,,,,,,35.7
+,,,,,,PRY,Paraguay,,,,,,BTSX,,,,,,,,,,,,,,,,36
+,,,,,,LCA,Saint Lucia,,,,,,FMLE,,,,,,,,,,,,,,,,36.3
+,,,,,,UGA,Uganda,,,,,,BTSX,,,,,,,,,,,,,,,,36.3
+,,,,,,COD,Democratic Republic of the Congo,,,,,,BTSX,,,,,,,,,,,,,,,,36.4
+,,,,,,TZA,United Republic of Tanzania,,,,,,BTSX,,,,,,,,,,,,,,,,36.4
+,,,,,,ATG,Antigua and Barbuda,,,,,,FMLE,,,,,,,,,,,,,,,,36.5
+,,,,,,TGO,Togo,,,,,,MLE,,,,,,,,,,,,,,,,36.5
+,,,,,,CRI,Costa Rica,,,,,,BTSX,,,,,,,,,,,,,,,,36.6
+,,,,,,GHA,Ghana,,,,,,MLE,,,,,,,,,,,,,,,,36.8
+,,,,,,KGZ,Kyrgyzstan,,,,,,MLE,,,,,,,,,,,,,,,,36.8
+,,,,,,BFA,Burkina Faso,,,,,,BTSX,,,,,,,,,,,,,,,,36.9
+,,,,,,BEN,Benin,,,,,,MLE,,,,,,,,,,,,,,,,37
+,,,,,,COK,Cook Islands,,,,,,FMLE,,,,,,,,,,,,,,,,37
+,,,,,,BRN,Brunei Darussalam,,,,,,MLE,,,,,,,,,,,,,,,,37.3
+,,,,,,BRB,Barbados,,,,,,FMLE,,,,,,,,,,,,,,,,37.4
+,,,,,,ALB,Albania,,,,,,FMLE,,,,,,,,,,,,,,,,37.6
+,,,,,,CAF,Central African Republic,,,,,,BTSX,,,,,,,,,,,,,,,,37.6
+,,,,,,NGA,Nigeria,,,,,,FMLE,,,,,,,,,,,,,,,,37.7
+,,,,,,GMB,Gambia,,,,,,MLE,,,,,,,,,,,,,,,,37.8
+,,,,,,ARM,Armenia,,,,,,MLE,,,,,,,,,,,,,,,,38
+,,,,,,COG,Congo,,,,,,FMLE,,,,,,,,,,,,,,,,38
+,,,,,,VEN,Venezuela (Bolivarian Republic of),,,,,,BTSX,,,,,,,,,,,,,,,,38
+,,,,,,COL,Colombia,,,,,,BTSX,,,,,,,,,,,,,,,,38.3
+,,,,,,MMR,Myanmar,,,,,,MLE,,,,,,,,,,,,,,,,38.3
+,,,,,,ZMB,Zambia,,,,,,MLE,,,,,,,,,,,,,,,,38.3
+,,,,,,NPL,Nepal,,,,,,MLE,,,,,,,,,,,,,,,,38.4
+,,,,,,CIV,Côte d’Ivoire,,,,,,BTSX,,,,,,,,,,,,,,,,38.5
+,,,,,,GTM,Guatemala,,,,,,MLE,,,,,,,,,,,,,,,,38.6
+,,,,,,IND,India,,,,,,BTSX,,,,,,,,,,,,,,,,38.8
+,,,,,,GUY,Guyana,,,,,,BTSX,,,,,,,,,,,,,,,,39.1
+,,,,,,CPV,Cabo Verde,,,,,,BTSX,,,,,,,,,,,,,,,,39.4
+,,,,,,PER,Peru,,,,,,FMLE,,,,,,,,,,,,,,,,39.6
+,,,,,,BTN,Bhutan,,,,,,MLE,,,,,,,,,,,,,,,,39.8
+,,,,,,KAZ,Kazakhstan,,,,,,BTSX,,,,,,,,,,,,,,,,39.9
+,,,,,,MKD,The former Yugoslav Republic of Macedonia,,,,,,FMLE,,,,,,,,,,,,,,,,39.9
+,,,,,,COM,Comoros,,,,,,BTSX,,,,,,,,,,,,,,,,4.1
+,,,,,,EGY,Egypt,,,,,,MLE,,,,,,,,,,,,,,,,4.2
+,,,,,,JOR,Jordan,,,,,,MLE,,,,,,,,,,,,,,,,4.5
+,,,,,,IRQ,Iraq,,,,,,MLE,,,,,,,,,,,,,,,,4.7
+,,,,,,DZA,Algeria,,,,,,MLE,,,,,,,,,,,,,,,,4.8
+,,,,,,LAO,Lao People's Democratic Republic,,,,,,BTSX,,,,,,,,,,,,,,,,40
+,,,,,,BRA,Brazil,,,,,,BTSX,,,,,,,,,,,,,,,,40.3
+,,,,,,PRK,Democratic People's Republic of Korea,,,,,,BTSX,,,,,,,,,,,,,,,,40.3
+,,,,,,SWZ,Eswatini,,,,,,MLE,,,,,,,,,,,,,,,,40.4
+,,,,,,MNE,Montenegro,,,,,,FMLE,,,,,,,,,,,,,,,,40.4
+,,,,,,GNB,Guinea-Bissau,,,,,,MLE,,,,,,,,,,,,,,,,40.5
+,,,,,,LKA,Sri Lanka,,,,,,MLE,,,,,,,,,,,,,,,,40.6
+,,,,,,SYC,Seychelles,,,,,,FMLE,,,,,,,,,,,,,,,,40.9
+,,,,,,THA,Thailand,,,,,,BTSX,,,,,,,,,,,,,,,,40.9
+,,,,,,MYS,Malaysia,,,,,,MLE,,,,,,,,,,,,,,,,41.2
+,,,,,,HND,Honduras,,,,,,MLE,,,,,,,,,,,,,,,,41.3
+,,,,,,KNA,Saint Kitts and Nevis,,,,,,FMLE,,,,,,,,,,,,,,,,41.3
+,,,,,,BLZ,Belize,,,,,,BTSX,,,,,,,,,,,,,,,,41.5
+,,,,,,ISR,Israel,,,,,,FMLE,,,,,,,,,,,,,,,,41.6
+,,,,,,SLV,El Salvador,,,,,,MLE,,,,,,,,,,,,,,,,41.8
+,,,,,,SUR,Suriname,,,,,,BTSX,,,,,,,,,,,,,,,,42.2
+,,,,,,NAM,Namibia,,,,,,MLE,,,,,,,,,,,,,,,,42.4
+,,,,,,TKM,Turkmenistan,,,,,,MLE,,,,,,,,,,,,,,,,42.5
+,,,,,,CHN,China,,,,,,FMLE,,,,,,,,,,,,,,,,42.6
+,,,,,,LBR,Liberia,,,,,,MLE,,,,,,,,,,,,,,,,42.7
+,,,,,,MEX,Mexico,,,,,,BTSX,,,,,,,,,,,,,,,,42.7
+,,,,,,DOM,Dominican Republic,,,,,,BTSX,,,,,,,,,,,,,,,,43
+,,,,,,SLE,Sierra Leone,,,,,,MLE,,,,,,,,,,,,,,,,43.1
+,,,,,,KHM,Cambodia,,,,,,MLE,,,,,,,,,,,,,,,,43.2
+,,,,,,SOM,Somalia,,,,,,MLE,,,,,,,,,,,,,,,,43.2
+,,,,,,MUS,Mauritius,,,,,,MLE,,,,,,,,,,,,,,,,43.4
+,,,,,,BDI,Burundi,,,,,,MLE,,,,,,,,,,,,,,,,43.7
+,,,,,,JPN,Japan,,,,,,FMLE,,,,,,,,,,,,,,,,43.7
+,,,,,,BHS,Bahamas,,,,,,BTSX,,,,,,,,,,,,,,,,43.8
+,,,,,,BWA,Botswana,,,,,,MLE,,,,,,,,,,,,,,,,44
+,,,,,,NIC,Nicaragua,,,,,,MLE,,,,,,,,,,,,,,,,44.9
+,,,,,,DMA,Dominica,,,,,,BTSX,,,,,,,,,,,,,,,,45.2
+,,,,,,PHL,Philippines,,,,,,MLE,,,,,,,,,,,,,,,,45.3
+,,,,,,BOL,Bolivia (Plurinational State of),,,,,,BTSX,,,,,,,,,,,,,,,,45.4
+,,,,,,NIU,Niue,,,,,,MLE,,,,,,,,,,,,,,,,45.5
+,,,,,,QAT,Qatar,,,,,,BTSX,,,,,,,,,,,,,,,,45.6
+,,,,,,TTO,Trinidad and Tobago,,,,,,FMLE,,,,,,,,,,,,,,,,45.6
+,,,,,,CUB,Cuba,,,,,,BTSX,,,,,,,,,,,,,,,,46.1
+,,,,,,MNG,Mongolia,,,,,,MLE,,,,,,,,,,,,,,,,46.3
+,,,,,,ECU,Ecuador,,,,,,BTSX,,,,,,,,,,,,,,,,46.5
+,,,,,,VCT,Saint Vincent and the Grenadines,,,,,,BTSX,,,,,,,,,,,,,,,,46.6
+,,,,,,HRV,Croatia,,,,,,FMLE,,,,,,,,,,,,,,,,46.8
+,,,,,,STP,Sao Tome and Principe,,,,,,MLE,,,,,,,,,,,,,,,,46.8
+,,,,,,CMR,Cameroon,,,,,,MLE,,,,,,,,,,,,,,,,46.9
+,,,,,,SRB,Serbia,,,,,,FMLE,,,,,,,,,,,,,,,,47
+,,,,,,JAM,Jamaica,,,,,,MLE,,,,,,,,,,,,,,,,47.4
+,,,,,,AGO,Angola,,,,,,BTSX,,,,,,,,,,,,,,,,47.7
+,,,,,,PAN,Panama,,,,,,BTSX,,,,,,,,,,,,,,,,47.7
+,,,,,,BIH,Bosnia and Herzegovina,,,,,,BTSX,,,,,,,,,,,,,,,,47.9
+,,,,,,HTI,Haiti,,,,,,MLE,,,,,,,,,,,,,,,,47.9
+,,,,,,PRY,Paraguay,,,,,,MLE,,,,,,,,,,,,,,,,48.4
+,,,,,,RWA,Rwanda,,,,,,MLE,,,,,,,,,,,,,,,,48.4
+,,,,,,GEO,Georgia,,,,,,MLE,,,,,,,,,,,,,,,,48.9
+,,,,,,UGA,Uganda,,,,,,MLE,,,,,,,,,,,,,,,,49.1
+,,,,,,COD,Democratic Republic of the Congo,,,,,,MLE,,,,,,,,,,,,,,,,49.2
+,,,,,,TZA,United Republic of Tanzania,,,,,,MLE,,,,,,,,,,,,,,,,49.3
+,,,,,,ATG,Antigua and Barbuda,,,,,,BTSX,,,,,,,,,,,,,,,,49.4
+,,,,,,CRI,Costa Rica,,,,,,MLE,,,,,,,,,,,,,,,,49.5
+,,,,,,GRD,Grenada,,,,,,BTSX,,,,,,,,,,,,,,,,49.6
+,,,,,,LCA,Saint Lucia,,,,,,BTSX,,,,,,,,,,,,,,,,49.7
+,,,,,,TUN,Tunisia,,,,,,BTSX,,,,,,,,,,,,,,,,5.2
+,,,,,,SAU,Saudi Arabia,,,,,,BTSX,,,,,,,,,,,,,,,,5.8
+,,,,,,MLT,Malta,,,,,,FMLE,,,,,,,,,,,,,,,,50
+,,,,,,VNM,Viet Nam,,,,,,MLE,,,,,,,,,,,,,,,,50
+,,,,,,BRB,Barbados,,,,,,BTSX,,,,,,,,,,,,,,,,50.5
+,,,,,,COK,Cook Islands,,,,,,BTSX,,,,,,,,,,,,,,,,50.6
+,,,,,,CAF,Central African Republic,,,,,,MLE,,,,,,,,,,,,,,,,50.8
+,,,,,,ALB,Albania,,,,,,BTSX,,,,,,,,,,,,,,,,51
+,,,,,,BFA,Burkina Faso,,,,,,MLE,,,,,,,,,,,,,,,,51.2
+,,,,,,KOR,Republic of Korea,,,,,,FMLE,,,,,,,,,,,,,,,,51.2
+,,,,,,VEN,Venezuela (Bolivarian Republic of),,,,,,MLE,,,,,,,,,,,,,,,,51.2
+,,,,,,IND,India,,,,,,MLE,,,,,,,,,,,,,,,,51.4
+,,,,,,COL,Colombia,,,,,,MLE,,,,,,,,,,,,,,,,51.7
+,,,,,,COG,Congo,,,,,,BTSX,,,,,,,,,,,,,,,,51.7
+,,,,,,CAN,Canada,,,,,,FMLE,,,,,,,,,,,,,,,,52.1
+,,,,,,QAT,Qatar,,,,,,MLE,,,,,,,,,,,,,,,,52.1
+,,,,,,GUY,Guyana,,,,,,MLE,,,,,,,,,,,,,,,,52.2
+,,,,,,CIV,Côte d’Ivoire,,,,,,MLE,,,,,,,,,,,,,,,,52.3
+,,,,,,NGA,Nigeria,,,,,,BTSX,,,,,,,,,,,,,,,,52.6
+,,,,,,PER,Peru,,,,,,BTSX,,,,,,,,,,,,,,,,53.2
+,,,,,,GRC,Greece,,,,,,FMLE,,,,,,,,,,,,,,,,53.3
+,,,,,,LAO,Lao People's Democratic Republic,,,,,,MLE,,,,,,,,,,,,,,,,53.4
+,,,,,,PRK,Democratic People's Republic of Korea,,,,,,MLE,,,,,,,,,,,,,,,,53.7
+,,,,,,MKD,The former Yugoslav Republic of Macedonia,,,,,,BTSX,,,,,,,,,,,,,,,,53.7
+,,,,,,CPV,Cabo Verde,,,,,,MLE,,,,,,,,,,,,,,,,53.8
+,,,,,,BGR,Bulgaria,,,,,,FMLE,,,,,,,,,,,,,,,,53.9
+,,,,,,BRA,Brazil,,,,,,MLE,,,,,,,,,,,,,,,,54
+,,,,,,MNE,Montenegro,,,,,,BTSX,,,,,,,,,,,,,,,,54
+,,,,,,GAB,Gabon,,,,,,FMLE,,,,,,,,,,,,,,,,54.1
+,,,,,,KAZ,Kazakhstan,,,,,,MLE,,,,,,,,,,,,,,,,54.3
+,,,,,,ITA,Italy,,,,,,FMLE,,,,,,,,,,,,,,,,54.4
+,,,,,,THA,Thailand,,,,,,MLE,,,,,,,,,,,,,,,,54.6
+,,,,,,HUN,Hungary,,,,,,FMLE,,,,,,,,,,,,,,,,54.8
+,,,,,,MDA,Republic of Moldova,,,,,,FMLE,,,,,,,,,,,,,,,,54.8
+,,,,,,KNA,Saint Kitts and Nevis,,,,,,BTSX,,,,,,,,,,,,,,,,54.8
+,,,,,,BLZ,Belize,,,,,,MLE,,,,,,,,,,,,,,,,54.9
+,,,,,,SYC,Seychelles,,,,,,BTSX,,,,,,,,,,,,,,,,54.9
+,,,,,,ISR,Israel,,,,,,BTSX,,,,,,,,,,,,,,,,55
+,,,,,,RUS,Russian Federation,,,,,,FMLE,,,,,,,,,,,,,,,,55.4
+,,,,,,ROU,Romania,,,,,,FMLE,,,,,,,,,,,,,,,,55.5
+,,,,,,ARG,Argentina,,,,,,FMLE,,,,,,,,,,,,,,,,55.7
+,,,,,,CHL,Chile,,,,,,FMLE,,,,,,,,,,,,,,,,55.8
+,,,,,,SUR,Suriname,,,,,,MLE,,,,,,,,,,,,,,,,55.8
+,,,,,,CHN,China,,,,,,BTSX,,,,,,,,,,,,,,,,55.9
+,,,,,,UKR,Ukraine,,,,,,FMLE,,,,,,,,,,,,,,,,56.1
+,,,,,,MEX,Mexico,,,,,,MLE,,,,,,,,,,,,,,,,56.4
+,,,,,,POL,Poland,,,,,,FMLE,,,,,,,,,,,,,,,,56.4
+,,,,,,CYP,Cyprus,,,,,,FMLE,,,,,,,,,,,,,,,,56.6
+,,,,,,DOM,Dominican Republic,,,,,,MLE,,,,,,,,,,,,,,,,56.7
+,,,,,,JPN,Japan,,,,,,BTSX,,,,,,,,,,,,,,,,57
+,,,,,,ESP,Spain,,,,,,FMLE,,,,,,,,,,,,,,,,57
+,,,,,,URY,Uruguay,,,,,,FMLE,,,,,,,,,,,,,,,,57.6
+,,,,,,BHS,Bahamas,,,,,,MLE,,,,,,,,,,,,,,,,57.9
+,,,,,,RUS,Russian Federation,,,,,,BTSX,,,,,,,,,,,,,,,,58.1
+,,,,,,PRT,Portugal,,,,,,FMLE,,,,,,,,,,,,,,,,58.3
+,,,,,,TTO,Trinidad and Tobago,,,,,,BTSX,,,,,,,,,,,,,,,,58.7
+,,,,,,SGP,Singapore,,,,,,FMLE,,,,,,,,,,,,,,,,58.8
+,,,,,,DMA,Dominica,,,,,,MLE,,,,,,,,,,,,,,,,59
+,,,,,,BOL,Bolivia (Plurinational State of),,,,,,MLE,,,,,,,,,,,,,,,,59.1
+,,,,,,HRV,Croatia,,,,,,BTSX,,,,,,,,,,,,,,,,59.7
+,,,,,,CUB,Cuba,,,,,,MLE,,,,,,,,,,,,,,,,59.9
+,,,,,,IRN,Iran (Islamic Republic of),,,,,,MLE,,,,,,,,,,,,,,,,6
+,,,,,,LBN,Lebanon,,,,,,BTSX,,,,,,,,,,,,,,,,6.1
+,,,,,,COM,Comoros,,,,,,MLE,,,,,,,,,,,,,,,,6.2
+,,,,,,KIR,Kiribati,,,,,,FMLE,,,,,,,,,,,,,,,,6.5
+,,,,,,TUR,Turkey,,,,,,BTSX,,,,,,,,,,,,,,,,6.9
+,,,,,,SRB,Serbia,,,,,,BTSX,,,,,,,,,,,,,,,,60
+,,,,,,SVK,Slovakia,,,,,,FMLE,,,,,,,,,,,,,,,,60
+,,,,,,ECU,Ecuador,,,,,,MLE,,,,,,,,,,,,,,,,60.3
+,,,,,,ISL,Iceland,,,,,,FMLE,,,,,,,,,,,,,,,,60.3
+,,,,,,VCT,Saint Vincent and the Grenadines,,,,,,MLE,,,,,,,,,,,,,,,,60.3
+,,,,,,USA,United States of America,,,,,,FMLE,,,,,,,,,,,,,,,,60.7
+,,,,,,NLD,Netherlands,,,,,,FMLE,,,,,,,,,,,,,,,,61.2
+,,,,,,RUS,Russian Federation,,,,,,MLE,,,,,,,,,,,,,,,,61.4
+,,,,,,PAN,Panama,,,,,,MLE,,,,,,,,,,,,,,,,61.5
+,,,,,,AGO,Angola,,,,,,MLE,,,,,,,,,,,,,,,,61.6
+,,,,,,GNQ,Equatorial Guinea,,,,,,FMLE,,,,,,,,,,,,,,,,61.7
+,,,,,,FIN,Finland,,,,,,FMLE,,,,,,,,,,,,,,,,61.7
+,,,,,,UKR,Ukraine,,,,,,BTSX,,,,,,,,,,,,,,,,61.8
+,,,,,,BIH,Bosnia and Herzegovina,,,,,,MLE,,,,,,,,,,,,,,,,62.1
+,,,,,,SWE,Sweden,,,,,,FMLE,,,,,,,,,,,,,,,,62.2
+,,,,,,EST,Estonia,,,,,,FMLE,,,,,,,,,,,,,,,,62.6
+,,,,,,MLT,Malta,,,,,,BTSX,,,,,,,,,,,,,,,,63
+,,,,,,GBR,United Kingdom of Great Britain and Northern Ireland,,,,,,FMLE,,,,,,,,,,,,,,,,63
+,,,,,,GRD,Grenada,,,,,,MLE,,,,,,,,,,,,,,,,63.6
+,,,,,,ATG,Antigua and Barbuda,,,,,,MLE,,,,,,,,,,,,,,,,63.9
+,,,,,,KOR,Republic of Korea,,,,,,BTSX,,,,,,,,,,,,,,,,63.9
+,,,,,,LCA,Saint Lucia,,,,,,MLE,,,,,,,,,,,,,,,,63.9
+,,,,,,DNK,Denmark,,,,,,FMLE,,,,,,,,,,,,,,,,64.2
+,,,,,,AND,Andorra,,,,,,FMLE,,,,,,,,,,,,,,,,64.3
+,,,,,,CAN,Canada,,,,,,BTSX,,,,,,,,,,,,,,,,64.5
+,,,,,,COK,Cook Islands,,,,,,MLE,,,,,,,,,,,,,,,,64.5
+,,,,,,NZL,New Zealand,,,,,,FMLE,,,,,,,,,,,,,,,,64.8
+,,,,,,ALB,Albania,,,,,,MLE,,,,,,,,,,,,,,,,65
+,,,,,,BRB,Barbados,,,,,,MLE,,,,,,,,,,,,,,,,65.2
+,,,,,,CZE,Czechia,,,,,,FMLE,,,,,,,,,,,,,,,,65.4
+,,,,,,GRC,Greece,,,,,,BTSX,,,,,,,,,,,,,,,,65.4
+,,,,,,COG,Congo,,,,,,MLE,,,,,,,,,,,,,,,,65.5
+,,,,,,LVA,Latvia,,,,,,FMLE,,,,,,,,,,,,,,,,65.5
+,,,,,,FRA,France,,,,,,FMLE,,,,,,,,,,,,,,,,65.6
+,,,,,,BGR,Bulgaria,,,,,,BTSX,,,,,,,,,,,,,,,,66
+,,,,,,GAB,Gabon,,,,,,BTSX,,,,,,,,,,,,,,,,66.5
+,,,,,,HUN,Hungary,,,,,,BTSX,,,,,,,,,,,,,,,,66.6
+,,,,,,MDA,Republic of Moldova,,,,,,BTSX,,,,,,,,,,,,,,,,66.6
+,,,,,,BEL,Belgium,,,,,,FMLE,,,,,,,,,,,,,,,,66.8
+,,,,,,NGA,Nigeria,,,,,,MLE,,,,,,,,,,,,,,,,67
+,,,,,,PER,Peru,,,,,,MLE,,,,,,,,,,,,,,,,67.1
+,,,,,,ROU,Romania,,,,,,BTSX,,,,,,,,,,,,,,,,67.2
+,,,,,,ARG,Argentina,,,,,,BTSX,,,,,,,,,,,,,,,,67.4
+,,,,,,CHL,Chile,,,,,,BTSX,,,,,,,,,,,,,,,,67.6
+,,,,,,MKD,The former Yugoslav Republic of Macedonia,,,,,,MLE,,,,,,,,,,,,,,,,67.7
+,,,,,,ITA,Italy,,,,,,BTSX,,,,,,,,,,,,,,,,67.8
+,,,,,,POL,Poland,,,,,,BTSX,,,,,,,,,,,,,,,,68
+,,,,,,MNE,Montenegro,,,,,,MLE,,,,,,,,,,,,,,,,68.2
+,,,,,,CHN,China,,,,,,MLE,,,,,,,,,,,,,,,,68.6
+,,,,,,KNA,Saint Kitts and Nevis,,,,,,MLE,,,,,,,,,,,,,,,,68.6
+,,,,,,ESP,Spain,,,,,,BTSX,,,,,,,,,,,,,,,,68.6
+,,,,,,SYC,Seychelles,,,,,,MLE,,,,,,,,,,,,,,,,68.7
+,,,,,,UKR,Ukraine,,,,,,MLE,,,,,,,,,,,,,,,,68.7
+,,,,,,CYP,Cyprus,,,,,,BTSX,,,,,,,,,,,,,,,,68.8
+,,,,,,AUT,Austria,,,,,,FMLE,,,,,,,,,,,,,,,,68.9
+,,,,,,ISR,Israel,,,,,,MLE,,,,,,,,,,,,,,,,68.9
+,,,,,,URY,Uruguay,,,,,,BTSX,,,,,,,,,,,,,,,,68.9
+,,,,,,BLR,Belarus,,,,,,FMLE,,,,,,,,,,,,,,,,69.2
+,,,,,,PRT,Portugal,,,,,,BTSX,,,,,,,,,,,,,,,,69.2
+,,,,,,NOR,Norway,,,,,,FMLE,,,,,,,,,,,,,,,,69.8
+,,,,,,PNG,Papua New Guinea,,,,,,FMLE,,,,,,,,,,,,,,,,7.3
+,,,,,,SAU,Saudi Arabia,,,,,,MLE,,,,,,,,,,,,,,,,7.3
+,,,,,,SVN,Slovenia,,,,,,FMLE,,,,,,,,,,,,,,,,7.3
+,,,,,,VUT,Vanuatu,,,,,,FMLE,,,,,,,,,,,,,,,,7.4
+,,,,,,TON,Tonga,,,,,,FMLE,,,,,,,,,,,,,,,,7.7
+,,,,,,TUV,Tuvalu,,,,,,FMLE,,,,,,,,,,,,,,,,7.8
+,,,,,,MDV,Maldives,,,,,,BTSX,,,,,,,,,,,,,,,,7.9
+,,,,,,ARE,United Arab Emirates,,,,,,FMLE,,,,,,,,,,,,,,,,7.9
+,,,,,,SGP,Singapore,,,,,,BTSX,,,,,,,,,,,,,,,,70
+,,,,,,AUS,Australia,,,,,,FMLE,,,,,,,,,,,,,,,,70.6
+,,,,,,DEU,Germany,,,,,,FMLE,,,,,,,,,,,,,,,,70.6
+,,,,,,LTU,Lithuania,,,,,,FMLE,,,,,,,,,,,,,,,,70.9
+,,,,,,JPN,Japan,,,,,,MLE,,,,,,,,,,,,,,,,71.3
+,,,,,,SVK,Slovakia,,,,,,BTSX,,,,,,,,,,,,,,,,71.3
+,,,,,,ISL,Iceland,,,,,,BTSX,,,,,,,,,,,,,,,,71.5
+,,,,,,USA,United States of America,,,,,,BTSX,,,,,,,,,,,,,,,,71.7
+,,,,,,NLD,Netherlands,,,,,,BTSX,,,,,,,,,,,,,,,,72.1
+,,,,,,FIN,Finland,,,,,,BTSX,,,,,,,,,,,,,,,,72.5
+,,,,,,TTO,Trinidad and Tobago,,,,,,MLE,,,,,,,,,,,,,,,,72.5
+,,,,,,EST,Estonia,,,,,,BTSX,,,,,,,,,,,,,,,,72.8
+,,,,,,GNQ,Equatorial Guinea,,,,,,BTSX,,,,,,,,,,,,,,,,72.9
+,,,,,,SWE,Sweden,,,,,,BTSX,,,,,,,,,,,,,,,,73
+,,,,,,CHE,Switzerland,,,,,,FMLE,,,,,,,,,,,,,,,,73
+,,,,,,IRL,Ireland,,,,,,FMLE,,,,,,,,,,,,,,,,73.1
+,,,,,,GBR,United Kingdom of Great Britain and Northern Ireland,,,,,,BTSX,,,,,,,,,,,,,,,,73.4
+,,,,,,BLR,Belarus,,,,,,BTSX,,,,,,,,,,,,,,,,73.6
+,,,,,,SRB,Serbia,,,,,,MLE,,,,,,,,,,,,,,,,73.8
+,,,,,,HRV,Croatia,,,,,,MLE,,,,,,,,,,,,,,,,73.9
+,,,,,,DNK,Denmark,,,,,,BTSX,,,,,,,,,,,,,,,,74.4
+,,,,,,AND,Andorra,,,,,,BTSX,,,,,,,,,,,,,,,,74.6
+,,,,,,NZL,New Zealand,,,,,,BTSX,,,,,,,,,,,,,,,,74.6
+,,,,,,LVA,Latvia,,,,,,BTSX,,,,,,,,,,,,,,,,75
+,,,,,,FRA,France,,,,,,BTSX,,,,,,,,,,,,,,,,75.3
+,,,,,,CZE,Czechia,,,,,,BTSX,,,,,,,,,,,,,,,,75.4
+,,,,,,MLT,Malta,,,,,,MLE,,,,,,,,,,,,,,,,76.2
+,,,,,,BEL,Belgium,,,,,,BTSX,,,,,,,,,,,,,,,,76.5
+,,,,,,KOR,Republic of Korea,,,,,,MLE,,,,,,,,,,,,,,,,77
+,,,,,,CAN,Canada,,,,,,MLE,,,,,,,,,,,,,,,,77.3
+,,,,,,AUT,Austria,,,,,,BTSX,,,,,,,,,,,,,,,,78.1
+,,,,,,GRC,Greece,,,,,,MLE,,,,,,,,,,,,,,,,78.3
+,,,,,,GAB,Gabon,,,,,,MLE,,,,,,,,,,,,,,,,78.6
+,,,,,,BLR,Belarus,,,,,,MLE,,,,,,,,,,,,,,,,79
+,,,,,,NOR,Norway,,,,,,BTSX,,,,,,,,,,,,,,,,79
+,,,,,,LTU,Lithuania,,,,,,BTSX,,,,,,,,,,,,,,,,79.1
+,,,,,,BGR,Bulgaria,,,,,,MLE,,,,,,,,,,,,,,,,79.2
+,,,,,,AUS,Australia,,,,,,BTSX,,,,,,,,,,,,,,,,79.4
+,,,,,,DEU,Germany,,,,,,BTSX,,,,,,,,,,,,,,,,79.4
+,,,,,,MDA,Republic of Moldova,,,,,,MLE,,,,,,,,,,,,,,,,79.6
+,,,,,,ARG,Argentina,,,,,,MLE,,,,,,,,,,,,,,,,79.9
+,,,,,,HUN,Hungary,,,,,,MLE,,,,,,,,,,,,,,,,79.9
+,,,,,,FSM,Micronesia (Federated States of),,,,,,FMLE,,,,,,,,,,,,,,,,8.1
+,,,,,,OMN,Oman,,,,,,BTSX,,,,,,,,,,,,,,,,8.3
+,,,,,,WSM,Samoa,,,,,,FMLE,,,,,,,,,,,,,,,,8.5
+,,,,,,BHR,Bahrain,,,,,,BTSX,,,,,,,,,,,,,,,,8.8
+,,,,,,TUN,Tunisia,,,,,,MLE,,,,,,,,,,,,,,,,8.9
+,,,,,,CHL,Chile,,,,,,MLE,,,,,,,,,,,,,,,,80
+,,,,,,ROU,Romania,,,,,,MLE,,,,,,,,,,,,,,,,80.1
+,,,,,,CYP,Cyprus,,,,,,MLE,,,,,,,,,,,,,,,,80.6
+,,,,,,POL,Poland,,,,,,MLE,,,,,,,,,,,,,,,,80.7
+,,,,,,ESP,Spain,,,,,,MLE,,,,,,,,,,,,,,,,80.9
+,,,,,,ITA,Italy,,,,,,MLE,,,,,,,,,,,,,,,,81.2
+,,,,,,CHE,Switzerland,,,,,,BTSX,,,,,,,,,,,,,,,,81.2
+,,,,,,IRL,Ireland,,,,,,BTSX,,,,,,,,,,,,,,,,81.3
+,,,,,,URY,Uruguay,,,,,,MLE,,,,,,,,,,,,,,,,81.3
+,,,,,,PRT,Portugal,,,,,,MLE,,,,,,,,,,,,,,,,81.6
+,,,,,,SGP,Singapore,,,,,,MLE,,,,,,,,,,,,,,,,81.7
+,,,,,,ISL,Iceland,,,,,,MLE,,,,,,,,,,,,,,,,82.6
+,,,,,,SVK,Slovakia,,,,,,MLE,,,,,,,,,,,,,,,,82.9
+,,,,,,USA,United States of America,,,,,,MLE,,,,,,,,,,,,,,,,83
+,,,,,,GNQ,Equatorial Guinea,,,,,,MLE,,,,,,,,,,,,,,,,83.3
+,,,,,,NLD,Netherlands,,,,,,MLE,,,,,,,,,,,,,,,,83.3
+,,,,,,FIN,Finland,,,,,,MLE,,,,,,,,,,,,,,,,83.8
+,,,,,,SWE,Sweden,,,,,,MLE,,,,,,,,,,,,,,,,83.9
+,,,,,,GBR,United Kingdom of Great Britain and Northern Ireland,,,,,,MLE,,,,,,,,,,,,,,,,84.3
+,,,,,,EST,Estonia,,,,,,MLE,,,,,,,,,,,,,,,,84.9
+,,,,,,DNK,Denmark,,,,,,MLE,,,,,,,,,,,,,,,,85
+,,,,,,NZL,New Zealand,,,,,,MLE,,,,,,,,,,,,,,,,85.1
+,,,,,,AND,Andorra,,,,,,MLE,,,,,,,,,,,,,,,,85.2
+,,,,,,FRA,France,,,,,,MLE,,,,,,,,,,,,,,,,85.8
+,,,,,,CZE,Czechia,,,,,,MLE,,,,,,,,,,,,,,,,86
+,,,,,,LVA,Latvia,,,,,,MLE,,,,,,,,,,,,,,,,86.5
+,,,,,,BEL,Belgium,,,,,,MLE,,,,,,,,,,,,,,,,86.6
+,,,,,,AUT,Austria,,,,,,MLE,,,,,,,,,,,,,,,,87.7
+,,,,,,LUX,Luxembourg,,,,,,FMLE,,,,,,,,,,,,,,,,87.7
+,,,,,,NOR,Norway,,,,,,MLE,,,,,,,,,,,,,,,,88
+,,,,,,AUS,Australia,,,,,,MLE,,,,,,,,,,,,,,,,88.3
+,,,,,,DEU,Germany,,,,,,MLE,,,,,,,,,,,,,,,,88.5
+,,,,,,LTU,Lithuania,,,,,,MLE,,,,,,,,,,,,,,,,89.1
+,,,,,,IRL,Ireland,,,,,,MLE,,,,,,,,,,,,,,,,89.5
+,,,,,,CHE,Switzerland,,,,,,MLE,,,,,,,,,,,,,,,,89.6
+,,,,,,LBN,Lebanon,,,,,,MLE,,,,,,,,,,,,,,,,9.2
+,,,,,,FJI,Fiji,,,,,,FMLE,,,,,,,,,,,,,,,,9.8
+,,,,,,LSO,Lesotho,,,,,,FMLE,,,,,,,,,,,,,,,,9.9
+,,,,,,LUX,Luxembourg,,,,,,BTSX,,,,,,,,,,,,,,,,91.8
+,,,,,,LUX,Luxembourg,,,,,,MLE,,,,,,,,,,,,,,,,95.8
+,,,,,,VNM,Viet Nam,,,,,,BTSX,,,,,,,,,,,,,,,,99.4
