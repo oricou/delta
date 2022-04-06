@@ -23,12 +23,16 @@ class Bonheur():
     continent_list_en = ["Africa", "Asia", "Europe", "North America", "Oceania", "South America"] 
     continent_list_fr = ["Afrique", "Asie", "Europe", "Amérique du Nord", "Océanie", "Amérique du Sud"]
     
-    graph_type_default = "Echelle de vie"
-    btn_flag = 0
+    graph_types = ["PIB par habitant", "Support social", "Espérance de vie", "Liberté de vivre",
+                   "Générosité", "Perception de la corruption", "Effets positifs", "Effets négatifs"]
     
     
     def __init__(self, application = None):
         
+        self.mode = 1
+        self.filter = ""
+        self.graph_type_default = "PIB par habitant"
+
         self.main_layout = html.Div([
             html.H3("Étude du bonheur mondial de 2005 à 2020"),
             dcc.Markdown(md_introduction),
@@ -41,20 +45,10 @@ class Bonheur():
                 ], style = {'width' : '75%', 'display': 'inline-block'}),
                 html.Div([
                     dcc.RadioItems(
-                        id='bnh-graph-type',
-                        options=[
-                            {'label':'Echelle de vie', 'value':"Echelle de vie"},
-                            {'label':'PIB par habitant','value':"PIB par habitant"},
-                            {'label':'Support social', 'value':"Support social"},
-                            {'label':'Espérance de vie','value':"Espérance de vie"},
-                            {'label':'Liberté de vivre', 'value':"Liberté de vivre"},
-                            {'label':'Générosité','value':"Générosité"},
-                            {'label':'Perception de la corruption','value':"Perception de la corruption"},
-                            {'label':'Effets positifs','value':"Effets positifs"},
-                            {'label':'Effets négatifs','value':"Effets négatifs"},
-                        ],
+                        id = 'bnh-graph-type',
+                        options = list(map(lambda s: {'label': s, 'value': s}, self.graph_types)),
                         value = self.graph_type_default,
-                        labelStyle={'display':'block'},
+                        labelStyle = {'display':'block'},
                     ),
                     html.Button('Réinitialiser le graphe', id='bnh-btn', n_clicks=0),
                 ], style = {'width' : '23%', 'display': 'inline-block'})
@@ -76,41 +70,93 @@ class Bonheur():
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
 
+        # update graph
         self.app.callback(
             dash.dependencies.Output('bnh-graph', 'figure'),
             [
                 dash.dependencies.Input('bnh-graph', 'clickData'),
                 dash.dependencies.Input('bnh-graph-type', 'value'),
-                dash.dependencies.Input('bnh-btn', 'n_clicks')
+                dash.dependencies.Input('bnh-btn', 'n_clicks'),
             ]
         )(self._update_graph)
         
+        # update graph type
+        self.app.callback(
+            dash.dependencies.Output('bnh-graph-type', 'value'),
+            [
+                dash.dependencies.Input('bnh-btn', 'n_clicks'),
+            ]
+        )(self._reset_graph_type)
+        
+        # update graph description
         self.app.callback(
             dash.dependencies.Output('bnh-description', 'children'),
             [
                 dash.dependencies.Input('bnh-graph-type', 'value'),
             ]
         )(self._upgrade_description)
-            
-    
-    def _update_graph(self, point, graphtype, btn):
-        print(point, graphtype, btn)
-        # If the reset button has been pressed, return default primary graph
-        if btn != self.btn_flag:
-            btn = self.btn_flag
-            return self._init_graph_primary(self.graph_type_default)
-        # If a value has not been selected, return current graphtype graph 
-        if not point :
-            self._init_graph_primary(graphtype)
-        if point :
-            clicked = point["points"][0].get("pointNumber")
-            value = point["points"][0].get("x")
-            if value in self.continent_list_fr:
-                return self._init_graph_secondary(graphtype, self.continent_list_en[self.continent_list_fr.index(value)])
-            if value in df_cc.index.tolist():
-                return self._init_graph_tertiary(graphtype, value)
-        return self._init_graph_primary(graphtype)
+        
+        # on reset button clicked or graph-type clicked : reset clickdata value
+        self.app.callback(
+            dash.dependencies.Output('bnh-graph', 'clickData'),
+            [
+                dash.dependencies.Input('bnh-graph-type', 'value'),
+                dash.dependencies.Input('bnh-btn', 'n_clicks')
+            ]
+        )(self._reset_graph_values)
 
+    def _reset_graph(self, btn):
+        self.mode = 1
+        return self._update_graph(self, None, self.graph_type_default)
+                                     
+    def _reset_graph_type(self, btn):
+        return self.graph_type_default
+      
+    def _reset_graph_values(self, graphtype, btn):
+        return None
+    
+    def _update_graph(self, point, graphtype, _):
+        ctx = dash.callback_context
+        
+        # in case of error, return default graph
+        if not ctx.triggered:
+            self.mode = 1
+            return self._init_graph_primary(self.graph_type_default)
+        trigger_id = ctx.triggered[0]['prop_id'].split('.')[0]
+        
+        # if the trigger is the reset button
+        if trigger_id == 'bnh-btn':
+            self.mode = 1
+            return self._init_graph_primary(self.graph_type_default)
+
+        
+        
+        # if the trigger is the graph type
+        if trigger_id == 'bnh-graph-type' and graphtype:
+            if self.mode == 1 : return self._init_graph_primary(graphtype)
+            if self.mode == 2 : return self._init_graph_secondary(graphtype)
+            if self.mode == 3 : return self._init_graph_tertiary(graphtype)
+
+        # if the trigger is the graph
+        if trigger_id == 'bnh-graph' and point:
+            value = point["points"][0].get("x")
+            if self.mode == 1 :
+                self.mode = 2
+                self.filter = self.continent_list_en[self.continent_list_fr.index(value)]
+                return self._init_graph_secondary(graphtype)
+            if self.mode == 2 :
+                self.mode = 3
+                self.filter = value
+                return self._init_graph_tertiary(graphtype)
+            if self.mode == 3 :
+                self.fitler = value
+                return self._init_graph_tertiary(graphtype)
+
+        # in case of error, return default graph
+        self.mode = 1
+        return self._init_graph_primary(self.graph_type_default)
+
+            
     def _upgrade_description(self, graphtype):
         match graphtype:
             case "Echelle de vie" :
@@ -133,53 +179,37 @@ class Bonheur():
                 return md_negative
     
     def _init_graph_primary(self, graphtype):
-        # Since the primary figure needs no input, it is considered as static
-        primary_figure_values = pd.pivot_table(
-            df_hr,
-            values=graphtype,
-            columns="Continent",
-            aggfunc=np.mean).values.tolist()[0]
+        print("_init_graph_primary")
+        df_hr_ex = df_hr.groupby("Continent").mean()
+        df_hr_ex.index = self.continent_list_fr
+        print(df_hr_ex)
         primary_figure = px.bar(
-            x = self.continent_list_fr,
-            y = primary_figure_values,
-            title = f'{graphtype}',
+            df_hr_ex[[graphtype]],
+            title = f'{graphtype}, ',
             labels=dict(x = graphtype, y = "Continents"),
             template='plotly_white'
         )
         return primary_figure
-    
-    def _init_graph_secondary(self, graphtype, continent):
-        # Since the primary figure needs no input, it is considered as static
-        df_hr_cn = df_hr[df_hr["Continent"] == continent]
-        df_hr_cnpv = pd.pivot_table(
-            df_hr_cn,
-            values = graphtype,
-            columns = "Pays",
-            aggfunc=np.mean
-        )
-        primary_figure = px.histogram(
-            x = df_hr_cnpv.columns,
-            y = df_hr_cnpv.values.tolist()[0],
-            title = f'{graphtype}, {continent}',
+        
+        
+        
+    def _init_graph_secondary(self, graphtype):
+        df_hr_ex = df_hr[df_hr["Continent"] == self.filter].groupby("Pays").mean()
+        primary_figure = px.bar(
+            df_hr_ex[[graphtype]],
+            title = f'{graphtype}, {self.filter}',
             labels=dict(x = graphtype, y = "Pays"),
             template='plotly_white'
         )
         return primary_figure
     
-    def _init_graph_tertiary(self, graphtype, country):
-        # Since the primary figure needs no input, it is considered as static
-        df_hr_py = df_hr[df_hr["Pays"] == country]
-        df_hr_pypv = pd.pivot_table(
-            df_hr_py,
-            values = graphtype,
-            columns = "Année",
-            aggfunc=np.mean
-        )
+    def _init_graph_tertiary(self, graphtype):
+        print("_init_graph_tertiary")
+        df_hr_ex = df_hr[df_hr["Pays"] == self.filter]
         primary_figure = px.line(
-            x = df_hr_pypv.columns,
-            y = df_hr_pypv.values.tolist()[0],
-            title = f'{graphtype}, {country}',
-            labels=dict(x = graphtype, y = "Années"),
+            df_hr_ex[[graphtype]],
+            title = f'{graphtype}, {self.filter}',
+            labels=dict(x = graphtype, y = "Pays"),
             template='plotly_white'
         )
         return primary_figure
