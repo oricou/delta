@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "delta"
 version = "0.1.0"
-description = ""
-authors = ["Olivier Ricou <ricou@lrde.epita.fr>"]
+description = "Fork from delta repo"
+authors = ["Clement Bieber <clement.bieber@epita.fr>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
