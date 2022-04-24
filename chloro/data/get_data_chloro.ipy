@@ -1,42 +1,68 @@
 #!/usr/bin/env ipython
 
-import pandas as pd
 import xarray as xr
 import numpy as np
 
-dset = xr.open_dataset("CHL.nc")
-chl = dset['chl']
-chl = chl.isel(depth=[0], time = [0])
+import pandas as pd
+
+def is_neighboring(df, lat, lon, max_dist):
+    close = df.loc[np.sqrt((df["latbin"]- lat)**2 + (df["lonbin"] - lon)**2) <= max_dist]
+    return close.shape[0] > 0
 
 
-dset2 = xr.open_dataset("DMP.nc")
-gdmp = dset2['GDMP']
-gdmp = gdmp.isel(time = [0], lat = [i for i in range (0, 15680, 10)], lon = [i for i in range (0, 40320, 10)])
-
-
+dist = 3
 step = 0.5
 to_bin = lambda x: np.floor(x / step) * step
 
+def build_dataframes(chlnc, faparnc, date):
+    dset = xr.open_dataset(chlnc)
+    chl = dset['chl']
+    chl = chl.isel(depth=[0])
+    #chl = chl.sel(time=slice('2020-06-20', '2020-06-30'))
 
-chldf = chl.to_dataframe()
-chldf = chldf[np.isfinite(chldf['chl'])]
-chldf["latbin"] = chldf.index.get_level_values('latitude').map(to_bin)
-chldf["lonbin"] = chldf.index.get_level_values('longitude').map(to_bin)
-chldf = chldf.groupby(['latbin', 'lonbin'], as_index=False).mean()
-
-
-gdmpdf = gdmp.to_dataframe()
-gdmpdf = gdmpdf[np.isfinite(gdmpdf['GDMP'])]
-gdmpdf["latbin"] = gdmpdf.index.get_level_values('lat').map(to_bin)
-gdmpdf["lonbin"] = gdmpdf.index.get_level_values('lon').map(to_bin)
-gdmpdf = gdmpdf.groupby(['latbin', 'lonbin'], as_index=False).mean()
+    dset2 = xr.open_dataset(faparnc)
+    fapar = dset2[["FAPAR"]]
+    fapar = fapar.isel(time = [0], lat = [i for i in range (0, 15680, 10)], lon = [i for i in range (0, 40320, 10)])
 
 
-chldf['coordinates'] = list(zip(chldf.latbin, chldf.lonbin))
-gdmpdf['coordinates'] = list(zip(gdmpdf.latbin, gdmpdf.lonbin))
-gdmpdf = gdmpdf[~gdmpdf['coordinates'].isin(chldf['coordinates'])]
+    chldf = chl.to_dataframe()
+    chldf = chldf[np.isfinite(chldf['chl'])]
+    chldf["latbin"] = chldf.index.get_level_values('latitude').map(to_bin)
+    chldf["lonbin"] = chldf.index.get_level_values('longitude').map(to_bin)
+    chldf = chldf.groupby(['latbin', 'lonbin'], as_index=False).mean()
+
+    fapardf = fapar.to_dataframe()
+    fapardf = fapardf[np.isfinite(fapardf['FAPAR'])]
+    fapardf["latbin"] = fapardf.index.get_level_values('lat').map(to_bin)
+    fapardf["lonbin"] = fapardf.index.get_level_values('lon').map(to_bin)
+    fapardf = fapardf.groupby(['latbin', 'lonbin'], as_index=False).mean()
+
+    chldf['coordinates'] = list(zip(chldf.latbin, chldf.lonbin))
+    fapardf['coordinates'] = list(zip(fapardf.latbin, fapardf.lonbin))
+    fapardf = fapardf[~fapardf['coordinates'].isin(chldf['coordinates'])]
+    fapardf = fapardf.reset_index(drop=True)
 
 
-chldf.to_pickle("chldf.pkl")
-gdmpdf.to_pickle("gdmpdf.pkl")
+    chldf_c=chldf
 
+    chldf_c["neighbor"] = [is_neighboring(fapardf, chldf_c["latbin"][i], chldf_c["lonbin"][i], dist) for i in range(chldf_c.shape[0])]
+
+    chldf_c = chldf_c[chldf_c["neighbor"]]
+
+    fapardf_c=fapardf
+
+    fapardf_c["neighbor"] = [is_neighboring(chldf_c, fapardf_c["latbin"][i], fapardf_c["lonbin"][i], dist) for i in range(fapardf_c.shape[0])]
+    fapardf_c = fapardf_c[fapardf_c["neighbor"]]
+
+
+
+    chldf.to_pickle("chldf_" + date + ".pkl")
+    fapardf.to_pickle("fapardf_" + date + ".pkl")
+
+    chldf_c.to_pickle("chldf_coastline_" + date + ".pkl")
+    fapardf_c.to_pickle("fapardf_coastline_" + date + ".pkl")
+
+
+
+build_dataframes("CHL.nc", "FAPAR.nc", "2020-06-30")
+build_dataframes("CHL_hiver.nc", "FAPAR_hiver.nc", "2019-12-31")
