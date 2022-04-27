@@ -4,6 +4,8 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
+from esam_EvolutionDesSalairesAnnuelsMoyens import get_data
+
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -12,6 +14,7 @@ server = app.server
 pop = population.WorldPopulationStats(app)
 nrg = energies.Energies(app)
 dec = deces.Deces(app)
+inc = get_data.Income(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -26,6 +29,7 @@ main_layout = html.Div([
                               html.Br(),
                               dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
                               html.Br(),
+                              dcc.Link(html.Button('Evolution des salaires', style={'width':"100%", 'padding':'inherit'}), href='/salaires'),
                               html.Br(),
                               html.Br(),
                               html.Center(html.A('Code source', href='https://github.com/oricou/delta')),
@@ -60,12 +64,14 @@ app.validation_layout = html.Div([
 @app.callback(dash.dependencies.Output('page_content', 'children'),
               [dash.dependencies.Input('url', 'pathname')])
 def display_page(pathname):
-    if pathname == '/energies':
+    if pathname == '/energies':        
         return nrg.main_layout
     elif pathname == '/population':
         return pop.main_layout
     elif pathname == '/deces':
         return dec.main_layout
+    elif pathname == '/salaires':
+        return inc.main_layout
     else:
         return home_page
 
