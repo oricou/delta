@@ -1,5 +1,4 @@
 import sys
-import urllib.request
 import dash
 import flask
 import json
@@ -16,11 +15,6 @@ from typing import List
 
 
 class HautDebit():
-    # Données
-    urls = ['https://www.data.gouv.fr/fr/datasets/r/d538685a-b9cb-4a3e-b90d-ad6f0a13920b',
-            'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements-version-simplifiee.geojson',
-            "https://www.arcep.fr/fileadmin/reprise/dossiers/fibre/liste-gestion-identifiants-prefixe-ligne-fibre-2.xlsx"]
-
     dossier_data = "./PBBB_sujet/data/"
     paths = ['2021t4-obs-hd-thd-deploiement.xlsx',
              'departements.geojson',
@@ -65,16 +59,6 @@ class HautDebit():
 
         return ret
 
-    def download_data(self):
-        if not os.path.isdir(self.dossier_data):
-            os.mkdir(self.dossier_data)
-
-        for i in range(len(self.paths)):
-            path, url = self.paths[i], self.urls[i]
-            if not os.path.isfile(self.dossier_data + path):
-                print(f"Téléchargement {path} depuis {url}.")
-                urllib.request.urlretrieve(url, self.dossier_data + path)
-
     def init_departement(self):
         return pd.read_excel(self.dossier_data + self.paths[0],
                              sheet_name='Départements',
@@ -82,7 +66,6 @@ class HautDebit():
                              usecols="A,B,G,H:X"), json.load(open(self.dossier_data + self.paths[1]))
 
     def init_graph_departement(self):
-
         nombre_d_operateur = self.load_operator_by_dep()
         tmp_data = self.df_departement.copy()
 
@@ -97,8 +80,6 @@ class HautDebit():
         return data
 
     def __init__(self, application=None):
-        self.download_data()
-
         self.df_departement, self.geojson_departement = self.init_departement()
         self.year = self.df_departement.columns[3:]
 
@@ -141,12 +122,6 @@ class HautDebit():
                     ),
                     style={'display': 'inline-block', 'width': "90%"}
                 ),
-                # dcc.Interval(            # fire a callback periodically
-                #     id='debit-auto-stepper',
-                #     interval=1500,       # in milliseconds
-                #     max_intervals=-1,  # start running
-                #     n_intervals=0
-                # ),
             ], style={
                 'padding': '0px 50px',
                 'width': '100%'
@@ -175,6 +150,16 @@ class HautDebit():
                         labelStyle={'display': 'block'},
                     ),
                     html.Br(),
+                    html.Div('Filtre'),
+                    html.Div(
+                    [dcc.RangeSlider(
+                        id='debit-filter-type-slider',
+                        min=0,
+                        max=1,
+                        value=[0,1],
+                        vertical=True,
+                    )],style={ 'background-image': 'linear-gradient(rgb(0, 200, 200), rgb(200, 0, 0))'}),
+                    html.Br(),
                 ], style={'margin-left': '20px', 'width': '7em', 'float': 'right'}),
             ], style={
                 'padding': '10px 50px',
@@ -188,17 +173,12 @@ class HautDebit():
             On peut voir :
             - le nombre d'opérateur dans le département ne semble pas influer sur la couverture
             - le nombre de logement dans le département semble impacter la couverture. En effet, les départements où il y a plus de logemment ont une meilleure couverture
-            - ??
 
             Sources :
-            - nombre d'opérateur par département : 
-            - nombre de logement par département :
-            - ??
+            - nombre d'opérateur par département : https://www.arcep.fr/fileadmin/reprise/dossiers/fibre/liste-gestion-identifiants-prefixe-ligne-fibre-2.xlsx
+            - nombre de logement par département : https://www.data.gouv.fr/fr/datasets/r/d538685a-b9cb-4a3e-b90d-ad6f0a13920b
             """)
-
-
         ], style={
-            # 'backgroundColor': 'rgb(240, 240, 240)',
             'padding': '10px 50px 10px 50px',
         }
         )
@@ -210,16 +190,28 @@ class HautDebit():
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
 
-        # # I link callbacks here since @app decorator does not work inside a class
-        # # (somhow it is more clear to have here all interaction between functions and components)
+        # Map
         self.app.callback(
             dash.dependencies.Output('debit-main-map', 'figure'),
             [dash.dependencies.Input('debit-crossfilter-type-type', 'value'),
              dash.dependencies.Input('debit-crossfilter-year-slider', 'value')])(self.update_map)
-        #
+        
+        # Graph
         self.app.callback(
             dash.dependencies.Output('debit-graph', 'figure'),
-            [dash.dependencies.Input('debit-crossfilter-type-couleur', 'value')])(self.update_graph)
+            [dash.dependencies.Input('debit-crossfilter-type-couleur', 'value'),
+             dash.dependencies.Input('debit-filter-type-slider', 'value')])(self.update_graph)
+
+        ## Filter
+        self.app.callback(
+            dash.dependencies.Output('debit-filter-type-slider', 'max'),
+            [dash.dependencies.Input('debit-crossfilter-type-couleur', 'value')])(self.update_slider_max)
+        self.app.callback(
+            dash.dependencies.Output('debit-filter-type-slider', 'value'),
+            [dash.dependencies.Input('debit-crossfilter-type-couleur', 'value')])(self.update_slider_value)
+        # self.app.callback(
+        #     dash.dependencies.Output('debit-filter-type-slider', 'marks'),
+        #     [dash.dependencies.Input('debit-crossfilter-type-couleur', 'value')])(self.update_slider_marks)
 
     def update_map(self, type, year):
         data, goejson = self.df_departement.copy(), self.geojson_departement
@@ -243,7 +235,7 @@ class HautDebit():
 
         return fig
 
-    def update_graph(self, couleur):
+    def update_graph(self, couleur, filter_value):
         df = self.graph_departement
 
         def gradient_scale(rgbmin, rgbmax, nom):
@@ -258,11 +250,15 @@ class HautDebit():
                     'opérateur': 'Nombre d\'opérateur'}
         nom = dcouleur[couleur]
 
-        fig_col_dic = gradient_scale((0, 0, 0), (255, 0, 255), nom)
+        fig_col_dic = gradient_scale((200, 0, 0), (0, 200, 200), nom)
 
+        m, M = filter_value
         fig = px.line(df, x=df['Temps'],
                       template='plotly_white', range_y=(0, 1))
         for key, group in df.groupby(['Nom département']):
+            col = group[nom].unique()[0]
+            if not (m <= col <= M):
+                continue
             fig.add_scatter(x=group['Temps'],
                             y=(group['value'] /
                                group['Meilleure estimation des locaux T4 2021 ']),
@@ -271,10 +267,28 @@ class HautDebit():
                                 width=2),
                             mode='lines',
                             name=key, text=key, hoverinfo='x+y+text')
-
+        fig.update_layout(legend_x=1, legend_y=0)
+        fig.update_yaxes(title_text="Couverture haut-débit")
         fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
 
         return fig
+
+    def update_slider_max(self, type):
+        if type == 'logement':
+            return self.graph_departement['Meilleure estimation des locaux T4 2021 '].unique().max()
+        elif type == 'opérateur':
+            return self.graph_departement['Nombre d\'opérateur'].unique().max()
+    def update_slider_value(self, type):
+        return [0, self.update_slider_max(type)]
+    # def update_slider_marks(self, type):
+    #     Max = self.update_slider_max(type)
+    #     M = Max // 5
+    #     ret = {}
+    #     for i in range(4):
+    #         ret[i * M] = {'label' : str(i * M), 'style' : 'rgb(255,255,255)'}
+    #     ret[str(Max)] = {'label' : str(Max), 'style' : 'rgb(255,255,255)'}
+    #     print(ret)      
+    #     return ret
 
     def run(self, debug=False, port=8050):
         self.app.run_server(host="0.0.0.0", debug=debug, port=port)
