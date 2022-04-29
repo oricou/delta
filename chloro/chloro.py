@@ -121,6 +121,39 @@ class Chloro():
                                      labelStyle={'display':'block'})
                             ], style={'width': '12em'} ),
 
+                html.Div([ html.Div('Seuillage FAPAR'),
+                           dcc.RadioItems(id='map_fapar_treshold_type', 
+                                     options=[{'label':'Aucun', 'value':-1},
+                                              {'label':'Supérieur à', 'value':0},
+                                              {'label':'Inférieur à', 'value':1}],
+                                     value=-1,
+                                     labelStyle={'display':'block'}),
+                            dcc.Input(
+                                    id="map_fapar_treshold", 
+                                    type="number",
+                                    debounce=True, 
+                                    placeholder="Seuil", 
+                                    min = 0, max = 4
+                                )
+                           ], style={'width': '16em'} ),
+
+                html.Div([ html.Div('Seuillage chlorophylle'),
+                           dcc.RadioItems(id='map_chl_treshold_type', 
+                                     options=[{'label':'Aucun', 'value':-1},
+                                              {'label':'Supérieur à', 'value':0},
+                                              {'label':'Inférieur à', 'value':1}],
+                                     value=-1,
+                                     labelStyle={'display':'block'}),
+                            dcc.Input(
+                                    id="map_chl_treshold", 
+                                    type="number",
+                                    debounce=True, 
+                                    placeholder="Seuil", 
+                                    min = 0, max = 4
+                                )
+                            ], style={'width': '16em'} ),
+
+
                 html.Div([ html.Div('Colormap Chlorophylle'),
                            dcc.Dropdown(
                                id='map_chl_colormap',
@@ -128,7 +161,7 @@ class Chloro():
                                value="viridis",
                                clearable=False
                           ),
-                         ], style={'width': '13em'}),
+                         ], style={'width': '12em'}),
 
                 html.Div([ html.Div('Colormap FAPAR'),
                            dcc.Dropdown(
@@ -137,7 +170,7 @@ class Chloro():
                                value="bluered_r",
                                clearable=False
                            ),
-                          ], style={'width': '13em', 'margin':'0px 0px 0px 20px'}),
+                          ], style={'width': '12em', 'margin':'0px 0px 0px 20px'}),
 
                 ], style={
                             'padding': '10px 50px', 
@@ -149,6 +182,10 @@ class Chloro():
             html.Br(),
             dcc.Markdown("""
             Lorem Ipsum blablabla
+            * Sources : 
+                * [Copernicus Land Service](https://land.copernicus.eu/global/products/fapar) pour récupérer les données sur le FAPAR
+                * [Copernicus Marine Service](https://resources.marine.copernicus.eu/product-detail/GLOBAL_MULTIYEAR_BGC_001_029/INFORMATION) pour récupérer les données sur la chlorophylle
+
             """)
         ], style={
             'backgroundColor': 'white',
@@ -165,22 +202,48 @@ class Chloro():
         self.app.callback(
                     dash.dependencies.Output('map', 'figure'),
                     [dash.dependencies.Input('map_mode', 'value'),
+                     dash.dependencies.Input('map_period', 'value'),
                      dash.dependencies.Input('map_chl_colormap', 'value'),
                      dash.dependencies.Input('map_fapar_colormap', 'value'),
-                     dash.dependencies.Input('map_period', 'value')])(self.update_graph)
+                     dash.dependencies.Input('map_chl_treshold_type', 'value'),
+                     dash.dependencies.Input('map_fapar_treshold_type', 'value'),
+                     dash.dependencies.Input('map_chl_treshold', 'value'),
+                     dash.dependencies.Input('map_fapar_treshold', 'value')])(self.update_graph)
 
 
-    def update_graph(self, coast, chl_colormap, fapar_colormap, summer):
-        if (summer):
+    def update_graph(self, coast, summer, chl_colormap, fapar_colormap, chl_lessthan, fapar_lessthan, chl_treshold, fapar_treshold):
+        if (summer) :
             if coast :
-                fig = self.create_fig(self.chldf_coastline, self.fapardf_coastline, chl_colormap, fapar_colormap)
+                chldf = self.chldf_coastline
+                fapardf = self.fapardf_coastline
             else :
-                fig = self.create_fig(self.chldf, self.fapardf, chl_colormap, fapar_colormap)
+                chldf = self.chldf
+                fapardf = self.fapardf
         else :
             if coast :
-                fig = self.create_fig(self.chldf_coastline_hiver, self.fapardf_coastline_hiver, chl_colormap, fapar_colormap)
+                chldf = self.chldf_coastline_hiver
+                fapardf = self.fapardf_coastline_hiver
             else :
-                fig = self.create_fig(self.chldf_hiver, self.fapardf_hiver, chl_colormap, fapar_colormap)
+                chldf = self.chldf_hiver
+                fapardf = self.fapardf_hiver
+
+#        print (chl_treshold)
+ #       print(chl_lessthan)
+
+        if (chl_treshold != None):
+            if (chl_lessthan == 1) :
+                chldf = chldf.loc[chldf["chl"] < chl_treshold]
+            elif (chl_lessthan == 0) :
+                chldf = chldf.loc[chldf["chl"] > chl_treshold]
+
+        if (fapar_treshold != None):
+            if (fapar_lessthan == 1) :
+                fapardf = fapardf.loc[fapardf["FAPAR"] < fapar_treshold]
+            elif (fapar_lessthan == 0) :
+                fapardf = fapardf.loc[fapardf["FAPAR"] > fapar_treshold]
+
+        fig = self.create_fig(chldf, fapardf, chl_colormap, fapar_colormap)
+
 
         return fig
 
