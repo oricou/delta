@@ -19,12 +19,20 @@ def load_data(filename):
     return df
 
 
-class Vaccinations:
+def load_PIB(filename):
+    df = pd.read_csv(filename)
+    df = df[df["Year"] == 2016]
+    df = df.drop(["Country Name", "Year"], axis=1)
+    df = df.rename(columns={"Country Code": "iso_code", "Value": "PIB"})
+    return df
+
+
+class Vaccinations():
 
     def __init__(self, application=None):
         vacc = load_data("data/vaccinations.csv")
+        pib = load_PIB("data/gdp.csv")
 
-        self.vacc = vacc
         self.cols = [
             'Vaccinations totales',
             'Personnes vaccinées',
@@ -39,7 +47,9 @@ class Vaccinations:
             'Vaccinations quotidiennes pour 1M habitants',
             'Personnes vaccinées quotidiennement',
             'Personnes vaccinées quotidiennement pour 100 habitants',
+            'PIB'
         ]
+        self.vacc = vacc.merge(pib, how="left", on="iso_code")
 
         self.main_layout = html.Div(children=[
             html.H3(children='Vaccination contre le COVID-19 par pays et par date'),
