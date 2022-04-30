@@ -81,11 +81,10 @@ class Vaccinations():
 
         self.app.callback(
             dash.dependencies.Output('vac-main-graph', 'figure'),
-            dash.dependencies.Input('vac-main-graph', 'value'),
             dash.dependencies.Input('pays', 'value'),
         )(self.update_main_graph_countries)
 
-    def update_main_graph_countries(self, value, pays):
+    def update_main_graph_countries(self, pays):
         df = self.vacc.loc[self.vacc['location'] == pays]
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
 
