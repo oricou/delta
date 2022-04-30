@@ -14,8 +14,8 @@ def load_data(filename):
     df = pd.read_csv(filename)
     df['date'] = pd.to_datetime(df['date'])
     df = df.set_index('date')
-    df = df.loc[df['location'] == 'France']
-    print(df)
+    # df = df.loc[df['location'] == 'France']
+    # print(df)
     # print("Number of NaN : ", df.isna().sum().sum())
     return df
 
@@ -35,6 +35,8 @@ class Vaccinations():
         pib = load_PIB("data/gdp.csv")
 
         self.cols = [
+            'Code ISO Pays',
+            'Date',
             'Vaccinations totales',
             'Personnes vaccinées',
             'Personnes totalement vaccinées',
@@ -47,20 +49,28 @@ class Vaccinations():
             'Total de boosters pour 100 habitants',
             'Vaccinations quotidiennes pour 1M habitants',
             'Personnes vaccinées quotidiennement',
-            'Personnes vaccinées quotidiennement pour 100 habitants',
-            'PIB'
+            'Personnes vaccinées quotidiennement pour 100 habitants'
         ]
         #self.vacc = vacc.merge(pib, how="left", on="iso_code")
         self.vacc = vacc
-
+        self.pays = self.vacc['location'].unique()
         self.main_layout = html.Div(children=[
-            html.H3(children='Vaccination contre le COVID-19 par pays et par date',
+            # Titre
+            html.H1(children='Vaccination contre le COVID-19 par pays en fonction du temps',
                     style={'font-family': 'Helvetica', 'color': '#ffffff'}),
-            html.Div([dcc.Graph(id='ngr-main-graph'), ], style={'width': '100%', }),
+
+            # Selecteur de pays
+            html.P(children='Sélectionner un pays :'),
+            dcc.Dropdown(self.pays, id='pays', value='World', style={'margin': '20px 0px', 'width': '300px', 'color': 'black'}),
+
+            # Graph
+            html.Div([dcc.Graph(id='vac-main-graph'), ], style={'width': '100%', }),
         ], style={
             'backgroundColor': '#222222',
             'padding': '10px 50px 10px 50px',
             'margin': '0px 0px 0px 0px',
+            'font-family': 'Helvetica',
+            'color': '#ffffff',
         })
 
         if application:
@@ -70,12 +80,14 @@ class Vaccinations():
             self.app.layout = self.main_layout
 
         self.app.callback(
-            dash.dependencies.Output('ngr-main-graph', 'figure'),
-            dash.dependencies.Input('ngr-main-graph', 'value')
-        )(self.update_graph)
+            dash.dependencies.Output('vac-main-graph', 'figure'),
+            dash.dependencies.Input('vac-main-graph', 'value'),
+            dash.dependencies.Input('pays', 'value'),
+        )(self.update_main_graph_countries)
 
-    def update_graph(self, _):
-        df = self.vacc
+    def update_main_graph_countries(self, value, pays):
+        df = self.vacc.loc[self.vacc['location'] == pays]
+        df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
 
         fig = px.line(df[df.columns[2]], template='plotly_dark')
         for c in df.columns[3:]:
