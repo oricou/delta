@@ -137,7 +137,7 @@ class Vaccinations():
             fig.add_scatter(x=df.index, y=df[c], mode='lines', name=c, text=c, hoverinfo='x+y+text')
 
         fig.update_layout(
-            title='Vaccinations contre le COVID-19',
+            title='Vaccinations totales contre le COVID-19',
             xaxis=dict(title='Temps'),
             yaxis=dict(title='Vaccinations'),
             height=600,
@@ -164,7 +164,7 @@ class Vaccinations():
             fig.add_scatter(x=df.index, y=df[c], mode='lines', name=c, text=c, hoverinfo='x+y+text')
 
         fig.update_layout(
-            title='Vaccinations contre le COVID-19',
+            title='Vaccinations quotidiennes contre le COVID-19',
             xaxis=dict(title='Temps'),
             yaxis=dict(title='Vaccinations'),
             height=600,
@@ -191,7 +191,7 @@ class Vaccinations():
             fig.add_scatter(x=df.index, y=df[c], mode='lines', name=c, text=c, hoverinfo='x+y+text')
 
         fig.update_layout(
-            title='Vaccinations contre le COVID-19',
+            title='Vaccinations pour 100 contre le COVID-19',
             xaxis=dict(title='Temps'),
             yaxis=dict(title='Vaccinations'),
             height=600,
