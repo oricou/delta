@@ -102,6 +102,92 @@ class Vaccinations():
         return fig
 
 
+    def graphe_total(self, _, pays):
+        df = self.vacc.loc[self.vacc['location'] == pays]
+        df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
+
+        df = df[[
+            "location",
+            "Code ISO Pays",
+            "Date",
+            "Vaccinations totales",
+            "Personnes vaccinées",
+            "Personnes totalement vaccinées",
+            "Total de boosters",
+            ]]
+
+        fig = px.line(df[df.columns[2]], template='plotly_dark')
+        for c in df.columns[3:]:
+            fig.add_scatter(x=df.index, y=df[c], mode='lines', name=c, text=c, hoverinfo='x+y+text')
+
+        fig.update_layout(
+            title='Vaccinations contre le COVID-19',
+            xaxis=dict(title='Temps'),
+            yaxis=dict(title='Vaccinations'),
+            height=600,
+            showlegend=True,
+        )
+        return fig
+
+
+    def graphe_quotidien(self, _, pays):
+        df = self.vacc.loc[self.vacc['location'] == pays]
+        df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
+
+        df = df[[
+            "location",
+            "Code ISO Pays",
+            "Date",
+            "Vaccinations quotidiennes brutes",
+            "Vaccinations quotidiennes nettes",
+            "Vaccinations quotidiennes pour 1M habitants",
+            "Personnes vaccinées quotidiennement",
+            "Personnes vaccinées quotidiennement pour 100 habitants",
+            ]]
+            
+        fig = px.line(df[df.columns[2]], template='plotly_dark')
+        for c in df.columns[3:]:
+            fig.add_scatter(x=df.index, y=df[c], mode='lines', name=c, text=c, hoverinfo='x+y+text')
+
+        fig.update_layout(
+            title='Vaccinations contre le COVID-19',
+            xaxis=dict(title='Temps'),
+            yaxis=dict(title='Vaccinations'),
+            height=600,
+            showlegend=True,
+        )
+        return fig
+    
+
+    def graphe_pourcentage(self, _, pays):
+        df = self.vacc.loc[self.vacc['location'] == pays]
+        df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
+
+        df = df[[
+            "location",
+            "Code ISO Pays",
+            "Date",
+            "Vaccinations pour 100 habitants",
+            "Personnes vaccinées pour 100 habitants",
+            "Personnes totalement vaccinées pour 100 habitants",
+            "Total de boosters pour 100 habitants",
+            "Personnes vaccinées quotidiennement pour 100 habitants",
+            ]]
+            
+        fig = px.line(df[df.columns[2]], template='plotly_dark')
+        for c in df.columns[3:]:
+            fig.add_scatter(x=df.index, y=df[c], mode='lines', name=c, text=c, hoverinfo='x+y+text')
+
+        fig.update_layout(
+            title='Vaccinations contre le COVID-19',
+            xaxis=dict(title='Temps'),
+            yaxis=dict(title='Vaccinations'),
+            height=600,
+            showlegend=True,
+        )
+        return fig
+
+
 if __name__ == '__main__':
     vacci = Vaccinations()
     vacci.app.run_server(debug=True, port=8051)
