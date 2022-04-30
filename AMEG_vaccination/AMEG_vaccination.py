@@ -119,12 +119,11 @@ class Vaccinations():
         )
         return fig
 
-    def update_graphe_total(self, _, pays):
+    def update_graphe_total(self, pays):
         df = self.vacc.loc[self.vacc['location'] == pays]
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
 
         df = df[[
-            "location",
             "Code ISO Pays",
             "Date",
             "Vaccinations totales",
@@ -146,12 +145,11 @@ class Vaccinations():
         )
         return fig
 
-    def update_graphe_quotidien(self, _, pays):
+    def update_graphe_quotidien(self, pays):
         df = self.vacc.loc[self.vacc['location'] == pays]
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
 
         df = df[[
-            "location",
             "Code ISO Pays",
             "Date",
             "Vaccinations quotidiennes brutes",
@@ -174,12 +172,11 @@ class Vaccinations():
         )
         return fig
 
-    def update_graphe_pourcentage(self, _, pays):
+    def update_graphe_pourcentage(self, pays):
         df = self.vacc.loc[self.vacc['location'] == pays]
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
 
         df = df[[
-            "location",
             "Code ISO Pays",
             "Date",
             "Vaccinations pour 100 habitants",
