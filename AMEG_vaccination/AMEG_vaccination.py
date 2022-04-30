@@ -14,7 +14,8 @@ def load_data(filename):
     df = pd.read_csv(filename)
     df['date'] = pd.to_datetime(df['date'])
     df = df.set_index('date')
-    # print(df)
+    df = df.loc[df['location'] == 'France']
+    print(df)
     # print("Number of NaN : ", df.isna().sum().sum())
     return df
 
@@ -49,14 +50,17 @@ class Vaccinations():
             'Personnes vaccinées quotidiennement pour 100 habitants',
             'PIB'
         ]
-        self.vacc = vacc.merge(pib, how="left", on="iso_code")
+        #self.vacc = vacc.merge(pib, how="left", on="iso_code")
+        self.vacc = vacc
 
         self.main_layout = html.Div(children=[
-            html.H3(children='Vaccination contre le COVID-19 par pays et par date'),
+            html.H3(children='Vaccination contre le COVID-19 par pays et par date',
+                    style={'font-family': 'Helvetica', 'color': '#ffffff'}),
             html.Div([dcc.Graph(id='ngr-main-graph'), ], style={'width': '100%', }),
         ], style={
-            'backgroundColor': '#f5f5f5',
+            'backgroundColor': '#222222',
             'padding': '10px 50px 10px 50px',
+            'margin': '0px 0px 0px 0px',
         })
 
         if application:
