@@ -63,8 +63,6 @@ class Deces():
             Le graphique est interactif. En passant la souris sur les courbes vous avez une infobulle. 
             En utilisant les icônes en haut à droite, on peut agrandir une zone, déplacer la courbe, réinitialiser.
 
-            Sources : https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees/
-            
             Notes :
                * La grippe de l'hiver 1989-1990 a fait 20 000 morts (4,6 millions de malades en 11 semaines). La chute de la courbe au premier janvier 1990 est quand même très surprenante.
                * On repère bien les hivers avec grippe.
@@ -74,6 +72,11 @@ class Deces():
                * On note une progression constante du nombre de morts, avec environ 1000 morts par jour en dehors de pics durant les années 70 
                  pour environ 1700 morts par jour après 2015. Il s'agit d'une augmentation de plus de 70 %, soit plus du double que l'augmentation de la population sur la même période. Le saut visible en 1990 peut aussi traduire un recensement plus complet après cette année.
                * Les derniers mois doivent être pris avec précaution car tous les morts ne sont pas encore recensés.
+
+            #### À propos
+
+            * Sources : https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees/
+            * (c) 2022 Olivier Ricou
             """)
         ], style={
             'backgroundColor': 'white',
