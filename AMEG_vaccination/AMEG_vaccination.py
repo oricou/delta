@@ -65,6 +65,9 @@ class Vaccinations():
 
             # Graph
             html.Div([dcc.Graph(id='vac-main-graph'), ], style={'width': '100%', }),
+            html.Div([dcc.Graph(id='vac-total'), ], style={'width': '100%', }),
+            html.Div([dcc.Graph(id='vac-quotidien'), ], style={'width': '100%', }),
+            html.Div([dcc.Graph(id='vac-pourcentage'), ], style={'width': '100%', }),
         ], style={
             'backgroundColor': '#222222',
             'padding': '10px 50px 10px 50px',
@@ -84,6 +87,21 @@ class Vaccinations():
             dash.dependencies.Input('pays', 'value'),
         )(self.update_main_graph_countries)
 
+        self.app.callback(
+            dash.dependencies.Output('vac-total', 'figure'),
+            dash.dependencies.Input('pays', 'value'),
+        )(self.update_graphe_total)
+
+        self.app.callback(
+            dash.dependencies.Output('vac-quotidien', 'figure'),
+            dash.dependencies.Input('pays', 'value'),
+        )(self.update_graphe_quotidien)
+
+        self.app.callback(
+            dash.dependencies.Output('vac-pourcentage', 'figure'),
+            dash.dependencies.Input('pays', 'value'),
+        )(self.update_graphe_pourcentage)
+
     def update_main_graph_countries(self, pays):
         df = self.vacc.loc[self.vacc['location'] == pays]
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
@@ -101,8 +119,7 @@ class Vaccinations():
         )
         return fig
 
-
-    def graphe_total(self, _, pays):
+    def update_graphe_total(self, _, pays):
         df = self.vacc.loc[self.vacc['location'] == pays]
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
 
@@ -129,8 +146,7 @@ class Vaccinations():
         )
         return fig
 
-
-    def graphe_quotidien(self, _, pays):
+    def update_graphe_quotidien(self, _, pays):
         df = self.vacc.loc[self.vacc['location'] == pays]
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
 
@@ -157,9 +173,8 @@ class Vaccinations():
             showlegend=True,
         )
         return fig
-    
 
-    def graphe_pourcentage(self, _, pays):
+    def update_graphe_pourcentage(self, _, pays):
         df = self.vacc.loc[self.vacc['location'] == pays]
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
 
