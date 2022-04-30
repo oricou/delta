@@ -51,38 +51,35 @@ class Vaccinations():
         #self.vacc = vacc.merge(pib, how="left", on="iso_code")
         self.vacc = vacc
         self.pays = self.vacc['location'].unique()
+
+        # HTML components
         self.main_layout = html.Div(children=[
             # Titre
-            html.H1(children='Vaccination contre le COVID-19 par pays en fonction du temps',
+            html.H1(children='Vaccinations contre le COVID-19 par pays en fonction du temps',
                     style={'font-family': 'Helvetica', 'color': '#ffffff', 'text-align': 'center'}),
+            html.P(children='''On va présenter ci-dessous les liens entre les taux de vaccinations contre le COVID-19
+            et le PIB des pays.'''),
 
-            # Selecteur de pays
-            html.P(children='Sélectionner un pays :'),
-            dcc.Dropdown(self.pays, id='pays', value='World', style={'margin': '20px 0px', 'width': '300px', 'color': 'black'}),
+            html.H2(children='1. Vaccinations contre le COVID-19 par pays en fonction du temps'),
+            html.P(children='''Nous commençons par afficher l'évolution des taux de vaccination par pays en fonction du
+            temps.'''),
 
-            # Graph
-            html.Div([dcc.Graph(id='vac-main-graph'), ], style={'width': '100%', }),
+            # Sélecteur de pays
+            html.P(children='Sélectionner un pays ou une zone géographique :'),
+            dcc.Dropdown(self.pays, id='pays', value='World',
+                         style={'margin': '20px 0px', 'width': '300px', 'color': 'black'}),
+
+            # Graphiques par pays
             html.Div([dcc.Graph(id='vac-total'), ], style={'width': '100%', }),
             html.Div([dcc.Graph(id='vac-quotidien'), ], style={'width': '100%', }),
             html.Div([dcc.Graph(id='vac-pourcentage'), ], style={'width': '100%', }),
-        ], style={
-            'backgroundColor': '#222222',
-            'padding': '10px 50px 10px 50px',
-            'margin': '0px 0px 0px 0px',
-            'font-family': 'Helvetica',
-            'color': '#ffffff',
-        })
+        ],)
 
         if application:
             self.app = application
         else:
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
-
-        self.app.callback(
-            dash.dependencies.Output('vac-main-graph', 'figure'),
-            dash.dependencies.Input('pays', 'value'),
-        )(self.update_main_graph_countries)
 
         self.app.callback(
             dash.dependencies.Output('vac-total', 'figure'),
@@ -98,23 +95,6 @@ class Vaccinations():
             dash.dependencies.Output('vac-pourcentage', 'figure'),
             dash.dependencies.Input('pays', 'value'),
         )(self.update_graph_per_country_pourcentage)
-
-    def update_main_graph_countries(self, pays):
-        df = self.vacc.loc[self.vacc['location'] == pays]
-        df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
-
-        fig = px.line(df[df.columns[2]], template='plotly_dark')
-        for c in df.columns[3:]:
-            fig.add_scatter(x=df.index, y=df[c], mode='lines', name=c, text=c, hoverinfo='x+y+text')
-
-        fig.update_layout(
-            title='Vaccinations contre le COVID-19',
-            xaxis=dict(title='Temps'),
-            yaxis=dict(title='Vaccinations'),
-            height=600,
-            showlegend=True,
-        )
-        return fig
 
     def update_graph_per_country_total(self, pays):
         df = self.vacc.loc[self.vacc['location'] == pays]
@@ -188,7 +168,7 @@ class Vaccinations():
             fig.add_scatter(x=df.index, y=df[c], mode='lines', name=c, text=c, hoverinfo='x+y+text')
 
         fig.update_layout(
-            title='Vaccinations pour 100 contre le COVID-19',
+            title='Vaccinations contre le COVID-19 pour 100 habitant',
             xaxis=dict(title='Temps'),
             yaxis=dict(title='Vaccinations'),
             height=600,
