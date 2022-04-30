@@ -14,9 +14,6 @@ def load_data(filename):
     df = pd.read_csv(filename)
     df['date'] = pd.to_datetime(df['date'])
     df = df.set_index('date')
-    # df = df.loc[df['location'] == 'France']
-    # print(df)
-    # print("Number of NaN : ", df.isna().sum().sum())
     return df
 
 
@@ -57,7 +54,7 @@ class Vaccinations():
         self.main_layout = html.Div(children=[
             # Titre
             html.H1(children='Vaccination contre le COVID-19 par pays en fonction du temps',
-                    style={'font-family': 'Helvetica', 'color': '#ffffff'}),
+                    style={'font-family': 'Helvetica', 'color': '#ffffff', 'text-align': 'center'}),
 
             # Selecteur de pays
             html.P(children='Sélectionner un pays :'),
@@ -90,17 +87,17 @@ class Vaccinations():
         self.app.callback(
             dash.dependencies.Output('vac-total', 'figure'),
             dash.dependencies.Input('pays', 'value'),
-        )(self.update_graphe_total)
+        )(self.update_graph_per_country_total)
 
         self.app.callback(
             dash.dependencies.Output('vac-quotidien', 'figure'),
             dash.dependencies.Input('pays', 'value'),
-        )(self.update_graphe_quotidien)
+        )(self.update_graph_per_country_quotidien)
 
         self.app.callback(
             dash.dependencies.Output('vac-pourcentage', 'figure'),
             dash.dependencies.Input('pays', 'value'),
-        )(self.update_graphe_pourcentage)
+        )(self.update_graph_per_country_pourcentage)
 
     def update_main_graph_countries(self, pays):
         df = self.vacc.loc[self.vacc['location'] == pays]
@@ -119,7 +116,7 @@ class Vaccinations():
         )
         return fig
 
-    def update_graphe_total(self, pays):
+    def update_graph_per_country_total(self, pays):
         df = self.vacc.loc[self.vacc['location'] == pays]
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
 
@@ -145,7 +142,7 @@ class Vaccinations():
         )
         return fig
 
-    def update_graphe_quotidien(self, pays):
+    def update_graph_per_country_quotidien(self, pays):
         df = self.vacc.loc[self.vacc['location'] == pays]
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
 
@@ -172,7 +169,7 @@ class Vaccinations():
         )
         return fig
 
-    def update_graphe_pourcentage(self, pays):
+    def update_graph_per_country_pourcentage(self, pays):
         df = self.vacc.loc[self.vacc['location'] == pays]
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
 
