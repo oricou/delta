@@ -33,6 +33,19 @@ class Brevet():
         # Taux de réussite
         self.brevet_data['Taux de réussite'] =  self.brevet_data['Admis'] / self.brevet_data['Presents']
 
+        data_brevet_par_annee_par_secteur = self.brevet_data[self.brevet_data['Secteur d\'enseignement'] != "-"].groupby(['Session', 'Secteur d\'enseignement'])
+
+        data_brevet_par_annee_par_secteur = data_brevet_par_annee_par_secteur.agg(Presents = ('Presents', 'sum'),
+                                      Admis = ('Admis', 'sum'),
+                                      AvecMention = ('Admis Mention AB+', 'sum'),
+                                      B_TB = ('Admis Mention B+', 'sum'),
+                                      TB = ('Admis Mention TB', 'sum'))
+
+        cols_to_divide = ['Admis', 'AvecMention', 'B_TB', 'TB']
+        data_brevet_par_annee_par_secteur.loc[:, cols_to_divide] = data_brevet_par_annee_par_secteur.loc[:, cols_to_divide].div(data_brevet_par_annee_par_secteur['Presents'], axis=0)
+        data_brevet_par_annee_par_secteur = data_brevet_par_annee_par_secteur.reset_index()
+        return data_brevet_par_annee_par_secteur
+
 
     def __init__(self, application = None):
 
@@ -40,40 +53,29 @@ class Brevet():
         self.brevet_data = pd.read_csv(dbpath, sep=';')
 
         ## CLEANING DATA ##
-        self.clean_brevet_data()
-
+        self.data_brevet_par_annee_par_secteur = self.clean_brevet_data()
 
         self.df = self.brevet_data
 
         self.main_layout = html.Div(children=[
-            html.H3(children='Nombre de décès par jour en France'),
+            html.H3(children='Taux de réussite et de mentions au brevet'),
             html.Div([ dcc.Graph(id='tr-main-graph'), ], style={'width':'100%', }),
-            html.Div([ dcc.RadioItems(id='tr-mean', 
+            html.Div([ dcc.RadioItems(id='tr-mean',
                                      options=[{'label':'Courbe seule', 'value':0},
-                                              {'label':'Courbe + Tendence générale', 'value':1}, 
-                                              {'label':'Courbe + Moyenne journalière (les décalages au 1er janv. indique la tendence)', 'value':2}], 
+                                              {'label':'Courbe + Tendence générale', 'value':1},
+                                              {'label':'Courbe + Moyenne journalière (les décalages au 1er janv. indique la tendence)', 'value':2}],
                                      value=2,
                                      labelStyle={'display':'block'}) ,
                                      ]),
             html.Br(),
             dcc.Markdown("""
-            Le graphique est interactif. En passant la souris sur les courbes vous avez une infobulle. 
+            Le graphique est interactif. En passant la souris sur les courbes vous avez une infobulle.
             En utilisant les icônes en haut à droite, on peut agrandir une zone, déplacer la courbe, réinitialiser.
 
             Notes :
-               * La grippe de l'hiver 1989-1990 a fait 20 000 morts (4,6 millions de malades en 11 semaines). La chute de la courbe au premier janvier 1990 est quand même très surprenante.
-               * On repère bien les hivers avec grippe.
-               * L'année 1997 est étrange, peut-être un problème de recensement.
-               * La canicule d'août 2003 a fait 15 000 morts (ce qui a généré la journée de travail non payé dite journée Raffarin).
-               * Les 120 000 morts dus au Covid-19 en 2020 et 2021 sont bien visibles, d'autant qu'il n'y a pas eu de grippe durant les hivers 19-20 et 20-21.
-               * On note une progression constante du nombre de morts, avec environ 1000 morts par jour en dehors de pics durant les années 70 
-                 pour environ 1700 morts par jour après 2015. Il s'agit d'une augmentation de plus de 70 %, soit plus du double que l'augmentation de la population sur la même période. Le saut visible en 1990 peut aussi traduire un recensement plus complet après cette année.
-               * Les derniers mois doivent être pris avec précaution car tous les morts ne sont pas encore recensés.
+               * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
 
-            #### À propos
 
-            * Sources : https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees/
-            * (c) 2022 Olivier Ricou
             """)
         ], style={
             'backgroundColor': 'white',
@@ -93,12 +95,13 @@ class Brevet():
                     dash.dependencies.Input('tr-mean', 'value'))(self.update_graph)
 
     def update_graph(self, mean):
+        """
         fig = px.line(self.df, template='plotly_white')
         fig.update_traces(hovertemplate='%{y} décès le %{x:%d/%m/%y}', name='')
         fig.update_layout(
             #title = 'Évolution des prix de différentes énergies',
-            xaxis = dict(title=""), # , range=['2010', '2021']), 
-            yaxis = dict(title="Nombre de décès par jour"), 
+            xaxis = dict(title=""), # , range=['2010', '2021']),
+            yaxis = dict(title="Nombre de décès par jour"),
             height=450,
             showlegend=False,
         )
@@ -109,8 +112,10 @@ class Brevet():
             fig.add_scatter(x=self.df.index, y=self.day_mean, mode='lines', marker={'color':'red'})
 
         return fig
+        """
+        fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='Admis', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
+        return fig
 
-        
 if __name__ == '__main__':
     tr = Brevet()
     tr.app.run_server(debug=True, port=8051)
