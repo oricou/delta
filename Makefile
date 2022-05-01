@@ -1,12 +1,12 @@
 run:
-	poetry run python delta.py
+	poetry run python gragas.py
 
 docker:
-	tar czvf apps.tgz delta.py */
+	tar czvf apps.tgz gragas.py */
 	docker build -t bicente/gragas .
 
 docker_no_cache:
-	tar czvf apps.tgz delta.py */
+	tar czvf apps.tgz gragas.py */
 	docker build --no-cache -t bicente/gragas .
 
 install:
