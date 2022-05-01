@@ -61,9 +61,10 @@ class Brevet():
             html.H3(children='Taux de réussite et de mentions au brevet'),
             html.Div([ dcc.Graph(id='tr-main-graph'), ], style={'width':'100%', }),
             html.Div([ dcc.RadioItems(id='tr-mean',
-                                     options=[{'label':'Courbe seule', 'value':0},
-                                              {'label':'Courbe + Tendence générale', 'value':1},
-                                              {'label':'Courbe + Moyenne journalière (les décalages au 1er janv. indique la tendence)', 'value':2}],
+                                     options=[{'label':'Admis', 'value':0},
+                                              {'label':'Mention Assez Bien et plus', 'value':1},
+                                              {'label':'Mention Bien et plus', 'value':2},
+                                              {'label':'Mention Très Bien', 'value':3}],
                                      value=2,
                                      labelStyle={'display':'block'}) ,
                                      ]),
@@ -74,8 +75,10 @@ class Brevet():
 
             Notes :
                * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
-
-
+               * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
+               * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
+               * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
+               * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
             """)
         ], style={
             'backgroundColor': 'white',
@@ -96,7 +99,7 @@ class Brevet():
 
     def update_graph(self, mean):
         """
-        fig = px.line(self.df, template='plotly_white')
+        fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='Admis', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
         fig.update_traces(hovertemplate='%{y} décès le %{x:%d/%m/%y}', name='')
         fig.update_layout(
             #title = 'Évolution des prix de différentes énergies',
@@ -113,8 +116,21 @@ class Brevet():
 
         return fig
         """
+        ####################
         fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='Admis', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
+
+        if mean == 1:
+            fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='AvecMention', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
+        elif mean == 2:
+            fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='B_TB', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
+        elif mean == 3:
+            fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='TB', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
+
         return fig
+        ###############
+
+
+
 
 if __name__ == '__main__':
     tr = Brevet()
