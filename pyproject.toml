@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "delta"
+name = "gragas"
 version = "0.1.0"
 description = ""
-authors = ["Olivier Ricou <ricou@lrde.epita.fr>"]
+authors = ["Luca Moorghen <luca.moorghen@epita.fr>", "Vincent Courty <vincent.courty@epita.fr>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
