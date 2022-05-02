@@ -1,5 +1,3 @@
-import pandas as pd
-
 # <---------------------- MATH UTILS ---------------------->
 
 def Union(list1, list2):

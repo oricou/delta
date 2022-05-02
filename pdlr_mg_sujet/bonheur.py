@@ -1,38 +1,40 @@
 import sys, os
-import dash, flask
+import math
 
+import dash
+# import flask
 from dash import dcc, html
 
 import pandas as pd
 import numpy as np
-import math
 
-import plotly.graph_objs as go
+# import plotly.graph_objs as go
 import plotly.express as px
-import plotly.graph_objects as go
+# import plotly.graph_objects as go
 
-import dateutil as du
+# import dateutil as du
 
 # Manipulation du path pour ajouter le chemin relatif et
-# empecher des erreurs peu importe le chemin de la source
+# empêcher des erreurs peu importe le chemin de la source
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)))
 from get_data import df_hr, df_cc
 from utils import *
 
-
 class Bonheur():
-    
-    radioItems = [{'label': "PIB par habitant", 'value': "GDP"},
-                {'label': "Support social", 'value': "Social support"},
-                {'label': "Espérance de vie", 'value': "Life expectancy"},
-                {'label': "Liberté de vivre", 'value': "Freedom of life"},
-                {'label': "Générosité", 'value': "Generosity"},
-                {'label': "Perception de la corruption", 'value': "Corruption"},
-                {'label': "Effets positifs", 'value': "Positive affect"},
-                {'label': "Effets négatifs", 'value': "Negative affect"}]
+
+    radioItems = [
+        {'label': "PIB par habitant", 'value': "GDP"},
+        {'label': "Support social", 'value': "Social support"},
+        {'label': "Espérance de vie", 'value': "Life expectancy"},
+        {'label': "Liberté de vivre", 'value': "Freedom of life"},
+        {'label': "Générosité", 'value': "Generosity"},
+        {'label': "Perception de la corruption", 'value': "Corruption"},
+        {'label': "Effets positifs", 'value': "Positive affect"},
+        {'label': "Effets négatifs", 'value': "Negative affect"},
+    ]
 
     def __init__(self, application = None):
-        
+
         self.mode = 1
         self.filter = ""
         self.graph_type_default = "GDP"
@@ -62,8 +64,7 @@ class Bonheur():
             'backgroundColor': 'white',
             'padding': '10px 50px 10px 50px',
         })
-        
-        
+
         if application:
             self.app = application
         else:
@@ -79,7 +80,7 @@ class Bonheur():
                 dash.dependencies.Input('bnh-btn', 'n_clicks'),
             ]
         )(self._update_graph)
-        
+
         # update graph type
         self.app.callback(
             dash.dependencies.Output('bnh-graph-type', 'value'),
@@ -87,7 +88,7 @@ class Bonheur():
                 dash.dependencies.Input('bnh-btn', 'n_clicks'),
             ]
         )(self._reset_graph_type)
-        
+
         # update graph description
         self.app.callback(
             dash.dependencies.Output('bnh-description', 'children'),
@@ -95,7 +96,7 @@ class Bonheur():
                 dash.dependencies.Input('bnh-graph-type', 'value'),
             ]
         )(self._upgrade_description)
-        
+
         # on reset button clicked or graph-type clicked : reset clickdata value
         self.app.callback(
             dash.dependencies.Output('bnh-graph', 'clickData'),
@@ -108,13 +109,13 @@ class Bonheur():
     def _reset_graph(self, btn):
         self.mode = 1
         return self._update_graph(self, None, self.graph_type_default)
-                                     
+
     def _reset_graph_type(self, btn):
         return self.graph_type_default
-      
+
     def _reset_graph_values(self, graphtype, btn):
         return None
-    
+
     def _update_graph(self, point, graphtype, _):
         ctx = dash.callback_context
         # in case of error, return default graph
@@ -122,14 +123,12 @@ class Bonheur():
             self.mode = 1
             return self._init_graph_primary(self.graph_type_default)
         trigger_id = ctx.triggered[0]['prop_id'].split('.')[0]
-        
+
         # if the trigger is the reset button
         if trigger_id == 'bnh-btn':
             self.mode = 1
             return self._init_graph_primary(self.graph_type_default)
 
-        
-        
         # if the trigger is the graph type
         if trigger_id == 'bnh-graph-type' and graphtype:
             if self.mode == 1 : return self._init_graph_primary(graphtype)
@@ -154,7 +153,6 @@ class Bonheur():
         self.mode = 1
         return self._init_graph_primary(self.graph_type_default)
 
-            
     def _upgrade_description(self, graphtype):
         match graphtype:
             case "GDP" :
@@ -173,36 +171,33 @@ class Bonheur():
                 return md_positive
             case "Negative affect" :
                 return md_negative
-    
+
     def _init_graph_primary(self, graphtype):
         print("_init_graph_primary")
-        
+
         # Get label based on the value in the self.radioItems list ("GDP" => "PIB par habitant")
         axisName = next(filter(lambda element : element["value"] == graphtype, self.radioItems), None)
         axisName = axisName["label"] if axisName else ""
-      
+
         df_hr_ex = df_hr.groupby("Continent").mean()[[graphtype, "Life ladder"]]
         df_hr_ex = df_hr_ex.sort_values(by = "Life ladder", ascending = True)
-        
+
         # If the value is NaN for graphtype, add the red color
         def lbd(index):
             if math.isnan(df_hr_ex.loc[[index]][graphtype]):
                 return f'<span style="color:red">{index}</span>'
             return index
         df_hr_ex.rename(lbd, axis = "index", inplace = True)
-        
+
         figure = px.bar(
             data_frame = df_hr_ex,
             y = graphtype,
             custom_data = [df_hr_ex["Life ladder"]],
 
-            
             color = "Life ladder",
             range_color = [0, 10],
-            
         )
-        
-        
+
         # Add template for hover menu with filter, graphtype, axisName and Life ladder value
         figure.update_traces(
             hovertemplate =
@@ -210,10 +205,10 @@ class Bonheur():
                 '<b>' + axisName + '</b> : ' + ('$' if graphtype == 'GDP' else '') + '%{y:.2f}<br>' +
                 '<b>Échelle de vie</b> : %{customdata[0]:.2f}',
         )
-        
+
         # Update layout : add title, template, hover menu font text, color range title, axis titles
         figure.update_layout(
-            title = f'{axisName}', 
+            title = f'{axisName}',
             template = 'plotly_white',
             hoverlabel = dict(
                 font = dict(color = "white")
@@ -224,40 +219,35 @@ class Bonheur():
             xaxis = dict(title = "Continents"),
             yaxis = dict(title = f'{axisName}')
         )
-        
+
         return figure
-        
-        
-        
+
     def _init_graph_secondary(self, graphtype):
         print("_init_graph_secondary")
-        
+
         # Get label based on the value in the self.radioItems list ("GDP" => "PIB par habitant")
         axisName = next(filter(lambda element : element["value"] == graphtype, self.radioItems), None)
         axisName = axisName["label"] if axisName else ""
-      
+
         df_hr_ex = df_hr[df_hr["Continent"] == self.filter].groupby("Country").mean()[[graphtype, "Life ladder"]]
         df_hr_ex = df_hr_ex.sort_values(by = "Life ladder", ascending = True)
-        
+
         # If the value is NaN for graphtype, add the red color
         def lbd(index):
             if math.isnan(df_hr_ex.loc[[index]][graphtype]):
                 return f'<span style="color:red">{index}</span>'
             return index
         df_hr_ex.rename(lbd, axis = "index", inplace = True)
-        
+
         figure = px.bar(
             data_frame = df_hr_ex,
             y = graphtype,
             custom_data = [df_hr_ex["Life ladder"]],
 
-            
             color = "Life ladder",
             range_color = [0, 10],
-            
         )
-        
-        
+
         # Add template for hover menu with filter, graphtype, axisName and Life ladder value
         figure.update_traces(
             hovertemplate =
@@ -266,10 +256,10 @@ class Bonheur():
                 '<b>' + axisName + '</b> : ' + ('$' if graphtype == 'GDP' else '') + '%{y:.2f}<br>' +
                 '<b>Échelle de vie</b> : %{customdata[0]:.2f}',
         )
-        
+
         # Update layout : add title, template, hover menu font text, color range title, axis titles
         figure.update_layout(
-            title = f'{axisName}, {self.filter}', 
+            title = f'{axisName}, {self.filter}',
             template = 'plotly_white',
             hoverlabel = dict(
                 font = dict(color = "white")
@@ -280,25 +270,22 @@ class Bonheur():
             xaxis = dict(title = "Pays"),
             yaxis = dict(title = f'{axisName}')
         )
-        
+
         return figure
-    
-    
-    
-    
+
     def _init_graph_tertiary(self, graphtype):
         print("_init_graph_tertiary")
-        
+
         # Get label based on the value in the self.radioItems list ("GDP" => "PIB par habitant")
         axisName = next(filter(lambda element : element["value"] == graphtype, self.radioItems), None)
         axisName = axisName["label"] if axisName else ""
-        
-        # Get wanted dataframe with str years and merge it with the [2005-2020] to fill data in missing years 
+
+        # Get wanted dataframe with str years and merge it with the [2005-2020] to fill data in missing years
         df_hr_ex = df_hr[df_hr["Country"] == self.filter][["Year", graphtype, "Life ladder"]]
         df_hr_ex["Year"] = df_hr_ex["Year"].apply(str)
         xAxis = pd.Series(df_hr["Year"].unique(), name = "Year").apply(str)
         df_hr_ex = df_hr_ex.merge(xAxis, on = "Year", how = "right")
-        
+
         # Sort list and set Year as Index
         df_hr_ex = df_hr_ex.sort_values(by = "Year", ascending = True)
         df_hr_ex.set_index("Year", inplace = True)
@@ -309,17 +296,17 @@ class Bonheur():
                 return f'<span style="color:red">{index}</span>'
             return index
         df_hr_ex.rename(lbd, axis = "index", inplace = True)
-        
+
         figure = px.bar(
             data_frame = df_hr_ex,
             y = graphtype,
             custom_data = [df_hr_ex["Life ladder"]],
-                     
+
             # Add color range for Life Ladder
             color = "Life ladder",
             range_color = [0, 10],
         )
-        
+
         # Add template for hover menu with filter, graphtype, axisName and Life ladder value
         figure.update_traces(
             hovertemplate =
@@ -328,10 +315,10 @@ class Bonheur():
                 '<b>' + axisName + '</b> : %{y:.2f}<br>' +
                 '<b>Échelle de vie</b> : %{customdata[0]:.2f}',
         )
-        
+
         # Update layout : add title, template, hover menu font text, color range title, axis titles
         figure.update_layout(
-            title = f'{axisName}, {self.filter}', 
+            title = f'{axisName}, {self.filter}',
             template = 'plotly_white',
             hoverlabel = dict(
                 font = dict(color = "white")
@@ -344,23 +331,11 @@ class Bonheur():
         )
 
         return figure
-        
-    
+
 if __name__ == '__main__':
     nrg = Bonheur()
     nrg.app.run_server(debug=True, port=8051)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 # <------------------------------------------------------->
 md_introduction = """
 Gallup Organization est une entreprise américaine offrant de nombreux services de recherche concernant le management, les ressources humaines et les statistiques. Cette entité est particulièrement connue pour efféctuer différents sondages souvent médiatisés. Dans le cadre du programme Gallup Happiness Poll, l'entreprise recueille des informations et des avis d'habitants de pays du monde entier sur le ressentis de leur vie, et si ils se considèrent comme heureux. Il en résulte un rapport qui s'étend sur plusieurs années et contient des informations particulièrement intéressantes.
@@ -373,19 +348,14 @@ Le but de ce graph est donc d'exprimer les différentes corrélations entre cett
 ---
 
 La navigation dans le graphe est possible en cliquant sur les barres pour ouvrir le détails des valeurs par pays et continents.
-
-
 """
-
 
 md_life_ladder = """
 ### Life Ladder :
-
-
 """
 
 md_gdp = """
-### Produit Intérieur Brut Par habitant (en parité de pouvoir d'achat): 
+### Produit Intérieur Brut Par habitant (en parité de pouvoir d'achat):
 
 Il s'agit du PIB par habitants en parité de pouvoir d'achat en dollar (dollar constant fixé à la valeur de 2017), venant du rapport du World Development Indicator du 16 décembre 2021.
 La parité de pouvoir d'achat (PPA) est un taux de conversion monétaire qui permet d'exprimer dans une unité commune les pouvoirs d'achat des différentes monnaies. Ce taux exprime le rapport entre la quantité d'unités monétaires nécessaire dans des pays différents pour se procurer le même « panier » de biens et de services.
