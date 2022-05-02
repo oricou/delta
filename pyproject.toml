@@ -26,6 +26,7 @@ line_profiler = "^3.5"
 gunicorn = "^20.1"
 
 [tool.poetry.dev-dependencies]
+black = {version = "^22.3.0", allow-prereleases = true}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
