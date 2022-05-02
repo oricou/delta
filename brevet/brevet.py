@@ -13,6 +13,7 @@ from scipy import stats
 from scipy import fft
 import datetime
 import os
+from unidecode import unidecode
 
 class Brevet():
 
@@ -33,6 +34,9 @@ class Brevet():
         # Taux de réussite
         self.brevet_data['Taux de réussite'] =  self.brevet_data['Admis'] / self.brevet_data['Presents']
 
+        # On remplace les arrondissements de Paris, Lyon et Marseille par leurs villes respectives
+        self.brevet_data['Libellé commune'] = self.brevet_data['Libellé commune'].replace(to_replace=r"([A-Z]+)[ ]+([0-9]+.*)", value=r"\1", regex=True)
+
         data_brevet_par_annee_par_secteur = self.brevet_data[self.brevet_data['Secteur d\'enseignement'] != "-"].groupby(['Session', 'Secteur d\'enseignement'])
 
         data_brevet_par_annee_par_secteur = data_brevet_par_annee_par_secteur.agg(Presents = ('Presents', 'sum'),
@@ -46,11 +50,37 @@ class Brevet():
         data_brevet_par_annee_par_secteur = data_brevet_par_annee_par_secteur.reset_index()
         return data_brevet_par_annee_par_secteur
 
+    def load_grandes_villes(self):
+        habitant_ville = pd.read_csv('brevet/data/habitant_par_ville.csv', sep=';')
+        grandes_villes = habitant_ville[habitant_ville["Population municipale (historique depuis 1876) 2018"] >= 50000]["Libellé"]
+
+        # On passe les noms des villes en majuscule et on enlève les accents (ex : Besançon -> BESANCON)
+        grandes_villes = grandes_villes.map(lambda x: unidecode(x).upper())
+
+        grandes_villes = grandes_villes.to_frame()
+
+        # On remplace "SAINT-OUEN-SUR-SEINE par "SAINT-OUEN" pour avoir les memes noms des villes dans les deux dataframes
+        grandes_villes['Libellé'] = grandes_villes['Libellé'].replace(to_replace=r"SAINT-OUEN-SUR-SEINE", value=r"SAINT-OUEN", regex=True)
+
+        brevet_data_grandes_villes = self.brevet_data[self.brevet_data['Libellé commune'].isin(grandes_villes['Libellé'])]
+
+        brevet_data_grandes_villes = brevet_data_grandes_villes.groupby('Session')
+
+        brevet_data_grandes_villes = brevet_data_grandes_villes.agg(PresentsGrandesVilles = ('Presents', 'sum'))
+        brevet_data_grandes_villes["Presents France"] = self.brevet_data.groupby('Session')['Presents'].sum()
+        brevet_data_grandes_villes["Taux Presents Grandes Villes"] = brevet_data_grandes_villes["PresentsGrandesVilles"] / brevet_data_grandes_villes["Presents France"]
+
+        brevet_data_grandes_villes = brevet_data_grandes_villes.reset_index()
+
+        return brevet_data_grandes_villes
+
 
     def __init__(self, application = None):
 
         dbpath = 'brevet/data/fr-en-dnb-par-etablissement.csv'
         self.brevet_data = pd.read_csv(dbpath, sep=';')
+
+        self.brevet_data_grandes_villes = self.load_grandes_villes()
 
         ## CLEANING DATA ##
         self.data_brevet_par_annee_par_secteur = self.clean_brevet_data()
@@ -69,6 +99,7 @@ class Brevet():
                                      labelStyle={'display':'block'}) ,
                                      ]),
             html.Br(),
+
             dcc.Markdown("""
             Le graphique est interactif. En passant la souris sur les courbes vous avez une infobulle.
             En utilisant les icônes en haut à droite, on peut agrandir une zone, déplacer la courbe, réinitialiser.
@@ -79,12 +110,49 @@ class Brevet():
                * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
                * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
                * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
-            """)
+
+               #### À propos
+
+               * Sources : https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees/
+               * (c) 2022 Hugo Levy & Jacques Ren
+            """
+            ),
+            html.H3(children='Etude démographique'),
+            html.Div([
+                html.Div([ dcc.Graph(id='tr-sec-graph'), ], style={'width':'100%', }),
+                html.Div([ dcc.RadioItems(id='tr-sec-mean',
+                                         options=[{'label':'Taux Presents Grandes Villes', 'value':0},
+                                                  {'label':'Presents France', 'value':1}],
+                                         value=0,
+                                         labelStyle={'display':'block'}) ,
+                                         ]),
+                html.Br(),
+
+                dcc.Markdown("""
+                Le graphique est interactif. En passant la souris sur les courbes vous avez une infobulle.
+                En utilisant les icônes en haut à droite, on peut agrandir une zone, déplacer la courbe, réinitialiser.
+
+                Notes :
+                   * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
+                   * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
+                   * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
+                   * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
+                   * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
+
+                """
+                )
+                ], style={
+                    'backgroundColor': 'white',
+                     'padding': '10px 50px 10px 50px',
+                     }
+                )
         ], style={
             'backgroundColor': 'white',
              'padding': '10px 50px 10px 50px',
-             }
+             },
         )
+
+
 
         if application:
             self.app = application
@@ -97,26 +165,20 @@ class Brevet():
                     dash.dependencies.Output('tr-main-graph', 'figure'),
                     dash.dependencies.Input('tr-mean', 'value'))(self.update_graph)
 
-    def update_graph(self, mean):
-        """
-        fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='Admis', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
-        fig.update_traces(hovertemplate='%{y} décès le %{x:%d/%m/%y}', name='')
-        fig.update_layout(
-            #title = 'Évolution des prix de différentes énergies',
-            xaxis = dict(title=""), # , range=['2010', '2021']),
-            yaxis = dict(title="Nombre de décès par jour"),
-            height=450,
-            showlegend=False,
-        )
+        self.app.callback(
+                    dash.dependencies.Output('tr-sec-graph', 'figure'),
+                    dash.dependencies.Input('tr-sec-mean', 'value'))(self.update_2graph)
+
+    def update_2graph(self, mean):
+        fig = px.line(self.brevet_data_grandes_villes, x='Session', y='Taux Presents Grandes Villes')
         if mean == 1:
-            reg = stats.linregress(np.arange(len(self.df)), self.df.morts)
-            fig.add_scatter(x=[self.df.index[0], self.df.index[-1]], y=[reg.intercept, reg.intercept + reg.slope * (len(self.df)-1)], mode='lines', marker={'color':'red'})
-        elif mean == 2:
-            fig.add_scatter(x=self.df.index, y=self.day_mean, mode='lines', marker={'color':'red'})
+            fig = px.line(self.brevet_data_grandes_villes, x='Session', y='Presents France')
 
         return fig
-        """
-        ####################
+        ###############
+
+
+    def update_graph(self, mean):
         fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='Admis', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
 
         if mean == 1:
@@ -127,7 +189,6 @@ class Brevet():
             fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='TB', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
 
         return fig
-        ###############
 
 
 
