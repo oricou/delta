@@ -4,7 +4,6 @@ import dash
 import flask
 import chart_studio.plotly as py
 import plotly.graph_objs as go 
-from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 from dash import dcc
 from dash import html
 import pandas as pd
@@ -41,7 +40,7 @@ class Planisphere():
         self.df = df_crimes
 
         self.main_layout = html.Div(children=[
-            html.H3(children='Planishpère'),
+            html.H3(children='Planisphère'),
             html.Div([ dcc.Graph(id='cpp-main-graph'), ], style={'width':'100%', }),
             html.Div([ dcc.RadioItems(id='cpp-mean', 
                                      options=[{'label':'Crimes liés à l\'alcool', 'value':0}], 
