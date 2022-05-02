@@ -8,7 +8,7 @@ from dash import html
 from dash.dependencies import Input, Output, State
 from typing import List, Dict, Callable, Any
 import folium
-
+import branca.colormap as cm
 from . import utils
 
 
@@ -144,15 +144,20 @@ class TGV:
         self.df_gares = gares
         self.df_trajet = df_trajet
 
-    def update_graph(self, year) -> go.Figure:
+    def update_graph(self, year, colonne) -> go.Figure:
         """
         Create graph mapping train stations and lines to the lateness of the trains
         """
 
         year += 2018
         france_line = folium.Map(location=[46.8, 2], zoom_start=6)
+        max_traffic = self.df_trajet[colonne].max()
+        min_traffic = self.df_trajet[colonne].min()
         df_trajet = self.df_trajet[self.df_trajet.index == str(year)]
-        max_traffic = df_trajet["Nombre de circulations prévues"].max()
+        colormap = cm.LinearColormap(
+            ["green", "yellow", "red"], vmin=min_traffic, vmax=max_traffic
+        )
+        france_line.add_child(colormap)
 
         for i in range(len(self.df_gares["WGS 84"])):
             france_line.add_child(
@@ -169,15 +174,21 @@ class TGV:
 
         for i in range(len(df_trajet["Coord_départ"])):
 
-            traffic = df_trajet["Nombre de circulations prévues"].iloc[i]
+            traffic = df_trajet[colonne].iloc[i]
             folium.PolyLine(
                 (
                     df_trajet["Coord_départ"].iloc[i],
                     df_trajet["Coord_arrivée"].iloc[i],
                 ),
-                color=utils.get_color(traffic, max_traffic),
+                color=colormap.rgb_hex_str(traffic),
                 weight=traffic / max_traffic * 3,
                 opacity=1,
+                popup="{}: {}<br>Départ: {}<br>Arrivée: {}".format(
+                    colonne,
+                    df_trajet[colonne].iloc[i],
+                    df_trajet["Gare de départ"].iloc[i],
+                    df_trajet["Gare d'arrivée"].iloc[i],
+                ),
             ).add_to(france_line)
 
         france_line.save("mymapnew.html")
@@ -195,7 +206,7 @@ class TGV:
 
         self.app.callback(
             Output("tgv-main-graph", "srcDoc"),
-            [Input("year-slider", "value")],
+            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value")],
         )(self.update_graph)
 
 

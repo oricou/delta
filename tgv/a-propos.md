@@ -4,4 +4,5 @@ En utilisant les icônes en haut à droite, on peut agrandir une zone, déplacer
 Sources : https://ressources.data.sncf.com/explore/
 
 Notes :
-    * TODO mettre des conclusions sur les différents graphs que ont a fait
+* La ligne Paris-Bordeaux est sacrément beaucoup annulée houlala
+* En 2018 ya beaucoup greve de fou

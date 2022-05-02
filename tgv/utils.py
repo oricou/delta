@@ -6,7 +6,6 @@ from dash import html
 cur_path = os.path.dirname(__file__)
 a_propos_path = os.path.join(cur_path, "a-propos.md")
 
-
 list_colors = [
     "#0000FF",
     "#1200FF",
@@ -40,41 +39,61 @@ list_colors = [
     "#FF0000",
 ]
 
-def get_colors(traffic: int, max_traffic: int):
-    return list_colors[round(traffic/max_traffic * (len(list_colors)-1))]
+y_axis = [
+    "Nombre de circulations prévues",
+    "Nombre de trains annulés",
+    "Retard moyen de tous les trains au départ",
+    "Retard moyen de tous les trains à l'arrivée",
+]
+
+
+def get_color(traffic: int, max_traffic: int):
+    return list_colors[round(traffic / max_traffic * (len(list_colors) - 1))]
+
 
 def make_layout() -> html.Div:
     return html.Div(
-            children=[
-                html.H3(children="Régularité des Grandes Lignes de TGV de la SNCF"),
-                html.Div(
-                    [
-                        html.Iframe(
-                            id="tgv-main-graph", srcDoc=None, width="100%", height="600"
-                        ),
-                    ],
-                    style={
-                        "width": "100%",
-                    },
-                ),
-                html.Div(
-                    [
-                        dcc.Slider(
-                            0,
-                            4,
-                            1,
-                            id="year-slider",
-                            marks={i: str(i) for i in range(4)},
-                            value=2,
-                            updatemode='drag'
-                        )
-                    ]
-                ),
-                html.Br(),
-                dcc.Markdown(open(a_propos_path).read()),
-            ],
-            style={
-                "backgroundColor": "white",
-                "padding": "10px 50px 10px 50px",
-            },
-        )
+        children=[
+            html.H3(children="Régularité des Grandes Lignes de TGV de la SNCF"),
+            html.Div(
+                [
+                    html.Iframe(
+                        id="tgv-main-graph", srcDoc=None, width="100%", height="600"
+                    ),
+                ],
+                style={
+                    "width": "100%",
+                },
+            ),
+            html.Div(
+                [
+                    dcc.Slider(
+                        0,
+                        4,
+                        1,
+                        id="tgv-year-slider",
+                        marks={i: str(2018 + i) for i in range(5)},
+                        value=2,
+                        updatemode="drag",
+                    ),
+                    html.Div(
+                        [
+                            html.Div("Y Axis options: "),
+                            dcc.Dropdown(
+                                id="tgv-y-axis-dropdown",
+                                options=[{"label": i, "value": i} for i in y_axis],
+                                value="Nombre de circulations prévues",
+                            ),
+                        ],
+                        #style={"width": "6em", "padding": "2em 0px 0px 0px"},
+                    ),
+                ]
+            ),
+            html.Br(),
+            dcc.Markdown(open(a_propos_path).read()),
+        ],
+        style={
+            "backgroundColor": "white",
+            "padding": "10px 50px 10px 50px",
+        },
+    )
