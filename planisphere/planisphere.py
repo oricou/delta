@@ -82,6 +82,7 @@ class Planisphere():
             self.change_df('spirits', 'spiritueux')
 
         choromap = go.Figure(data = [self.data],layout = self.layout)
+        choromap.update_layout(margin=dict(l=0, r=0, t=50, b=0, autoexpand=True))
         return choromap
 
     def change_df(self, alcohol_type, french_name):
@@ -97,7 +98,7 @@ class Planisphere():
         self.data['locations'] = self.df['Location']
         self.data['z'] = self.df['Ratio']
         self.data['text'] = self.df['Location']
-        self.data['colorbar'] = {'title' : 'Prix moyen des '  + french_name + ' par pays'}
+        self.data['colorbar'] = {'title' : 'Prix de l\'alcool en fonction du PIB'}
 
         self.layout['title'] = 'Prix moyen des '  + french_name + ' par pays'
         
