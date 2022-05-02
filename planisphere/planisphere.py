@@ -15,35 +15,33 @@ from scipy import fft
 class Planisphere():
     def __init__(self, application = None):
 
+        pib = pd.read_csv('data/gdp-per-capita-worldbank.csv')
+        pib = pib.rename(columns = {"GDP per capita, PPP (constant 2017 international $)": "GDP"})
+        pib = pib.sort_values(by = ['Year'])
+        pib = pib.drop_duplicates(subset=['Code'], keep='last')
 
-        df_crimes = pd.read_csv('data/gho_alcohol_related_crimes.csv')
-        df_crimes.dropna(how='all', axis=1, inplace=True)
-        df_crimes = df_crimes[df_crimes['FactValueNumeric'].notna()]
+        self.pib = pib
 
         self.data = dict(
         type = 'choropleth',
-        locations = df_crimes['Location'],
         locationmode = 'country names',
-        z = df_crimes['Value'],
-        text = df_crimes['Location'],
-        colorbar = {'title' : 'alcohol related crimes per country'},
         ) 
 
         self.layout = dict(
-            title = 'alcohol related crimes per country',
             geo = dict(
             showframe = False,
             projection = {'type':'natural earth'}
             )
         )
 
-        self.df = df_crimes
 
         self.main_layout = html.Div(children=[
             html.H3(children='Planisphère'),
-            html.Div([ dcc.Graph(id='cpp-main-graph'), ], style={'width':'100%', }),
-            html.Div([ dcc.RadioItems(id='cpp-mean', 
-                                     options=[{'label':'Crimes liés à l\'alcool', 'value':0}], 
+            html.Div([ dcc.Graph(id='pla-main-graph'), ], style={'width':'100%', }),
+            html.Div([ dcc.RadioItems(id='pla-mean', 
+                                     options=[{'label':'Prix moyen des bières par pays', 'value':0},
+                                              {'label':'Prix moyen des vins par pays', 'value':1},
+                                              {'label':'Prix moyen des spiritueux par pays', 'value':2},], 
                                      value=0,
                                      labelStyle={'display':'block'}) ,
                                      ]),
@@ -72,14 +70,37 @@ class Planisphere():
             self.app.layout = self.main_layout
 
         self.app.callback(
-                    dash.dependencies.Output('cpp-main-graph', 'figure'),
-                    dash.dependencies.Input('cpp-mean', 'value'))(self.update_graph)
+                    dash.dependencies.Output('pla-main-graph', 'figure'),
+                    dash.dependencies.Input('pla-mean', 'value'))(self.update_graph)
 
     def update_graph(self, mean):
-        #if mean == 1:
+        if mean == 0:
+            self.change_df('beer', 'bières')
+        elif mean == 1:
+            self.change_df('wine', 'vins')
+        elif mean == 2:
+            self.change_df('spirits', 'spiritueux')
+
         choromap = go.Figure(data = [self.data],layout = self.layout)
         return choromap
+
+    def change_df(self, alcohol_type, french_name):
+        df_alcohol = pd.read_csv('data/gho_average_price_500_mls_' + alcohol_type + '_in_us$.csv')
+        df_alcohol.dropna(how='all', axis=1, inplace=True)
+        df_alcohol[['Location', 'SpatialDimValueCode', 'Value']]
+        df_alcohol= df_alcohol.rename(columns = {"SpatialDimValueCode": "Code"})
+        df_alcohol = df_alcohol[df_alcohol['Value'].notna()]
+
+        self.df = pd.merge(df_alcohol, self.pib, on = 'Code')
+        self.df['Ratio'] = self.df.apply(lambda row: row.GDP / row.Value, axis=1)
+
+        self.data['locations'] = self.df['Location']
+        self.data['z'] = self.df['Ratio']
+        self.data['text'] = self.df['Location']
+        self.data['colorbar'] = {'title' : 'Prix moyen des '  + french_name + ' par pays'}
+
+        self.layout['title'] = 'Prix moyen des '  + french_name + ' par pays'
         
 if __name__ == '__main__':
-    cpp = Planisphere()
-    cpp.app.run_server(debug=True, port=8051)
+    pla = Planisphere()
+    pla.app.run_server(debug=True, port=8051)

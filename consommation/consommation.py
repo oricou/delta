@@ -27,7 +27,13 @@ class Consommation():
         del pib['Entity']
         pib = pib.sort_values(by = ['Year'])
         pib = pib.drop_duplicates(subset=['Code'], keep='last')
+
+        alcohol_consumption = alcohol_consumption.loc[alcohol_consumption["% of alcohol drinkers"] != '.']
+        alcohol_consumption = alcohol_consumption.astype({"% of alcohol drinkers" : "float64"})
+
         self.df_consumption_pib = pd.merge(alcohol_consumption, pib, on = 'Code')
+
+
 
         self.main_layout = html.Div(children=[
             html.H3(children='Consommation d\'alcool selon le PIB'),
@@ -67,7 +73,7 @@ class Consommation():
 
     def update_graph(self, mean):
         #if mean == 1:
-        fig = px.scatter(self.df_consumption_pib[self.df_consumption_pib == 'BTSX'], x='GDP', y= '% of alcohol drinkers',  hover_name="Country")
+        fig = px.scatter(self.df_consumption_pib[self.df_consumption_pib.Sex == 'BTSX'], x='GDP', y= '% of alcohol drinkers', color = 'Zone', hover_name="Country", log_x=True)
         return fig
 
         
