@@ -95,7 +95,7 @@ class Brevet():
                                               {'label':'Mention Assez Bien et plus', 'value':1},
                                               {'label':'Mention Bien et plus', 'value':2},
                                               {'label':'Mention Très Bien', 'value':3}],
-                                     value=2,
+                                     value=0,
                                      labelStyle={'display':'block'}) ,
                                      ]),
             html.Br(),
