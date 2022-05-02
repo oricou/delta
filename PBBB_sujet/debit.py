@@ -89,8 +89,11 @@ class HautDebit():
             html.H3(children='Acces au haut débit en France'),
 
             html.Div([
-                html.Div([dcc.Graph(id='debit-main-map'), ],
-                         style={'width': '90%', }),
+                html.Div([
+                    html.Div(
+                        'Carte de la couverture haut-débit en France métropolitaine par département en fonction du temps'),
+                    dcc.Graph(id='debit-main-map'),
+                ], style={'width': '90%', }),
 
                 html.Div([
                     html.Div('Type'),
@@ -137,8 +140,11 @@ class HautDebit():
 
             html.Br(),
             html.Div([
-                html.Div([dcc.Graph(id='debit-graph'), ],
-                         style={'width': '90%', }),
+
+                html.Div([
+                    html.Div(
+                        'Graphe de l\'évolution de la couverture haut-débit en France métropolitaine par département en fonction du temps'),
+                    dcc.Graph(id='debit-graph'), ], style={'width': '90%', }),
 
                 html.Div([
                     html.Div('Type'),
@@ -151,15 +157,27 @@ class HautDebit():
                     ),
                     html.Br(),
                     html.Div('Filtre'),
-                    html.Div(
-                    [dcc.RangeSlider(
-                        id='debit-filter-type-slider',
-                        min=0,
-                        max=1,
-                        value=[0,1],
-                        vertical=True,
-                    )],style={ 'background-image': 'linear-gradient(rgb(0, 200, 200), rgb(200, 0, 0))'}),
-                    html.Br(),
+                    html.Div([
+                        html.Div([
+                            html.Br(), html.Br(), html.Br(), html.Br(), html.Br(
+                            ), html.Br(), html.Br(), html.Br(), html.Br(),
+                            html.Br(), html.Br(), html.Br(), html.Br(), html.Br(
+                            ), html.Br(), html.Br(), html.Br(), html.Br(),
+                        ], style={'background-image': 'linear-gradient(rgb(0, 200, 200), rgb(200, 0, 0))',
+                                  'width': '40%',
+                                  'float': 'left',
+                                  'height': '100%',
+                                  'padding': '0 0'}),
+                        html.Div([
+                            dcc.RangeSlider(
+                                id='debit-filter-type-slider',
+                                min=0,
+                                max=1,
+                                value=[0, 1],
+                                vertical=True,
+                            )
+                        ], style={'width': '60%', 'float': 'right'}),
+                    ]),
                 ], style={'margin-left': '20px', 'width': '7em', 'float': 'right'}),
             ], style={
                 'padding': '10px 50px',
@@ -173,6 +191,8 @@ class HautDebit():
             On peut voir :
             - le nombre d'opérateur dans le département ne semble pas influer sur la couverture
             - le nombre de logement dans le département semble impacter la couverture. En effet, les départements où il y a plus de logemment ont une meilleure couverture
+
+            #### À propos
 
             Sources :
             - nombre d'opérateur par département : https://www.arcep.fr/fileadmin/reprise/dossiers/fibre/liste-gestion-identifiants-prefixe-ligne-fibre-2.xlsx
@@ -195,14 +215,14 @@ class HautDebit():
             dash.dependencies.Output('debit-main-map', 'figure'),
             [dash.dependencies.Input('debit-crossfilter-type-type', 'value'),
              dash.dependencies.Input('debit-crossfilter-year-slider', 'value')])(self.update_map)
-        
+
         # Graph
         self.app.callback(
             dash.dependencies.Output('debit-graph', 'figure'),
             [dash.dependencies.Input('debit-crossfilter-type-couleur', 'value'),
              dash.dependencies.Input('debit-filter-type-slider', 'value')])(self.update_graph)
 
-        ## Filter
+        # Filter
         self.app.callback(
             dash.dependencies.Output('debit-filter-type-slider', 'max'),
             [dash.dependencies.Input('debit-crossfilter-type-couleur', 'value')])(self.update_slider_max)
@@ -278,6 +298,7 @@ class HautDebit():
             return self.graph_departement['Meilleure estimation des locaux T4 2021 '].unique().max()
         elif type == 'opérateur':
             return self.graph_departement['Nombre d\'opérateur'].unique().max()
+
     def update_slider_value(self, type):
         return [0, self.update_slider_max(type)]
     # def update_slider_marks(self, type):
@@ -287,7 +308,7 @@ class HautDebit():
     #     for i in range(4):
     #         ret[i * M] = {'label' : str(i * M), 'style' : 'rgb(255,255,255)'}
     #     ret[str(Max)] = {'label' : str(Max), 'style' : 'rgb(255,255,255)'}
-    #     print(ret)      
+    #     print(ret)
     #     return ret
 
     def run(self, debug=False, port=8050):
