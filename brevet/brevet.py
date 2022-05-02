@@ -105,16 +105,14 @@ class Brevet():
             En utilisant les icônes en haut à droite, on peut agrandir une zone, déplacer la courbe, réinitialiser.
 
             Notes :
-               * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
-               * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
-               * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
-               * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
-               * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
+               * Comme attendu, on peut observer une légère augmentation du taux d'admis au brevet année après année
+               * Une différence entre les secteurs public et privé est notable : les établissements privés ont environ 10% de taux d'admis de plus que les établissements publics
+               * On observe également un léger pic de taux d'admis dans le secteur public en 2017.
+               * Bien que le taux d'admis est en légère augmentation, le taux de mentions augmente plus, et cette tendance est encore plus importante sur le taux de mentions Très Bien.
+               * En moyenne, les taux d'élèves inscrits dans les secteurs privé et public ayant obtenu la mention Très Bien au brevet sont égaux entre 2006 et 2016 (de 5% à 12%), puis l'écart se creuse à partir de l'année 2017, où les taux de mentions Très Bien doublent par rapport à l'année précédente.
+               * A partir de l'année 2017, on observe une forte augmentation du taux de mentions Très Bien, qui se ressent moins sur le taux de mentions Bien et mieux.
+               * Cette augmentation est corrélée avec la réforme du brevet de 2017.
 
-               #### À propos
-
-               * Sources : https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees/
-               * (c) 2022 Hugo Levy & Jacques Ren
             """
             ),
             html.H3(children='Etude démographique'),
@@ -133,12 +131,15 @@ class Brevet():
                 En utilisant les icônes en haut à droite, on peut agrandir une zone, déplacer la courbe, réinitialiser.
 
                 Notes :
-                   * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
-                   * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
-                   * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
-                   * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
-                   * A partir de l'année 2017, on observe un pic de taux de mentions très bien.
 
+                   * De 2006 à 2020 le nombre d'inscrits au brevet dans les grandes villes reste constant environ 19-20%
+                   * Le nombre d'inscrits au brevet en France a augmenté de 11% (+ 80 000) en 14 ans, ce qui traduit une augmentation de la population
+
+
+                #### À propos
+
+                * Sources : https://data.education.gouv.fr/explore/dataset/fr-en-dnb-par-etablissement/
+                * (c) 2022 Hugo Levy & Jacques Ren
                 """
                 )
                 ], style={
