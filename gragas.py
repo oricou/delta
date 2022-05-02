@@ -2,12 +2,14 @@ import dash
 from dash import dcc
 from dash import html
 from planisphere import planisphere
+from consommation import consommation
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__,  title="Gragas", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
 server = app.server
-pla = planisphere.Planisphere(app) 
+pla = planisphere.Planisphere(app)
+con = consommation.Consommation(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -17,6 +19,8 @@ main_layout = html.Div([
                           children = [
                               html.Center(html.H2("Gragas")),
                               dcc.Link(html.Button("Planisphère", style={'width':"100%"}), href='/planisphere'),
+                              html.Br(),
+                              dcc.Link(html.Button("Consommation selon le PIB", style={'width':"100%"}), href='/consommation'),
                               html.Br(),
                               html.Br(),
                               html.Br(),
@@ -53,6 +57,8 @@ app.validation_layout = html.Div([
 def display_page(pathname):
     if pathname == '/planisphere':
         return pla.main_layout
+    elif pathname == '/consommation':
+        return con.main_layout
     else:
         return home_page
 
