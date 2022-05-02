@@ -7,6 +7,7 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
+<<<<<<< HEAD
 from MC_AB_consommationEtProductionEnergétique import petrole
 from SG_AH_pollution_des_transports import pollution
 from pbmc_accidents_routiers import pbmc_accidents_routiers as pbmc
@@ -61,6 +62,7 @@ from formations import formations as formations_lib
 from APAAL_criminalite_education import criminalite_education
 from ADHD_Movies import movies
 from ab_wg_apb_parcoursup import apb_parcoursup
+from tgv import tgv
 
 #@profile
 def init():
@@ -344,6 +346,7 @@ server = app.server
 pop = population.WorldPopulationStats(app)
 nrg = energies.Energies(app)
 dec = deces.Deces(app)
+tgv = tgv.TGV(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -357,6 +360,8 @@ main_layout = html.Div([
                               dcc.Link(html.Button('Natalité vs revenus', style={'width':"100%"}), href='/population'),
                               html.Br(),
                               dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
+                              html.Br(),
+                              dcc.Link(html.Button('Régularité des TGV', style={'width':"100%"}), href='/tgv'),
                               html.Br(),
                               html.Br(),
                               html.Br(),
@@ -398,6 +403,8 @@ def display_page(pathname):
         return pop.main_layout
     elif pathname == '/deces':
         return dec.main_layout
+    elif pathname == '/tgv':
+        return tgv.main_layout
     else:
         return home_page
 
