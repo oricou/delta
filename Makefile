@@ -1,17 +1,17 @@
 run:
-	poetry run python gragas.py
+	poetry run python lambda.py
 
 docker:
-	tar czvf apps.tgz gragas.py */
-	docker build -t bicente/gragas .
+	tar czvf apps.tgz lambda.py */
+	docker build -t bicente/lambda .
 
 docker_no_cache:
-	tar czvf apps.tgz gragas.py */
-	docker build --no-cache -t bicente/gragas .
+	tar czvf apps.tgz lambda.py */
+	docker build --no-cache -t bicente/lambda .
 
 install:
 	docker login
-	docker push bicente/gragas
+	docker push bicente/lambda
 
 docker_run:
-	docker run -dit --name gragas -p8000:8000 bicente/gragas
+	docker run -dit --name lambda -p8000:8000 bicente/lambda

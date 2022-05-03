@@ -6,7 +6,7 @@ from consommation import consommation
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__,  title="Gragas", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__,  title="Lambda", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
 server = app.server
 pla = planisphere.Planisphere(app)
 con = consommation.Consommation(app)
@@ -17,14 +17,14 @@ main_layout = html.Div([
                  dcc.Location(id='url', refresh=False),
                  html.Div(className="two columns",
                           children = [
-                              html.Center(html.H2("Gragas")),
+                              html.Center(html.H2("λambda δata")),
                               dcc.Link(html.Button("Consommation selon le PIB", style={'width':"100%"}), href='/consommation'),
                               html.Br(),
                               dcc.Link(html.Button("Planisphère", style={'width':"100%"}), href='/planisphere'),
                               html.Br(),
                               html.Br(),
                               html.Br(),
-                              html.Center(html.A('Code source', href='https://github.com/El-Bicente/gragas')),
+                              html.Center(html.A('Code source', href='https://github.com/El-Bicente/lambda')),
                           ]),
                  html.Div(id='page_content', className="ten columns"),
             ]),
