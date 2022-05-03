@@ -36,12 +36,12 @@ class Planisphere():
 
 
         self.main_layout = html.Div(children=[
-            html.H3(children='Planisphère'),
+            html.H3(children='Prix des alcools face aux revenus'),
             html.Div([ dcc.Graph(id='pla-main-graph'), ], style={'width':'100%', }),
             html.Div([ dcc.RadioItems(id='pla-mean', 
-                                     options=[{'label':'Prix moyen des bières par pays', 'value':0},
-                                              {'label':'Prix moyen des vins par pays', 'value':1},
-                                              {'label':'Prix moyen des spiritueux par pays', 'value':2},], 
+                                     options=[{'label':'Bières', 'value':0},
+                                              {'label':'Vins', 'value':1},
+                                              {'label':'Spiritueux', 'value':2},], 
                                      value=0,
                                      labelStyle={'display':'block'}) ,
                                      ]),
@@ -88,14 +88,14 @@ class Planisphere():
         df_alcohol = df_alcohol[df_alcohol['Value'].notna()]
 
         self.df = pd.merge(df_alcohol, self.pib, on = 'Code')
-        self.df['Ratio'] = self.df.apply(lambda row: row.GDP / row.Value, axis=1)
+        self.df['Ratio'] = self.df.apply(lambda row: row.Value / row.GDP * 100, axis=1)
 
         self.data['locations'] = self.df['Location']
         self.data['z'] = self.df['Ratio']
         self.data['text'] = self.df['Location']
-        self.data['colorbar'] = {'title' : 'Prix de l\'alcool en fonction du PIB'}
+        self.data['colorbar'] = {'title' : 'Prix de l\'alcool par rapport au PIB'}
 
-        self.layout['title'] = 'Prix moyen des '  + french_name + ' par pays'
+        #self.layout['title'] = 'Prix moyen des '  + french_name + ' par rapport au PIB'
         
 if __name__ == '__main__':
     pla = Planisphere()

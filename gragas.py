@@ -18,9 +18,9 @@ main_layout = html.Div([
                  html.Div(className="two columns",
                           children = [
                               html.Center(html.H2("Gragas")),
-                              dcc.Link(html.Button("Planisphère", style={'width':"100%"}), href='/planisphere'),
-                              html.Br(),
                               dcc.Link(html.Button("Consommation selon le PIB", style={'width':"100%"}), href='/consommation'),
+                              html.Br(),
+                              dcc.Link(html.Button("Planisphère", style={'width':"100%"}), href='/planisphere'),
                               html.Br(),
                               html.Br(),
                               html.Br(),
