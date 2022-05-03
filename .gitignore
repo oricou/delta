@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.tgz
-projet_pybd.ipynb
+*.lock
 
 # C extensions
 *.so

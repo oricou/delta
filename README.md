@@ -1,4 +1,4 @@
-# Gragas
+# Lambda
 
 ### Analyse de données ouvertes
 

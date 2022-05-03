@@ -19,6 +19,9 @@ def load_df():
 
     pib = pd.read_csv('data/gdp-per-capita-worldbank.csv')
 
+    # Removing rows with missing values
+    pib.dropna(how='all', axis=1, inplace=True)
+
     # Renaming columns
     pib = pib.rename(columns = {"GDP per capita, PPP (constant 2017 international $)": "pib",
                                 "Year": "annee",

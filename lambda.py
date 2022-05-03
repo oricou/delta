@@ -1,15 +1,15 @@
 import dash
 from dash import dcc
 from dash import html
-from planisphere import planisphere
+from prix import prix
 from consommation import consommation
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__,  title="Lambda", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
 server = app.server
-pla = planisphere.Planisphere(app)
 con = consommation.Consommation(app)
+prx = prix.Prix(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -20,7 +20,7 @@ main_layout = html.Div([
                               html.Center(html.H2("λambda δata")),
                               dcc.Link(html.Button("Consommation selon le PIB", style={'width':"100%"}), href='/consommation'),
                               html.Br(),
-                              dcc.Link(html.Button("Planisphère", style={'width':"100%"}), href='/planisphere'),
+                              dcc.Link(html.Button("Prix des alcools vs revenus", style={'width':"100%"}), href='/prix'),
                               html.Br(),
                               html.Br(),
                               html.Br(),
@@ -55,8 +55,8 @@ app.validation_layout = html.Div([
 @app.callback(dash.dependencies.Output('page_content', 'children'),
               [dash.dependencies.Input('url', 'pathname')])
 def display_page(pathname):
-    if pathname == '/planisphere':
-        return pla.main_layout
+    if pathname == '/prix':
+        return prx.main_layout
     elif pathname == '/consommation':
         return con.main_layout
     else:
