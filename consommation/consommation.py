@@ -84,7 +84,7 @@ class Consommation():
                         html.Br(),
                     ], style={'margin-left':'30px', 'width': '14em', 'float':'right'}),
                 ], style={
-                    'padding': '40px 50px', 
+                    'padding': '0px 50px', 
                     'display':'flex',
                     'justifyContent':'center'
                 }),     
