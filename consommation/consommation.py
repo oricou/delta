@@ -181,22 +181,6 @@ class Consommation():
                             title= None),
         )
         return fig
-        """
-        return {
-            'data': [go.Scatter(
-                x = dfg['Year'],
-                y = dfg['GDP'],
-                mode = 'lines+markers',
-            )],
-            'layout': {
-                'height': 225,
-                'margin': {'l': 50, 'b': 20, 'r': 10, 't': 50},
-                'yaxis': {'title':'PIB par personne (US $)',
-                          'type': 'linear' if xaxis_type == 'Linéaire' else 'log'},
-                'xaxis': {'showgrid': False}
-            }
-        }
-        """
 
     # bar charts
     def update_consumption_barcharts(self, hoverData):
@@ -213,6 +197,7 @@ class Consommation():
                            title= None),
                 showlegend=False,
         )
+        fig.update_traces(width=0.5)
         return fig
 
         
