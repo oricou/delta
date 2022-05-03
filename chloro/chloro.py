@@ -19,7 +19,6 @@ import numpy as np
 
 class Chloro():
     def create_fig(self, chldf, fapardf, chl_colormap, fapar_colormap):
-        mapbox_access_token = 'pk.eyJ1IjoiZ2NhcnJpZXJlIiwiYSI6ImNsMmI1c3p3ejAxNmEzaW51MXBta2N6bTcifQ.f_MlUBEyToUp92xcCOwF0g'
 
         data = []
 
@@ -64,7 +63,7 @@ class Chloro():
             hovermode='closest',
             showlegend=False,
             mapbox=dict(
-                accesstoken=mapbox_access_token,
+                accesstoken=self.mapbox_access_token,
                 bearing=0,
                 center=dict(
                     lat=44,
@@ -83,6 +82,8 @@ class Chloro():
 
     def __init__(self, application = None):
         
+        self.mapbox_access_token = 'pk.eyJ1IjoiZ2NhcnJpZXJlIiwiYSI6ImNsMmI1c3p3ejAxNmEzaW51MXBta2N6bTcifQ.f_MlUBEyToUp92xcCOwF0g'
+
         self.chldf = pd.read_pickle("data/chldf_2020-06-30.pkl")
         self.fapardf = pd.read_pickle("data/fapardf_2020-06-30.pkl")
  
@@ -100,7 +101,7 @@ class Chloro():
         colormaps = ["viridis", "plasma", "bluered_r", "algae_r", "gray"]
       
         self.main_layout = html.Div(children=[
-            html.H3(children='Chlorophylle x FAPAR'),
+            html.H3(children='FAPAR x Chlorophylle'),
             html.Br(),
             html.Div([ dcc.Graph(id='map'), ], style={'width':'100%',}),
             html.Br(),
@@ -135,7 +136,7 @@ class Chloro():
                                     placeholder="Seuil", 
                                     min = 0, max = 4
                                 )
-                           ], style={'width': '16em'} ),
+                           ], style={'width': '17em'} ),
 
                 html.Div([ html.Div('Seuillage chlorophylle'),
                            dcc.RadioItems(id='map_chl_treshold_type', 
@@ -151,10 +152,19 @@ class Chloro():
                                     placeholder="Seuil", 
                                     min = 0, max = 4
                                 )
-                            ], style={'width': '16em'} ),
+                            ], style={'width': '17em'} ),
 
 
-                html.Div([ html.Div('Colormap Chlorophylle'),
+                html.Div([ html.Div('Colormap FAPAR'),
+                           dcc.Dropdown(
+                               id='map_fapar_colormap',
+                               options=[{'label': item, 'value': item} for item in colormaps],
+                               value="bluered_r",
+                               clearable=False,
+                               style={'margin' : '0px 0px 14px 0px'}
+                           ),
+                           
+                           html.Div('Colormap Chlorophylle'),
                            dcc.Dropdown(
                                id='map_chl_colormap',
                                options=[{'label': item, 'value': item} for item in colormaps],
@@ -162,15 +172,6 @@ class Chloro():
                                clearable=False
                           ),
                          ], style={'width': '12em'}),
-
-                html.Div([ html.Div('Colormap FAPAR'),
-                           dcc.Dropdown(
-                               id='map_fapar_colormap',
-                               options=[{'label': item, 'value': item} for item in colormaps],
-                               value="bluered_r",
-                               clearable=False
-                           ),
-                          ], style={'width': '12em', 'margin':'0px 0px 0px 20px'}),
 
                 ], style={
                             'padding': '10px 50px', 

@@ -28,7 +28,7 @@ main_layout = html.Div([
                               html.Br(),
                               dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
                               html.Br(),
-                              dcc.Link(html.Button('Chlorophylle x FAPAR', style={'width':"100%"}), href='/chloro'),
+                              dcc.Link(html.Button('FAPAR x Chlorophylle', style={'width':"100%"}), href='/chloro'),
                               html.Br(),
                               html.Br(),
                               html.Br(),
