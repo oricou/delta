@@ -413,3 +413,36 @@ there.
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
+
+/* Checkbox
+ââââââââââââââââââââââââââââââââââââââââââââââââââ */
+
+/* Africa */
+#wps-crossfilter-which-continent label:nth-child(1) {
+  accent-color: brown;
+}
+
+/* Americas */
+#wps-crossfilter-which-continent label:nth-child(2) {
+  accent-color: navy;
+}
+
+/* Eastern Mediterranean */
+#wps-crossfilter-which-continent label:nth-child(3) {
+  accent-color: purple;
+}
+
+/* Europe */
+#wps-crossfilter-which-continent label:nth-child(4) {
+  accent-color: green;
+}
+
+/* South-East Asia */
+#wps-crossfilter-which-continent label:nth-child(5) {
+  accent-color: yellow;
+}
+
+/* Western Pacific */
+#wps-crossfilter-which-continent label:nth-child(6) {
+  accent-color: red;
+}

@@ -47,14 +47,9 @@ class Planisphere():
                                      ]),
             html.Br(),
             dcc.Markdown("""
-            blabla
-
-            Sources : https://www.who.int/data/gho/data/indicators/indicator-details/GHO/alcohol-related-crimes-(-of-all-crimes)
-            
-            Notes :
-               * 1
-               * 2
-   
+            #### À propos
+            * Sources : [Observatoire mondial de la Santé](https://www.who.int/data/gho/data/themes/topics/topic-details/GHO/economic-aspects)
+            * (c) 2022 Vincent Courty, Luca Moorghen
             """)
         ], style={
             'backgroundColor': 'white',
