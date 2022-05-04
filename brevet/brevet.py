@@ -31,6 +31,8 @@ class Brevet():
         cols_to_divide = ['Admis', 'AvecMention', 'B_TB', 'TB']
         data_brevet_par_annee_par_secteur.loc[:, cols_to_divide] = data_brevet_par_annee_par_secteur.loc[:, cols_to_divide].div(data_brevet_par_annee_par_secteur['Presents'], axis=0)
         data_brevet_par_annee_par_secteur = data_brevet_par_annee_par_secteur.reset_index()
+        # Taux vers pourcentage
+        data_brevet_par_annee_par_secteur[['Admis', 'AvecMention', 'B_TB', 'TB']] = data_brevet_par_annee_par_secteur[['Admis', 'AvecMention', 'B_TB', 'TB']].applymap(lambda a : a * 100)
         return data_brevet_par_annee_par_secteur
 
 
@@ -45,6 +47,8 @@ class Brevet():
         cols_to_divide = ['Admis', 'AvecMention', 'B_TB', 'TB']
         data_brevet_par_annee_par_departement.loc[:, cols_to_divide] = data_brevet_par_annee_par_departement.loc[:, cols_to_divide].div(data_brevet_par_annee_par_departement['Presents'], axis=0)
         data_brevet_par_annee_par_departement = data_brevet_par_annee_par_departement.reset_index()
+        # Taux vers pourcentage
+        data_brevet_par_annee_par_departement[['Admis', 'AvecMention', 'B_TB', 'TB']] = data_brevet_par_annee_par_departement[['Admis', 'AvecMention', 'B_TB', 'TB']].applymap(lambda a : a * 100)
         return data_brevet_par_annee_par_departement
 
 
@@ -103,7 +107,7 @@ class Brevet():
 
     def __init__(self, application = None):
         self.years = [*range(2006, 2021)]
-        self.departements = json.load(open('data/departements-version-simplifiee.geojson'))
+        self.departements = json.load(open('brevet/data/departements-version-simplifiee.geojson'))
 
         dbpath = 'brevet/data/fr-en-dnb-par-etablissement.csv'
         self.brevet_data = pd.read_csv(dbpath, sep=';')
@@ -111,12 +115,12 @@ class Brevet():
         self.brevet_data_grandes_villes = self.load_grandes_villes()
 
         ## CLEANING DATA ##
-        self.data_brevet_par_annee_par_secteur, self.data_brevet_par_departement = self.clean_brevet_data()
+        self.data_brevet_par_annee_par_secteur, self.data_brevet_par_annee_par_departement = self.clean_brevet_data()
 
         self.main_layout = html.Div(children=[
             html.H3(children='Taux de réussite et de mentions au brevet'),
             html.Div([ dcc.Graph(id='tr-main-graph'), ], style={'width':'100%', }),
-            html.Div([ dcc.RadioItems(id='tr-dep-mention',
+            html.Div([ dcc.RadioItems(id='tr-mean',
                                      options=[{'label':'Admis', 'value':0},
                                               {'label':'AvecMention', 'value':1},
                                               {'label':'B_TB', 'value':2},
@@ -143,6 +147,8 @@ class Brevet():
             ),
             ## ================  Taux de réussite départemental ================
             # Graph
+
+            html.H3(children='Taux de réussite au brevet en France'),
             html.Div([
                     html.Div([ dcc.Graph(id='tr-dep-graph'), ], style={'width':'90%', }),
 
@@ -161,16 +167,16 @@ class Brevet():
                         html.Br(),
                         html.Button(
                             self.START,
-                            id='wps-button-start-stop', 
+                            id='wps-button-start-stop',
                             style={'display':'inline-block'}
                         ),
                     ], style={'margin-left':'15px', 'width': '7em', 'float':'right'}),
                 ], style={
-                    'padding': '10px 50px', 
+                    'padding': '10px 50px',
                     'display':'flex',
                     'justifyContent':'center'
-                }),   
-            
+                }),
+
             # Slider
             html.Div([
                 html.Div(
@@ -191,11 +197,11 @@ class Brevet():
                     n_intervals = 0
                 ),
                 ], style={
-                    'padding': '0px 50px', 
+                    'padding': '0px 50px',
                     'width':'100%'
                 }),
 
-            
+
             #  ================ Etude démographique ================
             html.H3(children='Etude démographique'),
             html.Div([
@@ -256,11 +262,11 @@ class Brevet():
         self.app.callback(
                     dash.dependencies.Output('tr-sec-graph', 'figure'),
                     dash.dependencies.Input('tr-sec-mean', 'value'))(self.update_2graph)
-        
+
         # Taux de réussite par département
         self.app.callback(
             dash.dependencies.Output('tr-dep-graph', 'figure'),
-              dash.dependencies.Input('tr-dep-mention', 'value'),
+            [ dash.dependencies.Input('tr-dep-mention', 'value'),
               dash.dependencies.Input('tr-dep-year-slider', 'value')])(self.update_dep_graph)
 
     def update_2graph(self, mean):
@@ -281,19 +287,20 @@ class Brevet():
         elif mean == 3:
             fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='TB', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
         return fig
-    
+
     def update_dep_graph(self, mention, session):
         col_name = ['Admis', 'AvecMention', 'B_TB', 'TB']
-        fig = px.choropleth_mapbox(self.data_brevet_par_annee_par_departement[self.data_brevet_par_annee_par_departement['Session'] == session], geojson=self.departements, 
+        fig = px.choropleth_mapbox(self.data_brevet_par_annee_par_departement[self.data_brevet_par_annee_par_departement['Session'] == session], geojson=self.departements,
                            locations= 'Code département', featureidkey = 'properties.code', # join keys
-                           color= col_name[mention], color_continuous_scale="Orrd",
+                           color= col_name[mention], color_continuous_scale=px.colors.sequential.YlOrRd,
                            mapbox_style="carto-positron",
                            zoom=4.6, center = {"lat": 47, "lon": 2},
                            opacity=0.5,
-                           labels={'prix':'Prix E10'}
+                           labels={'prix':'Prix E10'},
+                           range_color = [0, 100]
                           )
-    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-    return fig
+        fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+        return fig
 
 
 
