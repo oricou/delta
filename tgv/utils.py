@@ -2,6 +2,7 @@ import os
 
 from dash import dcc
 from dash import html
+import dash_daq as daq
 
 cur_path = os.path.dirname(__file__)
 a_propos_path = os.path.join(cur_path, "a-propos.md")
@@ -54,7 +55,7 @@ def get_color(traffic: int, max_traffic: int):
 def make_layout() -> html.Div:
     return html.Div(
         children=[
-            html.H3(children="Régularité des Grandes Lignes de TGV de la SNCF"),
+            html.H3(children="Trafic et régularité mensuels moyens des TGV de la SNCF"),
             html.Div(
                 [
                     html.Iframe(
@@ -87,6 +88,15 @@ def make_layout() -> html.Div:
                         ],
                         #style={"width": "6em", "padding": "2em 0px 0px 0px"},
                     ),
+                    html.Div(
+						[
+							daq.BooleanSwitch(
+								id="plot-switch",
+								on=True,
+								label="Visualiser sur une carte"
+							)
+						]
+					)
                 ]
             ),
             html.Br(),

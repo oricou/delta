@@ -9,7 +9,7 @@ from dash.dependencies import Input, Output, State
 from typing import List, Dict, Callable, Any
 import folium
 import branca.colormap as cm
-from . import utils
+import utils
 
 
 class TGV:
@@ -144,7 +144,13 @@ class TGV:
         self.df_gares = gares
         self.df_trajet = df_trajet
 
-    def update_graph(self, year, colonne) -> go.Figure:
+    def update_graph(self, year, colonne, map) -> go.Figure:
+        if (map):
+            return self.update_map(year, colonne)
+        else :
+            return self.update_hist(year, colonne)
+        
+    def update_map(self, year, colonne) -> go.Figure:
         """
         Create graph mapping train stations and lines to the lateness of the trains
         """
@@ -155,7 +161,7 @@ class TGV:
         min_traffic = self.df_trajet[colonne].min()
         df_trajet = self.df_trajet[self.df_trajet.index == str(year)]
         colormap = cm.LinearColormap(
-            ["green", "yellow", "red"], vmin=min_traffic, vmax=max_traffic
+            ["green", "orange", "red"], vmin=min_traffic, vmax=max_traffic
         )
         france_line.add_child(colormap)
 
@@ -163,7 +169,7 @@ class TGV:
             france_line.add_child(
                 folium.Marker(
                     location=self.df_gares["WGS 84"].iloc[i],
-                    popup="Gare: {}<br>Région SNCF: {}<br>Coordinates: {}".format(
+                    popup="Gare: {}<br>Région SNCF: {}<br>Coordonnées: {}".format(
                         self.df_gares["Gare"].iloc[i],
                         self.df_gares["Région SNCF"].iloc[i],
                         self.df_gares["WGS 84"].iloc[i],
@@ -181,7 +187,7 @@ class TGV:
                     df_trajet["Coord_arrivée"].iloc[i],
                 ),
                 color=colormap.rgb_hex_str(traffic),
-                weight=traffic / max_traffic * 3,
+                weight=traffic / max_traffic * 2.5 + 0.5,
                 opacity=1,
                 popup="{}: {}<br>Départ: {}<br>Arrivée: {}".format(
                     colonne,
@@ -193,6 +199,9 @@ class TGV:
 
         france_line.save("mymapnew.html")
         return open("mymapnew.html", "r").read()
+    
+    def update_hist(self, year, colonne) -> go.Figure:
+        return px.histogram(self.df_trajet[self.df_trajet.index == year], x='Gare de départ', y=colonne).show()
 
     def __init__(self, application: dash.Dash = None):
         self.main_layout = utils.make_layout()
@@ -206,9 +215,8 @@ class TGV:
 
         self.app.callback(
             Output("tgv-main-graph", "srcDoc"),
-            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value")],
+            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value"), Input("plot-switch", "on")],
         )(self.update_graph)
-
 
 if __name__ == "__main__":
     tgv = TGV()
