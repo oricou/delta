@@ -2,7 +2,7 @@
 name = "delta"
 version = "0.1.0"
 description = ""
-authors = ["Olivier Ricou <ricou@lrde.epita.fr>"]
+authors = ["Carlito Cepillo <charlie.brosse@epita.fr>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"

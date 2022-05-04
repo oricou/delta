@@ -70,7 +70,7 @@ class KeywordsAnalysis():
                 * Sources : 
                    * [base Pégase](http://developpement-durable.bsocom.fr/Statistiques/) du ministère du développement durable
                    * [tarifs réglementés de l'électricité](https://www.data.gouv.fr/en/datasets/historique-des-tarifs-reglementes-de-vente-delectricite-pour-les-consommateurs-residentiels/) sur data.gouv.fr
-                * (c) 2022 Olivier Ricou
+                * (c) 2022 Charlie Brosse
                 """)
         ], style={
             'backgroundColor': 'white',
