@@ -4,7 +4,7 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
-from esam_EvolutionDesSalairesAnnuelsMoyens import get_data
+from strl_EvolutionDesSalairesAnnuelsMoyens import income
 
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -14,7 +14,7 @@ server = app.server
 pop = population.WorldPopulationStats(app)
 nrg = energies.Energies(app)
 dec = deces.Deces(app)
-inc = get_data.Income(app)
+inc = income.Income(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -57,7 +57,7 @@ app.layout = main_layout
 app.validation_layout = html.Div([
     main_layout,
     to_be_done_page,
-    pop.main_layout,
+#    pop.main_layout,
 ])
 
 # Update the index
