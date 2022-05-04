@@ -10,69 +10,6 @@ Ce fichier python ne peut pas être utilisé par elle même car les path vers le
 class Income():
     
     def __init__(self, application = None):
-#Region nettoyage des données.
-        # Salaire
-        #self.salary = pd.read_csv("./esam_EvolutionDesSalairesAnnuelsMoyens/data/AV_AN_WAGE_15032022112411307.csv")
-        #self.salary = self.salary[self.salary["SERIES"] == "USDPPP"] # On garde seulement les lignes au prix USD
-        #self.salary = self.salary.drop(columns=["Flag Codes", "Flags", "PowerCode", "PowerCode Code", "Reference Period Code", "Temps"]) 
-        #
-        #self.salary = self.salary.set_index("Pays")
-        #self.salary_france = self.salary[self.salary.index == "France"]
-        #
-        ## PIB
-        #self.pib = pd.read_csv("./esam_EvolutionDesSalairesAnnuelsMoyens/data/DP_LIVE_24032022132056468.csv")  # Value en millions
-        #self.pib = self.pib.drop(columns=["Flag Codes"])
-        #self.pib = self.pib.rename(columns={'LOCATION' : 'COUNTRY'})
-        #
-        ## Merge salary et pib
-        #self.pib_salary = self.salary.reset_index().merge(self.pib, how='inner', on=['COUNTRY', 'TIME']).set_index('Pays')
-        #self.pib_salary = self.pib_salary.rename(columns={'Value_y' : "pib", 'Value_x' : "salary"})
-        
-        # IDH
-        #self.idh = pd.read_csv("./esam_EvolutionDesSalairesAnnuelsMoyens/data/Human Development Index (HDI).csv", sep =',', encoding='latin-1', skiprows=4, header = 1)
-        #self.idh = self.idh.loc[:, ~self.idh.columns.str.contains('^Unnamed')]
-        #self.idh = self.idh.drop(columns=["HDI Rank"])
-        #self.idh.columns = self.idh.columns.astype(str)
-        #self.idh = self.idh.loc[:, ~self.idh.columns.str.contains('^1')] #On garde seulement les colonnes des années 2000+
-        #self.idh = self.idh.drop(self.idh.tail(18).index)#remove les dernieres rows qui ne nous servent pas
-        #self.idh['Country'] = self.idh['Country'].astype(str)
-        #self.idh['Country'] = self.idh['Country'].apply(lambda x: x[1:]) # Remove le premier char invisible.
-        #self.idh = self.idh.melt(id_vars=["Country"], var_name="Date", value_name="idh").sort_values(by = ["Country", "Date"]).reset_index(drop=True) #Avant: colonnes = dates et mtn: on les transforme en lignes.
-
-        # Pays iso
-        #self.pays_iso = pd.read_csv("./esam_EvolutionDesSalairesAnnuelsMoyens/data/wikipedia-iso-country-codes.csv", sep =',')
-        #self.pays_iso = self.pays_iso.drop(columns=['ISO 3166-2', 'Numeric code'])
-        #self.pays_iso = self.pays_iso.rename(columns={"English short name lower case": "Country"})
-        #self.pays_iso['Country'] = self.pays_iso['Country'].astype(str)
-        #
-        #self.idh_iso = pd.merge(self.pays_iso, self.idh, on=['Country'])
-        #self.idh_iso = self.idh_iso.rename(columns = {"Alpha-3 code" : "COUNTRY", "Date" : "TIME"})
-        #self.idh_iso["TIME"] = self.idh_iso["TIME"].astype(int)  # Convert le type de TIME en int pour pouvoir le merge plus tard 
-#
-        ## Merge idh et pib_salary
-        #self.pib_idh_salary = self.pib_salary.reset_index().merge(self.idh_iso, how='inner', on=['COUNTRY', 'TIME']).set_index('Pays') #Pour avoir le nom des pays complet et faire le lien avec les autres dataframes
-        #self.pib_idh_salary["Pays"] = self.pib_idh_salary.index 
-        
-        # Salaire homme/femme
-        #self.hf = pd.read_csv("./esam_EvolutionDesSalairesAnnuelsMoyens/data/sdg_05_20_tabular-1.tsv", sep='\t', na_values=": ")
-        #self.hf = self.hf.drop(columns=['2002 ', '2006 ', '2007 ', '2008 ', '2009 '])
-        #self.hf['freq,unit,nace_r2,geo\TIME_PERIOD'] = self.hf['freq,unit,nace_r2,geo\TIME_PERIOD'].astype(str)
-        #self.hf['freq,unit,nace_r2,geo\TIME_PERIOD'] = self.hf['freq,unit,nace_r2,geo\TIME_PERIOD'].apply(lambda x: x.split(',')[-1])
-        #self.hf = self.hf.rename(columns = {"freq,unit,nace_r2,geo\TIME_PERIOD":"Pays"})
-        #self.hf = self.hf.set_index("Pays")
-        #self.hf = self.hf.apply(lambda x : x.astype(str))
-        #self.hf = self.hf.apply(lambda x : x.apply(lambda y: y.split()[0]))
-        #self.hf = self.hf.apply(lambda x : x.astype(float))
-        #self.hf = self.hf.loc[self.hf.count(1) > self.hf.shape[1]/2, self.hf.count(0) > self.hf.shape[0]/2] #on supprime les             lignes qui on plus de 50% de valeurs manquantes.
-        #self.hf = self.hf.drop(index=['EU28', 'EU27_2020', 'EA19']) #inintéressant
-        #self.hf = self.hf.fillna(method="ffill", axis=1)
-        #self.hf["Alpha-2 code"] = self.hf.index
-        #self.hf.loc["UK", "Alpha-2 code"] = "GB" #L'angleterre = GB en alpha code 2
-        #
-        ## Merge hf et pays iso
-        #self.hf = pd.merge(self.hf, self.pays_iso, how='inner', on="Alpha-2 code")
-        #self.hf_melted = self.hf.melt(id_vars=["Country", "Alpha-2 code", "Alpha-3 code"], var_name="Date", value_name="ecart").sort_values(by = ["Country", "Date"]).reset_index(drop=True)# on met les date en ligne et plus en colonnes.
-        
         self.hf = pd.read_pickle("./strl_EvolutionDesSalairesAnnuelsMoyens/data/hf.pkl")
         self.hf_melted = pd.read_pickle("./strl_EvolutionDesSalairesAnnuelsMoyens/data/hf_melted.pkl")
         self.pib_idh_salary = pd.read_pickle("./strl_EvolutionDesSalairesAnnuelsMoyens/data/pib_idh_salary.pkl")
