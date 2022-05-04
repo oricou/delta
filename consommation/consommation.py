@@ -82,6 +82,14 @@ class Consommation():
                        'justifyContent':'center', }),
             html.Br(),
             dcc.Markdown("""
+            Chaque point du graphique représente un pays. Vous pouvez passer votre souris sur un point afin d'avoir plus d'informations sur un pays.
+
+            Notes :
+            * On remarque globalement une corrélation entre la richesse et la consommation d'alcool mais il existe surtout une homogénéité au sein des régions.
+            * En effet, certains pays du Moyen-Orient comme l'Arabie Saoudite ou les Emirats Arabes Unis sont particulièrement riches mais leur population consomme très peu d'alcool probablement pour des raisons religieuses.
+            * Les pays les plus fervents d'alcool sont les pays européens, pays qui sont aussi les plus riches et les plus stables tandis que les pays africains dépassent rarement les 50% de la population consommant de l'alcool.
+            * Les hommes consomment plus d'alcool que les femmes partout.
+            * Enfin, certains pays ont des données à prendre avec des pincettes comme le Vietnam qui semble afficher un pourcentage surréaliste.
             #### À propos
             * Sources : [Observatoire mondial de la Santé](https://www.who.int/data/gho/data/indicators/indicator-details/GHO/alcohol-consumers-past-12-months-(-))
             * (c) 2022 Vincent Courty, Luca Moorghen
