@@ -66,8 +66,8 @@ class Brevet():
 
         self.brevet_data = self.brevet_data[self.brevet_data['Secteur d\'enseignement'] != "-"]
 
-        data_brevet_par_annee_par_secteur = generate_data_brevet_par_annee_par_secteur(self.brevet_data)
-        data_brevet_par_annee_par_departement = generate_data_brevet_par_annee_par_departement(self.brevet_data)
+        data_brevet_par_annee_par_secteur = self.generate_data_brevet_par_annee_par_secteur(self.brevet_data)
+        data_brevet_par_annee_par_departement = self.generate_data_brevet_par_annee_par_departement(self.brevet_data)
 
         return (data_brevet_par_annee_par_secteur, data_brevet_par_annee_par_departement)
 
