@@ -45,6 +45,10 @@ y_axis = [
     "Nombre de trains annulés",
     "Retard moyen de tous les trains au départ",
     "Retard moyen de tous les trains à l'arrivée",
+    "Nombre de trains en retard à l'arrivée",
+    "Nombre trains en retard > 15min",
+    "Nombre trains en retard > 30min",
+    "Nombre trains en retard > 60min",
 ]
 
 
@@ -64,8 +68,17 @@ def make_layout() -> html.Div:
                 ],
                 style={
                     "width": "100%",
+                    "display": "block",
                 },
             ),
+            html.Div(
+                [
+					dcc.Graph(id='hist-graph'),
+				],
+            	style={
+                	"display": "block",
+				},
+                     ),
             html.Div(
                 [
                     dcc.Slider(

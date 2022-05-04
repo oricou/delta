@@ -144,11 +144,17 @@ class TGV:
         self.df_gares = gares
         self.df_trajet = df_trajet
 
-    def update_graph(self, year, colonne, map) -> go.Figure:
+    def update_map_visibility(self, map) -> go.Figure:
         if (map):
-            return self.update_map(year, colonne)
-        else :
-            return self.update_hist(year, colonne)
+            return {'display': 'block'}
+        else:
+            return {'display': 'none'}
+        
+    def update_hist_visibility(self, map) -> go.Figure:
+        if (map):
+            return {'display': 'none'}
+        else:
+            return {'display': 'block'}
         
     def update_map(self, year, colonne) -> go.Figure:
         """
@@ -201,7 +207,8 @@ class TGV:
         return open("mymapnew.html", "r").read()
     
     def update_hist(self, year, colonne) -> go.Figure:
-        return px.histogram(self.df_trajet[self.df_trajet.index == year], x='Gare de départ', y=colonne).show()
+        year += 2018
+        return px.histogram(self.df_trajet[self.df_trajet.index == str(year)], x='Gare de départ', y=colonne)
 
     def __init__(self, application: dash.Dash = None):
         self.main_layout = utils.make_layout()
@@ -212,11 +219,26 @@ class TGV:
         else:
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
+            
+        self.app.callback(
+            Output("tgv-main-graph", "style"),
+			[Input("plot-switch", "on")]
+		)(self.update_map_visibility)
+        
+        self.app.callback(
+            Output("hist-graph", "style"),
+			[Input("plot-switch", "on")]
+		)(self.update_hist_visibility)
 
         self.app.callback(
             Output("tgv-main-graph", "srcDoc"),
-            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value"), Input("plot-switch", "on")],
-        )(self.update_graph)
+            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value")],
+        )(self.update_map)
+        
+        self.app.callback(
+            Output("hist-graph", "figure"),
+            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value")],
+        )(self.update_hist)
 
 if __name__ == "__main__":
     tgv = TGV()
