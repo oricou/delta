@@ -17,7 +17,7 @@ from unidecode import unidecode
 
 class Brevet():
 
-    def generate_data_brevet_par_annee_par_secteur(df):
+    def generate_data_brevet_par_annee_par_secteur(self, df):
         data_brevet_par_annee_par_secteur = df.copy().groupby(['Session', 'Secteur d\'enseignement'])
         data_brevet_par_annee_par_secteur = data_brevet_par_annee_par_secteur.agg(Presents = ('Presents', 'sum'),
                                       Admis = ('Admis', 'sum'),
@@ -31,17 +31,17 @@ class Brevet():
         return data_brevet_par_annee_par_secteur
 
 
-    def generate_data_brevet_par_annee_par_departement(df):
+    def generate_data_brevet_par_annee_par_departement(self, df):
         data_brevet_par_annee_par_departement = df.copy().groupby(['Session', 'Code département'])
-        data_brevet_par_annee_par_departement = data_brevet_par_annee_par_secteur.agg(Presents = ('Presents', 'sum'),
+        data_brevet_par_annee_par_departement = data_brevet_par_annee_par_departement.agg(Presents = ('Presents', 'sum'),
                                       Admis = ('Admis', 'sum'),
                                       AvecMention = ('Admis Mention AB+', 'sum'),
                                       B_TB = ('Admis Mention B+', 'sum'),
                                       TB = ('Admis Mention TB', 'sum'))
 
         cols_to_divide = ['Admis', 'AvecMention', 'B_TB', 'TB']
-        data_brevet_par_annee_par_departement.loc[:, cols_to_divide] = data_brevet_par_annee_par_secteur.loc[:, cols_to_divide].div(data_brevet_par_annee_par_secteur['Presents'], axis=0)
-        data_brevet_par_annee_par_departement = data_brevet_par_annee_par_secteur.reset_index()
+        data_brevet_par_annee_par_departement.loc[:, cols_to_divide] = data_brevet_par_annee_par_departement.loc[:, cols_to_divide].div(data_brevet_par_annee_par_departement['Presents'], axis=0)
+        data_brevet_par_annee_par_departement = data_brevet_par_annee_par_departement.reset_index()
         return data_brevet_par_annee_par_departement
 
 
