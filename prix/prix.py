@@ -35,6 +35,11 @@ class Prix():
                                      ]),
             html.Br(),
             dcc.Markdown("""
+            Cette carte montre le prix d'un alcool (bière, vin ou spiritueux) comparativement au PIB par habitant.
+            * Les données les plus complètes concernent le prix des bières, probablement car c'est la boisson alcolisée la plus populaire tandis que le vin et les spiritueux ne sont mêmes pas recensés dans certains pays africains et du Moyen-Orient, sûrement dû à des différences culturelles.
+            * Les données manquantes dans certains pays peuvent aussi s'expliquer par la situation politique de certains pays en guerre comme le Soudan.
+            * Les régions où la bière est la plus chère sont l'Afrique et le Moyen-Orient. En Afrique, cela peut s'expliquer par un PIB par habitant bien plus faible par rapport au reste du monde.
+            * Les disparités les plus importantes concernent le prix des spiritueux. Alors qu'ils représentent moins de 0.1% du PIB dans les pays de l'hémisphère Nord, ils peuvent être deux à trois fois plus cher dans d'autres pays plus modestes comme le Nicaragua, le Kenya ou encore l'Indonésie.
             #### À propos
             * Sources : [Observatoire mondial de la Santé](https://www.who.int/data/gho/data/themes/topics/topic-details/GHO/economic-aspects)
             * (c) 2022 Vincent Courty, Luca Moorghen
