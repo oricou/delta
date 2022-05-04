@@ -37,8 +37,16 @@ class Brevet():
         # On remplace les arrondissements de Paris, Lyon et Marseille par leurs villes respectives
         self.brevet_data['Libellé commune'] = self.brevet_data['Libellé commune'].replace(to_replace=r"([A-Z]+)[ ]+([0-9]+.*)", value=r"\1", regex=True)
 
-        data_brevet_par_annee_par_secteur = self.brevet_data[self.brevet_data['Secteur d\'enseignement'] != "-"].groupby(['Session', 'Secteur d\'enseignement'])
+        self.brevet_data = self.brevet_data[self.brevet_data['Secteur d\'enseignement'] != "-"]
 
+        data_brevet_par_annee_par_secteur = generate_data_brevet_par_annee_par_secteur(self.brevet_data)
+        data_brevet_par_annee_par_departement = generate_data_brevet_par_annee_par_departement(self.brevet_data)
+
+        return (data_brevet_par_annee_par_secteur, data_brevet_par_annee_par_departement)
+
+
+    def generate_data_brevet_par_annee_par_secteur(df):
+        data_brevet_par_annee_par_secteur = df.copy().groupby(['Session', 'Secteur d\'enseignement'])
         data_brevet_par_annee_par_secteur = data_brevet_par_annee_par_secteur.agg(Presents = ('Presents', 'sum'),
                                       Admis = ('Admis', 'sum'),
                                       AvecMention = ('Admis Mention AB+', 'sum'),
@@ -49,6 +57,21 @@ class Brevet():
         data_brevet_par_annee_par_secteur.loc[:, cols_to_divide] = data_brevet_par_annee_par_secteur.loc[:, cols_to_divide].div(data_brevet_par_annee_par_secteur['Presents'], axis=0)
         data_brevet_par_annee_par_secteur = data_brevet_par_annee_par_secteur.reset_index()
         return data_brevet_par_annee_par_secteur
+
+
+    def generate_data_brevet_par_annee_par_departement(df):
+        data_brevet_par_annee_par_departement = df.copy().groupby(['Session', 'Code département'])
+        data_brevet_par_annee_par_departement = data_brevet_par_annee_par_secteur.agg(Presents = ('Presents', 'sum'),
+                                      Admis = ('Admis', 'sum'),
+                                      AvecMention = ('Admis Mention AB+', 'sum'),
+                                      B_TB = ('Admis Mention B+', 'sum'),
+                                      TB = ('Admis Mention TB', 'sum'))
+
+        cols_to_divide = ['Admis', 'AvecMention', 'B_TB', 'TB']
+        data_brevet_par_annee_par_departement.loc[:, cols_to_divide] = data_brevet_par_annee_par_secteur.loc[:, cols_to_divide].div(data_brevet_par_annee_par_secteur['Presents'], axis=0)
+        data_brevet_par_annee_par_departement = data_brevet_par_annee_par_secteur.reset_index()
+        return data_brevet_par_annee_par_departement
+
 
     def load_grandes_villes(self):
         habitant_ville = pd.read_csv('brevet/data/habitant_par_ville.csv', sep=';')
@@ -83,9 +106,7 @@ class Brevet():
         self.brevet_data_grandes_villes = self.load_grandes_villes()
 
         ## CLEANING DATA ##
-        self.data_brevet_par_annee_par_secteur = self.clean_brevet_data()
-
-        self.df = self.brevet_data
+        self.data_brevet_par_annee_par_secteur, self.data_brevet_par_departement = self.clean_brevet_data()
 
         self.main_layout = html.Div(children=[
             html.H3(children='Taux de réussite et de mentions au brevet'),
