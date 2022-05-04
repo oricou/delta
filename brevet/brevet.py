@@ -14,8 +14,11 @@ from scipy import fft
 import datetime
 import os
 from unidecode import unidecode
+import json
 
 class Brevet():
+    START = 'Start'
+    STOP = 'Stop'
 
     def generate_data_brevet_par_annee_par_secteur(self, df):
         data_brevet_par_annee_par_secteur = df.copy().groupby(['Session', 'Secteur d\'enseignement'])
@@ -99,6 +102,8 @@ class Brevet():
 
 
     def __init__(self, application = None):
+        self.years = [*range(2006, 2021)]
+        self.departements = json.load(open('data/departements-version-simplifiee.geojson'))
 
         dbpath = 'brevet/data/fr-en-dnb-par-etablissement.csv'
         self.brevet_data = pd.read_csv(dbpath, sep=';')
@@ -111,11 +116,11 @@ class Brevet():
         self.main_layout = html.Div(children=[
             html.H3(children='Taux de réussite et de mentions au brevet'),
             html.Div([ dcc.Graph(id='tr-main-graph'), ], style={'width':'100%', }),
-            html.Div([ dcc.RadioItems(id='tr-mean',
+            html.Div([ dcc.RadioItems(id='tr-dep-mention',
                                      options=[{'label':'Admis', 'value':0},
-                                              {'label':'Mention Assez Bien et plus', 'value':1},
-                                              {'label':'Mention Bien et plus', 'value':2},
-                                              {'label':'Mention Très Bien', 'value':3}],
+                                              {'label':'AvecMention', 'value':1},
+                                              {'label':'B_TB', 'value':2},
+                                              {'label':'TB', 'value':3}],
                                      value=0,
                                      labelStyle={'display':'block'}) ,
                                      ]),
@@ -136,9 +141,68 @@ class Brevet():
 
             """
             ),
+            ## ================  Taux de réussite départemental ================
+            # Graph
+            html.Div([
+                    html.Div([ dcc.Graph(id='tr-dep-graph'), ], style={'width':'90%', }),
+
+                    html.Div([
+                        html.Div('Critère de réussite'),
+                        dcc.RadioItems(id='tr-dep-mention',
+                                     options=[{'label':'Admis', 'value':0},
+                                              {'label':'Mention Assez Bien et plus', 'value':1},
+                                              {'label':'Mention Bien et plus', 'value':2},
+                                              {'label':'Mention Très Bien', 'value':3}],
+                                     value=0,
+                                     labelStyle={'display':'block'}),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                        html.Button(
+                            self.START,
+                            id='wps-button-start-stop', 
+                            style={'display':'inline-block'}
+                        ),
+                    ], style={'margin-left':'15px', 'width': '7em', 'float':'right'}),
+                ], style={
+                    'padding': '10px 50px', 
+                    'display':'flex',
+                    'justifyContent':'center'
+                }),   
+            
+            # Slider
+            html.Div([
+                html.Div(
+                    dcc.Slider(
+                            id='tr-dep-year-slider',
+                            min=self.years[0],
+                            max=self.years[-1],
+                            step = 1,
+                            value=self.years[0],
+                            marks={str(year): str(year) for year in self.years},
+                    ),
+                    style={'display':'inline-block', 'width':"90%"}
+                ),
+                dcc.Interval(            # fire a callback periodically
+                    id='tr-dep-auto-stepper',
+                    interval=500,       # in milliseconds
+                    max_intervals = -1,  # start running
+                    n_intervals = 0
+                ),
+                ], style={
+                    'padding': '0px 50px', 
+                    'width':'100%'
+                }),
+
+            
+            #  ================ Etude démographique ================
             html.H3(children='Etude démographique'),
             html.Div([
+                # Graph
                 html.Div([ dcc.Graph(id='tr-sec-graph'), ], style={'width':'100%', }),
+                # Bouton
+                html.Div('Villes'),
                 html.Div([ dcc.RadioItems(id='tr-sec-mean',
                                          options=[{'label':'Taux Presents Grandes Villes', 'value':0},
                                                   {'label':'Presents France', 'value':1}],
@@ -183,13 +247,21 @@ class Brevet():
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
 
+        ## Graph taux de réussite
         self.app.callback(
                     dash.dependencies.Output('tr-main-graph', 'figure'),
                     dash.dependencies.Input('tr-mean', 'value'))(self.update_graph)
 
+        # Evolution démographique
         self.app.callback(
                     dash.dependencies.Output('tr-sec-graph', 'figure'),
                     dash.dependencies.Input('tr-sec-mean', 'value'))(self.update_2graph)
+        
+        # Taux de réussite par département
+        self.app.callback(
+            dash.dependencies.Output('tr-dep-graph', 'figure'),
+              dash.dependencies.Input('tr-dep-mention', 'value'),
+              dash.dependencies.Input('tr-dep-year-slider', 'value')])(self.update_dep_graph)
 
     def update_2graph(self, mean):
         fig = px.line(self.brevet_data_grandes_villes, x='Session', y='Taux Presents Grandes Villes')
@@ -202,15 +274,26 @@ class Brevet():
 
     def update_graph(self, mean):
         fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='Admis', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
-
         if mean == 1:
             fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='AvecMention', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
         elif mean == 2:
             fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='B_TB', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
         elif mean == 3:
             fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='TB', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
-
         return fig
+    
+    def update_dep_graph(self, mention, session):
+        col_name = ['Admis', 'AvecMention', 'B_TB', 'TB']
+        fig = px.choropleth_mapbox(self.data_brevet_par_annee_par_departement[self.data_brevet_par_annee_par_departement['Session'] == session], geojson=self.departements, 
+                           locations= 'Code département', featureidkey = 'properties.code', # join keys
+                           color= col_name[mention], color_continuous_scale="Orrd",
+                           mapbox_style="carto-positron",
+                           zoom=4.6, center = {"lat": 47, "lon": 2},
+                           opacity=0.5,
+                           labels={'prix':'Prix E10'}
+                          )
+    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+    return fig
 
 
 
