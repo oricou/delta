@@ -17,6 +17,33 @@ from unidecode import unidecode
 
 class Brevet():
 
+    def generate_data_brevet_par_annee_par_secteur(df):
+        data_brevet_par_annee_par_secteur = df.copy().groupby(['Session', 'Secteur d\'enseignement'])
+        data_brevet_par_annee_par_secteur = data_brevet_par_annee_par_secteur.agg(Presents = ('Presents', 'sum'),
+                                      Admis = ('Admis', 'sum'),
+                                      AvecMention = ('Admis Mention AB+', 'sum'),
+                                      B_TB = ('Admis Mention B+', 'sum'),
+                                      TB = ('Admis Mention TB', 'sum'))
+
+        cols_to_divide = ['Admis', 'AvecMention', 'B_TB', 'TB']
+        data_brevet_par_annee_par_secteur.loc[:, cols_to_divide] = data_brevet_par_annee_par_secteur.loc[:, cols_to_divide].div(data_brevet_par_annee_par_secteur['Presents'], axis=0)
+        data_brevet_par_annee_par_secteur = data_brevet_par_annee_par_secteur.reset_index()
+        return data_brevet_par_annee_par_secteur
+
+
+    def generate_data_brevet_par_annee_par_departement(df):
+        data_brevet_par_annee_par_departement = df.copy().groupby(['Session', 'Code département'])
+        data_brevet_par_annee_par_departement = data_brevet_par_annee_par_secteur.agg(Presents = ('Presents', 'sum'),
+                                      Admis = ('Admis', 'sum'),
+                                      AvecMention = ('Admis Mention AB+', 'sum'),
+                                      B_TB = ('Admis Mention B+', 'sum'),
+                                      TB = ('Admis Mention TB', 'sum'))
+
+        cols_to_divide = ['Admis', 'AvecMention', 'B_TB', 'TB']
+        data_brevet_par_annee_par_departement.loc[:, cols_to_divide] = data_brevet_par_annee_par_secteur.loc[:, cols_to_divide].div(data_brevet_par_annee_par_secteur['Presents'], axis=0)
+        data_brevet_par_annee_par_departement = data_brevet_par_annee_par_secteur.reset_index()
+        return data_brevet_par_annee_par_departement
+
 
     def clean_brevet_data(self):
         # On enlève les 0z devant les codes des départements
@@ -44,33 +71,6 @@ class Brevet():
 
         return (data_brevet_par_annee_par_secteur, data_brevet_par_annee_par_departement)
 
-
-    def generate_data_brevet_par_annee_par_secteur(df):
-        data_brevet_par_annee_par_secteur = df.copy().groupby(['Session', 'Secteur d\'enseignement'])
-        data_brevet_par_annee_par_secteur = data_brevet_par_annee_par_secteur.agg(Presents = ('Presents', 'sum'),
-                                      Admis = ('Admis', 'sum'),
-                                      AvecMention = ('Admis Mention AB+', 'sum'),
-                                      B_TB = ('Admis Mention B+', 'sum'),
-                                      TB = ('Admis Mention TB', 'sum'))
-
-        cols_to_divide = ['Admis', 'AvecMention', 'B_TB', 'TB']
-        data_brevet_par_annee_par_secteur.loc[:, cols_to_divide] = data_brevet_par_annee_par_secteur.loc[:, cols_to_divide].div(data_brevet_par_annee_par_secteur['Presents'], axis=0)
-        data_brevet_par_annee_par_secteur = data_brevet_par_annee_par_secteur.reset_index()
-        return data_brevet_par_annee_par_secteur
-
-
-    def generate_data_brevet_par_annee_par_departement(df):
-        data_brevet_par_annee_par_departement = df.copy().groupby(['Session', 'Code département'])
-        data_brevet_par_annee_par_departement = data_brevet_par_annee_par_secteur.agg(Presents = ('Presents', 'sum'),
-                                      Admis = ('Admis', 'sum'),
-                                      AvecMention = ('Admis Mention AB+', 'sum'),
-                                      B_TB = ('Admis Mention B+', 'sum'),
-                                      TB = ('Admis Mention TB', 'sum'))
-
-        cols_to_divide = ['Admis', 'AvecMention', 'B_TB', 'TB']
-        data_brevet_par_annee_par_departement.loc[:, cols_to_divide] = data_brevet_par_annee_par_secteur.loc[:, cols_to_divide].div(data_brevet_par_annee_par_secteur['Presents'], axis=0)
-        data_brevet_par_annee_par_departement = data_brevet_par_annee_par_secteur.reset_index()
-        return data_brevet_par_annee_par_departement
 
 
     def load_grandes_villes(self):
