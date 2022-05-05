@@ -197,7 +197,6 @@ class Vaccinations:
 
     def update_graph_4(self, _):
         regions = [
-            #"World",
             "Europe",
             "Asia",
             "North America",
@@ -211,11 +210,14 @@ class Vaccinations:
 
         fig = px.bar(
             df, x='location', y='people_vaccinated_per_hundred', color='location',
-            animation_frame=df.index, range_y=[0,100]
+            animation_frame=df.index, range_y=[0, 100]
         )
 
+        fig.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 10
+
         fig.update_layout(
-            template='plotly_dark',
+            template='plotly_dark', title='Évolution de la population vaccinée par continent',
+            xaxis=dict(title='Continents'), yaxis=dict(title='Pourcentage de la population vaccinée'),
         )
 
         return fig
