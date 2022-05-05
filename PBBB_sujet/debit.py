@@ -6,10 +6,7 @@ from dash import dcc
 from dash import html
 import pandas as pd
 import numpy as np
-import plotly.graph_objs as go
 import plotly.express as px
-import os.path
-import random as rd
 
 from typing import List
 
@@ -22,7 +19,7 @@ class HautDebit():
 
     def load_operator_by_dep(self):
         """
-        Cette fonction permet de connaitre le nombre d'opérateur dans chaque département.        
+        Cette fonction permet de connaître le nombre d'opérateur dans chaque département.        
         """
         ope = pd.read_excel(self.dossier_data + self.paths[2],
                             sheet_name='Liste des OI',
@@ -42,7 +39,7 @@ class HautDebit():
         def str_to_list(l) -> List[str]:
             """ Cette fonction permet de transformer une string contenant des departement en une liste de string
 
-                Avant de faire la transformation, les données sont uniformiser en remplacant les ' ' (espaces) et '.' (point)
+                Avant de faire la transformation, les données sont uniformisées en remplacant les ' ' (espaces) et '.' (point)
                 par des ',' (virgules). 
 
             """
@@ -86,12 +83,13 @@ class HautDebit():
         self.graph_departement = self.init_graph_departement()
 
         self.main_layout = html.Div(children=[
-            html.H3(children='Acces au haut débit en France'),
+            html.H3(
+                children='Évolution de l\'accès à la fibre optique en France Métropolitaine de 2018 à 2021'),
 
             html.Div([
                 html.Div([
-                    html.Div(
-                        'Carte de la couverture haut-débit en France métropolitaine par département en fonction du temps'),
+                    html.H6(
+                        'Carte de la couverture fibre optique en France métropolitaine par département en fonction du temps'),
                     dcc.Graph(id='debit-main-map'),
                 ], style={'width': '90%', }),
 
@@ -133,16 +131,16 @@ class HautDebit():
             html.Br(),
             dcc.Markdown("""
             Le graphique est interactif. En passant la souris sur les régions/départements, vous avez une infobulle.
-            On peut observer qu'au cour du temps, tous les départements ont gagné en haut débit.
+            On peut observer qu'au cours du temps, tous les départements ont gagné en haut débit.
 
-            Grâce au graphe ci-dessous, on peut essayer de comprendre, quels facteurs ont un impacte sur le taux de couverture haut-débit.
+            Grâce au graphe ci-dessous, on peut essayer de comprendre quels facteurs ont un impact sur le taux de couverture haut-débit.
             """),
 
             html.Br(),
             html.Div([
 
                 html.Div([
-                    html.Div(
+                    html.H6(
                         'Graphe de l\'évolution de la couverture haut-débit en France métropolitaine par département en fonction du temps'),
                     dcc.Graph(id='debit-graph'), ], style={'width': '90%', }),
 
@@ -163,7 +161,7 @@ class HautDebit():
                             ), html.Br(), html.Br(), html.Br(), html.Br(),
                             html.Br(), html.Br(), html.Br(), html.Br(), html.Br(
                             ), html.Br(), html.Br(), html.Br(), html.Br(),
-                        ], style={'background-image': 'linear-gradient(rgb(0, 200, 200), rgb(200, 0, 0))',
+                        ], style={'background-image': 'linear-gradient(rgb(0, 255, 0), rgb(0, 0, 255))',
                                   'width': '40%',
                                   'float': 'left',
                                   'height': '100%',
@@ -205,7 +203,6 @@ class HautDebit():
 
         if application:
             self.app = application
-            # application should have its own layout and use self.main_layout as a page or in a component
         else:
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
@@ -216,22 +213,19 @@ class HautDebit():
             [dash.dependencies.Input('debit-crossfilter-type-type', 'value'),
              dash.dependencies.Input('debit-crossfilter-year-slider', 'value')])(self.update_map)
 
-        # Graph
+        # Graphe
         self.app.callback(
             dash.dependencies.Output('debit-graph', 'figure'),
             [dash.dependencies.Input('debit-crossfilter-type-couleur', 'value'),
              dash.dependencies.Input('debit-filter-type-slider', 'value')])(self.update_graph)
 
-        # Filter
+        # Filtre
         self.app.callback(
             dash.dependencies.Output('debit-filter-type-slider', 'max'),
             [dash.dependencies.Input('debit-crossfilter-type-couleur', 'value')])(self.update_slider_max)
         self.app.callback(
             dash.dependencies.Output('debit-filter-type-slider', 'value'),
             [dash.dependencies.Input('debit-crossfilter-type-couleur', 'value')])(self.update_slider_value)
-        # self.app.callback(
-        #     dash.dependencies.Output('debit-filter-type-slider', 'marks'),
-        #     [dash.dependencies.Input('debit-crossfilter-type-couleur', 'value')])(self.update_slider_marks)
 
     def update_map(self, type, year):
         data, goejson = self.df_departement.copy(), self.geojson_departement
@@ -270,7 +264,7 @@ class HautDebit():
                     'opérateur': 'Nombre d\'opérateur'}
         nom = dcouleur[couleur]
 
-        fig_col_dic = gradient_scale((200, 0, 0), (0, 200, 200), nom)
+        fig_col_dic = gradient_scale((0, 0, 255), (0, 255, 0), nom)
 
         m, M = filter_value
         fig = px.line(df, x=df['Temps'],
@@ -301,15 +295,6 @@ class HautDebit():
 
     def update_slider_value(self, type):
         return [0, self.update_slider_max(type)]
-    # def update_slider_marks(self, type):
-    #     Max = self.update_slider_max(type)
-    #     M = Max // 5
-    #     ret = {}
-    #     for i in range(4):
-    #         ret[i * M] = {'label' : str(i * M), 'style' : 'rgb(255,255,255)'}
-    #     ret[str(Max)] = {'label' : str(Max), 'style' : 'rgb(255,255,255)'}
-    #     print(ret)
-    #     return ret
 
     def run(self, debug=False, port=8050):
         self.app.run_server(host="0.0.0.0", debug=debug, port=port)
