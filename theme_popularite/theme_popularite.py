@@ -9,6 +9,7 @@ import plotly.graph_objs as go
 import plotly.express as px
 import dateutil as du
 import json
+import matplotlib.pyplot as plt
 
 def convert_genres(s):
 	l = json.loads(s.replace('\'', '"'))
@@ -34,10 +35,10 @@ class ThemeAnalysis():
         self.main_layout = html.Div(children=[
             html.H3(children='Évolution des revenus des films par rapport à leurs genres et au budget alloué'),
 
-            html.Div('Déplacez la souris sur une bulle pour avoir les graphiques du pays en bas.'), 
+            html.Div('Déplacez la souris sur une bulle pour avoir les graphiques du thème en bas. Pour chaque graphique, cliquez sur autoscale.'), 
 
             html.Div([
-                    html.Div([ dcc.Graph(id='wps-main-graph'), ], style={'width':'90%', }),
+                    html.Div([ dcc.Graph(id='wps-main-graph', animate=True), ], style={'width':'90%', }),
 
                     html.Div([
                         # html.Div('Continents'),
@@ -79,7 +80,7 @@ class ThemeAnalysis():
                             max=self.years[-1],
                             step = 1,
                             value=self.years[0],
-                            marks={str(year): str(year) for year in self.years[::2]},
+                            marks={str(year): str(year) for year in self.years[::5]},
                     ),
                     style={'display':'inline-block', 'width':"90%"}
                 ),
@@ -111,9 +112,7 @@ class ThemeAnalysis():
             html.Br(),
             dcc.Markdown("""
             #### À propos
-            * Inspiration initiale : [conférence de Hans Rosling](https://www.ted.com/talks/hans_rosling_new_insights_on_poverty)
-            * [Version Plotly](https://plotly.com/python/v3/gapminder-example/)
-            * Données : [Banque mondiale](https://databank.worldbank.org/source/world-development-indicators)
+            * Données : [Kaggle / TMdB](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset)
             * (c) 2022 Charlie Brosse
             """),
            
@@ -140,20 +139,20 @@ class ThemeAnalysis():
         self.app.callback(
             dash.dependencies.Output('wps-div-theme', 'children'),
             dash.dependencies.Input('wps-main-graph', 'hoverData'))(self.theme_chosen)
-        self.app.callback(
-            dash.dependencies.Output('wps-button-start-stop', 'children'),
-            dash.dependencies.Input('wps-button-start-stop', 'n_clicks'),
-            dash.dependencies.State('wps-button-start-stop', 'children'))(self.button_on_click)
-        # this one is triggered by the previous one because we cannot have 2 outputs for the same callback
-        self.app.callback(
-            dash.dependencies.Output('wps-auto-stepper', 'max_interval'),
-            [dash.dependencies.Input('wps-button-start-stop', 'children')])(self.run_movie)
-        # triggered by previous
-        self.app.callback(
-            dash.dependencies.Output('wps-crossfilter-year-slider', 'value'),
-            dash.dependencies.Input('wps-auto-stepper', 'n_intervals'),
-            [dash.dependencies.State('wps-crossfilter-year-slider', 'value'),
-             dash.dependencies.State('wps-button-start-stop', 'children')])(self.on_interval)
+        # self.app.callback(
+        #     dash.dependencies.Output('wps-button-start-stop', 'children'),
+        #     dash.dependencies.Input('wps-button-start-stop', 'n_clicks'),
+        #     dash.dependencies.State('wps-button-start-stop', 'children'))(self.button_on_click)
+        # # this one is triggered by the previous one because we cannot have 2 outputs for the same callback
+        # self.app.callback(
+        #     dash.dependencies.Output('wps-auto-stepper', 'max_interval'),
+        #     [dash.dependencies.Input('wps-button-start-stop', 'children')])(self.run_movie)
+        # # triggered by previous
+        # self.app.callback(
+        #     dash.dependencies.Output('wps-crossfilter-year-slider', 'value'),
+        #     dash.dependencies.Input('wps-auto-stepper', 'n_intervals'),
+        #     [dash.dependencies.State('wps-crossfilter-year-slider', 'value'),
+        #      dash.dependencies.State('wps-button-start-stop', 'children')])(self.on_interval)
         self.app.callback(
             dash.dependencies.Output('wps-revenue-time-series', 'figure'),
             [dash.dependencies.Input('wps-main-graph', 'hoverData'),
@@ -189,7 +188,8 @@ class ThemeAnalysis():
          margin={'l': 40, 'b': 30, 't': 10, 'r': 0},
          hovermode='closest',
          showlegend=False,
-     )
+         )
+        # plt.autoscale(enable=True, axis="both")
         return fig
 
     def create_time_series(self, genre, what, axis_type, title):
@@ -200,7 +200,7 @@ class ThemeAnalysis():
                 mode = 'lines+markers',
             )],
             'layout': {
-                'height': 225,
+                'height': 325,
                 'margin': {'l': 50, 'b': 20, 'r': 10, 't': 20},
                 'yaxis': {'title':title,
                           'type': 'linear' if axis_type == 'Linéaire' else 'log'},
