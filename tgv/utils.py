@@ -2,7 +2,6 @@ import os
 
 from dash import dcc
 from dash import html
-import dash_daq as daq
 
 cur_path = os.path.dirname(__file__)
 a_propos_path = os.path.join(cur_path, "a-propos.md")
@@ -62,23 +61,43 @@ def make_layout() -> html.Div:
             html.H3(children="Trafic et régularité mensuels moyens des TGV de la SNCF"),
             html.Div(
                 [
-                    html.Iframe(
-                        id="tgv-main-graph", srcDoc=None, width="100%", height="600"
+                    html.Div(
+                        [
+							html.Iframe(
+                        	id="tgv-main-graph", srcDoc=None, width="100%", height="600"
+                    		),
+							dcc.Graph(id='hist-graph'),
+						],
+                        style={
+							"width": "90%",
+							"display": "inline-block"
+						}
                     ),
+                    html.Div([
+                    	dcc.RadioItems(id="plot-switch", options=['Carte', 'Histogramme'], value='Carte', labelStyle={'display':'block'}),
+                        html.Br(),
+                        html.Br(),
+                        html.Div('Filtre'),
+                        html.Div([
+							html.Div([
+								dcc.RangeSlider(
+									id='debit-filter-type-slider',
+									min=0,
+									max=1,
+									value=[0, 1],
+									vertical=True,
+								)
+							],),
+                    	]),
+					], style={"margin-left":"20px"},
+                    )
                 ],
                 style={
                     "width": "100%",
-                    "display": "block",
+                    "display": "flex",
+                    "justifyContent" : "center"
                 },
             ),
-            html.Div(
-                [
-					dcc.Graph(id='hist-graph'),
-				],
-            	style={
-                	"display": "block",
-				},
-                     ),
             html.Div(
                 [
                     dcc.Slider(
@@ -101,15 +120,15 @@ def make_layout() -> html.Div:
                         ],
                         #style={"width": "6em", "padding": "2em 0px 0px 0px"},
                     ),
-                    html.Div(
-						[
-							daq.BooleanSwitch(
-								id="plot-switch",
-								on=True,
-								label="Visualiser sur une carte"
-							)
-						]
-					)
+                    # html.Div(
+					# 	[
+					# 		daq.BooleanSwitch(
+					# 			id="plot-switch",
+					# 			on=True,
+					# 			label="Visualiser sur une carte"
+					# 		)
+					# 	]
+					# )
                 ]
             ),
             html.Br(),

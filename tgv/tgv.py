@@ -109,7 +109,7 @@ class TGV:
             df_coord.groupby(
                 [df_coord.index.to_period("Y"), "Gare de départ", "Gare d'arrivée"]
             )
-            .mean()
+            .sum()
             .reset_index()
         )
         df_trajet = (
@@ -145,18 +145,18 @@ class TGV:
         self.df_trajet = df_trajet
 
     def update_map_visibility(self, map) -> go.Figure:
-        if (map):
+        if (map == 'Carte'):
             return {'display': 'block'}
         else:
             return {'display': 'none'}
         
     def update_hist_visibility(self, map) -> go.Figure:
-        if (map):
+        if (map == 'Carte'):
             return {'display': 'none'}
         else:
             return {'display': 'block'}
         
-    def update_map(self, year, colonne) -> go.Figure:
+    def update_map(self, year, colonne, filter) -> go.Figure:
         """
         Create graph mapping train stations and lines to the lateness of the trains
         """
@@ -165,7 +165,7 @@ class TGV:
         france_line = folium.Map(location=[46.8, 2], zoom_start=6)
         max_traffic = self.df_trajet[colonne].max()
         min_traffic = self.df_trajet[colonne].min()
-        df_trajet = self.df_trajet[self.df_trajet.index == str(year)]
+        df_trajet = self.df_trajet[(self.df_trajet.index == str(year)) & (self.df_trajet[colonne] >= filter[0]) & (self.df_trajet[colonne] <= filter[1])]
         colormap = cm.LinearColormap(
             ["green", "orange", "red"], vmin=min_traffic, vmax=max_traffic
         )
@@ -193,7 +193,7 @@ class TGV:
                     df_trajet["Coord_arrivée"].iloc[i],
                 ),
                 color=colormap.rgb_hex_str(traffic),
-                weight=traffic / max_traffic * 2.5 + 0.5,
+                weight=traffic / max_traffic * 2 + 1,
                 opacity=1,
                 popup="{}: {}<br>Départ: {}<br>Arrivée: {}".format(
                     colonne,
@@ -206,9 +206,17 @@ class TGV:
         france_line.save("mymapnew.html")
         return open("mymapnew.html", "r").read()
     
-    def update_hist(self, year, colonne) -> go.Figure:
+    def update_hist(self, year, colonne, filter) -> go.Figure:
         year += 2018
-        return px.histogram(self.df_trajet[self.df_trajet.index == str(year)], x='Gare de départ', y=colonne)
+        return px.histogram(self.df_trajet[(self.df_trajet.index == str(year)) & (self.df_trajet[colonne] >= filter[0]) & (self.df_trajet[colonne] <= filter[1])], x='Gare de départ', y=colonne, histfunc='sum')
+    
+    def update_filter(self, year, colonne, map) -> go.Figure:
+        year += 2018
+        if (map == 'Carte'):
+            df = self.df_trajet[self.df_trajet.index == str(year)][colonne]
+        else :
+            df = self.df_trajet[self.df_trajet.index == str(year)].groupby('Gare de départ').sum()[colonne]
+        return df.min(), df.max()
 
     def __init__(self, application: dash.Dash = None):
         self.main_layout = utils.make_layout()
@@ -222,23 +230,31 @@ class TGV:
             
         self.app.callback(
             Output("tgv-main-graph", "style"),
-			[Input("plot-switch", "on")]
+			[Input("plot-switch", "value")]
 		)(self.update_map_visibility)
         
         self.app.callback(
             Output("hist-graph", "style"),
-			[Input("plot-switch", "on")]
+			[Input("plot-switch", "value")]
 		)(self.update_hist_visibility)
 
         self.app.callback(
             Output("tgv-main-graph", "srcDoc"),
-            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value")],
+            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value"), Input("debit-filter-type-slider", "value")],
         )(self.update_map)
         
         self.app.callback(
             Output("hist-graph", "figure"),
-            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value")],
+            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value"), Input("debit-filter-type-slider", "value")],
         )(self.update_hist)
+        
+        self.app.callback(
+            Output("debit-filter-type-slider", "min"),
+            Output("debit-filter-type-slider", "max"),
+            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value"), Input("plot-switch", "value")],
+        )(self.update_filter)
+
+        
 
 if __name__ == "__main__":
     tgv = TGV()
