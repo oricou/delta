@@ -17,7 +17,7 @@ def load_data(filename):
     return df
 
 
-def load_PIB(filename):
+def load_pib(filename):
     df = pd.read_csv(filename)
     df = df[df["Year"] == 2016]
     df = df.drop(["Country Name", "Year"], axis=1)
@@ -25,11 +25,11 @@ def load_PIB(filename):
     return df
 
 
-class Vaccinations():
+class Vaccinations:
 
     def __init__(self, application=None):
         vacc = load_data("data/vaccinations.csv")
-        pib = load_PIB("data/gdp.csv")
+        #pib = load_pib("data/gdp.csv")
 
         self.cols = [
             'Code ISO Pays',
@@ -51,6 +51,10 @@ class Vaccinations():
         #self.vacc = vacc.merge(pib, how="left", on="iso_code")
         self.vacc = vacc
         self.pays = self.vacc['location'].unique()
+        self.dates = self.vacc['date'].unique().sort()
+
+        self.START = "Play"
+        self.PAUSE = "Pause"
 
         # HTML components
         self.main_layout = html.Div(children=[
@@ -73,6 +77,37 @@ class Vaccinations():
             html.Div([dcc.Graph(id='vac-total'), ], style={'width': '100%', }),
             html.Div([dcc.Graph(id='vac-quotidien'), ], style={'width': '100%', }),
             html.Div([dcc.Graph(id='vac-pourcentage'), ], style={'width': '100%', }),
+
+            html.H2(children='2. Evolution de la vaccination en fonction des pays'),
+
+            html.Div([dcc.Graph(id='vac-countries'), ], style={'width': '100%', }),
+            html.Div([
+                html.Div(
+                    html.Button(
+                        self.START,
+                        id='slider-button',
+                        style={'display': 'inline-block', }
+                    ),
+                    dcc.Slider(
+                        id='slider',
+                        min=self.dates[0],
+                        max=self.dates[-1],
+                        step=1,
+                        value=self.dates[0],
+                        marks={str(year): str(year) for year in self.dates[::5]},
+                    ),
+                    style={'display': 'inline-block', 'width': "90%"}
+                ),
+                dcc.Interval(  # fire a callback periodically
+                    id='slider-auto-stepper',
+                    interval=100,  # in milliseconds
+                    max_intervals=-1,  # start running
+                    n_intervals=0
+                ),
+            ], style={
+                'padding': '0px 50px',
+                'width': '100%'
+            }),
         ],)
 
         if application:
@@ -81,6 +116,9 @@ class Vaccinations():
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
 
+        # Callbacks
+
+        # First three graphs
         self.app.callback(
             dash.dependencies.Output('vac-total', 'figure'),
             dash.dependencies.Input('pays', 'value'),
@@ -96,6 +134,29 @@ class Vaccinations():
             dash.dependencies.Input('pays', 'value'),
         )(self.update_graph_per_country_pourcentage)
 
+        # Slider graph
+        self.app.callback(
+            dash.dependencies.Output('vac-countries', 'figure'),
+            dash.dependencies.Input('slider', 'value'),
+        )(self.update_country_slider_graph)
+
+        self.app.callback(
+            dash.dependencies.Output('slider-button', 'children'),
+            dash.dependencies.Input('slider-button', 'n_clicks'),
+            dash.dependencies.State('slider-button', 'children'))(self.button_on_click)
+        # this one is triggered by the previous one because we cannot have 2 outputs for the same callback
+        self.app.callback(
+            dash.dependencies.Output('slider-auto-stepper', 'max_interval'),
+            [dash.dependencies.Input('slider-button', 'children')])(self.run_movie)
+        # triggered by previous
+        self.app.callback(
+            dash.dependencies.Output('wps-crossfilter-year-slider', 'value'),
+            dash.dependencies.Input('wps-auto-stepper', 'n_intervals'),
+            [dash.dependencies.State('wps-crossfilter-year-slider', 'value'),
+             dash.dependencies.State('wps-button-start-stop', 'children')])(self.on_interval)
+
+    # Update methods
+
     def update_graph_per_country_total(self, pays):
         df = self.vacc.loc[self.vacc['location'] == pays]
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
@@ -107,7 +168,7 @@ class Vaccinations():
             "Personnes vaccinées",
             "Personnes totalement vaccinées",
             "Total de boosters",
-            ]]
+        ]]
 
         fig = px.line(df[df.columns[2]], template='plotly_dark')
         for c in df.columns[3:]:
@@ -134,7 +195,7 @@ class Vaccinations():
             "Vaccinations quotidiennes pour 1M habitants",
             "Personnes vaccinées quotidiennement",
             "Personnes vaccinées quotidiennement pour 100 habitants",
-            ]]
+        ]]
             
         fig = px.line(df[df.columns[2]], template='plotly_dark')
         for c in df.columns[3:]:
@@ -161,7 +222,7 @@ class Vaccinations():
             "Personnes totalement vaccinées pour 100 habitants",
             "Total de boosters pour 100 habitants",
             "Personnes vaccinées quotidiennement pour 100 habitants",
-            ]]
+        ]]
             
         fig = px.line(df[df.columns[2]], template='plotly_dark')
         for c in df.columns[3:]:
@@ -175,6 +236,54 @@ class Vaccinations():
             showlegend=True,
         )
         return fig
+
+    def update_country_slider_graph(self, date):
+        regions = [
+            "World",
+            "Europe",
+            "Asia",
+            "North America",
+            "South America",
+            "Africa",
+            "Oceania",
+        ]
+
+        df = self.vacc[self.vacc['location'].isin(regions)]
+        df = df[df['date'] == date]
+
+        fig = px.histogram(df, x="Regions", y="% de personnes vaccinées", template='plotly_dark')
+        fig.update_layout(
+            xaxis=dict(title="Regions",
+                       type="linear",
+                       range=(0, 100)),
+            yaxis=dict(title="Taux de vaccination de la population en diverses régions du globe",
+                       range=(0, len(regions))),
+            hovermode='closest',
+            showlegend=False,
+        )
+
+        return fig
+
+    def button_on_click(self, _, text):
+        if text == self.START:
+            return self.PAUSE
+        else:
+            return self.START
+
+    def run_movie(self, text):
+        if text == self.START:
+            return 0
+        else:
+            return -1
+
+    def on_interval(self, _, date, text):
+        if text == self.PAUSE:
+            if date == self.dates[-1]:
+                return self.dates[0]
+            else:
+                return self.dates[self.dates.index(date, 0, len(self.dates)) + 1]
+        else:
+            return date
 
 
 if __name__ == '__main__':
