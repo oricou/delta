@@ -58,7 +58,12 @@ def get_color(traffic: int, max_traffic: int):
 def make_layout() -> html.Div:
     return html.Div(
         children=[
-            html.H3(children="Trafic et régularité mensuels moyens des TGV de la SNCF"),
+            html.Div(
+                [
+                    html.H1(children="Trafic et régularité des TGV de la SNCF"),
+				],
+                style={"justifyContent" : "center"}
+			),
             html.Div(
                 [
                     html.Div(
@@ -74,7 +79,7 @@ def make_layout() -> html.Div:
 						}
                     ),
                     html.Div([
-                    	dcc.RadioItems(id="plot-switch", options=['Carte', 'Histogramme'], value='Carte', labelStyle={'display':'block'}),
+                    	dcc.RadioItems(id="plot-switch", options=['Trajet', 'Gare'], value='Trajet', labelStyle={'display':'block'}),
                         html.Br(),
                         html.Br(),
                         html.Div('Filtre'),
@@ -83,8 +88,8 @@ def make_layout() -> html.Div:
 								dcc.RangeSlider(
 									id='debit-filter-type-slider',
 									min=0,
-									max=1,
-									value=[0, 1],
+									max=100000,
+									value=[0, 100000],
 									vertical=True,
 								)
 							],),
@@ -120,15 +125,6 @@ def make_layout() -> html.Div:
                         ],
                         #style={"width": "6em", "padding": "2em 0px 0px 0px"},
                     ),
-                    # html.Div(
-					# 	[
-					# 		daq.BooleanSwitch(
-					# 			id="plot-switch",
-					# 			on=True,
-					# 			label="Visualiser sur une carte"
-					# 		)
-					# 	]
-					# )
                 ]
             ),
             html.Br(),

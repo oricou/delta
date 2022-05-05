@@ -145,13 +145,13 @@ class TGV:
         self.df_trajet = df_trajet
 
     def update_map_visibility(self, map) -> go.Figure:
-        if (map == 'Carte'):
+        if (map == 'Trajet'):
             return {'display': 'block'}
         else:
             return {'display': 'none'}
         
     def update_hist_visibility(self, map) -> go.Figure:
-        if (map == 'Carte'):
+        if (map == 'Trajet'):
             return {'display': 'none'}
         else:
             return {'display': 'block'}
@@ -208,11 +208,13 @@ class TGV:
     
     def update_hist(self, year, colonne, filter) -> go.Figure:
         year += 2018
-        return px.histogram(self.df_trajet[(self.df_trajet.index == str(year)) & (self.df_trajet[colonne] >= filter[0]) & (self.df_trajet[colonne] <= filter[1])], x='Gare de départ', y=colonne, histfunc='sum')
+        df_grouped =self.df_trajet[self.df_trajet.index == str(year)].groupby('Gare de départ').sum().reset_index()
+        return px.histogram(df_grouped[(df_grouped[colonne] >= filter[0]) & (df_grouped[colonne] <= filter[1])], x='Gare de départ', y=colonne, histfunc='sum')
+        # return px.histogram(self.df_trajet[(self.df_trajet.index == str(year)) & (self.df_trajet[colonne] >= filter[0]) & (self.df_trajet[colonne] <= filter[1])], x='Gare de départ', y=colonne, histfunc='sum')
     
     def update_filter(self, year, colonne, map) -> go.Figure:
         year += 2018
-        if (map == 'Carte'):
+        if (map == 'Trajet'):
             df = self.df_trajet[self.df_trajet.index == str(year)][colonne]
         else :
             df = self.df_trajet[self.df_trajet.index == str(year)].groupby('Gare de départ').sum()[colonne]
