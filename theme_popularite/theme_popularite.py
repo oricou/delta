@@ -35,7 +35,7 @@ class ThemeAnalysis():
         self.main_layout = html.Div(children=[
             html.H3(children='Évolution des revenus des films par rapport à leurs genres et au budget alloué'),
 
-            html.Div('Déplacez la souris sur une bulle pour avoir les graphiques du thème en bas. Pour chaque graphique, cliquez sur autoscale.'), 
+            html.Div('Déplacez la souris sur une bulle pour avoir les graphiques du thème en bas.'), 
 
             html.Div([
                     html.Div([ dcc.Graph(id='wps-main-graph', animate=True), ], style={'width':'90%', }),
@@ -180,11 +180,15 @@ class ThemeAnalysis():
                         hover_name="genres")
         fig.update_layout(
                     xaxis = dict(title='Budget moyen par film',
-                      type= 'linear' if xaxis_type == 'Linéaire' else 'log',
-                      range=(0,3000000000) if xaxis_type == 'Linéaire' 
-                                      else (np.log10(1000000), np.log10(1000000000)) 
+                      type= 'linear' 
+                    #   if xaxis_type == 'Linéaire' else 'log',
+                    #   range=(0,3000000000) if xaxis_type == 'Linéaire' 
+                    #                   else (np.log10(1000000), np.log10(1000000000)) 
                      ),
-         yaxis = dict(title="Revenu moyen par film", range=(0,1000000000)),
+         yaxis = dict(title="Revenu moyen par film", 
+            # range=(0,1000000000)
+            ),
+
          margin={'l': 40, 'b': 30, 't': 10, 'r': 0},
          hovermode='closest',
          showlegend=False,
