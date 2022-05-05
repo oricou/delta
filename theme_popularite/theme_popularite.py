@@ -28,7 +28,7 @@ class ThemeAnalysis():
         self.df.genres = self.df.genres.apply(convert_genres)
         df_exploded = self.df.explode('genres')
         self.df_year = df_exploded.groupby(["release_year","genres"], as_index=False).agg({"budget":"sum", "revenue":"sum", "popularity":"mean", "vote_average":"mean", "vote_count":"mean", "title":"count"})
-        self.df_year = self.df_year.set_index('release_year', append=True).swaplevel(1,0).sort_index(level=0)
+        self.df_year = self.df_year.set_index('release_year')
         self.years = sorted(set(self.df_year.index.values))
 
         self.main_layout = html.Div(children=[
@@ -79,7 +79,7 @@ class ThemeAnalysis():
                             max=self.years[-1],
                             step = 1,
                             value=self.years[0],
-                            marks={str(year): str(year) for year in self.years[::5]},
+                            marks={str(year): str(year) for year in self.years[::2]},
                     ),
                     style={'display':'inline-block', 'width':"90%"}
                 ),
@@ -169,6 +169,7 @@ class ThemeAnalysis():
 
 
     def update_graph(self, xaxis_type, year):
+        print(f" yoyo {year}") 
         size = self.df_year.loc[year]['title'].to_numpy()
         nb_films = size.sum()
         s = [((s/nb_films) * 100)*2 + 10 for s in size]
@@ -184,7 +185,7 @@ class ThemeAnalysis():
                       range=(0,3000000000) if xaxis_type == 'Linéaire' 
                                       else (np.log10(1000000), np.log10(1000000000)) 
                      ),
-         yaxis = dict(title="Revenu moyen par film", range=(0,10000000000)),
+         yaxis = dict(title="Revenu moyen par film", range=(0,1000000000)),
          margin={'l': 40, 'b': 30, 't': 10, 'r': 0},
          hovermode='closest',
          showlegend=False,
@@ -195,7 +196,7 @@ class ThemeAnalysis():
         return {
             'data': [go.Scatter(
                 x = self.years,
-                y = self.df_year[self.df["genres"] == genre][what],
+                y = self.df_year[self.df_year["genres"] == genre][what],
                 mode = 'lines+markers',
             )],
             'layout': {
