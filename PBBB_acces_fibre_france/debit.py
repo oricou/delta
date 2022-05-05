@@ -12,7 +12,7 @@ from typing import List
 
 
 class HautDebit():
-    dossier_data = "./PBBB_sujet/data/"
+    dossier_data = "./PBBB_acces_fibre_france/data/"
     paths = ['2021t4-obs-hd-thd-deploiement.xlsx',
              'departements.geojson',
              'operator-id.xlsx']

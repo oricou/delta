@@ -5,7 +5,7 @@ urls = ['https://www.data.gouv.fr/fr/datasets/r/d538685a-b9cb-4a3e-b90d-ad6f0a13
         'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements-version-simplifiee.geojson',
         'https://www.arcep.fr/fileadmin/reprise/dossiers/fibre/liste-gestion-identifiants-prefixe-ligne-fibre-2.xlsx']
 
-dossier_data = "./PBBB_sujet/data/"
+dossier_data = "./PBBB_acces_fibre_france/data/"
 paths = ['2021t4-obs-hd-thd-deploiement.xlsx',
         'departements.geojson',
         'operator-id.xlsx']

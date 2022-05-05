@@ -4,7 +4,7 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
-from PBBB_sujet import debit
+from PBBB_acces_fibre_france import debit
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
