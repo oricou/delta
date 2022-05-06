@@ -2,19 +2,16 @@ import sys, os
 import dash, flask
 
 from dash import dcc, html
-
-import pandas as pd
-import numpy as np
-import math
-
-import plotly.graph_objs as go
-import plotly.express as px
-import plotly.graph_objects as go
+from plotly import express as px
 
 import dateutil as du
+import math
+import pandas as pd
+import numpy as np
 
-# Manipulation du path pour ajouter le chemin relatif et
-# empecher des erreurs peu importe le chemin de la source
+
+
+# Path manipulation to add relative path, preventing import errors regardless of the root path
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)))
 from get_data import df_hr, df_cc
 from utils import *
@@ -55,22 +52,24 @@ class Bonheur():
                         value = self.graph_type_default,
                         labelStyle = {'display':'block'},
                     ),
-                    html.Button('Réinitialiser le graphe', id='bnh-btn', n_clicks=0),
+                    html.Button('Réinitialiser le graphe', id='bnh-reset-btn', n_clicks=0),
                 ], style = {'width' : '23%', 'display': 'inline-block'})
             ]),
             dcc.Markdown("", id = 'bnh-description', style = {'width': '100%'}),
             dcc.Markdown(md_about)
-        ], style = {
+        ], style={
             'backgroundColor': 'white',
-            'padding': '10px 50px 10px 50px',
+             'padding': '10px 50px 10px 50px',
         })
         
         
         if application:
             self.app = application
+            # application should have its own layout and use self.main_layout as a page or in a component
         else:
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
+
 
         # update graph
         self.app.callback(
@@ -78,7 +77,7 @@ class Bonheur():
             [
                 dash.dependencies.Input('bnh-graph', 'clickData'),
                 dash.dependencies.Input('bnh-graph-type', 'value'),
-                dash.dependencies.Input('bnh-btn', 'n_clicks'),
+                dash.dependencies.Input('bnh-reset-btn', 'n_clicks'),
             ]
         )(self._update_graph)
         
@@ -86,7 +85,7 @@ class Bonheur():
         self.app.callback(
             dash.dependencies.Output('bnh-graph-type', 'value'),
             [
-                dash.dependencies.Input('bnh-btn', 'n_clicks'),
+                dash.dependencies.Input('bnh-reset-btn', 'n_clicks'),
             ]
         )(self._reset_graph_type)
         
@@ -103,7 +102,7 @@ class Bonheur():
             dash.dependencies.Output('bnh-graph', 'clickData'),
             [
                 dash.dependencies.Input('bnh-graph-type', 'value'),
-                dash.dependencies.Input('bnh-btn', 'n_clicks')
+                dash.dependencies.Input('bnh-reset-btn', 'n_clicks')
             ]
         )(self._reset_graph_values)
         
@@ -349,22 +348,14 @@ class Bonheur():
         return figure
         
     
-if __name__ == '__main__':
-    nrg = Bonheur()
-    nrg.app.run_server(debug=True, port=8051)
-    
-    
-    
-    
-    
-    
-    
     
     
     
     
     
 # <------------------------------------------------------->
+# Markdown for introduction, help and every different parameters
+
 md_introduction = """
 Gallup Organization est une entreprise américaine offrant de nombreux services de recherche concernant le management, les ressources humaines et les statistiques. Cette entité est particulièrement connue pour effectuer différents sondages souvent médiatisés. Dans le cadre du programme Gallup Happiness Poll, l'entreprise recueille des informations et des avis d'habitants de pays du monde entier sur le ressenti de leur vie, et s'ils se considèrent comme heureux. Il en résulte un rapport qui s'étend sur plusieurs années et contient des informations particulièrement intéressantes.
 
@@ -448,3 +439,10 @@ md_about = """
 * Informations et Métadonnées : https://happiness-report.s3.amazonaws.com/2021/Appendix1WHR2021C2.pdf
 * (c) 2022 Matthieu Guérin et Pierre de La Ruffie
 """
+
+
+
+
+if __name__ == '__main__':
+    nrg = Bonheur()
+    nrg.app.run_server(debug=True, port=8051)
