@@ -238,5 +238,5 @@ class Vaccinations:
 
 
 if __name__ == '__main__':
-    vacci = Vaccinations()
-    vacci.app.run_server(debug=True, port=8051)
+    vaccinations = Vaccinations()
+    vaccinations.app.run_server(debug=True, port=8051)
