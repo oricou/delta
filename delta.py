@@ -4,6 +4,7 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
+from alcool import alcool
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -12,6 +13,7 @@ server = app.server
 pop = population.WorldPopulationStats(app)
 nrg = energies.Energies(app)
 dec = deces.Deces(app)
+alc = alcool.Alcool(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -19,16 +21,18 @@ main_layout = html.Div([
                  dcc.Location(id='url', refresh=False),
                  html.Div(className="two columns",
                           children = [
-                              html.Center(html.H2("Δelta δata")),
+                              html.Center(html.H2("λambda δata")),
                               dcc.Link(html.Button("Prix d'énergies", style={'width':"100%"}), href='/energies'),
                               html.Br(),
                               dcc.Link(html.Button('Natalité vs revenus', style={'width':"100%"}), href='/population'),
                               html.Br(),
                               dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
                               html.Br(),
+                              dcc.Link(html.Button("Alcool vs revenus", style={'width':"100%"}), href='/alcool'),
                               html.Br(),
                               html.Br(),
-                              html.Center(html.A('Code source', href='https://github.com/oricou/delta')),
+                              html.Br(),
+                              html.Center(html.A('Code source', href='https://github.com/El-Bicente/lambda')),
                           ]),
                  html.Div(id='page_content', className="ten columns"),
             ]),
@@ -66,6 +70,8 @@ def display_page(pathname):
         return pop.main_layout
     elif pathname == '/deces':
         return dec.main_layout
+    elif pathname == '/alcool':
+        return alc.main_layout
     else:
         return home_page
 

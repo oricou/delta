@@ -7,14 +7,14 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objs as go
-from .get_data_consommation import load_df
+from .get_data import load_df_cons, load_df_prix
 
 
-class Consommation():
+class Alcool():
     def __init__(self, application = None):
 
 
-        self.df  = load_df()
+        self.df  = load_df_cons()
 
         self.continent_colors = {'SEAR':'gold', 'EUR':'green', 'AFR':'brown', 'WPR':'red', 
                                  'AMR':'navy', 'EMR':'purple'}
@@ -24,11 +24,24 @@ class Consommation():
 
         self.sex = {'BTSX': 'Les deux sexes', 'FMLE': 'Femmes', 'MLE': 'Hommes'}
 
+        self.df_beer, self.df_wine, self.df_spirits = load_df_prix()
+
+        self.data = dict(
+        type = 'choropleth',
+        locationmode = 'country names',
+        ) 
+
+        self.layout = dict(
+            geo = dict(
+            showframe = False,
+            projection = {'type':'natural earth'}
+            )
+        )
+
         self.main_layout = html.Div(children=[
             html.H3(children='Consommation d\'alcool dans les pays selon le PIB'),
 
             html.Div('Déplacez la souris sur une bulle pour avoir les graphiques du pays en bas.'), 
-
 
             html.Div([
                     html.Div([ dcc.Graph(id='con-main-graph'), ], style={'width':'90%', }),
@@ -62,11 +75,11 @@ class Consommation():
                         html.Br(),
                         html.Br(),
                     ], style={'margin-left':'30px', 'width': '14em', 'float':'right'}),
-                ], style={
+            ], style={
                     'padding': '0px 50px', 
                     'display':'flex',
                     'justifyContent':'center'
-                }),     
+            }),     
 
             html.Br(),
 
@@ -81,24 +94,76 @@ class Consommation():
                        'borderBottom': 'thin lightgrey solid',
                        'justifyContent':'center', }),
             html.Br(),
-            dcc.Markdown("""
-            Chaque point du graphique représente un pays. Vous pouvez passer votre souris sur un point afin d'avoir plus d'informations sur un pays.
 
-            Notes :
-            * On remarque globalement une corrélation entre la richesse et la consommation d'alcool mais il existe surtout une homogénéité au sein des régions.
-            * En effet, certains pays du Moyen-Orient comme l'Arabie Saoudite ou les Emirats Arabes Unis sont particulièrement riches mais leur population consomme très peu d'alcool probablement pour des raisons religieuses.
-            * Les pays les plus fervents d'alcool sont les pays européens, pays qui sont aussi les plus riches et les plus stables tandis que les pays africains dépassent rarement les 50% de la population consommant de l'alcool.
-            * Les hommes consomment plus d'alcool que les femmes partout.
-            * Enfin, certains pays ont des données à prendre avec des pincettes comme le Vietnam qui semble afficher un pourcentage surréaliste.
-            #### À propos
-            * Sources : [Observatoire mondial de la Santé](https://www.who.int/data/gho/data/indicators/indicator-details/GHO/alcohol-consumers-past-12-months-(-))
-            * (c) 2022 Vincent Courty, Luca Moorghen
-            """)
+            html.Div([  dcc.Markdown("""
+                        Notes :
+                        * On remarque globalement une corrélation entre la richesse et la consommation d'alcool mais il existe surtout une \
+                        homogénéité au sein des régions.
+                        * En effet, certains pays du Moyen-Orient comme l'Arabie Saoudite ou les Emirats Arabes Unis sont particulièrement \
+                        riches mais leur population consomme très peu d'alcool probablement pour des raisons religieuses.
+                        * Les pays les plus fervents d'alcool sont les pays européens, pays qui sont aussi les plus riches et les plus stables \
+                        tandis que les pays africains dépassent rarement les 50% de la population consommant de l'alcool.
+                        * Les hommes consomment plus d'alcool que les femmes partout.
+                        * Enfin, certains pays ont des données à prendre avec des pincettes comme le Vietnam qui semble afficher un pourcentage surréaliste.
+                        """),
+                    ], style={ 'border-left': '10px solid #90EE90',
+                               'margin': '1.5em 10px',
+                               'padding': '0 10px', 
+                               'background-color': '#DCDCDC',
+                               'text-indent': '-0.5em'}),
+
+            html.Br(),
+            html.Br(),
+
+            html.H3(children='Prix des alcools face aux revenus'),
+            html.Div([ dcc.Graph(id='pla-main-graph'), ], style={'width':'100%', }),
+            html.Div([ dcc.RadioItems(id='pla-type', 
+                                        options=[{'label':'Bières', 'value':0},
+                                                {'label':'Vins', 'value':1},
+                                                {'label':'Spiritueux', 'value':2},], 
+                                        value=0,
+                                        labelStyle={'display':'block'}),
+                    ]),
+            html.Br(),
+            html.Div([  dcc.Markdown("""
+                        Cette carte montre le prix d'un alcool (bière, vin ou spiritueux) comparativement au PIB par habitant.
+
+                        * Les données les plus complètes concernent le prix des bières, probablement car c'est la boisson alcolisée \
+                        la plus populaire tandis que le vin et les spiritueux ne sont mêmes pas recensés dans certains pays africains et du Moyen-Orient, \
+                        sûrement dû à des différences culturelles.
+                        * Les données manquantes dans certains pays peuvent aussi s'expliquer par la situation politique de certains \
+                        pays en guerre comme le Soudan.
+                        * Les régions où la bière est la plus chère sont l'Afrique et le Moyen-Orient. En Afrique, cela peut s'expliquer par \
+                        un PIB par habitant bien plus faible par rapport au reste du monde.
+                        * Les disparités les plus importantes concernent le prix des spiritueux. Alors qu'ils représentent moins de 0.1% du \
+                        PIB dans les pays de l'hémisphère Nord, ils peuvent être deux à trois fois plus cher dans d'autres pays plus modestes comme \
+                        le Nicaragua, le Kenya ou encore l'Indonésie.
+                        """),
+                    ], style={ 'border-left': '10px solid #90EE90',
+                               'margin': '1.5em 10px',
+                               'padding': '0 10px', 
+                               'background-color': '#DCDCDC',
+                               'text-indent': '-0.5em',}),
+
+            html.Br(),
+            html.H4(children='À propos'),
+            html.Div([  dcc.Markdown("""
+                        * Sources :
+                        * [consommation d'alcool sur les 12 derniers mois](https://www.who.int/data/gho/data/indicators/indicator-details/GHO/alcohol-consumers-past-12-months-(-)) sur l'Observatoire mondial de la santé
+                        * [prix des différents types d'alcool](https://www.who.int/data/gho/data/themes/topics/topic-details/GHO/economic-aspects) sur l'Observatoire mondial de la santé
+                        * (c) 2022 Vincent Courty, Luca Moorghen
+                        """),
+                    ], style={ 'border-left': '10px solid #ADD8E6',
+                               'margin': '1.5em 10px',
+                               'padding': '0 10px', 
+                               'background-color': '#DCDCDC',
+                               'text-indent': '-0.5em',}),
 
         ], style={
                  'padding': '10px 50px 10px 50px',
                  }
         )
+  
 
         if application:
             self.app = application
@@ -112,7 +177,7 @@ class Consommation():
             dash.dependencies.Output('con-main-graph', 'figure'),
             [ dash.dependencies.Input('con-crossfilter-which-region', 'value'),
               dash.dependencies.Input('con-crossfilter-sex', 'value'),
-              dash.dependencies.Input('con-crossfilter-xaxis-type', 'value')])(self.update_graph)
+              dash.dependencies.Input('con-crossfilter-xaxis-type', 'value')])(self.update_graph_consommation)
         self.app.callback(
             dash.dependencies.Output('con-div-country', 'children'),
             dash.dependencies.Input('con-main-graph', 'hoverData'))(self.country_chosen)
@@ -123,9 +188,12 @@ class Consommation():
         self.app.callback(
             dash.dependencies.Output('con-consumption-barcharts', 'figure'),
             [dash.dependencies.Input('con-main-graph', 'hoverData')])(self.update_consumption_barcharts)
+        self.app.callback(
+                    dash.dependencies.Output('pla-main-graph', 'figure'),
+                    dash.dependencies.Input('pla-type', 'value'))(self.update_graph_prix)
 
 
-    def update_graph(self, regions, sex, xaxis_type):
+    def update_graph_consommation(self, regions, sex, xaxis_type):
         # Keeping only the regions selected in the checkbox
         dfg = self.df[self.df['region'].isin(regions)]
 
@@ -195,7 +263,25 @@ class Consommation():
         fig.update_traces(width=0.5)
         return fig
 
-        
+    def update_graph_prix(self, alcohol_type):
+        if alcohol_type == 0:
+            self.change_df(self.df_beer)
+        elif alcohol_type == 1:
+            self.change_df(self.df_wine)
+        elif alcohol_type == 2:
+            self.change_df(self.df_spirits)
+
+        choromap = go.Figure(data = [self.data],layout = self.layout)
+        choromap.update_layout(margin=dict(l=0, r=0, t=50, b=0, autoexpand=True))
+        return choromap
+
+    def change_df(self, dfg):
+
+        self.data['locations'] = dfg['pays']
+        self.data['z'] = dfg['ratio']
+        self.data['text'] = dfg['pays']
+        self.data['colorbar'] = {'title' : 'Prix de l\'alcool par rapport au PIB'}
+
 if __name__ == '__main__':
-    con = Consommation()
-    con.app.run_server(debug=True, port=8051)
+    alc = Alcool()
+    alc.app.run_server(debug=True, port=8051)

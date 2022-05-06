@@ -1,12 +1,12 @@
 run:
-	poetry run python lambda.py
+	poetry run python delta.py
 
 docker:
-	tar czvf apps.tgz lambda.py */
+	tar czvf apps.tgz delta.py */
 	docker build -t bicente/lambda .
 
 docker_no_cache:
-	tar czvf apps.tgz lambda.py */
+	tar czvf apps.tgz delta.py */
 	docker build --no-cache -t bicente/lambda .
 
 install:
