@@ -7,6 +7,8 @@ from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output, State
 from typing import List, Dict, Callable, Any
+
+from pyparsing import col
 import folium
 import branca.colormap as cm
 import utils
@@ -156,16 +158,19 @@ class TGV:
         else:
             return {'display': 'block'}
         
-    def update_map(self, year, colonne, filter) -> go.Figure:
+    def update_map(self, year, colonne, filter, data) -> go.Figure:
         """
         Create graph mapping train stations and lines to the lateness of the trains
         """
 
         year += 2018
         france_line = folium.Map(location=[46.8, 2], zoom_start=6)
-        max_traffic = self.df_trajet[colonne].max()
-        min_traffic = self.df_trajet[colonne].min()
-        df_trajet = self.df_trajet[(self.df_trajet.index == str(year)) & (self.df_trajet[colonne] >= filter[0]) & (self.df_trajet[colonne] <= filter[1])]
+        df_trajet = self.df_trajet[(self.df_trajet.index == str(year))]
+        if data == 'Taux':
+            df_trajet[colonne] = df_trajet.apply(lambda x : x[colonne]/x['Nombre de circulations prévues'] * 100, axis=1)
+        df_trajet = df_trajet[(df_trajet[colonne] >= filter[0]) & (df_trajet[colonne] <= filter[1])]
+        max_traffic = df_trajet[colonne].max()
+        min_traffic = df_trajet[colonne].min()
         colormap = cm.LinearColormap(
             ["green", "orange", "red"], vmin=min_traffic, vmax=max_traffic
         )
@@ -206,20 +211,34 @@ class TGV:
         france_line.save("mymapnew.html")
         return open("mymapnew.html", "r").read()
     
-    def update_hist(self, year, colonne, filter) -> go.Figure:
+    def update_hist(self, year, colonne, filter, data) -> go.Figure:
         year += 2018
         df_grouped =self.df_trajet[self.df_trajet.index == str(year)].groupby('Gare de départ').sum().reset_index()
+        if data == 'Taux' :
+            df_grouped[colonne] = df_grouped.apply(lambda x : x[colonne]/x['Nombre de circulations prévues'] * 100, axis=1)
+        if colonne == "Retard moyen de tous les trains au départ" or colonne == "Retard moyen de tous les trains à l'arrivée" :
+            return px.histogram(df_grouped[(df_grouped[colonne] >= filter[0]) & (df_grouped[colonne] <= filter[1])], x='Gare de départ', y=colonne, histfunc='avg')
         return px.histogram(df_grouped[(df_grouped[colonne] >= filter[0]) & (df_grouped[colonne] <= filter[1])], x='Gare de départ', y=colonne, histfunc='sum')
-        # return px.histogram(self.df_trajet[(self.df_trajet.index == str(year)) & (self.df_trajet[colonne] >= filter[0]) & (self.df_trajet[colonne] <= filter[1])], x='Gare de départ', y=colonne, histfunc='sum')
     
-    def update_filter(self, year, colonne, map) -> go.Figure:
+    def update_filter(self, year, colonne, map, data) -> go.Figure:
         year += 2018
         if (map == 'Trajet'):
-            df = self.df_trajet[self.df_trajet.index == str(year)][colonne]
+            df = self.df_trajet[self.df_trajet.index == str(year)]
+        elif colonne == "Retard moyen de tous les trains au départ" or colonne == "Retard moyen de tous les trains à l'arrivée" :
+            df = self.df_trajet[self.df_trajet.index == str(year)].groupby('Gare de départ').mean()
         else :
-            df = self.df_trajet[self.df_trajet.index == str(year)].groupby('Gare de départ').sum()[colonne]
-        return df.min(), df.max()
+            df = self.df_trajet[self.df_trajet.index == str(year)].groupby('Gare de départ').sum()
 
+        if (data == 'Taux'):
+            df[colonne] = df.apply(lambda x : x[colonne]/x['Nombre de circulations prévues'] * 100, axis=1)
+            
+        return df[colonne].min(), df[colonne].max(), [df[colonne].min(), df[colonne].max()]
+    
+    def update_datatype(self, colonne, data) -> go.Figure:
+        if colonne == "Nombre de circulations prévues" or colonne == "Retard moyen de tous les trains au départ" or colonne == "Retard moyen de tous les trains à l'arrivée" :
+            return "Brut", [{"label": "Brut", "value": "Brut"}, {"label": "Taux (%)", "value": "Taux", "disabled": True}]
+        return data, [{"label": "Brut", "value": "Brut"}, {"label": "Taux (%)", "value": "Taux"}]
+        
     def __init__(self, application: dash.Dash = None):
         self.main_layout = utils.make_layout()
         self.make_df()
@@ -242,19 +261,26 @@ class TGV:
 
         self.app.callback(
             Output("tgv-main-graph", "srcDoc"),
-            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value"), Input("debit-filter-type-slider", "value")],
+            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value"), Input("debit-filter-type-slider", "value"), Input("datatype-switch", "value")],
         )(self.update_map)
         
         self.app.callback(
             Output("hist-graph", "figure"),
-            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value"), Input("debit-filter-type-slider", "value")],
+            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value"), Input("debit-filter-type-slider", "value"), Input("datatype-switch", "value")],
         )(self.update_hist)
         
         self.app.callback(
             Output("debit-filter-type-slider", "min"),
             Output("debit-filter-type-slider", "max"),
-            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value"), Input("plot-switch", "value")],
+            Output("debit-filter-type-slider", "value"),
+            [Input("tgv-year-slider", "value"), Input("tgv-y-axis-dropdown", "value"), Input("plot-switch", "value"), Input("datatype-switch", "value")],
         )(self.update_filter)
+        
+        self.app.callback(
+            Output("datatype-switch", "value"),
+            Output("datatype-switch", "options"),
+            [Input("tgv-y-axis-dropdown", "value"), Input("datatype-switch", "value")],
+        )(self.update_datatype)
 
         
 

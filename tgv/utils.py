@@ -81,6 +81,8 @@ def make_layout() -> html.Div:
                     html.Div([
                     	dcc.RadioItems(id="plot-switch", options=['Trajet', 'Gare'], value='Trajet', labelStyle={'display':'block'}),
                         html.Br(),
+                        html.Div('Type'),
+                    	dcc.RadioItems(id="datatype-switch", options=[ {"label": 'Brut', "value": "Brut"}, {"label": 'Taux (%)', "value": "Taux"}], value='Brut', labelStyle={'display':'block'}),
                         html.Br(),
                         html.Div('Filtre'),
                         html.Div([
@@ -116,7 +118,7 @@ def make_layout() -> html.Div:
                     ),
                     html.Div(
                         [
-                            html.Div("Y Axis options: "),
+                            html.Div("Valeur observée "),
                             dcc.Dropdown(
                                 id="tgv-y-axis-dropdown",
                                 options=[{"label": i, "value": i} for i in y_axis],
