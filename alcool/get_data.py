@@ -1,6 +1,7 @@
 import pandas as pd
 import urllib.request
 import os
+import numpy as np
 
 # Specify the headers to be able to make request to GHO
 opener = urllib.request.build_opener()
@@ -53,6 +54,9 @@ if __name__ == "alcool.get_data":
             print(f"Downloading {path} from {url} in {main_data_folder}.")
             urllib.request.urlretrieve(url, main_data_folder + path)
 
+def compute_mean(df, pays):
+        return np.mean([df.loc[(df.pays == pays) & (df.sexe == 'MLE')].values[0][1],
+                        df.loc[(df.pays == pays) & (df.sexe == 'FMLE')].values[0][1]])
 
 def load_df_cons():
     df_country = pd.read_csv('data/country_code.csv')
@@ -87,8 +91,9 @@ def load_df_cons():
     # Casting value to float
     alcohol_consumption = alcohol_consumption.astype({"pourcentage" : "float64"})
 
-    for index, row in alcohol_consumption.loc[alcohol_consumption.sexe == 'BTSX'].iterrows():
-        alcohol_consumption.at[index, 'pourcentage'] = (alcohol_consumption[(alcohol_consumption.pays == row.pays) & (alcohol_consumption.sexe == 'MLE')].values[0][1] + alcohol_consumption[(alcohol_consumption.pays == row.pays) & (alcohol_consumption.sexe == 'FMLE')].values[0][1]) / 2
+    
+    alcohol_consumption['pourcentage'] = alcohol_consumption.apply(lambda row: compute_mean(alcohol_consumption, row.pays) if row.sexe == "BTSX" 
+                                                                        else row.pourcentage, axis=1)
 
     # Merging alcohol consumption and pib dataframes on code
     df = pd.merge(alcohol_consumption, pib, on = 'code')
