@@ -10,7 +10,7 @@ import plotly.express as px
 import dateutil as du
 import json
 
-infl2 = pd.read_csv('inflation.csv')
+infl2 = pd.read_csv('evolution_production/data/inflation.csv')
 def us_convert(before, now, value):
 	bef_cpi = infl2[infl2.year == before].cpi.values[0]
 	now_cpi = infl2[infl2.year == now].cpi.values[0]
