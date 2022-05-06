@@ -9,7 +9,7 @@ import plotly.express as px
 import dateutil as du
 
 
-def load_data(filename):
+def load_vaccination(filename):
     df = pd.read_csv(filename)
     #df['date'] = pd.to_datetime(df['date'])
     df = df.set_index('date')
@@ -27,8 +27,6 @@ def load_pib(filename):
 class Vaccinations:
 
     def __init__(self, application=None):
-        vacc = load_data("data/vaccinations.csv")
-        #pib = load_pib("data/gdp.csv")
 
         self.cols = [
             'Code ISO Pays',
@@ -47,16 +45,16 @@ class Vaccinations:
             'Personnes vaccinées quotidiennement',
             'Personnes vaccinées quotidiennement pour 100 habitants'
         ]
-        #self.vacc = vacc.merge(pib, how="left", on="iso_code")
-        self.vacc = vacc
 
-        self.pays = self.vacc['location'].unique()
-        self.dates = self.vacc.index.unique().sort_values()
+        # Chargement des données
+        self.vaccinations = load_vaccination("data/vaccinations.csv")
+        self.pib = load_pib("data/gdp.csv")
+        self.data = self.vaccinations.merge(self.pib, how="left", on="iso_code")
 
-        self.START = "Play"
-        self.PAUSE = "Pause"
+        self.pays = self.vaccinations['location'].unique()
+        self.dates = self.vaccinations.index.unique().sort_values()
 
-        # HTML components
+        # HTML
         self.main_layout = html.Div(children=[
             # Titre
             html.H1(children='Vaccinations contre le COVID-19 par pays en fonction du temps',
@@ -64,6 +62,7 @@ class Vaccinations:
             html.P(children='''On va présenter ci-dessous les liens entre les taux de vaccinations contre le COVID-19
             et le PIB des pays.'''),
 
+            # Analyse du dataset de vaccinations
             html.H2(children='1. Vaccinations contre le COVID-19 par pays en fonction du temps'),
             html.P(children='''Nous commençons par afficher l'évolution des taux de vaccination par pays en fonction du
             temps.'''),
@@ -116,9 +115,11 @@ class Vaccinations:
     # Update methods
 
     def update_graph_1(self, pays):
-        df = self.vacc.loc[self.vacc['location'] == pays]
+        # Récupération des données correspondant au pays sélectionné
+        df = self.vaccinations.loc[self.vaccinations['location'] == pays]
+        # Renommage des colonnes pour avoir des noms plus lisibles
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
-
+        # Sélection des colonnes à afficher sur le graphique
         df = df[[
             "Code ISO Pays",
             "Date",
@@ -128,7 +129,9 @@ class Vaccinations:
             "Total de boosters",
         ]]
 
+        # Création du graphique
         fig = px.line(df[df.columns[2]], template='plotly_dark')
+
         for c in df.columns[3:]:
             fig.add_scatter(x=df.index, y=df[c], mode='lines', name=c, text=c, hoverinfo='x+y+text')
 
@@ -142,9 +145,11 @@ class Vaccinations:
         return fig
 
     def update_graph_2(self, pays):
-        df = self.vacc.loc[self.vacc['location'] == pays]
+        # Récupération des données correspondant au pays sélectionné
+        df = self.vaccinations.loc[self.vaccinations['location'] == pays]
+        # Renommage des colonnes pour avoir des noms plus lisibles
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
-
+        # Sélection des colonnes à afficher sur le graphique
         df = df[[
             "Code ISO Pays",
             "Date",
@@ -154,8 +159,10 @@ class Vaccinations:
             "Personnes vaccinées quotidiennement",
             "Personnes vaccinées quotidiennement pour 100 habitants",
         ]]
-            
+
+        # Création du graphique
         fig = px.line(df[df.columns[2]], template='plotly_dark')
+
         for c in df.columns[3:]:
             fig.add_scatter(x=df.index, y=df[c], mode='lines', name=c, text=c, hoverinfo='x+y+text')
 
@@ -169,9 +176,11 @@ class Vaccinations:
         return fig
 
     def update_graph_3(self, pays):
-        df = self.vacc.loc[self.vacc['location'] == pays]
+        # Récupération des données correspondant au pays sélectionné
+        df = self.vaccinations.loc[self.vaccinations['location'] == pays]
+        # Renommage des colonnes pour avoir des noms plus lisibles
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
-
+        # Sélection des colonnes à afficher sur le graphique
         df = df[[
             "Code ISO Pays",
             "Date",
@@ -181,8 +190,10 @@ class Vaccinations:
             "Total de boosters pour 100 habitants",
             "Personnes vaccinées quotidiennement pour 100 habitants",
         ]]
-            
+
+        # Création du graphique
         fig = px.line(df[df.columns[2]], template='plotly_dark')
+
         for c in df.columns[3:]:
             fig.add_scatter(x=df.index, y=df[c], mode='lines', name=c, text=c, hoverinfo='x+y+text')
 
@@ -193,6 +204,7 @@ class Vaccinations:
             height=600,
             showlegend=True,
         )
+
         return fig
 
     def update_graph_4(self, _):
@@ -205,15 +217,17 @@ class Vaccinations:
             "Oceania",
         ]
 
-        df = self.vacc[self.vacc['location'].isin(regions)]
-        df.sort_values('date')
+        # Récupération des données correspondant aux régions sélectionnées ci-dessus
+        df = self.vaccinations[self.vaccinations['location'].isin(regions)]
 
+        # Création du graphique
         fig = px.bar(
             df, x='location', y='people_vaccinated_per_hundred', color='location',
             animation_frame=df.index, range_y=[0, 100]
         )
 
-        fig.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 10
+        # Contrôle de la vitesse de l'animation via le temps entre deux frames
+        fig.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 10  # millisecondes
 
         fig.update_layout(
             template='plotly_dark', title='Évolution de la population vaccinée par continent',
