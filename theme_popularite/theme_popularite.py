@@ -32,6 +32,14 @@ class ThemeAnalysis():
         self.df_year = self.df_year.set_index('release_year')
         self.years = sorted(set(self.df_year.index.values))
 
+        self.df_bar = df_exploded.copy()
+        self.df_bar["release_year"] = (self.df_bar["release_year"] / 10)
+        self.df_bar = self.df_bar.astype({"release_year":"int32"})
+        self.df_bar["release_year"] = (self.df_bar["release_year"] * 10)
+
+        self.df_bar = self.df_bar.groupby(["release_year", "genres"]).agg({"title":"count"}).reset_index()
+        
+
         self.main_layout = html.Div(children=[
             html.H3(children='Évolution des revenus des films par rapport à leurs genres et au budget alloué'),
 
@@ -103,7 +111,7 @@ class ThemeAnalysis():
                           style={'width':'33%', 'display':'inline-block'}),
                 dcc.Graph(id='wps-budget-time-series',
                           style={'width':'33%', 'display':'inline-block', 'padding-left': '0.5%'}),
-                dcc.Graph(id='wps-moviecount-time-series',
+                dcc.Graph(id='wps-moviecount-bar-plot',
                           style={'width':'33%', 'display':'inline-block', 'padding-left': '0.5%'}),
             ], style={ 'display':'flex', 
                        'borderTop': 'thin lightgrey solid',
@@ -162,9 +170,9 @@ class ThemeAnalysis():
             [dash.dependencies.Input('wps-main-graph', 'hoverData'),
              dash.dependencies.Input('wps-crossfilter-xaxis-type', 'value')])(self.update_budget_timeseries)
         self.app.callback(
-            dash.dependencies.Output('wps-moviecount-time-series', 'figure'),
+            dash.dependencies.Output('wps-moviecount-bar-plot', 'figure'),
             [dash.dependencies.Input('wps-main-graph', 'hoverData'),
-             dash.dependencies.Input('wps-crossfilter-xaxis-type', 'value')])(self.update_moviecount_timeseries)
+             dash.dependencies.Input('wps-crossfilter-xaxis-type', 'value')])(self.update_moviecount_barplot)
 
 
     def update_graph(self, xaxis_type, year):
@@ -232,9 +240,27 @@ class ThemeAnalysis():
         return self.create_time_series(theme, 'budget', xaxis_type, "Budget moyen du film (US $)")
 
     # graph movie count vs years
-    def update_moviecount_timeseries(self, hoverData, xaxis_type):
+    def update_moviecount_barplot(self, hoverData, xaxis_type):
         theme = self.get_theme(hoverData)
-        return self.create_time_series(theme, 'title', xaxis_type, 'Nombre de films')
+
+        xlab = [1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010]
+
+        # fig = px.bar(self.df_bar[self.df_bar["genres"] == "Action"], x="release_year", y="title")
+        # fig.update_layout(xaxis = dict(tickmode="array", tickvals=xlab))
+
+        return {
+             'data': [go.Bar(
+                x = xlab,
+                y = self.df_bar[self.df_bar["genres"] == theme]["title"],
+                # mode = 'lines+markers',
+            )],
+            'layout': {
+                'height': 325,
+                # 'margin': {'l': 50, 'b': 20, 'r': 10, 't': 20},
+                'yaxis': {'title':"Nombre de films",},
+                'xaxis': {'showgrid': False}
+            }
+        }
 
     # start and stop the movie
     def button_on_click(self, n_clicks, text):
