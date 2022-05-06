@@ -8,7 +8,7 @@ opener.addheaders = [('User-agent', 'Mozilla/5.0')]
 urllib.request.install_opener(opener)
 
 # Url of CSV https://apps.who.int/gho/data/node.resources.examples
-urls = ['https://apps.who.int/gho/athena/api/GHO/SA_0000001414?format=csv',
+urls = ['https://apps.who.int/gho/athena/api/GHO/SA_0000001413?format=csv',
         'https://apps.who.int/gho/athena/api/GHO/SA_0000001829?format=csv',
         'https://apps.who.int/gho/athena/api/GHO/SA_0000001830?format=csv',
         'https://apps.who.int/gho/athena/api/GHO/SA_0000001831?format=csv']
