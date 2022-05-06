@@ -87,6 +87,9 @@ def load_df_cons():
     # Casting value to float
     alcohol_consumption = alcohol_consumption.astype({"pourcentage" : "float64"})
 
+    for index, row in alcohol_consumption.loc[alcohol_consumption.sexe == 'BTSX'].iterrows():
+        alcohol_consumption.at[index, 'pourcentage'] = (alcohol_consumption[(alcohol_consumption.pays == row.pays) & (alcohol_consumption.sexe == 'MLE')].values[0][1] + alcohol_consumption[(alcohol_consumption.pays == row.pays) & (alcohol_consumption.sexe == 'FMLE')].values[0][1]) / 2
+
     # Merging alcohol consumption and pib dataframes on code
     df = pd.merge(alcohol_consumption, pib, on = 'code')
 
@@ -95,6 +98,7 @@ def load_df_cons():
 
     # Sorting by years
     df = df.sort_values(by = ['annee'])
+
 
     return df
 
