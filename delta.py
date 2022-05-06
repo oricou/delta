@@ -4,7 +4,7 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
-from pdlr_mg_sujet import bonheur
+from pdlr_mg_sujet import bonheur as pdlr_mg_bonheur
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -13,11 +13,11 @@ server = app.server
 pop = population.WorldPopulationStats(app)
 nrg = energies.Energies(app)
 dec = deces.Deces(app)
-bnh = bonheur.Bonheur(app)
+bnh = pdlr_mg_bonheur.Bonheur(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
-             children=[ 
+             children=[
                  dcc.Location(id='url', refresh=False),
                  html.Div(className="two columns",
                           children = [
