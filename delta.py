@@ -66,7 +66,7 @@ from tgv import tgv
 
 #@profile
 def init():
-    app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
+    app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True, external_stylesheets=tgv.get_stylesheet())
     pop = population.WorldPopulationStats(app)
     dec = deces.Deces(app)
     nrg = energies.Energies(app)
