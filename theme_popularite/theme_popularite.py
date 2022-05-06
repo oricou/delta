@@ -121,7 +121,7 @@ class ThemeAnalysis():
             dcc.Markdown("""
             #### À propos
             * Données : [Kaggle / TMdB](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset)
-            * (c) 2022 Charlie Brosse
+            * (c) 2022 Adrien Huet et Charlie Brosse
             """),
            
 
@@ -201,7 +201,7 @@ class ThemeAnalysis():
          hovermode='closest',
          showlegend=False,
          )
-        # plt.autoscale(enable=True, axis="both")
+
         return fig
 
     def create_time_series(self, genre, what, axis_type, title):

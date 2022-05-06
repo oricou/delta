@@ -8,76 +8,125 @@ import numpy as np
 import plotly.graph_objs as go
 import plotly.express as px
 import dateutil as du
+import ast
+
+def convert_production(s):
+    l = ast.literal_eval(s)
+    return l[0]["name"]
+
+def transform_df_prd(df, value_metric, label_metric):
+    res = df.copy()
+    res[label_metric] = res[label_metric].apply(convert_production)
+    if value_metric == "budget":
+        res = res.drop(res[res[value_metric] == 0].index)
+    
+    res = res.groupby(["release_year", label_metric], as_index=False).agg({"title":"count", "revenue":"sum", "budget":"sum"})
+    percent_col_name = "percent_of_total_movies" if value_metric == "title" else "percent_of_total_budget"
+
+    res[percent_col_name] = res.groupby("release_year", as_index=False)[value_metric].transform(sum)
+    res[percent_col_name] = res[value_metric] / res[percent_col_name]
+    res = res.groupby(["release_year", label_metric, value_metric], as_index=False).agg({percent_col_name:"sum"})
+    res.loc[res[percent_col_name] < 0.01, label_metric] = "Other"
+    res = res.set_index("release_year")
+
+    return res
 
 class Producer():
 
+    START = 'Start'
+    STOP  = 'Stop'
+
     def __init__(self, application = None):
         
-        self.main_layout = html.Div(children=[
-            html.H3(children='Évolution des prix de différentes énergies en France'),
-            html.Div([ dcc.Graph(id='nrg-main-graph'), ], style={'width':'100%', }),
-            html.Div([
-                html.Div([ html.Div('Prix'),
-                           dcc.RadioItems(
-                               id='nrg-price-type',
-                               options=[{'label':'Absolu', 'value':0}, 
-                                        {'label':'Équivalent J','value':1},
-                                        {'label':'Relatif : 1 en ','value':2}],
-                               value=1,
-                               labelStyle={'display':'block'},
-                           )
-                         ], style={'width': '9em'} ),
-                html.Div([ html.Div('Mois ref.'),
-                           dcc.Dropdown(
-                               id='nrg-which-month',
-                               options=[{'label': i, 'value': Energies.mois[i]} for i in Energies.mois],
-                               value=1,
-                               disabled=True,
-                           ),
-                         ], style={'width': '6em', 'padding':'2em 0px 0px 0px'}), # bas D haut G
-                html.Div([ html.Div('Annee ref.'),
-                           dcc.Dropdown(
-                               id='nrg-which-year',
-                               options=[{'label': i, 'value': i} for i in self.years],
-                               value=2000,
-                               disabled=True,
-                           ),
-                         ], style={'width': '6em', 'padding':'2em 0px 0px 0px'} ),
-                html.Div(style={'width':'2em'}),
-                html.Div([ html.Div('Échelle en y'),
-                           dcc.RadioItems(
-                               id='nrg-xaxis-type',
-                               options=[{'label': i, 'value': i} for i in ['Linéaire', 'Logarithmique']],
-                               value='Logarithmique',
-                               labelStyle={'display':'block'},
-                           )
-                         ], style={'width': '15em', 'margin':"0px 0px 0px 40px"} ), # bas D haut G
-                ], style={
-                            'padding': '10px 50px', 
-                            'display':'flex',
-                            'flexDirection':'row',
-                            'justifyContent':'flex-start',
-                        }),
-                html.Br(),
-                dcc.Markdown("""
-                Le graphique est interactif. En passant la souris sur les courbes vous avez une infobulle. 
-                En cliquant ou double-cliquant sur les lignes de la légende, vous choisissez les courbes à afficher.
-                
-                Notes :
-                   * FOD est le fioul domestique.
-                   * Pour les prix relatifs, seules les énergies fossiles sont prises en compte par manque de données pour les autres.
-                #### À propos
-                * Sources : 
-                   * [base Pégase](http://developpement-durable.bsocom.fr/Statistiques/) du ministère du développement durable
-                   * [tarifs réglementés de l'électricité](https://www.data.gouv.fr/en/datasets/historique-des-tarifs-reglementes-de-vente-delectricite-pour-les-consommateurs-residentiels/) sur data.gouv.fr
-                * (c) 2022 Charlie Brosse
-                """)
-        ], style={
-            'backgroundColor': 'white',
-             'padding': '10px 50px 10px 50px',
-             }
-        )
+        df_entreprises = pd.read_csv("producteurs/data/entreprises_producteurs.csv")
+        df_pays = pd.read_csv("producteurs/data/pays_producteurs.csv")
+        dfpb = df_pays.copy()
 
+        self.df_producer_budget = transform_df_prd(df_entreprises, "budget", "production_companies") 
+        self.df_country_budget = transform_df_prd(dfpb, "budget", "production_countries")
+        self.df_country_movies = transform_df_prd(df_pays, "title", "production_countries")
+
+        self.years = sorted(set(self.df_country_movies.index.values))
+        self.last_working_year = [1874, 1902, 1902]
+
+
+        self.main_layout = html.Div(children=[
+            html.H3(children='Évolution des revenus des films par rapport à leurs genres et au budget alloué'),
+
+            html.Br(),
+            html.Br(),
+            html.Br(),
+            html.Br(),
+
+
+            html.Div([
+
+                html.Div([
+                    dcc.Graph(id='wps-country-movie-pie', 
+                            style={'width':'33%', 'display':'inline-block'}),
+                    dcc.Graph(id='wps-country-budget-pie',
+                            style={'width':'33%', 'display':'inline-block', 'padding-left': '0.5%'}),
+                    dcc.Graph(id='wps-producer-budget-pie',
+                            style={'width':'33%', 'display':'inline-block', 'padding-left': '0.5%'}),
+                ], style={ 'display':'flex', 
+                        'borderTop': 'thin lightgrey solid',
+                        'borderBottom': 'thin lightgrey solid',
+                        'justifyContent':'center', }),
+                    
+                html.Div([
+                    
+                    html.Br(),
+                    html.Br(),
+                    html.Br(),
+                    html.Br(),
+                    html.Button(
+                        self.START,
+                        id='wps-button-start-stop', 
+                        style={'display':'inline-block'}
+                    ),
+                ], style={'margin-left':'15px', 'width': '7em', 'float':'right'}),
+            ], style={
+                'padding': '10px 50px', 
+                'display':'flex',
+                'justifyContent':'center'}),
+
+                 html.Div([
+                html.Div(
+                    dcc.Slider(
+                            id='wps-crossfilter-year-slider',
+                            min=self.years[0],
+                            max=self.years[-1],
+                            step = 1,
+                            value=self.years[0],
+                            marks={str(year): str(year) for year in self.years[::5]},
+                    ),
+                    style={'display':'inline-block', 'width':"90%"}
+                ),
+                dcc.Interval(            # fire a callback periodically
+                    id='wps-auto-stepper',
+                    interval=500,       # in milliseconds
+                    max_intervals = -1,  # start running
+                    n_intervals = 0
+                ),
+                ], style={
+                    'padding': '0px 50px', 
+                    'width':'100%'
+                }),
+
+            html.Br(),
+            dcc.Markdown("""
+            #### À propos
+            * Données : [Kaggle / TMdB](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset)
+            * (c) 2022 Adrien Huet et Charlie Brosse
+            """),
+           
+
+        ], style={
+                #'backgroundColor': 'rgb(240, 240, 240)',
+                 'padding': '10px 50px 10px 50px',
+                 }
+        )
+        
         if application:
             self.app = application
             # application should have its own layout and use self.main_layout as a page or in a component
@@ -85,18 +134,94 @@ class Producer():
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
 
+        # I link callbacks here since @app decorator does not work inside a class
+        # (somhow it is more clear to have here all interaction between functions and components)
+
         self.app.callback(
-                    dash.dependencies.Output('nrg-main-graph', 'figure'),
-                    [ dash.dependencies.Input('nrg-price-type', 'value'),
-                      dash.dependencies.Input('nrg-which-month', 'value'),
-                      dash.dependencies.Input('nrg-which-year', 'value'),
-                      dash.dependencies.Input('nrg-xaxis-type', 'value')])(self.update_graph)
+            dash.dependencies.Output('wps-button-start-stop', 'children'),
+            dash.dependencies.Input('wps-button-start-stop', 'n_clicks'),
+            dash.dependencies.State('wps-button-start-stop', 'children'))(self.button_on_click)
+        # this one is triggered by the previous one because we cannot have 2 outputs for the same callback
         self.app.callback(
-                    [ dash.dependencies.Output('nrg-which-month', 'disabled'),
-                      dash.dependencies.Output('nrg-which-year', 'disabled')],
-                      dash.dependencies.Input('nrg-price-type', 'value') )(self.disable_month_year)
-        
+            dash.dependencies.Output('wps-auto-stepper', 'max_interval'),
+            [dash.dependencies.Input('wps-button-start-stop', 'children')])(self.run_movie)
+        # triggered by previous
+        self.app.callback(
+            dash.dependencies.Output('wps-crossfilter-year-slider', 'value'),
+            dash.dependencies.Input('wps-auto-stepper', 'n_intervals'),
+            [dash.dependencies.State('wps-crossfilter-year-slider', 'value'),
+             dash.dependencies.State('wps-button-start-stop', 'children')])(self.on_interval)
+        self.app.callback(
+            dash.dependencies.Output('wps-country-budget-pie', 'figure'),
+            [dash.dependencies.Input('wps-crossfilter-year-slider', 'value')])(self.update_country_budget_pie)
+        self.app.callback(
+            dash.dependencies.Output('wps-country-movie-pie', 'figure'),
+            [dash.dependencies.Input('wps-crossfilter-year-slider', 'value')])(self.update_country_movie_pie)
+        self.app.callback(
+            dash.dependencies.Output('wps-producer-budget-pie', 'figure'),
+            [dash.dependencies.Input('wps-crossfilter-year-slider', 'value')])(self.update_producer_budget_pie)
+
+
+    # graph movie revenue vs years
+    def update_country_movie_pie(self, year):
+        try:
+            fig = px.pie(self.df_country_movies.loc[[year]], values="title", names="production_countries", title="Répartition de la production de films par pays", width=500, height=500)
+            self.last_working_year[0] = year
+            return fig
+        except:
+            return px.pie(self.df_country_movies.loc[[self.last_working_year[0]]], values="title", names="production_countries", title="Répartition de la production de films par pays", width=500, height=500)
+
+    # graph movie budget vs years
+    def update_country_budget_pie(self, year):
+        try:
+            fig = px.pie(self.df_country_budget.loc[[year]], values="budget", names="production_countries", title="Répartition du budget des films par pays", width=500, height=500)
+            self.last_working_year[1] = year
+            print("ya")
+            return fig
+        except Exception as e:
+            print(e)
+            print(self.df_country_budget.loc[self.last_working_year[2]].columns)
+            return px.pie(self.df_country_budget.loc[[self.last_working_year[1]]], values="budget", names="production_countries", title="Répartition du budget des films par pays", width=500, height=500)
+
+    # graph movie count vs years
+    def update_producer_budget_pie(self, year):
+
+        try:
+            fig = px.pie(self.df_producer_budget.loc[[year]], values="budget", names="production_companies", title="Répartition du budget de films par producteurs", width=500, height=500)
+            self.last_working_year[2] = year
+            return fig
+
+        except Exception as e:
+            return px.pie(self.df_producer_budget.loc[[self.last_working_year[2]]], values="budget", names="production_companies", title="Répartition du budget de films par producteurs", width=500, height=500)
+            
+    # start and stop the movie
+    def button_on_click(self, n_clicks, text):
+        if text == self.START:
+            return self.STOP
+        else:
+            return self.START
+
+    # this one is triggered by the previous one because we cannot have 2 outputs
+    # in the same callback
+    def run_movie(self, text):
+        if text == self.START:    # then it means we are stopped
+            return 0 
+        else:
+            return -1
+
+    # see if it should move the slider for simulating a movie
+    def on_interval(self, n_intervals, year, text):
+        if text == self.STOP:  # then we are running
+            if year == self.years[-1]:
+                return self.years[0]
+            else:
+                return year + 1
+        else:
+            return year  # nothing changes
+
+    def run(self, debug=False, port=8050):
+        self.app.run_server(host="0.0.0.0", debug=debug, port=port)
+
 if __name__ == '__main__':
     prd = Producer()
-    prd.app.run_server(debug=True, port=8051)
-
+    prd.run(port=8055)
