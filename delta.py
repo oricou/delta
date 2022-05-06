@@ -4,7 +4,7 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
-from brevet import brevet
+from JRHL_brevet import brevet
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -16,7 +16,7 @@ dec = deces.Deces(app)
 brev = brevet.Brevet(app)
 main_layout = html.Div([
     html.Div(className = "row",
-             children=[ 
+             children=[
                  dcc.Location(id='url', refresh=False),
                  html.Div(className="two columns",
                           children = [
@@ -27,7 +27,7 @@ main_layout = html.Div([
                               html.Br(),
                               dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
                               html.Br(),
-                              dcc.Link(html.Button('Résultat du brevet', style={'width':"100%"}), href='/brevet'),
+                              dcc.Link(html.Button('Résultats du brevet', style={'width':"100%"}), href='/brevet'),
                               html.Br(),
                               html.Br(),
                               html.Br(),
