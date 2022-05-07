@@ -81,7 +81,18 @@ class Chloro():
 
 
     def __init__(self, application = None):
-        
+
+
+        self.LESSER = -1
+        self.NONE = 0
+        self.GREATER = 1
+
+        self.SUMMER = 1
+        self.WINTER = 0
+
+        self.COASTLINE = 1
+        self.NO_COASTLINE = 0
+
         self.mapbox_access_token = 'pk.eyJ1IjoiZ2NhcnJpZXJlIiwiYSI6ImNsMmI1c3p3ejAxNmEzaW51MXBta2N6bTcifQ.f_MlUBEyToUp92xcCOwF0g'
 
         self.chldf = pd.read_pickle("data/chldf_2020-06-30.pkl")
@@ -97,7 +108,6 @@ class Chloro():
         self.fapardf_coastline_hiver = pd.read_pickle("data/fapardf_coastline_2019-12-31.pkl")
        
 
-        #fig = self.create_fig(self.chldf, self.fapardf)
         colormaps = ["viridis", "plasma", "bluered_r", "algae_r", "gray"]
       
         self.main_layout = html.Div(children=[
@@ -108,26 +118,26 @@ class Chloro():
             html.Div([
                 html.Div([ html.Div('Filtrage des points'),
                            dcc.RadioItems(id='map_mode', 
-                                     options=[{'label':'Carte complète', 'value':False},
-                                              {'label':'Côtes uniquement', 'value':True}],
-                                     value=True,
+                                     options=[{'label':'Carte complète', 'value':self.NO_COASTLINE},
+                                              {'label':'Côtes uniquement', 'value':self.COASTLINE}],
+                                     value=self.COASTLINE,
                                      labelStyle={'display':'block'})
                             ], style={'width': '12em'} ),
 
                 html.Div([ html.Div('Période des données'),
                            dcc.RadioItems(id='map_period', 
-                                     options=[{'label':'Eté', 'value':True},
-                                              {'label':'Hiver', 'value':False}],
-                                     value=True,
+                                     options=[{'label':'Eté', 'value':self.SUMMER},
+                                              {'label':'Hiver', 'value':self.WINTER}],
+                                     value=self.SUMMER,
                                      labelStyle={'display':'block'})
                             ], style={'width': '12em'} ),
 
                 html.Div([ html.Div('Seuillage FAPAR'),
                            dcc.RadioItems(id='map_fapar_treshold_type', 
-                                     options=[{'label':'Aucun', 'value':-1},
-                                              {'label':'Supérieur à', 'value':0},
-                                              {'label':'Inférieur à', 'value':1}],
-                                     value=-1,
+                                     options=[{'label':'Aucun', 'value':self.NONE},
+                                              {'label':'Supérieur à', 'value':self.GREATER},
+                                              {'label':'Inférieur à', 'value':self.LESSER}],
+                                     value=self.NONE,
                                      labelStyle={'display':'block'}),
                             dcc.Input(
                                     id="map_fapar_treshold", 
@@ -140,10 +150,10 @@ class Chloro():
 
                 html.Div([ html.Div('Seuillage chlorophylle'),
                            dcc.RadioItems(id='map_chl_treshold_type', 
-                                     options=[{'label':'Aucun', 'value':-1},
-                                              {'label':'Supérieur à', 'value':0},
-                                              {'label':'Inférieur à', 'value':1}],
-                                     value=-1,
+                                     options=[{'label':'Aucun', 'value':self.NONE},
+                                              {'label':'Supérieur à', 'value':self.GREATER},
+                                              {'label':'Inférieur à', 'value':self.LESSER}],
+                                     value=self.NONE,
                                      labelStyle={'display':'block'}),
                             dcc.Input(
                                     id="map_chl_treshold", 
@@ -203,52 +213,39 @@ class Chloro():
         self.app.callback(
                     dash.dependencies.Output('map', 'figure'),
                     [dash.dependencies.Input('map_mode', 'value'),
-                     dash.dependencies.Input('map_period', 'value'),
-                     dash.dependencies.Input('map_chl_colormap', 'value'),
-                     dash.dependencies.Input('map_fapar_colormap', 'value'),
+                     dash.dependencies.Input('map_period', 'value'), 
                      dash.dependencies.Input('map_chl_treshold_type', 'value'),
                      dash.dependencies.Input('map_fapar_treshold_type', 'value'),
                      dash.dependencies.Input('map_chl_treshold', 'value'),
-                     dash.dependencies.Input('map_fapar_treshold', 'value')])(self.update_graph)
+                     dash.dependencies.Input('map_fapar_treshold', 'value'),
+                     dash.dependencies.Input('map_chl_colormap', 'value'),
+                     dash.dependencies.Input('map_fapar_colormap', 'value')])(self.update_graph)
 
 
-    def update_graph(self, coast, summer, chl_colormap, fapar_colormap, chl_lessthan, fapar_lessthan, chl_treshold, fapar_treshold):
-        if (summer) :
-            if coast :
-                chldf = self.chldf_coastline
-                fapardf = self.fapardf_coastline
-            else :
-                chldf = self.chldf
-                fapardf = self.fapardf
+
+    def update_graph(self, mode, period, chl_treshold_type, fapar_treshold_type, chl_treshold, fapar_treshold, chl_colormap, fapar_colormap) :
+        
+        if (mode == self.COASTLINE):
+            chldf = self.chldf_coastline if period == self.SUMMER else self.chldf_coastline_hiver
+            fapardf = self.fapardf_coastline if period == self.SUMMER else self.fapardf_coastline_hiver
         else :
-            if coast :
-                chldf = self.chldf_coastline_hiver
-                fapardf = self.fapardf_coastline_hiver
-            else :
-                chldf = self.chldf_hiver
-                fapardf = self.fapardf_hiver
+            chldf = self.chldf if period == self.SUMMER else self.chldf_hiver
+            fapardf = self.fapardf if period == self.SUMMER else self.fapardf_hiver
 
-#        print (chl_treshold)
- #       print(chl_lessthan)
 
         if (chl_treshold != None):
-            if (chl_lessthan == 1) :
+            if (chl_treshold_type == self.LESSER) :
                 chldf = chldf.loc[chldf["chl"] < chl_treshold]
-            elif (chl_lessthan == 0) :
+            elif (chl_treshold_type == self.GREATER) :
                 chldf = chldf.loc[chldf["chl"] > chl_treshold]
 
         if (fapar_treshold != None):
-            if (fapar_lessthan == 1) :
+            if (fapar_treshold_type == self.LESSER) :
                 fapardf = fapardf.loc[fapardf["FAPAR"] < fapar_treshold]
-            elif (fapar_lessthan == 0) :
+            elif (fapar_treshold_type == self.GREATER) :
                 fapardf = fapardf.loc[fapardf["FAPAR"] > fapar_treshold]
 
-        fig = self.create_fig(chldf, fapardf, chl_colormap, fapar_colormap)
-
-
-        return fig
-
-
+        return self.create_fig(chldf, fapardf, chl_colormap, fapar_colormap)
 
         
 if __name__ == '__main__':
