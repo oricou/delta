@@ -84,8 +84,10 @@ class Vaccinations:
             html.H2(children='2. Evolution de la vaccination en fonction des pays'),
             dcc.Loading(dcc.Graph(id='graph-4'), type='cube', style={'width': '100%', }),
             
-            #html.H2(children='3. Evolution de la vaccination en fonction du PIB'),
-            #dcc.Loading(dcc.Graph(id='graph-5'), type='cube', style={'width': '100%', }),
+            html.H2(children='3. Evolution de la vaccination en fonction du PIB'),
+            dcc.Dropdown(self.dates, id='date', value='2021-01-01',
+                         style={'margin': '20px 0px', 'width': '300px', 'color': 'black'}),
+            dcc.Loading(dcc.Graph(id='graph-5'), type='cube', style={'width': '100%', }),
         ],)
 
         if application:
@@ -119,10 +121,10 @@ class Vaccinations:
         )(self.update_graph_4)
 
         # Graph PIB-vaccination
-        '''self.app.callback(
+        self.app.callback(
             dash.dependencies.Output('graph-5', 'figure'),
-            dash.dependencies.Input('pays', 'value'),
-        )(self.update_graph_5)'''
+            dash.dependencies.Input('date', 'value'),
+        )(self.update_graph_5)
 
     # Update methods
 
@@ -251,20 +253,18 @@ class Vaccinations:
 
         return fig
 
-    def update_graph_5(self, _):
+    def update_graph_5(self, date):
         # Récupération des données correspondant aux régions sélectionnées ci-dessus
-        df = self.data[['location', 'people_vaccinated_per_hundred', 'PIB']]
-        df = df.fillna(method='ffill')
+        df = self.data[self.data.index == date]
+        # Renommage des colonnes pour avoir des noms plus lisibles
+        df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
+        df = df[["Date", "Personnes vaccinées quotidiennement pour 100 habitants", 'PIB']]
 
         # Création du graphique
         fig = px.scatter(
-            df, x='PIB', y='people_vaccinated_per_hundred', color='location',
-            animation_frame=df.index, range_y=[0, 100], hover_name='location',
-            range_x=[1000000000000, 1000000000000000]
+            df, x='PIB', y='Personnes vaccinées quotidiennement pour 100 habitants',# color='location',
+            animation_frame=df.index.astype(str), range_y=[0, 100]#, hover_name='location',
         )
-
-        # Contrôle de la vitesse de l'animation via le temps entre deux frames
-        # fig.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 10  # millisecondes
 
         fig.update_layout(
             template='plotly_dark', title='Évolution de la population vaccinée par continent',
