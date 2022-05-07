@@ -63,15 +63,12 @@ class Vaccinations:
         # HTML
         self.main_layout = html.Div(children=[
             # Titre
-            html.H1(children=txt_title,
-                    style={'font-family': 'Helvetica', 'color': '#ffffff', 'text-align': 'center'}),
-            html.P(children='''On va présenter ci-dessous les liens entre les taux de vaccinations contre le COVID-19
-            et le PIB des pays.'''),
+            html.H1(children=txt_title, style={'font-family': 'Helvetica', 'color': '#ffffff', 'text-align': 'center'}),
+            html.P(children=txt_p1),
 
             # Analyse du dataset de vaccinations
             html.H2(children='1. Vaccinations contre le COVID-19 par pays en fonction du temps'),
-            html.P(children='''Nous commençons par afficher l'évolution des taux de vaccination par pays en fonction du
-            temps.'''),
+            html.P(children=txt_p2),
             # Sélecteur de pays
             html.P(children='Sélectionner un pays ou une zone géographique :'),
             dcc.Dropdown(self.pays, id='pays', value='World',
@@ -80,9 +77,12 @@ class Vaccinations:
             html.Div([dcc.Graph(id='graph-1'), ], style={'width': '100%', }),
             html.Div([dcc.Graph(id='graph-2'), ], style={'width': '100%', }),
             html.Div([dcc.Graph(id='graph-3'), ], style={'width': '100%', }),
+            html.P(children=txt_p3),
 
             html.H2(children='2. Evolution de la vaccination en fonction des pays'),
+            html.P(children=txt_p4),
             dcc.Loading(dcc.Graph(id='graph-4'), type='cube', style={'width': '100%', }),
+            html.P(children=txt_p5),
             
             #html.H2(children='3. Evolution de la vaccination en fonction du PIB'),
             #dcc.Loading(dcc.Graph(id='graph-5'), type='cube', style={'width': '100%', }),
