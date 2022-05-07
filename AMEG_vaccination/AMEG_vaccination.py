@@ -46,12 +46,36 @@ class Vaccinations():
             'Total de boosters pour 100 habitants',
             'Vaccinations quotidiennes pour 1M habitants',
             'Personnes vaccinées quotidiennement',
-            'Personnes vaccinées quotidiennement pour 100 habitants'
+            'Personnes vaccinées quotidiennement pour 100 habitants',
+            "PIB",
         ]
-        #self.vacc = vacc.merge(pib, how="left", on="iso_code")
-        self.vacc = vacc
+        self.vacc = vacc.merge(pib, how="left", on="iso_code")
+        # self.vacc = vacc
         self.pays = self.vacc['location'].unique()
+        self.pib = [
+            "all",
+            "0 - 1.7T",
+            "1.7T - 6.5T",
+            "6.5T - 12T",
+            "12T - 21T",
+            "21T - 42T",
+            "42T - 70T",
+            "70T - 188T",
+            "188T - 318T",
+            "318T - 864T",
+            "+ 864T"
+        ]
 
+        # q = 0.9 : 864T
+        # q = 0.8 : 318T
+        # q = 0.7 : 188T
+        # q = 0.6 : 70T
+        # q = 0.5 : 42T
+        # q = 0.4 : 21T
+        # q = 0.3 : 12T
+        # q = 0.2 : 6.5T
+        # q = 0.1 : 1.7T
+        
         # HTML components
         self.main_layout = html.Div(children=[
             # Titre
@@ -68,11 +92,21 @@ class Vaccinations():
             html.P(children='Sélectionner un pays ou une zone géographique :'),
             dcc.Dropdown(self.pays, id='pays', value='World',
                          style={'margin': '20px 0px', 'width': '300px', 'color': 'black'}),
-
+            
             # Graphiques par pays
             html.Div([dcc.Graph(id='vac-total'), ], style={'width': '100%', }),
             html.Div([dcc.Graph(id='vac-quotidien'), ], style={'width': '100%', }),
             html.Div([dcc.Graph(id='vac-pourcentage'), ], style={'width': '100%', }),
+            
+            # Sélecteur de PIB
+            html.P(children='Sélectionner un intervalle de PIB (tranches de 10% des pays):'),
+            dcc.Dropdown(self.pib, id='PIB', value='all',
+                         style={'margin': '20px 0px', 'width': '300px', 'color': 'black'}),
+            
+            # Graphique par PIB
+            html.Div([dcc.Graph(id='vac-pib-total'), ], style={'width': '100%', }),
+            html.Div([dcc.Graph(id='vac-pib-quotidien'), ], style={'width': '100%', }),
+            html.Div([dcc.Graph(id='vac-pib-pourcentage'), ], style={'width': '100%', }),
         ],)
 
         if application:
@@ -96,8 +130,27 @@ class Vaccinations():
             dash.dependencies.Input('pays', 'value'),
         )(self.update_graph_per_country_pourcentage)
 
+        self.app.callback(
+            dash.dependencies.Output('vac-pib-total', 'figure'),
+            dash.dependencies.Input('PIB', 'value'),
+        )(self.update_graph_per_country_total)
+
+        self.app.callback(
+            dash.dependencies.Output('vac-pib-quotidien', 'figure'),
+            dash.dependencies.Input('PIB', 'value'),
+        )(self.update_graph_per_country_quotidien)
+
+        self.app.callback(
+            dash.dependencies.Output('vac-pib-pourcentage', 'figure'),
+            dash.dependencies.Input('PIB', 'value'),
+        )(self.update_graph_per_country_pourcentage)
+
     def update_graph_per_country_total(self, pays):
-        df = self.vacc.loc[self.vacc['location'] == pays]
+        if pays in self.pays:
+            df = self.vacc.loc[self.vacc['location'] == pays]
+        else:   # pays = pib
+            df = self._select_pib(self.vacc, pays)
+        
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
 
         df = df[[
@@ -123,7 +176,11 @@ class Vaccinations():
         return fig
 
     def update_graph_per_country_quotidien(self, pays):
-        df = self.vacc.loc[self.vacc['location'] == pays]
+        if pays in self.pays:
+            df = self.vacc.loc[self.vacc['location'] == pays]
+        else:   # pays = pib
+            df = self._select_pib(self.vacc, pays)
+        
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
 
         df = df[[
@@ -150,7 +207,11 @@ class Vaccinations():
         return fig
 
     def update_graph_per_country_pourcentage(self, pays):
-        df = self.vacc.loc[self.vacc['location'] == pays]
+        if pays in self.pays:
+            df = self.vacc.loc[self.vacc['location'] == pays]
+        else:   # pays = pib
+            df = self._select_pib(self.vacc, pays)
+        
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
 
         df = df[[
@@ -175,6 +236,43 @@ class Vaccinations():
             showlegend=True,
         )
         return fig
+    
+    def _select_pib(self, df, pib):
+        if pib == "all":
+            df = df
+        
+        elif pib == "0 - 1.7T":
+            df = df[df.PIB <= 1.7 * 10**9]
+        
+        elif pib == "1.7T - 6.5T":
+            df = df[(df.PIB > 1.7 * 10**9) & (df.PIB <= 6.5 * 10**9)]
+        
+        elif pib == "6.5T - 12T":
+            df = df[(df.PIB > 6.5 * 10**9) & (df.PIB <= 12 * 10**9)]
+        
+        elif pib == "12T - 21T":
+            df = df[(df.PIB > 12 * 10**9) & (df.PIB <= 21 * 10**9)]
+        
+        elif pib == "21T - 42T":
+            df = df[(df.PIB > 21 * 10**9) & (df.PIB <= 42 * 10**9)]
+        
+        elif pib == "42T - 70T":
+            df = df[(df.PIB > 42 * 10**9) & (df.PIB <= 70 * 10**9)]
+        
+        elif pib == "70T - 188T":
+            df = df[(df.PIB > 70 * 10**9) & (df.PIB <= 188 * 10**9)]
+        
+        elif pib == "188T - 318T":
+            df = df[(df.PIB > 188 * 10**9) & (df.PIB <= 318 * 10**9)]
+        
+        elif pib == "318T - 864T":
+            df = df[(df.PIB > 318 * 10**9) & (df.PIB <= 864 * 10**9)]
+        
+        elif pib == "+ 864T":
+            df = df[df.PIB > 864 * 10**9].mean(axis=0)
+            
+        return df.groupby(["date"]).mean()
+
 
 
 if __name__ == '__main__':
