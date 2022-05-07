@@ -263,7 +263,7 @@ class Vaccinations:
         # Création du graphique
         fig = px.scatter(
             df, x='PIB', y='Personnes vaccinées quotidiennement pour 100 habitants',# color='location',
-            animation_frame=df.index.astype(str), range_y=[0, 100]#, hover_name='location',
+            #animation_frame=df.index.astype(str), range_y=[0, 100]#, hover_name='location',
         )
 
         fig.update_layout(
