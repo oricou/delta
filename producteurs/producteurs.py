@@ -57,6 +57,10 @@ class Producer():
             html.Br(),
             html.Br(),
             html.Br(),
+            html.Br(),
+            html.Br(),
+            html.Br(),
+            html.Br(),
 
 
             html.Div([
@@ -122,30 +126,23 @@ class Producer():
            
 
         ], style={
-                #'backgroundColor': 'rgb(240, 240, 240)',
                  'padding': '10px 50px 10px 50px',
                  }
         )
         
         if application:
             self.app = application
-            # application should have its own layout and use self.main_layout as a page or in a component
         else:
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
-
-        # I link callbacks here since @app decorator does not work inside a class
-        # (somhow it is more clear to have here all interaction between functions and components)
 
         self.app.callback(
             dash.dependencies.Output('wps-button-start-stop', 'children'),
             dash.dependencies.Input('wps-button-start-stop', 'n_clicks'),
             dash.dependencies.State('wps-button-start-stop', 'children'))(self.button_on_click)
-        # this one is triggered by the previous one because we cannot have 2 outputs for the same callback
         self.app.callback(
             dash.dependencies.Output('wps-auto-stepper', 'max_interval'),
             [dash.dependencies.Input('wps-button-start-stop', 'children')])(self.run_movie)
-        # triggered by previous
         self.app.callback(
             dash.dependencies.Output('wps-crossfilter-year-slider', 'value'),
             dash.dependencies.Input('wps-auto-stepper', 'n_intervals'),
@@ -162,7 +159,7 @@ class Producer():
             [dash.dependencies.Input('wps-crossfilter-year-slider', 'value')])(self.update_producer_budget_pie)
 
 
-    # graph movie revenue vs years
+    # graph movie count per country vs years
     def update_country_movie_pie(self, year):
         try:
             fig = px.pie(self.df_country_movies.loc[[year]], values="title", names="production_countries", title="Répartition de la production de films par pays", width=500, height=500)
@@ -171,19 +168,16 @@ class Producer():
         except:
             return px.pie(self.df_country_movies.loc[[self.last_working_year[0]]], values="title", names="production_countries", title="Répartition de la production de films par pays", width=500, height=500)
 
-    # graph movie budget vs years
+    # graph movie budget per country vs years
     def update_country_budget_pie(self, year):
         try:
             fig = px.pie(self.df_country_budget.loc[[year]], values="budget", names="production_countries", title="Répartition du budget des films par pays", width=500, height=500)
             self.last_working_year[1] = year
-            print("ya")
             return fig
         except Exception as e:
-            print(e)
-            print(self.df_country_budget.loc[self.last_working_year[2]].columns)
             return px.pie(self.df_country_budget.loc[[self.last_working_year[1]]], values="budget", names="production_countries", title="Répartition du budget des films par pays", width=500, height=500)
 
-    # graph movie count vs years
+    # graph movie budget per producer vs years
     def update_producer_budget_pie(self, year):
 
         try:

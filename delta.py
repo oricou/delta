@@ -3,19 +3,17 @@ import dash
 from dash import dcc
 from dash import html
 from producteurs import producteurs
-from keywords_popularite import keywords_popularite
+# from keywords_popularite import keywords_popularite
 from evolution_production import evolution_production
 from theme_popularite import theme_popularite
-from critique_budget import critique_budget 
+# from critique_budget import critique_budget 
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__,  title="Movie industry analysis", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
 server = app.server
 prd = producteurs.Producer(app)
-kwA = keywords_popularite.KeywordsAnalysis(app)
 mvP = evolution_production.MovieProduction(app)
-rtA = critique_budget.RatingAnalysis(app)
 tmA = theme_popularite.ThemeAnalysis(app)
 
 main_layout = html.Div([
@@ -25,16 +23,11 @@ main_layout = html.Div([
                  html.Div(className="two columns",
                           children = [
                               html.Center(html.H2("Movie Data")),
-                              dcc.Link(html.Button("Evolution de la production de films", style={'width':"100%"}), href='/production'),
+                              dcc.Link(html.Button("Evolution de la production de films", style={'width':"170%"}), href='/production'),
                               html.Br(),
-                              dcc.Link(html.Button('Comparaison du succès critique par rapport au budget', style={'width':"100%"}), href='/succescritique'),
+                              dcc.Link(html.Button('Corrélation entre thème et popularité', style={'width':"170%"}), href='/themepopularite'),
                               html.Br(),
-                              dcc.Link(html.Button('Corrélation entre thème et popularité', style={'width':"100%"}), href='/themepopularite'),
-                              html.Br(),
-                              dcc.Link(html.Button('Analyse de l\'impact des producteurs', style={'width':"100%"}), href='/producteurs'),
-                              html.Br(),
-                              dcc.Link(html.Button('Corrélation entre keywords et popularité', style={'width':"100%"}), href='/keywordspopularite'),
-                              html.Br(),
+                              dcc.Link(html.Button('Analyse de l\'impact des producteurs', style={'width':"170%"}), href='/producteurs'),
                               html.Br(),
                               html.Br(),
                               html.Center(html.A('Code source', href='https://github.com/CarlitoCepillo/pybd_movie_project')),
@@ -49,8 +42,9 @@ home_page = html.Div([
     html.Br(),
     html.Br(),
     html.Br(),
-    dcc.Markdown("Choisissez le jeu de données dans l'index à gauche."),
-])
+    html.Br(),
+    dcc.Markdown("Choisissez le jeu de données dans l'index à gauche.",),
+], style={"margin-left": "30%","width":"400px"})
 
 to_be_done_page = html.Div([
     dcc.Markdown("404 -- Désolé cette page n'est pas disponible."),
@@ -71,14 +65,10 @@ app.validation_layout = html.Div([
 def display_page(pathname):
     if pathname == '/production':
         return mvP.main_layout
-    elif pathname == '/succescritique':
-        return rtA.main_layout
     elif pathname == '/themepopularite':
         return tmA.main_layout
     elif pathname == '/producteurs':
         return prd.main_layout
-    elif pathname == 'keywordspopularite':
-        return kwA.main_layout
     else:
         return home_page
 

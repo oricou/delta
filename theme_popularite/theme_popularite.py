@@ -43,36 +43,17 @@ class ThemeAnalysis():
         self.main_layout = html.Div(children=[
             html.H3(children='Évolution des revenus des films par rapport à leurs genres et au budget alloué'),
 
-            html.Div('Déplacez la souris sur une bulle pour avoir les graphiques du thème en bas.'), 
+            html.Div('Déplacez la souris sur une bulle pour avoir les graphiques du thème en bas. Utilisez le slider pour choisir l\'année.'), 
 
             html.Div([
                     html.Div([ dcc.Graph(id='wps-main-graph', animate=True), ], style={'width':'90%', }),
 
                     html.Div([
-                        # html.Div('Continents'),
-                        # dcc.Checklist(
-                        #     id='wps-crossfilter-which-continent',
-                        #     options=[{'label': self.french[i], 'value': i} for i in sorted(self.continent_colors.keys())],
-                        #     value=sorted(self.continent_colors.keys()),
-                        #     labelStyle={'display':'block'},
-                        # ),
-                        html.Br(),
-                        html.Div('Échelle en X'),
-                        dcc.RadioItems(
-                            id='wps-crossfilter-xaxis-type',
-                            options=[{'label': i, 'value': i} for i in ['Linéaire', 'Log']],
-                            value='Log',
-                            labelStyle={'display':'block'},
-                        ),
                         html.Br(),
                         html.Br(),
                         html.Br(),
                         html.Br(),
-                        html.Button(
-                            self.START,
-                            id='wps-button-start-stop', 
-                            style={'display':'inline-block'}
-                        ),
+                        html.Br(),
                     ], style={'margin-left':'15px', 'width': '7em', 'float':'right'}),
                 ], style={
                     'padding': '10px 50px', 
@@ -126,57 +107,33 @@ class ThemeAnalysis():
            
 
         ], style={
-                #'backgroundColor': 'rgb(240, 240, 240)',
                  'padding': '10px 50px 10px 50px',
                  }
         )
         
         if application:
             self.app = application
-            # application should have its own layout and use self.main_layout as a page or in a component
         else:
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
-
-        # I link callbacks here since @app decorator does not work inside a class
-        # (somhow it is more clear to have here all interaction between functions and components)
         self.app.callback(
             dash.dependencies.Output('wps-main-graph', 'figure'),
-            [ dash.dependencies.Input('wps-crossfilter-xaxis-type', 'value'),
-              dash.dependencies.Input('wps-crossfilter-year-slider', 'value')])(self.update_graph)
+            [dash.dependencies.Input('wps-crossfilter-year-slider', 'value')])(self.update_graph)
         self.app.callback(
             dash.dependencies.Output('wps-div-theme', 'children'),
             dash.dependencies.Input('wps-main-graph', 'hoverData'))(self.theme_chosen)
-        # self.app.callback(
-        #     dash.dependencies.Output('wps-button-start-stop', 'children'),
-        #     dash.dependencies.Input('wps-button-start-stop', 'n_clicks'),
-        #     dash.dependencies.State('wps-button-start-stop', 'children'))(self.button_on_click)
-        # # this one is triggered by the previous one because we cannot have 2 outputs for the same callback
-        # self.app.callback(
-        #     dash.dependencies.Output('wps-auto-stepper', 'max_interval'),
-        #     [dash.dependencies.Input('wps-button-start-stop', 'children')])(self.run_movie)
-        # # triggered by previous
-        # self.app.callback(
-        #     dash.dependencies.Output('wps-crossfilter-year-slider', 'value'),
-        #     dash.dependencies.Input('wps-auto-stepper', 'n_intervals'),
-        #     [dash.dependencies.State('wps-crossfilter-year-slider', 'value'),
-        #      dash.dependencies.State('wps-button-start-stop', 'children')])(self.on_interval)
         self.app.callback(
             dash.dependencies.Output('wps-revenue-time-series', 'figure'),
-            [dash.dependencies.Input('wps-main-graph', 'hoverData'),
-             dash.dependencies.Input('wps-crossfilter-xaxis-type', 'value')])(self.update_revenue_timeseries)
+            [dash.dependencies.Input('wps-main-graph', 'hoverData'),])(self.update_revenue_timeseries)
         self.app.callback(
             dash.dependencies.Output('wps-budget-time-series', 'figure'),
-            [dash.dependencies.Input('wps-main-graph', 'hoverData'),
-             dash.dependencies.Input('wps-crossfilter-xaxis-type', 'value')])(self.update_budget_timeseries)
+            [dash.dependencies.Input('wps-main-graph', 'hoverData'),])(self.update_budget_timeseries)
         self.app.callback(
             dash.dependencies.Output('wps-moviecount-bar-plot', 'figure'),
-            [dash.dependencies.Input('wps-main-graph', 'hoverData'),
-             dash.dependencies.Input('wps-crossfilter-xaxis-type', 'value')])(self.update_moviecount_barplot)
+            [dash.dependencies.Input('wps-main-graph', 'hoverData'),])(self.update_moviecount_barplot)
 
 
-    def update_graph(self, xaxis_type, year):
-        print(f" yoyo {year}") 
+    def update_graph(self, year):
         size = self.df_year.loc[year]['title'].to_numpy()
         nb_films = size.sum()
         s = [((s/nb_films) * 100)*2 + 10 for s in size]
@@ -188,13 +145,8 @@ class ThemeAnalysis():
                         hover_name="genres")
         fig.update_layout(
                     xaxis = dict(title='Budget moyen par film',
-                      type= 'linear' 
-                    #   if xaxis_type == 'Linéaire' else 'log',
-                    #   range=(0,3000000000) if xaxis_type == 'Linéaire' 
-                    #                   else (np.log10(1000000), np.log10(1000000000)) 
-                     ),
+                      type= 'linear'),
          yaxis = dict(title="Revenu moyen par film", 
-            # range=(0,1000000000)
             ),
 
          margin={'l': 40, 'b': 30, 't': 10, 'r': 0},
@@ -204,7 +156,7 @@ class ThemeAnalysis():
 
         return fig
 
-    def create_time_series(self, genre, what, axis_type, title):
+    def create_time_series(self, genre, what, title):
         return {
             'data': [go.Scatter(
                 x = self.years,
@@ -214,8 +166,7 @@ class ThemeAnalysis():
             'layout': {
                 'height': 325,
                 'margin': {'l': 50, 'b': 20, 'r': 10, 't': 20},
-                'yaxis': {'title':title,
-                          'type': 'linear' if axis_type == 'Linéaire' else 'log'},
+                'yaxis': {'title':title},
                 'xaxis': {'showgrid': False}
             }
         }
@@ -223,33 +174,30 @@ class ThemeAnalysis():
 
     def get_theme(self, hoverData):
         if hoverData == None:  # init value
-            return self.df['genres'].iloc[np.random.randint(len(self.df_year))]
+            return "War"
         return hoverData['points'][0]['hovertext']
 
     def theme_chosen(self, hoverData):
         return self.get_theme(hoverData)
 
     # graph movie revenue vs years
-    def update_revenue_timeseries(self, hoverData, xaxis_type):
+    def update_revenue_timeseries(self, hoverData):
         theme = self.get_theme(hoverData)
-        return self.create_time_series(theme, 'revenue', xaxis_type, 'Revenu moyen généré par le film (US $)')
+        return self.create_time_series(theme, 'revenue', 'Revenu moyen généré par le film (US $)')
 
     # graph movie budget vs years
-    def update_budget_timeseries(self, hoverData, xaxis_type):
+    def update_budget_timeseries(self, hoverData):
         theme = self.get_theme(hoverData)
-        return self.create_time_series(theme, 'budget', xaxis_type, "Budget moyen du film (US $)")
+        return self.create_time_series(theme, 'budget', "Budget moyen du film (US $)")
 
     # graph movie count vs years
-    def update_moviecount_barplot(self, hoverData, xaxis_type):
+    def update_moviecount_barplot(self, hoverData):
         theme = self.get_theme(hoverData)
 
         xlab = [1910,1920,1930,1940,1950,1960,1970,1980,1990,2000,2010]
 
-        # fig = px.bar(self.df_bar[self.df_bar["genres"] == "Action"], x="release_year", y="title")
-        # fig.update_layout(xaxis = dict(tickmode="array", tickvals=xlab))
-
         return {
-             'data': [go.Bar(
+            'data': [go.Bar(
                 x = xlab,
                 y = self.df_bar[self.df_bar["genres"] == theme]["title"],
                 # mode = 'lines+markers',
@@ -261,6 +209,7 @@ class ThemeAnalysis():
                 'xaxis': {'showgrid': False}
             }
         }
+      
 
     # start and stop the movie
     def button_on_click(self, n_clicks, text):
