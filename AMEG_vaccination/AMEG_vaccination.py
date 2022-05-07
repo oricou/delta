@@ -13,7 +13,8 @@ from text import *
 def load_vaccinations(filename):
     df = pd.read_csv(filename)
     # On supprime les vaccinations datant d'avant le 1er janvier 2021 pour éviter des bugs
-    df = df[df.date.startswith("2020") is False]
+    # df = df[df.date.startswith("2020") is False]
+    print(type(df.date))
     # On met la date en index
     df = df.set_index('date')
     return df
@@ -46,9 +47,9 @@ class Vaccinations:
             'Total de boosters pour 100 habitants',
             'Vaccinations quotidiennes pour 1M habitants',
             'Personnes vaccinées quotidiennement',
-            'Personnes vaccinées quotidiennement pour 100 habitants'
+            'Personnes vaccinées quotidiennement pour 100 habitants',
+            "PIB",
         ]
-
         # Chargement des données
         self.vaccinations = load_vaccinations("data/vaccinations.csv")
         self.pib = load_pib("data/gdp.csv")
@@ -69,20 +70,20 @@ class Vaccinations:
             html.H2(children='1. Vaccinations contre le COVID-19 par pays en fonction du temps'),
             html.P(children='''Nous commençons par afficher l'évolution des taux de vaccination par pays en fonction du
             temps.'''),
-
             # Sélecteur de pays
             html.P(children='Sélectionner un pays ou une zone géographique :'),
             dcc.Dropdown(self.pays, id='pays', value='World',
                          style={'margin': '20px 0px', 'width': '300px', 'color': 'black'}),
-
-            # Graphiques par pays
-            html.Div([dcc.Graph(id='graph-1'), ], style={'width': '100%', }),
-            html.Div([dcc.Graph(id='graph-2'), ], style={'width': '100%', }),
-            html.Div([dcc.Graph(id='graph-3'), ], style={'width': '100%', }),
-
-            html.H2(children='2. Evolution de la vaccination en fonction des pays'),
-
-            dcc.Loading(dcc.Graph(id='graph-4'), type='cube', style={'width': '100%', }),
+            ## Graphiques par pays
+            #html.Div([dcc.Graph(id='graph-1'), ], style={'width': '100%', }),
+            #html.Div([dcc.Graph(id='graph-2'), ], style={'width': '100%', }),
+            #html.Div([dcc.Graph(id='graph-3'), ], style={'width': '100%', }),
+            #
+            #html.H2(children='2. Evolution de la vaccination en fonction des pays'),
+            #dcc.Loading(dcc.Graph(id='graph-4'), type='cube', style={'width': '100%', }),
+            
+            html.H2(children='3. Evolution de la vaccination en fonction du PIB'),
+            dcc.Loading(dcc.Graph(id='graph-5'), type='cube', style={'width': '100%', }),
         ],)
 
         if application:
@@ -94,7 +95,7 @@ class Vaccinations:
         # Callbacks
 
         # First three graphs
-        self.app.callback(
+        '''self.app.callback(
             dash.dependencies.Output('graph-1', 'figure'),
             dash.dependencies.Input('pays', 'value'),
         )(self.update_graph_1)
@@ -113,13 +114,23 @@ class Vaccinations:
         self.app.callback(
             dash.dependencies.Output('graph-4', 'figure'),
             dash.dependencies.Input('pays', 'value'),
-        )(self.update_graph_4)
+        )(self.update_graph_4)'''
+
+        # Graph PIB-vaccination
+        self.app.callback(
+            dash.dependencies.Output('graph-5', 'figure'),
+            dash.dependencies.Input('pays', 'value'),
+        )(self.update_graph_5)
 
     # Update methods
 
-    def update_graph_1(self, pays):
-        # Récupération des données correspondant au pays sélectionné
-        df = self.vaccinations.loc[self.vaccinations['location'] == pays]
+    def update_graph_1(self, pays_pib):
+        if pays_pib in self.pays:
+            # Récupération des données correspondant au pays sélectionné
+            df = self.vaccinations.loc[self.vaccinations['location'] == pays_pib]
+        else:   # pays_pib in self.pib
+            # Récupération des données correspondant aux pays au PIB sélectionné
+            df = self._select_pib(self.vaccinations, pays_pib)
         # Renommage des colonnes pour avoir des noms plus lisibles
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
         # Sélection des colonnes à afficher sur le graphique
@@ -147,9 +158,14 @@ class Vaccinations:
         )
         return fig
 
-    def update_graph_2(self, pays):
-        # Récupération des données correspondant au pays sélectionné
-        df = self.vaccinations.loc[self.vaccinations['location'] == pays]
+
+    def update_graph_2(self, pays_pib):
+        if pays_pib in self.pays:
+            # Récupération des données correspondant au pays sélectionné
+            df = self.vaccinations.loc[self.vaccinations['location'] == pays_pib]
+        else:   # pays_pib in self.pib
+            # Récupération des données correspondant aux pays au PIB sélectionné
+            df = self._select_pib(self.vaccinations, pays_pib)
         # Renommage des colonnes pour avoir des noms plus lisibles
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
         # Sélection des colonnes à afficher sur le graphique
@@ -178,9 +194,14 @@ class Vaccinations:
         )
         return fig
 
-    def update_graph_3(self, pays):
-        # Récupération des données correspondant au pays sélectionné
-        df = self.vaccinations.loc[self.vaccinations['location'] == pays]
+
+    def update_graph_3(self, pays_pib):
+        if pays_pib in self.pays:
+            # Récupération des données correspondant au pays sélectionné
+            df = self.vaccinations.loc[self.vaccinations['location'] == pays_pib]
+        else:   # pays_pib in self.pib
+            # Récupération des données correspondant aux pays au PIB sélectionné
+            df = self._select_pib(self.vaccinations, pays_pib)
         # Renommage des colonnes pour avoir des noms plus lisibles
         df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
         # Sélection des colonnes à afficher sur le graphique
@@ -222,6 +243,7 @@ class Vaccinations:
 
         # Récupération des données correspondant aux régions sélectionnées ci-dessus
         df = self.vaccinations[self.vaccinations['location'].isin(regions)]
+        df = df[['location', 'people_vaccinated_per_hundred']]
 
         # Création du graphique
         fig = px.bar(
@@ -238,6 +260,25 @@ class Vaccinations:
         )
 
         return fig
+
+    def update_graph_5(self, _):
+        # Récupération des données correspondant aux régions sélectionnées ci-dessus
+        df = self.data[['location', 'people_vaccinated_per_hundred', 'PIB']]
+
+        # Création du graphique
+        fig = px.scatter(
+            df, x='PIB', y='people_vaccinated_per_hundred', #color='location', size=10,
+            animation_frame=df.index, range_y=[0, 100], hover_name='location', log_x=True,
+            #range_x=[1000000000000, 1000000000000000]
+        )
+
+        # Contrôle de la vitesse de l'animation via le temps entre deux frames
+        fig.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 10  # millisecondes
+
+        fig.update_layout(
+            template='plotly_dark', title='Évolution de la population vaccinée par continent',
+            xaxis=dict(title='PIB'), yaxis=dict(title='Pourcentage de la population vaccinée'),
+        )
 
 
 if __name__ == '__main__':
