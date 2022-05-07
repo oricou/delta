@@ -87,9 +87,9 @@ def build_dataframes(chlnc, faparnc, date):
 
 
 print("Building summer dataframes :")
-build_dataframes("CHL.nc", "FAPAR.nc", "2020-06-30")
+build_dataframes("CHL_summer.nc", "FAPAR_summer.nc", "2020-06-20")
 print("Building winter dataframes :")
-build_dataframes("CHL_hiver.nc", "FAPAR_hiver.nc", "2019-12-31")
+build_dataframes("CHL_winter.nc", "FAPAR_winter.nc", "2019-12-20")
 print("Creating symbolic links")
 !ln -f -sr ./*.pkl ../../data
 print("Done !")

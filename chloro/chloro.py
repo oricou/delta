@@ -95,17 +95,17 @@ class Chloro():
 
         self.mapbox_access_token = 'pk.eyJ1IjoiZ2NhcnJpZXJlIiwiYSI6ImNsMmI1c3p3ejAxNmEzaW51MXBta2N6bTcifQ.f_MlUBEyToUp92xcCOwF0g'
 
-        self.chldf = pd.read_pickle("data/chldf_2020-06-30.pkl")
-        self.fapardf = pd.read_pickle("data/fapardf_2020-06-30.pkl")
+        self.chldf = pd.read_pickle("data/chldf_2020-06-20.pkl")
+        self.fapardf = pd.read_pickle("data/fapardf_2020-06-20.pkl")
  
-        self.chldf_coastline = pd.read_pickle("data/chldf_coastline_2020-06-30.pkl")
-        self.fapardf_coastline = pd.read_pickle("data/fapardf_coastline_2020-06-30.pkl")
+        self.chldf_coastline = pd.read_pickle("data/chldf_coastline_2020-06-20.pkl")
+        self.fapardf_coastline = pd.read_pickle("data/fapardf_coastline_2020-06-20.pkl")
         
-        self.chldf_hiver = pd.read_pickle("data/chldf_2019-12-31.pkl")
-        self.fapardf_hiver = pd.read_pickle("data/fapardf_2019-12-31.pkl")
+        self.chldf_hiver = pd.read_pickle("data/chldf_2019-12-20.pkl")
+        self.fapardf_hiver = pd.read_pickle("data/fapardf_2019-12-20.pkl")
  
-        self.chldf_coastline_hiver = pd.read_pickle("data/chldf_coastline_2019-12-31.pkl")
-        self.fapardf_coastline_hiver = pd.read_pickle("data/fapardf_coastline_2019-12-31.pkl")
+        self.chldf_coastline_hiver = pd.read_pickle("data/chldf_coastline_2019-12-20.pkl")
+        self.fapardf_coastline_hiver = pd.read_pickle("data/fapardf_coastline_2019-12-20.pkl")
        
 
         colormaps = ["viridis", "plasma", "bluered_r", "algae_r", "gray"]
