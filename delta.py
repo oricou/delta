@@ -14,7 +14,7 @@ server = app.server
 pop = population.WorldPopulationStats(app)
 nrg = energies.Energies(app)
 dec = deces.Deces(app)
-cat = ytb_data.app.layout
+cat = ytb_data.YoutubeTrendsStats(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -72,7 +72,7 @@ def display_page(pathname):
     elif pathname == '/deces':
         return dec.main_layout
     elif pathname == '/category':
-        return cat
+        return cat.main_layout
     else:
         return home_page
 
