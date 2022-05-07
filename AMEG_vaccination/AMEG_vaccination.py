@@ -7,11 +7,14 @@ import numpy as np
 import plotly.graph_objs as go
 import plotly.express as px
 import dateutil as du
+from text import *
 
 
-def load_vaccination(filename):
+def load_vaccinations(filename):
     df = pd.read_csv(filename)
-    #df['date'] = pd.to_datetime(df['date'])
+    # On supprime les vaccinations datant d'avant le 1er janvier 2021 pour éviter des bugs
+    df = df[df.date.startswith("2020") is False]
+    # On met la date en index
     df = df.set_index('date')
     return df
 
@@ -47,7 +50,7 @@ class Vaccinations:
         ]
 
         # Chargement des données
-        self.vaccinations = load_vaccination("data/vaccinations.csv")
+        self.vaccinations = load_vaccinations("data/vaccinations.csv")
         self.pib = load_pib("data/gdp.csv")
         self.data = self.vaccinations.merge(self.pib, how="left", on="iso_code")
 
@@ -57,7 +60,7 @@ class Vaccinations:
         # HTML
         self.main_layout = html.Div(children=[
             # Titre
-            html.H1(children='Vaccinations contre le COVID-19 par pays en fonction du temps',
+            html.H1(children=txt_title,
                     style={'font-family': 'Helvetica', 'color': '#ffffff', 'text-align': 'center'}),
             html.P(children='''On va présenter ci-dessous les liens entre les taux de vaccinations contre le COVID-19
             et le PIB des pays.'''),
