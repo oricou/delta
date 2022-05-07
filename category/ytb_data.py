@@ -122,17 +122,17 @@ def create_figure(result):
 
 # define dataframe creation function
 def create_dataframe():
-    list_file = ["archive/BR_youtube_trending_data.csv",
-        "archive/CA_youtube_trending_data.csv",
-        "archive/DE_youtube_trending_data.csv",
-        "archive/FR_youtube_trending_data.csv",
-        "archive/GB_youtube_trending_data.csv",
-        "archive/IN_youtube_trending_data.csv",
-        "archive/JP_youtube_trending_data.csv",
-        "archive/KR_youtube_trending_data.csv",
-        "archive/MX_youtube_trending_data.csv",
-        "archive/RU_youtube_trending_data.csv",
-        "archive/US_youtube_trending_data.csv"]
+    list_file = ["category/archive/BR_youtube_trending_data.csv",
+        "category/archive/CA_youtube_trending_data.csv",
+        "category/archive/DE_youtube_trending_data.csv",
+        "category/archive/FR_youtube_trending_data.csv",
+        "category/archive/GB_youtube_trending_data.csv",
+        "category/archive/IN_youtube_trending_data.csv",
+        "category/archive/JP_youtube_trending_data.csv",
+        "category/archive/KR_youtube_trending_data.csv",
+        "category/archive/MX_youtube_trending_data.csv",
+        "category/archive/RU_youtube_trending_data.csv",
+        "category/archive/US_youtube_trending_data.csv"]
     list_country = ["Brésil", "Canada", "Allemagne", "France",
          "Royaume-uni", "Inde", "Japon", "Corée", "Méxique", "Russier", "US"]
 
