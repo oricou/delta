@@ -14,8 +14,10 @@ def load_vaccinations(filename):
     df = pd.read_csv(filename)
     # On supprime les vaccinations datant d'avant le 1er janvier 2021 pour éviter des bugs
     df = df[df['date'] >= '2021-01-01']
+    df.date = pd.to_datetime(df.date)
     # On met la date en index
     df = df.set_index('date')
+    # df = df.sort_index()  # Ça fail
     return df
 
 
@@ -236,7 +238,7 @@ class Vaccinations:
         # Création du graphique
         fig = px.bar(
             df, x='location', y='people_vaccinated_per_hundred', color='location',
-            animation_frame=df.index, range_y=[0, 100]
+            animation_frame=df.index.astype(str), range_y=[0, 100]
         )
 
         # Contrôle de la vitesse de l'animation via le temps entre deux frames
