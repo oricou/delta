@@ -7,11 +7,69 @@ import plotly.graph_objs as go
 import numpy as np
 import pandas as pd
 from datetime import datetime
+import plotly.express as px
+
+def ratio(list_country_kor, datas_year):
+    ratio = []
+    for country in list_country_kor:
+        country_data = datas_year[datas_year.country == country]
+        country_music = country_data[country_data.categoryId == 'Music']
+        country_korean = is_korean(country_music.title)
+        ratio.append(len(country_korean) * 100 / len(country_music))
+    return ratio
+
+list_country = ["Brésil", "Canada", "Allemagne", "France",
+    "Royaume-uni", "Inde", "Japon", "Corée", "Méxique", "Russie", "US"]
+list_country_kor = ["Brésil", "Canada", "Allemagne", "France",
+    "Royaume-uni", "Inde", "Japon", "Méxique", "Russie", "US"]
+
+d1 = "\u3131"
+f1 = "\u3163"
+
+d2 = "\uAC00"
+f2 = "\uAF00"
+
+d3 = "\uB000"
+f3 = "\uBFE1"
+
+d4 = "\uC058"
+f4 = "\uCFFC"
+
+d5 = "\uD018"
+f5 = "\uD79D"
+
+d6 = "\u3181"
+f6 = "\uCB4C"
+
+def is_korean(word):
+    l = []
+    for j in word:
+        for i in j:
+            if ord(i) >= ord(d1) and ord(i) <= ord(f1):
+                l.append(j)
+            if ord(i) >= ord(d2) and ord(i) <= ord(f2):
+                l.append(j)
+            if ord(i) >= ord(d3) and ord(i) <= ord(f3):
+                l.append(j)
+            if ord(i) >= ord(d4) and ord(i) <= ord(f4):
+                l.append(j)
+            if ord(i) >= ord(d5) and ord(i) <= ord(f5):
+                l.append(j)
+    return l
+    
+def load_data(list_file, list_country):
+    datas = pd.DataFrame()
+    for i in range(len(list_file)):
+        data = pd.read_csv(list_file[i], sep=',')
+        data['country'] = list_country[i]
+        datas = pd.concat([datas, data])
+    return datas
 
 class YoutubeTrendsStats():
     def __init__(self, application = None):
         self.df = self.create_dataframe()
         self.figure = self.create_figure(self.df)
+        self.other_figure = self.create_figure2(self.df)
 
         # page layout
         self.app = dash.Dash(external_stylesheets = [dbc.themes.BOOTSTRAP])
@@ -23,6 +81,8 @@ class YoutubeTrendsStats():
 
                 html.Div(dcc.Graph(id = 'main-graph',
                                     figure = self.figure)),
+                html.Div(dcc.Graph(id = 'second-graph',
+                                    figure = self.other_figure)),
 
             ], style={'display': 'inline-block', 'vertical-align': 'top'}),
 
@@ -34,10 +94,46 @@ class YoutubeTrendsStats():
 
                 html.Div(dcc.Graph(id = 'main-graph',
                                     figure = self.figure)),
+                html.Div(dcc.Graph(id = 'second-graph',
+                                    figure = self.other_figure)),
 
             ], style={'display': 'inline-block', 'vertical-align': 'top'}),
 
         ])
+
+    def create_figure2(self, datas):
+        datas.trending_date = pd.to_datetime(datas.trending_date)
+        datas['year'] = pd.DatetimeIndex(datas['trending_date']).year
+
+        datas_2020 = datas[datas.year == 2020]
+        datas_2021 = datas[datas.year == 2021]
+        datas_2022 = datas[datas.year == 2022]
+
+        ratio_2020 = ratio(list_country_kor, datas_2020)
+        ratio_2021 = ratio(list_country_kor, datas_2021)
+        ratio_2022 = ratio(list_country_kor, datas_2022)
+
+        df = pd.DataFrame(index = list_country_kor)
+        df['2020'] = ratio_2020
+        df['2021'] = ratio_2021
+        df['2022'] = ratio_2022
+
+        y0 = np.array(df['2020'])
+        fig = px.scatter(df, size=y0*5, hover_name=df.index, 
+        title='<b>Pourcentage de musique coréenne en tendance sur le total de musique en tendance pour chaque pays<b>',
+            opacity = 0.6, labels={
+                            "value": "Ratio in %",
+                            "index": "Country",
+                            "variable": "Year"
+                        })
+        fig.update_layout(
+            title_font_size=22,
+            font_family="Serif",
+            title_font_family="Times New Roman",
+            title_font_color="black"
+        )
+        fig.update_xaxes(title_font_family="Serif")
+        return fig
 
     # define figure creation function
     def create_figure(self,result):
@@ -162,16 +258,6 @@ class YoutubeTrendsStats():
             "category/archive/MX_youtube_trending_data.csv",
             "category/archive/RU_youtube_trending_data.csv",
             "category/archive/US_youtube_trending_data.csv"]
-        list_country = ["Brésil", "Canada", "Allemagne", "France",
-            "Royaume-uni", "Inde", "Japon", "Corée", "Méxique", "Russie", "US"]
-
-        def load_data(list_file, list_country):
-            datas = pd.DataFrame()
-            for i in range(len(list_file)):
-                data = pd.read_csv(list_file[i], sep=',')
-                data['country'] = list_country[i]
-                datas = pd.concat([datas, data])
-            return datas
 
         data = load_data(list_file, list_country)
         data.drop(columns=['channelId', 'description','thumbnail_link','video_id'], inplace=True, axis=1)
