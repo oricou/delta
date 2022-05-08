@@ -14,7 +14,7 @@ def load_vaccinations(filename):
     df = pd.read_csv(filename)
     # On supprime les vaccinations datant d'avant le 1er janvier 2021 pour éviter des bugs
     df = df[df['date'] >= '2021-01-01']
-    df.date = pd.to_datetime(df.date)
+    df['date'] = pd.to_datetime(df['date'])
     # On met la date en index
     df = df.set_index('date')
     # df = df.sort_index()  # Ça fail
@@ -26,7 +26,7 @@ def load_pib(filename):
     df = df[df["Year"] == 2016]
     df = df.drop(["Country Name", "Year"], axis=1)
     df = df.rename(columns={"Country Code": "iso_code", "Value": "PIB"})
-    df['PIB'] = df['PIB'].astype(float) / 1e9
+    df['PIB'] = df['PIB'].astype(float)# / 1e9
     return df
 
 
@@ -55,7 +55,7 @@ class Vaccinations:
         # Chargement des données
         self.vaccinations = load_vaccinations("data/vaccinations.csv")
         self.pib = load_pib("data/gdp.csv")
-        self.data = self.vaccinations.merge(self.pib, how="left", on="iso_code")
+        self.data = self.vaccinations.reset_index().merge(self.pib, how="left", on="iso_code")
 
         self.pays = self.vaccinations['location'].unique()
         self.dates = self.vaccinations.index.unique().sort_values()
@@ -65,6 +65,16 @@ class Vaccinations:
             # Titre
             html.H1(children=txt_title, style={'font-family': 'Helvetica', 'color': '#ffffff', 'text-align': 'center'}),
             html.P(children=txt_p1),
+            html.Ul(children=[
+                html.Li(children=html.A(
+                    children='Vaccinations contre le Covid-19, Our World In Data, GitHub',
+                    href='https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations'
+                )),
+                html.Li(children=html.A(
+                    children='PIB par pays, WordBank',
+                    href='https://data.worldbank.org/indicator/NY.GDP.MKTP.CD'
+                )),
+            ], style={'color': 'lightblue'}),
 
             # Analyse du dataset de vaccinations
             html.H2(children='1. Vaccinations contre le COVID-19 par pays en fonction du temps'),
@@ -81,13 +91,14 @@ class Vaccinations:
 
             html.H2(children='2. Evolution de la vaccination en fonction des pays'),
             html.P(children=txt_p4),
+            html.P(children=txt_p4_note, style={'font-style': 'italic'}),
             dcc.Loading(dcc.Graph(id='graph-4'), type='cube', style={'width': '100%', }),
             html.P(children=txt_p5),
             
             html.H2(children='3. Evolution de la vaccination en fonction du PIB'),
-            dcc.Dropdown(self.dates, id='date', value='2021-01-01',
-                         style={'margin': '20px 0px', 'width': '300px', 'color': 'black'}),
-            dcc.Loading(dcc.Graph(id='graph-5'), type='cube', style={'width': '100%', }),
+            html.P(children=txt_p6),
+            dcc.Graph(id='graph-5', figure={}),
+            html.P(children=txt_p7),
         ],)
 
         if application:
@@ -95,6 +106,7 @@ class Vaccinations:
         else:
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
+            self.app.title = 'Rapport entre vaccination contre le COVID-19 et le PIB par habitant'
 
         # Callbacks
 
@@ -123,7 +135,7 @@ class Vaccinations:
         # Graph PIB-vaccination
         self.app.callback(
             dash.dependencies.Output('graph-5', 'figure'),
-            dash.dependencies.Input('date', 'value'),
+            dash.dependencies.Input('pays', 'value'),
         )(self.update_graph_5)
 
     # Update methods
@@ -226,9 +238,8 @@ class Vaccinations:
             "Europe",
             "Asia",
             "North America",
-            "South America",
             "Africa",
-            "Oceania",
+            "Oceania"
         ]
 
         # Récupération des données correspondant aux régions sélectionnées ci-dessus
@@ -253,23 +264,27 @@ class Vaccinations:
 
         return fig
 
-    def update_graph_5(self, date):
-        # Récupération des données correspondant aux régions sélectionnées ci-dessus
-        df = self.data[self.data.index == date]
-        # Renommage des colonnes pour avoir des noms plus lisibles
-        df = df.rename(columns={df.columns[i]: self.cols[i] for i in range(len(df.columns))})
-        df = df[["Date", "Personnes vaccinées quotidiennement pour 100 habitants", 'PIB']]
+    def update_graph_5(self, _):
+        # Récupération des données dont le PIB n'est pas nul
+        df = self.data[~self.data['PIB'].isnull()]
+        # Sélection des colonnes à afficher sur le graphique
+        df = df[['date', 'location', 'people_vaccinated', 'people_vaccinated_per_hundred', 'PIB']]
+        df = df.fillna(method='ffill')
+        df['population'] = df['people_vaccinated'] * 100 / df['people_vaccinated_per_hundred']
+        df['PIB_per_capita'] = df['PIB'] / df['population']
+        df.date = pd.to_datetime(df.date)
+        df = df[df.date == '2022-01-01']
 
         # Création du graphique
-        fig = px.scatter(
-            df, x='PIB', y='Personnes vaccinées quotidiennement pour 100 habitants',# color='location',
-            #animation_frame=df.index.astype(str), range_y=[0, 100]#, hover_name='location',
-        )
+        fig = px.scatter(df, x='PIB_per_capita', y='people_vaccinated_per_hundred', trendline='ols',
+                         trendline_options=dict(log_x=True), hover_name='location', log_x=True)
 
         fig.update_layout(
             template='plotly_dark', title='Évolution de la population vaccinée par continent',
-            xaxis=dict(title='PIB'), yaxis=dict(title='Pourcentage de la population vaccinée'),
+            xaxis=dict(title='PIB par habitant'), yaxis=dict(title='Pourcentage de la population vaccinée'),
         )
+
+        return fig
 
 
 if __name__ == '__main__':
