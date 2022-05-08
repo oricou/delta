@@ -48,7 +48,7 @@ tab_classes_preparatoires = dbc.Card(
                 style={"width": "40%"},
             ),
             dbc.Alert(
-                "Sur la carte ci-dessus, les lycées ayant pour la première fois cette année formé des élèves participant aux concours sont indiquées en rouge.",
+                "Sur la carte ci-dessus, les Classes Préparatoires ayant pour la première fois cette année formé des élèves participant aux concours sont indiquées en rouge.",
                 color="primary",
             ),
             dash.html.Div(
@@ -67,7 +67,7 @@ tab_classes_preparatoires = dbc.Card(
                                     "* On remarque que le nombre de Classes Préparatoires n'a cessé de croitre au cours des 18 dernières années."
                                 ),
                                 dash.dcc.Markdown(
-                                    "* On peut noter que si Paris profite d'une impressionnante densité de Classes Préparatoires, les autres grandes villes n'en sont pas autant surchargées."
+                                    "* On peut noter que Paris profite d'une impressionnante densité de Classes Préparatoires tandis que les autres grandes villes n'en disposent que de peu."
                                 ),
                                 dash.dcc.Markdown(
                                     "* On identifie sans peine la *diagonale du vide*, zone géographique qui découpe la France du sud-ouest au nord-est et dont les Classes Préparatoires semblent singulièrement absentes."
@@ -127,7 +127,7 @@ tab_classes_preparatoires = dbc.Card(
                         dbc.Card(
                             children=[
                                 dash.dcc.Markdown(
-                                    "* Paris se trouvant à envrion 700km de sa plus lointaine frontière terrestre, il est cohérent de remarquer la décroissance du nombre de Classes Préparatoires au km² à partir de cette distance."
+                                    "* Paris se trouvant à environ 700km de sa plus lointaine frontière terrestre, la décroissance du nombre de Classes Préparatoires au km² que l'on observe à partir de cette distance de la capitale semble cohérente."
                                 ),
                                 dash.dcc.Markdown(
                                     "* On remarque que quelle que soit l'année, Paris profite du plus grand nombre de Classes Préparatoires au km², mais aussi du plus grand nombre d'élèves par établissement, ce qui peut nuire à la qualité de l'apprentissage."
@@ -164,7 +164,7 @@ tab_classes_preparatoires = dbc.Card(
                 ),
             ),
             dbc.Alert(
-                "Sur la carte ci-dessus, la taille des points et leur impact sur la densité de coloration correspond à la proportion de filles inscrites par Classe Préparatoires. La couleur neutre (Le blanc) correspond a des Classes Préparatoires dont la proportion de filles inscrites est dans la moyenne.",
+                "Sur la carte ci-dessus, la taille des points et leur impact sur la densité de coloration correspond à la proportion de filles inscrites par Classe Préparatoire. La couleur neutre (*blanc*) correspond a des Classes Préparatoires dont la proportion de filles inscrites est dans la moyenne.",
                 color="primary",
             ),
             dash.html.Div(
@@ -180,10 +180,10 @@ tab_classes_preparatoires = dbc.Card(
                         dbc.Card(
                             children=[
                                 dash.dcc.Markdown(
-                                    "* La couleur blanche correspondant à des Classes Préparatoires dont la proportion de filles inscrites est dans la moyenne, on peut constater que cette proportion n'a que modérement évolué au cours de 18 dernières années, passant d'environ **19% en 2004** à **23% en 2019**"
+                                    "* La couleur blanche correspondant à des Classes Préparatoires dont la proportion de filles inscrites est dans la moyenne, on peut constater que cette proportion n'a que modérément évolué au cours des 18 dernières années, passant d'environ **19% en 2004** à **23% en 2019**."
                                 ),
                                 dash.dcc.Markdown(
-                                    "* Cette carte confirme également nos premières observation quant à la répartitions des Classes Préparatoires sur le territoire : En réinitialisant le niveau de zoom, on observe une densité nettement supérieure au niveau de **Paris** tandis qu'on distingue à peine les plus grandes villes, **Marseille, Lyon, Nancy ou Lille.**"
+                                    "* Cette carte confirme également nos premières observations quant à la répartition des Classes Préparatoires sur le territoire : En réinitialisant le niveau de zoom, on observe une densité nettement supérieure au niveau de **Paris** tandis qu'on distingue à peine les plus grandes villes, **Marseille, Lyon, Nancy ou Lille.**"
                                 ),
                             ],
                             color="success",

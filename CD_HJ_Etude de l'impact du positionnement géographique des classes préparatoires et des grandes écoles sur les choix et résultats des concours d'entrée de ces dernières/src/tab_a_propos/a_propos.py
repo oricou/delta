@@ -56,14 +56,14 @@ card_3_content = [
         [
             dash.html.H5("Données manquantes et aberrantes", className="card-title"),
             dash.dcc.Markdown(
-                "> *Les données récupérées sur **SCEI** se sont révélées considérablement lacunaires et parfois vraisemblablement absurdes. Si nous avons tenté au maximum de supprimer les données abérrantes, notre filtrage est victime d'un biais subjectif selon ce que nous avons considéré comme vraisemblable. Par ailleurs, l'absence de données pour certains établissements ou certaines années ont également pu amener à une représentation biaisées des données.*"
+                "> *Les données récupérées sur **SCEI** se sont révélées considérablement lacunaires et parfois vraisemblablement absurdes. Si nous avons tenté au maximum de supprimer les données aberrantes, notre filtrage est victime d'un biais subjectif selon ce que nous avons considéré comme vraisemblable. Par ailleurs, l'absence de données pour certains établissements ou certaines années a également pu amener à une représentation biaisée des données.*"
             ),
             dash.html.H5(
                 "Choix des données affichées et de leur type de représentation",
                 className="card-title",
             ),
             dash.dcc.Markdown(
-                "> *Si nous avons fait de notre mieux pour ne porter aucun jugement sur les données que nous avons étudié, le choix des graphes et des statistiques utilisées est porteur d'une certaine subjectivité. L'utilisation de toutes les données que nous avions à disposition n'étant pas toujours pertinente, il convient également de rappeller que les données affichées ici ne sont qu'un extrait des données originales choisi arbitrairement.*"
+                "> *Si nous avons fait de notre mieux pour ne porter aucun jugement sur les données que nous avons étudié, le choix des graphes et des statistiques utilisées est porteur d'une certaine subjectivité. L'utilisation de toutes les données que nous avions à disposition n'étant pas toujours pertinente, il convient également de rappeler que les données affichées ici ne sont qu'un extrait des données originales choisi arbitrairement.*"
             ),
         ]
     ),

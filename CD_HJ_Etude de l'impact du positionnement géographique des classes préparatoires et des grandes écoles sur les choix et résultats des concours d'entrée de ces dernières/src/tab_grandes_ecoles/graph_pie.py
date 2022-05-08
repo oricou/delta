@@ -27,7 +27,7 @@ def update_pie(concours, year):
         rows=1,
         cols=3,
         specs=[[{"type": "pie"}, {"type": "pie"}, {"type": "pie"}]],
-        subplot_titles=["Inscrits", "Admissibles", "Integres"],
+        subplot_titles=["Inscrits", "Admissibles", "Intégrés"],
     )
     nomination = pgeocode.Nominatim("fr")
     for i, category in enumerate(["inscrits", "admissibles", "integres"]):
@@ -51,7 +51,7 @@ def update_pie(concours, year):
         pull_list = [0 for i in range(len(group_category_data))]
         if (
             group_category_data.index[-1]
-            == "Autres regions dont la proportion est inférieure à la moyenne"
+            == "Autres régions dont la proportion est inférieure à la moyenne"
         ):
             pull_list[-2] = 0.2
         else:
@@ -69,7 +69,7 @@ def update_pie(concours, year):
 
     fig.update_traces(hole=0.4, hoverinfo="label+percent+name")
     fig.update_layout(
-        title_text="Proportion de l'origie des candidats au concours {} en {}".format(
+        title_text="Proportion de l'origine des candidats au concours {} en {}".format(
             concours, year
         ),
     )

@@ -53,7 +53,7 @@ def animate_graph_map_2(time_col):
         mapbox_style="carto-positron",
         category_orders={time_col: list(np.sort(schools_stats[time_col].unique()))},
         zoom=5,
-        title="Evolution du nombre d'étudiants inscrits par grandes écoles",
+        title="Evolution du nombre d'étudiants inscrits par Grande Ecole",
         height=1000,
     )
     return fig
@@ -70,7 +70,7 @@ def animate_graph_map_3(time_col):
         mapbox_style="carto-positron",
         category_orders={time_col: list(np.sort(schools_stats[time_col].unique()))},
         zoom=5,
-        title="Evolution du nombre d'étudiants intégrés par grandes écoles",
+        title="Evolution du nombre d'étudiants intégrés par Grande Ecole",
         height=1000,
     )
     return fig

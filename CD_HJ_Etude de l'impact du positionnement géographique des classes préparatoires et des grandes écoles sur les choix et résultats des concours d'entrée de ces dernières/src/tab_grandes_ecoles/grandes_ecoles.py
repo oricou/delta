@@ -51,7 +51,7 @@ tab_grandes_ecoles = dbc.Card(
                                         dbc.Card(
                                             children=[
                                                 dash.dcc.Markdown(
-                                                    "* On remarque qu'à l'instar des Classes Préparatoires, les Grandes Ecoles sont majoritairement regroupées dans Paris et ses alentours. Cependant, leur localisation est d'avantage dispersée et on observe nombre d'entre elles dans d'autres pays, notament la cote est des Etats-Unis."
+                                                    "* On remarque qu'à l'instar des Classes Préparatoires, les Grandes Ecoles sont majoritairement regroupées dans Paris et ses alentours. Cependant, leur localisation est davantage dispersée et on observe nombre d'entre elles dans d'autres pays, notamment la côte est des Etats-Unis."
                                                 )
                                             ],
                                             color="success",
@@ -122,19 +122,19 @@ tab_grandes_ecoles = dbc.Card(
                                         dbc.Card(
                                             children=[
                                                 dash.dcc.Markdown(
-                                                    "* Les dispartions soudaines *(Notament 2015-2016)* et les variations imprévisibles de la taille des points *(Notament 2018-2019)* d'une année sur l'autre sur les deux premiers graphes nous laisse supposer **des données collectées de manière non homogène**."
+                                                    "* Les disparitions soudaines *(Notamment 2015-2016)* et les variations imprévisibles de la taille des points *(Notamment 2018-2019)* d'une année à l'autre sur les deux premiers graphes nous laisse supposer **des données collectées de manière non homogène**."
                                                 ),
                                                 dash.dcc.Markdown(
-                                                    "* Malgré la piètre qualité des données, on peut observer que le nombre d'étudiants inscrits a eu tendance à augmenter tandis que le nombre d'étudiants ayant intégrés semble être resté stable, ce qui laisse deviner une difficulté croissante des concours au cours des 18 dernières années."
+                                                    "* Malgré la piètre qualité des données, on peut observer que le nombre d'étudiants inscrits a eu tendance à augmenter tandis que le nombre d'étudiants ayant intégré semble être resté stable, ce qui laisse deviner une croissance de la difficulté des concours au cours des 18 dernières années."
                                                 ),
                                                 dash.dcc.Markdown(
-                                                    "* Il est intéressant de constater que si une quantité considérable des Classes Préparatoires se trouvent à Paris, les inscriptions semblent géographiquement mieux réparties d'après la première carte. On peut ainsi supposer que certains étudiants formés dans la capitale ont préféré passer les concours sur une autre partie du territoire, éventuellement pour augmenter leurs chances. Cette constatation pourra être prises en compte lors de l'analyse des résultats aux concours par département."
+                                                    "* Il est intéressant de constater que si une quantité considérable de Classes Préparatoires se trouve à Paris, les inscriptions aux concours semblent géographiquement mieux réparties d'après la première carte. On peut ainsi supposer que certains étudiants formés dans la capitale ont préféré passer les concours sur une autre partie du territoire, éventuellement pour augmenter leurs chances. Cette constatation pourra être prises en compte lors de l'analyse des résultats aux concours par département."
                                                 ),
                                                 dash.dcc.Markdown(
-                                                    "* Il est intéressant de constater que en ne considérant que ce rapport Nombre d'Inscriptions sur Nombre de Places_disponibles classe les Concours Communs Polytechniques en tête des concours les plus difficiles. Ce classement ne prend cependant pas en compte les intégrations excédentaires des écoles qui sont, après étude du jeu de donnée, monnaie courante."
+                                                    "* On peut noter que ce quotient (***Nombre d'Inscriptions / Nombre de Places disponibles***) classe les Concours Communs Polytechniques en tête des concours les plus difficiles. Ce classement ne prend cependant pas en compte les intégrations excédentaires des écoles qui sont, après étude du jeu de donnée, monnaie courante."
                                                 ),
                                                 dash.dcc.Markdown(
-                                                    "* Un graphique similaire mettant en relation le rang du dernier integré et le nombre d'inscrit aurait également pu être intéressant mais le trop grand nombre de données manquante ne nous l'a hélas pas rendu possible."
+                                                    "* Un graphique similaire mettant en relation le rang du dernier integré et le nombre d'étudiants inscrits aurait également pu être intéressant mais le trop grand nombre de données manquantes nous l'a hélas rendu impossible."
                                                 ),
                                             ],
                                             color="success",
@@ -215,7 +215,7 @@ tab_grandes_ecoles = dbc.Card(
                                         dbc.Card(
                                             children=[
                                                 dash.dcc.Markdown(
-                                                    "* La catégorie *Autres régions dont la proportion est inférieure à la moyenne* correspond à la somme des scores de ces autres régions et a vocation à éviter que les graphes ne soient surchargés*"
+                                                    "* La catégorie *Autres régions dont la proportion est inférieure à la moyenne* correspond à la somme des scores de ces autres régions et a vocation à éviter que les graphes ne soient surchargés"
                                                 ),
                                             ],
                                             color="success",
