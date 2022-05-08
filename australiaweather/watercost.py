@@ -20,18 +20,39 @@ class WaterCostMapping():
         self.y_start = self.years.min()
         self.y_end = self.years[:-2]
         self.main_layout = html.Div(children=[
-            html.H3(children='Précipitation et prix de l\'eau'),
+            html.H3(children='Évolution du taux de natalité vs le niveau moyen de revenu par pays'),
 
+            html.Div('Déplacez la souris sur une bulle pour avoir les graphiques du pays en bas.'), 
             html.Div([ dcc.Graph(id='pem-main-graph'), ], style={'width':'90%', }),
             html.Div([ dcc.Graph(id='ppm-main-graph'), ], style={'width':'90%', }),
-                
+                   
+            
+            html.Div([
+                html.Div(
+                    dcc.Slider(
+                            id='wps-crossfilter-year-slider',
+                            min=2008,
+                            max=2022,
+                            step = 1,
+                            value=2010,
+                    ),
+                    style={'display':'inline-block', 'width':"90%"}
+                ),
+                ], style={
+                    'padding': '0px 50px', 
+                    'width':'100%'
+                }),
 
             html.Br(),
             
             html.Br(),
             dcc.Markdown("""
-            Dans notre étude nous avons essayé de mettre en valeur la corrélation entre le prix de l'eau et les précipitations en fonction de différentes zones. Dans les cartes suivantes, chaque point représente une station de mesure, sa couleur représente le total de précipitation enregistré durant le mois. Sur la seconde carte, on peut voir la moyenne du prix d'échange du Megalitre (1 million de litre) dans l'état. 
+            #### À propos
 
+            * Inspiration initiale : [conférence de Hans Rosling](https://www.ted.com/talks/hans_rosling_new_insights_on_poverty)
+            * [Version Plotly](https://plotly.com/python/v3/gapminder-example/)
+            * Données : [Banque mondiale](https://databank.worldbank.org/source/world-development-indicators)
+            * (c) 2022 Olivier Ricou
             """),
            
 
@@ -56,45 +77,6 @@ class WaterCostMapping():
         self.app.callback(
             dash.dependencies.Output('ppm-main-graph', 'figure'),
             [dash.dependencies.Input('wps-crossfilter-year-slider', 'value')])(self.plotPrices)
-        self.app.callback(
-            dash.dependencies.Output('wps-button-start-stop', 'children'),
-            dash.dependencies.Input('wps-button-start-stop', 'n_clicks'),
-            dash.dependencies.State('wps-button-start-stop', 'children'))(self.button_on_click)
-        # this one is triggered by the previous one because we cannot have 2 outputs for the same callback
-        self.app.callback(
-            dash.dependencies.Output('wps-auto-stepper', 'max_interval'),
-            [dash.dependencies.Input('wps-button-start-stop', 'children')])(self.run_movie)
-        # triggered by previous
-        self.app.callback(
-            dash.dependencies.Output('wps-crossfilter-year-slider', 'value'),
-            dash.dependencies.Input('wps-auto-stepper', 'n_intervals'),
-            [dash.dependencies.State('wps-crossfilter-year-slider', 'value'),
-             dash.dependencies.State('wps-button-start-stop', 'children')])(self.on_interval)
-
-    # start and stop the movie
-    def button_on_click(self, n_clicks, text):
-        if text == self.START:
-            return self.STOP
-        else:
-            return self.START
-
-    # this one is triggered by the previous one because we cannot have 2 outputs
-    # in the same callback
-    def run_movie(self, text):
-        if text == self.START:    # then it means we are stopped
-            return 0 
-        else:
-            return -1
-
-    # see if it should move the slider for simulating a movie
-    def on_interval(self, n_intervals, year, text):
-        if text == self.STOP:  # then we are running
-            if year == self.years[-2]:
-                return self.years[0]
-            else:
-                return self.year[self.year.index(year) + 1]
-        else:
-            return year  # nothing changes
 
     def plotPrices(self, date):
         '''
