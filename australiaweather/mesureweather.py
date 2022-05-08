@@ -14,30 +14,13 @@ class StationStats():
 
     def __init__(self, application = None):
         
-        inventory = (pd.read_csv('australiaweather/data/stations_mesures.csv', sep = ' '
-                ,names = ['ID', 'lat', 'long', 'info', 'from', 'to']
-                ,usecols=['ID', 'lat', 'long', 'info', 'from', 'to']))
-
-        num_df = (pd.DataFrame({'year':list(range(
-                                            min(inventory['from']), 
-                                            max(inventory['to'])))})) #liste les annés entre les permières et les dernières mesures
-        num_df['number'] = 0 #initialise le nombre total de mesures
-        num_df[inventory['info'].unique()] = 0 #Crée un colone pour chaque type de mesure
-        for  index, r in inventory.iterrows():
-            num_df.loc[(num_df["year"] >= r['from']) & (num_df["year"] <= r['to']), r['info']] += 1
-            #^^ Sélectionne les annés tu df entre 'from' et 'to' puis incrépente la mesure 'info'
-            num_df.loc[(num_df["year"] >= r['from']) & (num_df["year"] <= r['to']), 'number'] += 1
-        #idem mais avec la colone number
-        self.df = num_df
+        self.df = pd.read_pickle('australiaweather/data/data_inventory.pkl')
         
         self.data_colors = {'PRCP':'darkblue', 'DAPR':'red', 'DWPR':'green', 'MDPR':'brown', 'TMAX':'navy', 'TMIN':'crimson', 'DATX':'magenta', 'MDTX':'cyan', 'DATN':'purple', 'MDTN':'gray', 'TAVG':'coral'}
         self.data = {'PRCP':'Precipitation', 'DAPR':'DAPR', 'DWPR':'DWPR', 'MDPR':'MDPR', 'TMAX':'Temperature maximum', 'TMIN':'Temperature minimum', 'DATX':'DATX', 'MDTX':'MDTX', 'DATN':'DATN', 'MDTN':'MDTN', 'TAVG':'Temperature moyenne'}
 
         self.main_layout = html.Div(children=[
-            html.H3(children='Test'),
-
-            html.Div('Déplacez la souris sur une bulle pour avoir les graphiques du pays en bas.'), 
-
+            html.H3(children='Répartition et quantité des mesures'),
             html.Div([
                     html.Div([ dcc.Graph(id='sws-main-graph'), ], style={'width':'80%', }),
 
@@ -58,14 +41,19 @@ class StationStats():
         
             html.Br(),
             dcc.Markdown("""
-            À propos
-                *DAPR = Number of days included in the multiday precipiation 
-                *DWPR = Number of days with non-zero precipitation included in multiday precipitation total (MDPR)
-                *MDPR = Multiday precipitation total
-                *DATX = Number of days included in the multiday maximum temperature
-                *MDTX = Multiday maximum temperature
-                *DATN = Number of days included in the multiday minimum temperature
-                *MDTN = Multiday minimum temperature 
+                * DAPR = Number of days included in the multiday precipiation 
+                * DWPR = Number of days with non-zero precipitation included in multiday precipitation total (MDPR)
+                * MDPR = Multiday precipitation total
+                * DATX = Number of days included in the multiday maximum temperature
+                * MDTX = Multiday maximum temperature
+                * DATN = Number of days included in the multiday minimum temperature
+                * MDTN = Multiday minimum temperature
+                
+                Comme constaté précédement le nombre de station est élevé, Cependant chacune n'effectue pas les mêmes mesures. nous avons voulue vérifier que la mesure qui nous interesse (les précipitations) était assez représenté.
+
+Nous disposons donc de nombreuses mesures pour étudier les précipitations et les phénomènes météorologiques. Le nombre de stations ainsi que leurs activités sont montrés dans les graphiques suivants.
+(c) 2022 Martin Poulard
+(c) 2022 Grégoire Gally
             """),
            
 
@@ -92,8 +80,7 @@ class StationStats():
     def update_graph(self, datatype):
         column = ['year', 'number']
         column = column.extend(datatype)
-        dfg = self.df[column]
-
+        dfg = self.df
         fig = px.bar(dfg, x = 'year', y = dfg.columns[2:], title = "Number of measure depending the year")
         
         return fig

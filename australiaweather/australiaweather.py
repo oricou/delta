@@ -24,7 +24,7 @@ class DataDetail():
         self.number = len(df.index) - 150
 
         self.main_layout = html.Div(children=[
-            html.H3(children='temps de diffusion des données des stations météos d\'Australie'),
+            html.H3(children='Précipitations et marchés de l\'eau en australie'),
 
             html.Div([
                     html.Div([ dcc.Graph(id='sls-main-graph'), ], style={'width':'90%', }),
@@ -64,12 +64,12 @@ class DataDetail():
                 
             html.Br(),
             dcc.Markdown("""
-            #### À propos
+            Depuis 2008 le gouvernement australien a décidé d'ouvrir le marché de l'eau en transformant ce bien en produit financier. Nous avons décidé de nous interesser aux interaction entre ce marché et les précipitation. En effet l'australie etant un immense pays, le prix de l'eau et les précipitation varient beaucoup selon la localisation. 
 
-            * Inspiration initiale : [conférence de Hans Rosling](https://www.ted.com/talks/hans_rosling_new_insights_on_poverty)
-            * [Version Plotly](https://plotly.com/python/v3/gapminder-example/)
-            * Données : [Banque mondiale](https://databank.worldbank.org/source/world-development-indicators)
-            * (c) 2022 Olivier Ricou
+Pour commencer nous avons due determiner la fesabilité de cette étude : les donnés nessécaires etaient ils disponible ? Il se trouve que depuis toujours le stress hydrique est présent en australie ce qui à rendu les études météorologiques indispensable.  Les stations sont nombreuses cependant leur durée d'activité varie fortement. 
+Le graphique suivant nous montre la durée de vie des différentes stations.
+(c) 2022 Martin Poulard
+(c) 2022 Grégoire Gally
             """),
            
 

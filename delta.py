@@ -3,12 +3,15 @@ from dash import dcc
 from dash import html
 from australiaweather import australiaweather
 from australiaweather import mesureweather
+from australiaweather import watercost
+
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
 server = app.server
 wth = australiaweather.DataDetail(app)
 msr = mesureweather.StationStats(app)
+wtc = watercost.WaterCostMapping(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -16,16 +19,14 @@ main_layout = html.Div([
                  dcc.Location(id='url', refresh=False),
                  html.Div(className="two columns",
                           children = [
-                              html.Center(html.H2("Australia weather cost")),
-                              dcc.Link(html.Button("Echelle de donnée", style={'width':"100%"}), href='/australiaweather'),
+                              html.Center(html.H2("Précipitations et marchés de l'eau en australie")),
+                              dcc.Link(html.Button("Nombre de station et echelle de temps", style={'width':"100%"}), href='/australiaweather'),
                               html.Br(),
-                              dcc.Link(html.Button('Mesure', style={'width':"100%"}), href='/mesureweather'),
+                              dcc.Link(html.Button('Répartition et quantité des mesures', style={'width':"100%"}), href='/mesureweather'),
                               html.Br(),
-                              #dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
-                              #html.Br(),
+                              dcc.Link(html.Button('Précipitation et prix de l\'eau', style={'width':"100%"}), href='/watercost'),
                               html.Br(),
                               html.Br(),
-                              #html.Center(html.A('Code source', href='https://github.com/oricou/delta')),
                           ]),
                  html.Div(id='page_content', className="ten columns"),
             ]),
@@ -61,8 +62,8 @@ def display_page(pathname):
         return wth.main_layout
     elif pathname == '/mesureweather':
         return msr.main_layout
-    #elif pathname == '/deces':
-        #return dec.main_layout
+    elif pathname == '/watercost':
+        return wtc.main_layout
     else:
         return home_page
 
