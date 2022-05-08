@@ -251,17 +251,17 @@ class YoutubeTrendsStats():
         return fig
 
     def create_dataframe(self):
-        list_file = ["archive/BR_youtube_trending_data.csv",
-            "archive/CA_youtube_trending_data.csv",
-            "archive/DE_youtube_trending_data.csv",
-            "archive/FR_youtube_trending_data.csv",
-            "archive/GB_youtube_trending_data.csv",
-            "archive/IN_youtube_trending_data.csv",
-            "archive/JP_youtube_trending_data.csv",
-            "archive/KR_youtube_trending_data.csv",
-            "archive/MX_youtube_trending_data.csv",
-            "archive/RU_youtube_trending_data.csv",
-            "archive/US_youtube_trending_data.csv"]
+        list_file = ["category/archive/BR_youtube_trending_data.csv",
+            "category/archive/CA_youtube_trending_data.csv",
+            "category/archive/DE_youtube_trending_data.csv",
+            "category/archive/FR_youtube_trending_data.csv",
+            "category/archive/GB_youtube_trending_data.csv",
+            "category/archive/IN_youtube_trending_data.csv",
+            "category/archive/JP_youtube_trending_data.csv",
+            "category/archive/KR_youtube_trending_data.csv",
+            "category/archive/MX_youtube_trending_data.csv",
+            "category/archive/RU_youtube_trending_data.csv",
+            "category/archive/US_youtube_trending_data.csv"]
 
         data = load_data(list_file, list_country)
         data.drop(columns=['channelId', 'description','thumbnail_link','video_id'], inplace=True, axis=1)
