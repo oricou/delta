@@ -2,12 +2,13 @@ import dash
 from dash import dcc
 from dash import html
 from australiaweather import australiaweather
-
+from australiaweather import mesureweather
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
 server = app.server
 wth = australiaweather.DataDetail(app)
+msr = mesureweather.StationStats(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -18,8 +19,8 @@ main_layout = html.Div([
                               html.Center(html.H2("Australia weather cost")),
                               dcc.Link(html.Button("Echelle de donnée", style={'width':"100%"}), href='/australiaweather'),
                               html.Br(),
-                              #dcc.Link(html.Button('Natalité vs revenus', style={'width':"100%"}), href='/population'),
-                              #html.Br(),
+                              dcc.Link(html.Button('Mesure', style={'width':"100%"}), href='/mesureweather'),
+                              html.Br(),
                               #dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
                               #html.Br(),
                               html.Br(),
@@ -58,8 +59,8 @@ app.validation_layout = html.Div([
 def display_page(pathname):
     if pathname == '/australiaweather':
         return wth.main_layout
-    #elif pathname == '/population':
-        #return pop.main_layout
+    elif pathname == '/mesureweather':
+        return msr.main_layout
     #elif pathname == '/deces':
         #return dec.main_layout
     else:

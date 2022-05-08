@@ -7,14 +7,16 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objs as go
 import plotly.express as px
+import os
+
 
 class DataDetail():
     START = 'Start'
     STOP  = 'Stop'
 
     def __init__(self, application = None):
-        
-        df = pd.read_csv('data/stations_mesures.csv', sep=' ', names=['ID', 'lat','long','info','from','to'])
+        os.getcwd()
+        df = pd.read_csv('australiaweather/data/stations_mesures.csv', sep=' ', names=['ID', 'lat','long','info','from','to'])
         df = df.drop(columns=['lat','long','info'])
         df = df.groupby('ID', as_index =False).agg({'from' : 'min', 'to' : 'max'})#.sort_values(by=['from','to'], ascending=True)
         self.df = df
@@ -32,7 +34,7 @@ class DataDetail():
                     'justifyContent':'center'
                 }),
             html.Div([
-                html.Div(
+                html.Div([
                     html.Button(
                             self.START,
                             id='sls-button-start-stop', 
@@ -43,12 +45,12 @@ class DataDetail():
                             id='sls-crossfilter-number-slider',
                             min=0,
                             max=self.number,
-                            step = 1,
+                            step = 150,
                             value= (self.number + self.number % 2) / 2,
-                            marks={str(number): str(number) for number in range(0, self.number, 150)},
+                            marks={str(number): str(number) for number in range(0, self.number, 1000)},
                     ),
-                    style={'display':'inline-block', 'width':"90%"}
-                ),
+                    html.Div('Déplacez la souris pour choisir le numéro de la station. Celà affichera également les 150 suivantes'),
+                ],style={'display':'inline-block', 'width':"90%"}),
                 dcc.Interval(            # fire a callback periodically
                     id='sls-auto-stepper',
                     interval=500,       # in milliseconds
@@ -106,7 +108,9 @@ class DataDetail():
       
     def dash_plotStationLifeSpan(self, num_stations):
         df = self.df
-        df_plot = df.copy() if num_stations == None else df.head(num_stations).copy()
+        if (num_stations + 150 >= len(df.index)):
+            num_stations = 0
+        df_plot = df.copy() if num_stations == None else df[num_stations:num_stations + 149].copy()
         df_plot['timespan'] = df['to']-df['from']
         df_plot = df_plot.sort_values(by='timespan', ascending=True)
         fig = px.bar(df_plot, x='ID', y='timespan', base = 'from',  barmode = 'group',
