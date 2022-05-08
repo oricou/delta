@@ -16,7 +16,4 @@ install:
 	docker push oricou/delta
 
 docker_run:
-	make docker
-	docker stop delta
-	docker rm delta
 	docker run -it --name delta -p8000:8000 oricou/delta
