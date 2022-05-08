@@ -19,3 +19,5 @@ Note : le choix du français est volontaire, il s'agit de promouvoir l'usage
 
 Download les datas sur le lien suivant : https://www.kaggle.com/datasets/zynicide/wine-reviews/download
 et mettez les dans delta/category/data
+
+Le projet est dans le dossier category
