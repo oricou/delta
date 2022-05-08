@@ -90,7 +90,7 @@ class Energies():
                                id='nrg-which-month',
                                options=[{'label': i, 'value': i} for i in self.pn_df.index.unique()],
                                value=1,
-                               disabled=True,
+                               disabled=False,
                            ),
                          ], style={'width': '6em', 'padding':'2em 0px 0px 0px'}), # bas D haut G
                 html.Div([ html.Div('Annee ref.'),
@@ -152,8 +152,7 @@ class Energies():
                       dash.dependencies.Input('nrg-which-year', 'value'),
                       dash.dependencies.Input('nrg-xaxis-type', 'value')])(self.update_graph)
         self.app.callback(
-                    [ dash.dependencies.Output('nrg-which-month', 'disabled'),
-                      dash.dependencies.Output('nrg-which-year', 'disabled')],
+                    [ dash.dependencies.Output('nrg-which-year', 'disabled')],
                       dash.dependencies.Input('nrg-price-type', 'value') )(self.disable_month_year)
 
     def update_graph(self, price_type, month, year, xaxis_type):
