@@ -16,4 +16,3 @@ flask
 scipy
 statsmodels
 geopandas
-json
