@@ -14,3 +14,8 @@ Ce dépôt GitHub propose des pages Jupyter et des service Dash pour analyser de
 Note : le choix du français est volontaire, il s'agit de promouvoir l'usage
        des données ouvertes auprès du grand public en France. Cela étant il
        est possible d'en faire une version dans une autre langue.
+       
+### Wine production : 
+
+Download les datas sur le lien suivant : https://www.kaggle.com/datasets/zynicide/wine-reviews/download
+et mettez les dans delta/category/data
