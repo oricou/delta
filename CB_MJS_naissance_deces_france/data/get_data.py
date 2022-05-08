@@ -50,6 +50,7 @@ def population(file, pkl_name):
         if exists(f'{pkl_name}{date}.pkl'):
             continue
         pop = pd.read_excel(file, sheet_name=f'DEP_{date}', header=[0, 1, 2], index_col=[1, 2], skiprows=8)
+        pop.dropna(inplace=True)
         pop.columns = pop.columns.droplevel(2)
         pop.columns = pop.columns.droplevel(1)
         pop = pop.drop(columns='Unnamed: 0_level_0')
