@@ -289,13 +289,14 @@ class Population():
     def update_map_data_type(self, num_year, type_data):
         year = int(self.slider_dict.get(num_year))
         df_map = self.data_map_lines.copy()
+        maps = self.regions_map
         df_map = df_map.set_index("year")
         df_map = df_map.loc[year]
         if type_data == 'taxes':
             df_map = df_map.drop(columns=["salary"])
         elif type_data == 'salary':
             df_map = df_map.drop(columns=["taxes"])
-        fig = px.choropleth_mapbox(df_map, geojson=map,
+        fig = px.choropleth_mapbox(df_map, geojson=maps,
                                    locations='regions', featureidkey='properties.nom',  # join keys
                                    color=type_data, color_continuous_scale="Viridis",
                                    mapbox_style="carto-positron",
