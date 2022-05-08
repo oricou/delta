@@ -19,9 +19,9 @@ def ratio(list_country_kor, datas_year):
     return ratio
 
 list_country = ["Brésil", "Canada", "Allemagne", "France",
-    "Royaume-uni", "Inde", "Japon", "Corée", "Méxique", "Russie", "US"]
+    "Royaume-Uni", "Inde", "Japon", "Corée", "Méxique", "Russie", "US"]
 list_country_kor = ["Brésil", "Canada", "Allemagne", "France",
-    "Royaume-uni", "Inde", "Japon", "Méxique", "Russie", "US"]
+    "Royaume-Uni", "Inde", "Japon", "Méxique", "Russie", "US"]
 
 d1 = "\u3131"
 f1 = "\u3163"
@@ -74,32 +74,34 @@ class YoutubeTrendsStats():
         # page layout
         self.app = dash.Dash(external_stylesheets = [dbc.themes.BOOTSTRAP])
 
-        self.app.layout = html.Div([
-
-            html.Div(children=[
-                html.H3(children='Évolution des proportions des catégories youtube en tendances dans le monde'),
+        div_content = html.Div(children=[
+                # html.H3(children='Évolution des proportions des catégories youtube en tendances dans le monde'),
 
                 html.Div(dcc.Graph(id = 'main-graph',
                                     figure = self.figure)),
+                # html.H3(children='Pourcentage de musique coréenne en tendance sur le total de musique en tendance pour chaque pays'),
                 html.Div(dcc.Graph(id = 'second-graph',
                                     figure = self.other_figure)),
+                html.Br(),
+                dcc.Markdown("""
+                Le graphique est interactif. En passant la souris sur les courbes vous avez une infobulle. 
+                
+                Notes :
+                   * La catégorie Entertainement est la plus en tendance dans la plupart des pays.
+                   * Entre le 13/04/20021 et le 01/06/2021, la catégorie Gaming représentait 13,3%/ des tendances en France
+                   * On peut voir que la musique Coréenne représente la majorité des musiques de plusieurs pays.
+                   
 
-            ], style={'display': 'inline-block', 'vertical-align': 'top'}),
+                #### À propos
 
-        ])
-        self.main_layout = html.Div([
+                * Sources : 
+                   * https://www.kaggle.com/datasets/rsrishav/youtube-trending-video-dataset?select=FR_youtube_trending_data.csv
+                """)
 
-            html.Div(children=[
-                html.H3(children='Évolution des proportions des catégories youtube en tendances dans le monde'),
+            ])#, style={'display': 'inline-block', 'vertical-align': 'top'})
 
-                html.Div(dcc.Graph(id = 'main-graph',
-                                    figure = self.figure)),
-                html.Div(dcc.Graph(id = 'second-graph',
-                                    figure = self.other_figure)),
-
-            ], style={'display': 'inline-block', 'vertical-align': 'top'}),
-
-        ])
+        self.app.layout = div_content
+        self.main_layout = div_content
 
     def create_figure2(self, datas):
         datas.trending_date = pd.to_datetime(datas.trending_date)
@@ -119,25 +121,25 @@ class YoutubeTrendsStats():
         df['2022'] = ratio_2022
 
         y0 = np.array(df['2020'])
-        fig = px.scatter(df, size=y0*5, hover_name=df.index, 
-        title='<b>Pourcentage de musique coréenne en tendance sur le total de musique en tendance pour chaque pays<b>',
+        fig = px.scatter(df, size=y0*5, hover_name=df.index,
+            title='Pourcentage de musique coréenne en tendance sur le total de musique en tendance pour chaque pays',
             opacity = 0.6, labels={
                             "value": "Ratio in %",
                             "index": "Country",
                             "variable": "Year"
                         })
-        fig.update_layout(
-            title_font_size=22,
-            font_family="Serif",
-            title_font_family="Times New Roman",
-            title_font_color="black"
-        )
-        fig.update_xaxes(title_font_family="Serif")
+        #fig.update_layout(
+        #    title_font_size=22,
+        #    font_family="Serif",
+        #    title_font_family="Times New Roman",
+        #    title_font_color="black"
+        #)
+        #fig.update_xaxes(title_font_family="Serif")
         return fig
 
     # define figure creation function
     def create_figure(self,result):
-        dates = self.divide_dates("2020-08-11", "2022-03-22", 10)
+        dates = self.divide_dates("2020-08-11", "2022-03-22", 12)
 
         # make list of continents
         countries = result['country'].unique()
@@ -166,6 +168,8 @@ class YoutubeTrendsStats():
         }
 
         # fill in most of layout
+        fig_dict["layout"]["title"] = "Évolution des proportions des catégories youtube en tendances dans le monde"
+        fig_dict["layout"]["height"] = 700
         fig_dict["layout"]["hovermode"] = "closest"
         fig_dict["layout"]["updatemenus"] = [
             {
@@ -247,17 +251,17 @@ class YoutubeTrendsStats():
         return fig
 
     def create_dataframe(self):
-        list_file = ["category/archive/BR_youtube_trending_data.csv",
-            "category/archive/CA_youtube_trending_data.csv",
-            "category/archive/DE_youtube_trending_data.csv",
-            "category/archive/FR_youtube_trending_data.csv",
-            "category/archive/GB_youtube_trending_data.csv",
-            "category/archive/IN_youtube_trending_data.csv",
-            "category/archive/JP_youtube_trending_data.csv",
-            "category/archive/KR_youtube_trending_data.csv",
-            "category/archive/MX_youtube_trending_data.csv",
-            "category/archive/RU_youtube_trending_data.csv",
-            "category/archive/US_youtube_trending_data.csv"]
+        list_file = ["archive/BR_youtube_trending_data.csv",
+            "archive/CA_youtube_trending_data.csv",
+            "archive/DE_youtube_trending_data.csv",
+            "archive/FR_youtube_trending_data.csv",
+            "archive/GB_youtube_trending_data.csv",
+            "archive/IN_youtube_trending_data.csv",
+            "archive/JP_youtube_trending_data.csv",
+            "archive/KR_youtube_trending_data.csv",
+            "archive/MX_youtube_trending_data.csv",
+            "archive/RU_youtube_trending_data.csv",
+            "archive/US_youtube_trending_data.csv"]
 
         data = load_data(list_file, list_country)
         data.drop(columns=['channelId', 'description','thumbnail_link','video_id'], inplace=True, axis=1)
