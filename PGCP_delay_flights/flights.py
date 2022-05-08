@@ -492,4 +492,4 @@ class Delay():
 
 if __name__ == '__main__':
     nrg = Delay()
-    nrg.app.run_server(debug=True, port=80)
+    nrg.app.run_server(debug=True, port=8051)
