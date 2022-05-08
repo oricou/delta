@@ -20,6 +20,8 @@ imageio = "^2.10.5"
 folium = "^0.12.1"
 seaborn = "^0.11.2"
 statsmodels = "^0.13" 
+pyproject-toml = "^0.0.11"
+geopandas = "^0.10.2"
 
 [tool.poetry.dev-dependencies]
 
