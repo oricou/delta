@@ -7,17 +7,76 @@ import numpy as np
 import plotly.graph_objs as go
 import plotly.express as px
 import dateutil as du
+from urllib.request import urlopen
+import json
+import geopandas as gpd
+from Levenshtein import ratio
+import re
+
+
+def to_str(n):
+    try:
+        return "0" + str(n) if n < 10 else str(n)
+    except:
+        return n
+
 
 class Anthroponymie():
     def __init__(self, application=None):
-        self.df = pd.read_csv('PSJCD_Anthroponymie/data/nomsParDpt.txt', sep='\t', lineterminator='\n')
-        a = pd.DataFrame(self.getPopWithDate("COQUEL"))
-        fig = px.scatter(a)
+        url = "https://france-geojson.gregoiredavid.fr/repo/departements.geojson"
+        self.dpts_json = json.loads(urlopen(url).read())
+        gdf = gpd.GeoDataFrame.from_features(self.dpts_json["features"])
+        df_name = gdf.drop(columns=['geometry']).set_index("code")
+        name_map = df_name.to_dict()['nom']
+
+        df = pd.read_csv('PSJCD_Anthroponymie/data/nomsParDpt.txt', sep='\t', lineterminator='\n')
+
+        df["DEP"] = df["DEP"].map(to_str)
+        df.rename(columns={"NOM": "Nom", "DEP": "Dpt", "_1991_2000\r": "_1991_2000"}, inplace=True)
+        dpt_arr = np.unique(df.Dpt.to_numpy(dtype=str))
+        df = df[[dep in dpt_arr[:-6] for dep in df['Dpt']]]
+        dpt_names = df.Dpt.map(name_map)
+        df.insert(2, "Nom_Dpt", dpt_names)
+        df.columns = df.columns.str.replace(r'^_', '')
+
+        self.df = df
+        self.decades = [str(i) + '_' + str(i + 9) for i in range(1891, 2001, 10)]
+        self.funcs = [self.extract_exact_names, self.extract_composed_names, self.extract_levenstein,
+                      self.extract_all_names]
+
         self.main_layout = html.Div(children=[
             html.H3(children='Anthroponymie par département'),
-            html.Div([dcc.Graph(figure=fig), ], style={'width': '100%', }),
-            dcc.Input(id="input2", type="text", placeholder="", debounce=True),
-            html.Br(),                    
+            html.Div([dcc.Graph(id='atr-graph'), ], style={'width': '100%', }),
+            html.Div([
+                html.Div([html.Div('Recherche'),
+                          dcc.Input(
+                              id="atr-name",
+                              type="text",
+                              placeholder="Votre nom",
+                              value="",
+                          )
+                          ], style={'marginRight': '10px'}),
+                html.Div([html.Div('Décennie'),
+                          dcc.Slider(0, len(self.decades) - 1,
+                                     step=None,
+                                     marks={i: dec for i, dec in enumerate(self.decades)},
+                                     value=0,
+                                     id='atr-decade',
+                                     included=False
+                                     )]),
+                html.Div([html.Div('Fonction de reconnaissance'),
+                          dcc.RadioItems(
+                              id='atr-func_id',
+                              options=[{'label': "nom stricte", 'value': 0},
+                                       {'label': "avec noms composés", 'value': 1},
+                                       {'label': "noms proches", 'value': 2},
+                                       {'label': "noms proches + composés", 'value': 3}],
+                              value=0,
+                              labelStyle={'display': 'block'},
+                          )
+                          ], style={'marginRight': '10px'}),
+            ]),
+            html.Br(),
         ], style={
             'backgroundColor': 'white',
             'padding': '10px 50px 10px 50px',
@@ -30,9 +89,67 @@ class Anthroponymie():
         else:
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
-    
-    def getPopWithDate(self, name):
-        return self.df[self.df["NOM"] == name].sum(numeric_only=True)
+
+        self.app.callback(
+            dash.dependencies.Output('atr-graph', 'figure'),
+            [dash.dependencies.Input('atr-name', 'value'),
+             dash.dependencies.Input('atr-decade', 'value'),
+             dash.dependencies.Input('atr-func_id', 'value')])(self.update_graph)
+
+    def extract_exact_names(self, check: str):
+        return self.df[self.df['Nom'] == check].copy()
+
+    def extract_composed_names(self, check: str):
+        return self.df[[re.search(r"^([A-Z]+-)?" + re.escape(check) + "(-[A-Z]+)?$", nom) is not None for nom in
+                        self.df['Nom']]].copy()
+
+    def extract_levenstein(self, check: str):
+        return self.df[[ratio(nom, check) > 0.9 for nom in self.df['Nom']]].copy()
+
+    def extract_all_names(self, check: str):
+        return pd.concat([self.df[[ratio(nom, check) > 0.9 for nom in self.df['Nom']]],
+                          self.df[
+                              [re.search(r"^([A-Z]+-)?" + re.escape(check) + "(-[A-Z]+)?$", nom) is not None for nom in
+                               self.df['Nom']]]]
+                         ).drop_duplicates().copy()
+
+    def get_df(self, name, func):
+        df_name = func(name)
+        cols = self.df.columns.tolist()
+        cols = cols[2:]
+        ret_df = df_name.groupby(by='Dpt').agg({col: sum for col in cols})
+        name_dep_arr = df_name[['Nom', 'Dpt']].to_numpy(dtype=str)
+
+        dico = dict(
+            {key: ", ".join(name_dep_arr[name_dep_arr[:, 1] == key][:, 0]) for key in np.unique(name_dep_arr[:, 1])})
+
+        ret_df['Noms'] = ret_df.index.map(dico)
+        cols = ret_df.columns.tolist()
+        ret_df = ret_df[cols[-1:] + cols[:-1]]
+        return ret_df
+
+    def update_graph(self, name: str, dec: int, func_id: int):
+        name = name.upper()
+        decade_str = self.decades[dec]
+        years = decade_str.split('_')
+        fig_df = self.get_df(name, self.funcs[func_id])
+
+        fig = px.choropleth_mapbox(fig_df,
+                                   geojson=self.dpts_json,
+                                   locations=fig_df.index,
+                                   featureidkey="properties.code",
+                                   color=decade_str,
+                                   hover_data=["Nom_Dpt", 'Noms', decade_str],
+                                   center={"lat": 46.79491, "lon": 3.03206},
+                                   mapbox_style="open-street-map",
+                                   labels={decade_str: 'Nombre par département'},
+                                   zoom=4,
+                                   title=f"Entre {years[0]} et {years[1]}")
+        fig.update_layout(
+            margin={"r": 0, "t": 0, "l": 0, "b": 0})
+
+        return fig
+
 
 if __name__ == '__main__':
     atr = Anthroponymie()

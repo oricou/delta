@@ -15,3 +15,5 @@ gunicorn
 flask
 scipy
 statsmodels
+geopandas
+python-Levenshtein
