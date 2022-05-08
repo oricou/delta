@@ -89,10 +89,10 @@ class Energies():
                            dcc.Dropdown(
                                id='nrg-which-month',
                                options=[{'label': i, 'value': i} for i in self.pn_df.index.unique()],
-                               value=1,
+                               value=self.pn_df.index[0],
                                disabled=False,
                            ),
-                         ], style={'width': '6em', 'padding':'2em 0px 0px 0px'}), # bas D haut G
+                         ], style={'width': '16em', 'padding':'2em 0px 0px 0px'}), # bas D haut G
                 html.Div([ html.Div('Annee ref.'),
                            dcc.Dropdown(
                                id='nrg-which-year',
@@ -101,6 +101,14 @@ class Energies():
                                disabled=True,
                            ),
                          ], style={'width': '6em', 'padding':'2em 0px 0px 0px'} ),
+                html.Div([ html.Div('crime'),
+                           dcc.Dropdown(
+                               id='nrg-which-crime',
+                               options=[{'label': i, 'value': i} for i in self.pn_df.columns[:-1]],
+                               value='Autres délits',
+                               disabled=False,
+                           ),
+                         ], style={'width': '32em', 'padding':'2em 0px 0px 0px'}), # bas D haut G
                 html.Div(style={'width':'2em'}),
                 html.Div([ html.Div('Échelle en y'),
                            dcc.RadioItems(
@@ -150,22 +158,25 @@ class Energies():
                     [ dash.dependencies.Input('nrg-price-type', 'value'),
                       dash.dependencies.Input('nrg-which-month', 'value'),
                       dash.dependencies.Input('nrg-which-year', 'value'),
-                      dash.dependencies.Input('nrg-xaxis-type', 'value')])(self.update_graph)
+                      dash.dependencies.Input('nrg-xaxis-type', 'value'),
+                      dash.dependencies.Input('nrg-which-crime', 'value')])(self.update_graph)
         self.app.callback(
                     [ dash.dependencies.Output('nrg-which-year', 'disabled')],
                       dash.dependencies.Input('nrg-price-type', 'value') )(self.disable_month_year)
 
-    def update_graph(self, price_type, month, year, xaxis_type):
+    def update_graph(self, price_type, month, year, xaxis_type, crime):
         
         with urlopen('https://france-geojson.gregoiredavid.fr/repo/departements.geojson') as response:
             counties = json.load(response)
 
-        df = self.pn_df[['Département', 'Autres délits']]
+        df = self.pn_df[['Département', crime]]
         if not month in df.index:
             month = '2000-05-01'
+        if not crime in df.columns:
+            crime = 'Autres délits'
         df = df.loc[month]
-        val_min = df['Autres délits'].min()
-        val_max = df['Autres délits'].mean()
+        val_min = df[crime].min()
+        val_max = df[crime].mean()
 
         fig = px.choropleth_mapbox(df, geojson=counties,
                                    featureidkey='properties.code',
