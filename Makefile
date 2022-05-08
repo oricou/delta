@@ -1,3 +1,5 @@
+.PHONY: docker
+
 run:
 	poetry run python delta.py
 
