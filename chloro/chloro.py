@@ -95,11 +95,11 @@ class Chloro():
 
         self.mapbox_access_token = 'pk.eyJ1IjoiZ2NhcnJpZXJlIiwiYSI6ImNsMmI1c3p3ejAxNmEzaW51MXBta2N6bTcifQ.f_MlUBEyToUp92xcCOwF0g'
 
-        self.chldf = pd.read_pickle("data/chldf_2020-06-20.pkl")
-        self.fapardf = pd.read_pickle("data/fapardf_2020-06-20.pkl")
+        self.chldf = pd.read_pickle("data/chldf_2019-06-20.pkl")
+        self.fapardf = pd.read_pickle("data/fapardf_2019-06-20.pkl")
  
-        self.chldf_coastline = pd.read_pickle("data/chldf_coastline_2020-06-20.pkl")
-        self.fapardf_coastline = pd.read_pickle("data/fapardf_coastline_2020-06-20.pkl")
+        self.chldf_coastline = pd.read_pickle("data/chldf_coastline_2019-06-20.pkl")
+        self.fapardf_coastline = pd.read_pickle("data/fapardf_coastline_2019-06-20.pkl")
         
         self.chldf_hiver = pd.read_pickle("data/chldf_2019-12-20.pkl")
         self.fapardf_hiver = pd.read_pickle("data/fapardf_2019-12-20.pkl")
@@ -192,11 +192,32 @@ class Chloro():
  
             html.Br(),
             dcc.Markdown("""
-            Lorem Ipsum blablabla
-            * Sources : 
-                * [Copernicus Land Service](https://land.copernicus.eu/global/products/fapar) pour récupérer les données sur le FAPAR
-                * [Copernicus Marine Service](https://resources.marine.copernicus.eu/product-detail/GLOBAL_MULTIYEAR_BGC_001_029/INFORMATION) pour récupérer les données sur la chlorophylle
+            Le FAPAR, dérivé de l'anglais (Fraction of Absorbed Photosynthetically Active Radiation) est une variable biophysique qui est directement reliée à la productivité primaire de la végétation
 
+            La quantité de chlorophylle présente dans l'eau (en mg/m³) est aussi une variable biophysique qui est directement reliée à la productivité primaire de la végétation marine puisqu'elle montre la quantité de phytoplancton présente dans l'eau. Ce dernier forme l'ensemble des algues microscopiques présentes dans les eaux de surface et qui se déplacent au gré des courants.
+
+            Cette carte interactive a pour but de montrer si une corrélation existe entre la productivité primaire de la végétation terrestre par rapport à la productivité primaire de la végétation marine dans une même zone.
+
+            En passant la souris sur les cercles colorés, on peut observer la position géographique en degré ainsi que la productivité primaire de la végétation.
+
+            Dans un premier temps il est possible de choisir d'observer la carte complète ou les Côtes uniquement.
+
+            Chaque dataset est divisé en deux saisons, été et hiver (selon l'hémisphère nord). Les données de l'été proviennent d'informations récoltées sur une tranche de 10 jours, entre le 11 juin et le 20 juin 2019. Il en est de même pour l'hiver avec une tranche située entre le 11 et le 20 décembre 2019. On peut donc choisir une période entre été et hiver pour observer les variations.
+
+            Pour mieux observer les corrélations ou les contre corrélations, il est possible de sélectionner un seuil pour chaque dataset. Pour cela, sélectionnez "supérieur à" ou  "inférieur à" puis tapez un valeur dans le champ prévu à cet effet puis appuyez sur entrée.
+
+            Enfin, pour chaque dataset, vous pouvez modifier la colormap parmi 5 choix pour choisir celui qui vous convient le mieux.
+
+            ###### Notes :
+               * La quantité de chlorophylle dans l'eau est évaluée en moyennant les valeurs obtenues entre 0 et 15 m de profondeur, zone de vie principale du phytoplancton.
+               * Le choix de mettre à disposition deux tranches de 10 jours provient de la méthode de construction des données FAPAR, qui s'obtiennent toujours par tranche de 10 jours. Les données sur la chlorophylle sont quant à elles obtenues au jour le jour, une moyenne a donc été réalisée sur 10 jours pour correspondre aux données sur le FAPAR.
+               * On peut voir en comparant les côtes des contre corrélations intéressantes, notamment en namibie ou au large des pays sud-américains.
+               * Autour des grandes métropoles portuaires, des écosystèmes chargés en chlorophylle font leur apparition. Ce phénomène est particulièrement visible autout des villes de Honk Kong et Shanghai, mais peut aussi être observé dans une moindre mesure au large des villes portuaires francaises (Marseille par exemple).
+               * On voit bien l'impact de l'hiver sur l'activité végétale terrestre, notamment en observant la sibérie ou même l'europe de l'ouest.
+               * Il est intéréssant de noter la forte présence de chlorophylle dans la zone arctique et la faible présence dans la zone antarctique durant l'été, et son inversion lors de l'hiver. Cela est certainement dû a la quantité de lumière par jour diamétralement opposées que recoivent ces zones en fonction des saisons.
+            ###### Sources : 
+               * [Copernicus Land Service](https://land.copernicus.eu/global/products/fapar) pour récupérer les données sur le FAPAR
+               * [Copernicus Marine Service](https://resources.marine.copernicus.eu/product-detail/GLOBAL_MULTIYEAR_BGC_001_029/INFORMATION) pour récupérer les données sur la chlorophylle
             """)
         ], style={
             'backgroundColor': 'white',
