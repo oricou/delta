@@ -30,7 +30,7 @@ class StationStats():
         #idem mais avec la colone number
         self.df = num_df
         
-        self.data_colors = {'PRCP':'blues', 'DAPR':'red', 'DWPR':'green', 'MDPR':'brown', 'TMAX':'navy', 'TMIN':'pink', 'DATX':'magenta', 'MDTX':'orange', 'DATN':'purple', 'MDTN':'peach', 'TAVG':'magma'}
+        self.data_colors = {'PRCP':'darkblue', 'DAPR':'red', 'DWPR':'green', 'MDPR':'brown', 'TMAX':'navy', 'TMIN':'crimson', 'DATX':'magenta', 'MDTX':'cyan', 'DATN':'purple', 'MDTN':'gray', 'TAVG':'coral'}
         self.data = {'PRCP':'Precipitation', 'DAPR':'DAPR', 'DWPR':'DWPR', 'MDPR':'MDPR', 'TMAX':'Temperature maximum', 'TMIN':'Temperature minimum', 'DATX':'DATX', 'MDTX':'MDTX', 'DATN':'DATN', 'MDTN':'MDTN', 'TAVG':'Temperature moyenne'}
 
         self.main_layout = html.Div(children=[
@@ -39,16 +39,16 @@ class StationStats():
             html.Div('Déplacez la souris sur une bulle pour avoir les graphiques du pays en bas.'), 
 
             html.Div([
-                    html.Div([ dcc.Graph(id='sws-main-graph'), ], style={'width':'90%', }),
+                    html.Div([ dcc.Graph(id='sws-main-graph'), ], style={'width':'80%', }),
 
                     html.Div([
                         html.Div('Type de donnée'),
                         dcc.Checklist(
                             id='sws-crossfilter-which-data',
-                            options=[{'label': self.data[i], 'value': i} for i in self.data_colors.keys()],
-                            value=self.data_colors.keys(),
-                        ),
-                    ], style={'margin-left':'15px', 'width': '7em', 'float':'right'}),
+                            options=[{'label': self.data[i], 'value': i} for i in sorted(self.data_colors.keys())],
+                            value=sorted(self.data_colors.keys()),
+                        )
+                    ], style={'margin-left':'15px', 'width': '12em', 'float':'right'}),
                 ], style={
                     'padding': '10px 50px', 
                     'display':'flex',
@@ -90,10 +90,11 @@ class StationStats():
 
 
     def update_graph(self, datatype):
-        dfg = self.df
         column = ['year', 'number']
         column = column.extend(datatype)
-        fig = px.bar(df, x = 'year', y = df.columns[2:], title = "Number of measure depending the year")
+        dfg = self.df[column]
+
+        fig = px.bar(dfg, x = 'year', y = dfg.columns[2:], title = "Number of measure depending the year")
         
         return fig
 
