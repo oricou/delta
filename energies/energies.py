@@ -9,6 +9,9 @@ import plotly.graph_objs as go
 import plotly.express as px
 import dateutil as du
 
+from urllib.request import urlopen
+import json
+
 class Energies():
     mois = {'janv':1, 'févr':2, 'mars':3, 'avr':4, 'mai':5, 'juin':6, 'juil':7, 'août':8, 'sept':9, 'oct':10, 'nov':11, 'déc':12}
 
@@ -39,6 +42,8 @@ class Energies():
         return df
 
     def __init__(self, application = None):
+        self.pn_df = pd.read_pickle('pn_db.pkl')
+
         bois = Energies._make_dataframe_from_pegase("data/pegase_prix_bois_particulier.csv")
         petrole = Energies._make_dataframe_from_pegase("data/pegase_prix_petrole_particulier.csv")
 
@@ -83,7 +88,7 @@ class Energies():
                 html.Div([ html.Div('Mois ref.'),
                            dcc.Dropdown(
                                id='nrg-which-month',
-                               options=[{'label': i, 'value': Energies.mois[i]} for i in Energies.mois],
+                               options=[{'label': i, 'value': i} for i in self.pn_df.index.unique()],
                                value=1,
                                disabled=True,
                            ),
@@ -153,15 +158,15 @@ class Energies():
 
     def update_graph(self, price_type, month, year, xaxis_type):
         
-        from urllib.request import urlopen
-        import json
         with urlopen('https://france-geojson.gregoiredavid.fr/repo/departements.geojson') as response:
             counties = json.load(response)
 
-        pn_df = pd.read_pickle('pn_db.pkl')
-        df = pn_df[['Département', 'Autres délits']]
-        val_min = df['Autres délits'][5:].min()
-        val_max = df['Autres délits'][5:].mean()
+        df = self.pn_df[['Département', 'Autres délits']]
+        if not month in df.index:
+            month = '2000-05-01'
+        df = df.loc[month]
+        val_min = df['Autres délits'].min()
+        val_max = df['Autres délits'].mean()
 
         fig = px.choropleth_mapbox(df, geojson=counties,
                                    featureidkey='properties.code',
