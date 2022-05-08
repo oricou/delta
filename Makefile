@@ -1,11 +1,8 @@
 .PHONY: docker
 
-movies:
+run:
 	poetry run python movie_data_analysis/data/get_data.py
 	poetry run python movie_data_analysis/main.py
-
-run:
-	poetry run python delta.py
 
 docker:
 	tar czvf apps.tgz delta.py */
