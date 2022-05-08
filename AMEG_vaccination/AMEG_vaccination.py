@@ -64,6 +64,8 @@ class Vaccinations:
         self.main_layout = html.Div(children=[
             # Titre
             html.H1(children=txt_title, style={'font-family': 'Helvetica', 'color': '#ffffff', 'text-align': 'center'}),
+            html.P(children='Adrien Merat - Erwan Goudard',
+                   style={'font-family': 'Helvetica', 'color': '#ffffff', 'text-align': 'center'}),
             html.P(children=txt_p1),
             html.Ul(children=[
                 html.Li(children=html.A(
