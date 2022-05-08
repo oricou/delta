@@ -198,23 +198,23 @@ class Chloro():
 
             Cette carte interactive a pour but de montrer si une corrélation existe entre la productivité primaire de la végétation terrestre par rapport à la productivité primaire de la végétation marine dans une même zone.
 
-            En passant la souris sur les cercles colorés, on peut observer la position géographique en degré ainsi que la productivité primaire de la végétation.
+            En passant la souris sur les cercles colorés, on peut observer la position géographique en degrés ainsi que la productivité primaire de la végétation.
 
-            Dans un premier temps il est possible de choisir d'observer la carte complète ou les Côtes uniquement.
+            Dans un premier temps il est possible de choisir d'observer la Carte complète ou les Côtes uniquement.
 
             Chaque dataset est divisé en deux saisons, été et hiver (selon l'hémisphère nord). Les données de l'été proviennent d'informations récoltées sur une tranche de 10 jours, entre le 11 juin et le 20 juin 2019. Il en est de même pour l'hiver avec une tranche située entre le 11 et le 20 décembre 2019. On peut donc choisir une période entre été et hiver pour observer les variations.
 
-            Pour mieux observer les corrélations ou les contre corrélations, il est possible de sélectionner un seuil pour chaque dataset. Pour cela, sélectionnez "supérieur à" ou  "inférieur à" puis tapez un valeur dans le champ prévu à cet effet puis appuyez sur entrée.
+            Pour mieux observer les corrélations ou les corrélations négatives, il est possible de sélectionner un seuil pour chaque dataset. Pour cela, sélectionnez "supérieur à" ou  "inférieur à" puis tapez une valeur dans le champ prévu à cet effet puis appuyez sur entrée.
 
             Enfin, pour chaque dataset, vous pouvez modifier la colormap parmi 5 choix pour choisir celui qui vous convient le mieux.
 
             ###### Notes :
                * La quantité de chlorophylle dans l'eau est évaluée en moyennant les valeurs obtenues entre 0 et 15 m de profondeur, zone de vie principale du phytoplancton.
                * Le choix de mettre à disposition deux tranches de 10 jours provient de la méthode de construction des données FAPAR, qui s'obtiennent toujours par tranche de 10 jours. Les données sur la chlorophylle sont quant à elles obtenues au jour le jour, une moyenne a donc été réalisée sur 10 jours pour correspondre aux données sur le FAPAR.
-               * On peut voir en comparant les côtes des contre corrélations intéressantes, notamment en namibie ou au large des pays sud-américains.
+               * On peut voir en comparant les côtes des corrélations négatives intéressantes, notamment en Namibie ou au large des pays sud-américains.
                * Autour des grandes métropoles portuaires, des écosystèmes chargés en chlorophylle font leur apparition. Ce phénomène est particulièrement visible autout des villes de Honk Kong et Shanghai, mais peut aussi être observé dans une moindre mesure au large des villes portuaires francaises (Marseille par exemple).
-               * On voit bien l'impact de l'hiver sur l'activité végétale terrestre, notamment en observant la sibérie ou même l'europe de l'ouest.
-               * Il est intéréssant de noter la forte présence de chlorophylle dans la zone arctique et la faible présence dans la zone antarctique durant l'été, et son inversion lors de l'hiver. Cela est certainement dû a la quantité de lumière par jour diamétralement opposées que recoivent ces zones en fonction des saisons.
+               * On voit bien l'impact de l'hiver sur l'activité végétale terrestre, notamment en observant la Sibérie ou même l'Europe de l'ouest.
+               * Il est intéréssant de noter la forte présence de chlorophylle dans la zone arctique et la faible présence dans la zone antarctique durant l'été, et son inversion en l'hiver. Cela est certainement dû aux quantités de lumière par jour diamétralement opposées que recoivent ces zones en fonction des saisons.
             ###### Sources : 
                * [Copernicus Land Service](https://land.copernicus.eu/global/products/fapar) pour récupérer les données sur le FAPAR
                * [Copernicus Marine Service](https://resources.marine.copernicus.eu/product-detail/GLOBAL_MULTIYEAR_BGC_001_029/INFORMATION) pour récupérer les données sur la chlorophylle
