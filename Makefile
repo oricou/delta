@@ -1,5 +1,9 @@
 .PHONY: docker
 
+movies:
+	poetry run python movie_data_analysis/data/get_data.py
+	poetry run python movie_data_analysis/main.py
+
 run:
 	poetry run python delta.py
 
