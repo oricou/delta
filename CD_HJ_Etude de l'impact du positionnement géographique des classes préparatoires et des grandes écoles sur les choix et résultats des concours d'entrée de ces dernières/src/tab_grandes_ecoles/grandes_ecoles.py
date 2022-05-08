@@ -178,7 +178,7 @@ tab_grandes_ecoles = dbc.Card(
                                     figure=graph_pie.update_pie(
                                         graph_pie.stats_lycees["concours"].iloc[0],
                                         min(graph_pie.stats_lycees["year"]),
-                                    ),
+                                    )[0],
                                 ),
                             ),
                             dbc.Alert(
