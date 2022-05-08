@@ -46,7 +46,7 @@ class Anthroponymie():
 
         self.main_layout = html.Div(children=[
             html.H3(children='Anthroponymie par département'),
-            html.Div([dcc.Graph(id='atr-graph'), ], style={'width': '100%', }),
+            html.Div([dcc.Graph(id='atr-graph'), ], style={'width': '100%', 'min-height': '50vh'}),
             html.Div([
                 html.Div([html.Div('Recherche'),
                           dcc.Input(
@@ -67,16 +67,28 @@ class Anthroponymie():
                 html.Div([html.Div('Fonction de reconnaissance'),
                           dcc.RadioItems(
                               id='atr-func_id',
-                              options=[{'label': "nom stricte", 'value': 0},
-                                       {'label': "avec noms composés", 'value': 1},
-                                       {'label': "noms proches", 'value': 2},
-                                       {'label': "noms proches + composés", 'value': 3}],
+                              options=[{'label': "Nom exact", 'value': 0},
+                                       {'label': "Avec noms composés", 'value': 1},
+                                       {'label': "Avec noms proches", 'value': 2},
+                                       {'label': "Avec noms proches + composés", 'value': 3}],
                               value=0,
                               labelStyle={'display': 'block'},
                           )
                           ], style={'marginRight': '10px'}),
             ]),
             html.Br(),
+            dcc.Markdown("""
+        La carte est interactive. En passant la souris sur les départements colorés vous avez une infobulle.
+        Vous retrouverez les noms similaires à celui que vous avez choisi pour chaque départements. 
+        En utilisant la souris, on peut zoomer dans la carte et se déplacer dessus, réinitialiser, etc.
+
+        #### À propos
+
+        * Sources :
+            * https://www.insee.fr/fr/statistiques/3536630
+            * https://france-geojson.gregoiredavid.fr/repo/departements.geojson
+        * (c) 2022 Pejman Samieyan, Jules Coquel-Doucet
+        """)
         ], style={
             'backgroundColor': 'white',
             'padding': '10px 50px 10px 50px',
@@ -117,7 +129,11 @@ class Anthroponymie():
         df_name = func(name)
         cols = self.df.columns.tolist()
         cols = cols[2:]
-        ret_df = df_name.groupby(by='Dpt').agg({col: sum for col in cols})
+        col_dict = {cols[0]: lambda x: x.iloc[0] if x.shape[0] > 0 else 0}
+        for i, col in enumerate(cols):
+            if i > 0:
+                col_dict.update({col: sum})
+        ret_df = df_name.groupby(by='Dpt').agg(col_dict)
         name_dep_arr = df_name[['Nom', 'Dpt']].to_numpy(dtype=str)
 
         dico = dict(
@@ -126,6 +142,12 @@ class Anthroponymie():
         ret_df['Noms'] = ret_df.index.map(dico)
         cols = ret_df.columns.tolist()
         ret_df = ret_df[cols[-1:] + cols[:-1]]
+        if len(ret_df.index) == 0:
+            null_dic = {'Noms': name, 'Nom_Dpt': 'Paris'}
+            for i in range(1891, 2001, 10):
+                null_dic.update({str(i) + '_' + str(i + 9): 0})
+            null_df = pd.DataFrame(null_dic, index=[75])
+            ret_df = pd.concat([ret_df, null_df])
         return ret_df
 
     def update_graph(self, name: str, dec: int, func_id: int):
@@ -143,8 +165,10 @@ class Anthroponymie():
                                    center={"lat": 46.79491, "lon": 3.03206},
                                    mapbox_style="open-street-map",
                                    labels={decade_str: 'Nombre par département'},
-                                   zoom=4,
-                                   title=f"Entre {years[0]} et {years[1]}")
+                                   opacity=0.65,
+                                   zoom=5,
+                                   title=f"Entre {years[0]} et {years[1]}",
+                                   height=600)
         fig.update_layout(
             margin={"r": 0, "t": 0, "l": 0, "b": 0})
 
