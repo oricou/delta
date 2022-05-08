@@ -4,7 +4,7 @@ import pandas as pd
 import datetime
 import dateutil as du
 import requests
-from bs4 import BeautifulSoup
+import json
 import sys
 import pathlib
 import re
@@ -55,26 +55,20 @@ def get_file(url, filename):
 # main
 #-------------------------------------------------------------------------
 
-url = "https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees/"
-html_page = requests.get(url)
-doc = BeautifulSoup(html_page.text, "lxml")
+# we use data.gouv.fr API
+url = "https://www.data.gouv.fr/api/1/datasets/fichier-des-personnes-decedees/"
+deces_ressource = requests.get(url).content    # json
+deces_ressource = json.loads(deces_ressource)  # dict
 #
 # get list of url to download
 #
-filenames = {}
-for link in doc.find_all('a'):
-    if "https://static.data.gouv.fr/resources/fichier-des-personnes-decedees" in link.get('href'):
-        filename = link.get('href').split('/')[-1]
-        if bool(re.match('deces-[0-9]{4}.txt', filename)):
-            filenames[filename] = link.get('href')
-        elif bool(re.match('deces-[0-9]{4}-m[0-1][0-9].txt', filename)):
-            filenames[filename] = link.get('href')
+filenames = {d['title']:d['url'] for d in deces_ressource['resources']}
 #
 # get years data and save each decade of data
 #
 current_year = datetime.datetime.now().year
 for decade in range(1970, current_year, 10):
-    backup = f"data/deces-{decade}-{min(current_year-1,decade+9)}.pkl"
+    backup = f"deces-{decade}-{min(current_year-1,decade+9)}.pkl"
     if pathlib.Path(backup).is_file() or pathlib.Path(backup+'.bz2').is_file():
         continue
     res = []
@@ -89,11 +83,11 @@ for decade in range(1970, current_year, 10):
 #
 # get months data of current year and update current decade of data
 #
-backup = f"data/deces-{(current_year // 10)*10}-{current_year}.pkl"
+backup = f"deces-{(current_year // 10)*10}-{current_year}.pkl"
 if not(pathlib.Path(backup).is_file() or pathlib.Path(backup+'.bz2').is_file()):
     res = []
     decade = (current_year // 10)*10
-    decade_name = glob.glob(f'data/deces-{decade}-{current_year-1}*')
+    decade_name = glob.glob(f'deces-{decade}-{current_year-1}*')
     if len(decade_name) > 0:
         res.append(pd.read_pickle(decade_name[0]))
     for month in range(1,13):  # les mois de l'année courante
@@ -114,8 +108,8 @@ if not(pathlib.Path(backup).is_file() or pathlib.Path(backup+'.bz2').is_file()):
 # Extract from decade files a small dataframe with number of deads each day
 #
 for decade in range(1970, current_year+1, 10):
-    backup = f"data/deces-{decade}-{min(current_year,decade+9)}.pkl"
-    short = f"data/morts_par_jour-{decade}-{min(current_year,decade+9)}.pkl"
+    backup = f"deces-{decade}-{min(current_year,decade+9)}.pkl"
+    short = f"morts_par_jour-{decade}-{min(current_year,decade+9)}.pkl"
     if pathlib.Path(short).is_file() or pathlib.Path(short+'.bz2').is_file():
         continue
     try:
