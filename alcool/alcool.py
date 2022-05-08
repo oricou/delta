@@ -104,6 +104,7 @@ class Alcool():
                         * Les pays les plus fervents d'alcool sont les pays européens, pays qui sont aussi les plus riches et les plus stables \
                         tandis que les pays africains dépassent rarement les 50% de la population consommant de l'alcool.
                         * Les hommes consomment plus d'alcool que les femmes partout.
+                        * Ces données peuvent remettre en perspective la vision morale de la consommation d'alcool qui semble souvent percue comme péjorative mais qui est la plus présente dans les pays les plus confortables.
                         """),
                     ], style={ 'border-left': '10px solid #90EE90',
                                'margin': '1.5em 10px',
