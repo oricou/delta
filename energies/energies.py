@@ -160,15 +160,17 @@ class Energies():
 
         pn_df = pd.read_pickle('pn_db.pkl')
         df = pn_df[['Département', 'Autres délits']]
+        val_min = df['Autres délits'][5:].min()
+        val_max = df['Autres délits'][5:].mean()
 
         fig = px.choropleth_mapbox(df, geojson=counties,
                                    featureidkey='properties.code',
                                    locations='Département',
                                    color='Autres délits',
                                    color_continuous_scale="Viridis",
-                                   range_color=(0, 12),
+                                   range_color=(val_min, val_max),
                                    mapbox_style="carto-positron",
-                                   zoom=3, center = {"lat": 48.864716, "lon": 2.349014},
+                                   zoom=4, center = {"lat": 48.864716, "lon": 2.349014},
                                    opacity=0.5,
                                    labels={'unemp':'unemployment rate'}
                                   )
