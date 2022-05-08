@@ -104,7 +104,6 @@ class Alcool():
                         * Les pays les plus fervents d'alcool sont les pays européens, pays qui sont aussi les plus riches et les plus stables \
                         tandis que les pays africains dépassent rarement les 50% de la population consommant de l'alcool.
                         * Les hommes consomment plus d'alcool que les femmes partout.
-                        * Enfin, certains pays ont des données à prendre avec des pincettes comme le Vietnam qui semble afficher un pourcentage surréaliste.
                         """),
                     ], style={ 'border-left': '10px solid #90EE90',
                                'margin': '1.5em 10px',
@@ -151,6 +150,7 @@ class Alcool():
                         * Sources :
                         * [consommation d'alcool sur les 12 derniers mois](https://www.who.int/data/gho/data/indicators/indicator-details/GHO/alcohol-consumers-past-12-months-(-)) sur l'Observatoire mondial de la santé
                         * [prix des différents types d'alcool](https://www.who.int/data/gho/data/themes/topics/topic-details/GHO/economic-aspects) sur l'Observatoire mondial de la santé
+                        * [pib par habitant](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD)
                         * (c) 2022 Vincent Courty, Luca Moorghen
                         """),
                     ], style={ 'border-left': '10px solid #ADD8E6',

@@ -18,5 +18,5 @@ docker_run:
 
 clean:
 	find . -name 'gho*.csv' -delete
-	find . -name 'country_code.csv' -delete
 	find . -name 'apps.tgz' -delete
+	find . -name 'country_code.csv' -delete
