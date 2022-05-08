@@ -3,16 +3,16 @@ from dash import dcc
 from dash import html
 from energies import energies
 from population import population
-# from deces import deces
+from deces import deces
 from ljad_prenoms import prenoms 
 
-# external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
 server = app.server
 pop = population.WorldPopulationStats(app)
 nrg = energies.Energies(app)
-#dec = deces.Deces(app)
+dec = deces.Deces(app)
 prn = prenoms.Prenoms(app)
 
 main_layout = html.Div([
@@ -68,8 +68,8 @@ def display_page(pathname):
         return nrg.main_layout
     elif pathname == '/population':
         return pop.main_layout
-    # elif pathname == '/deces':
-    #     return dec.main_layout
+    elif pathname == '/deces':
+        return dec.main_layout
     elif pathname == '/prenoms':
         return prn.main_layout
     else:
