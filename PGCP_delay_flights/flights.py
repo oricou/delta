@@ -11,45 +11,48 @@ import dateutil as du
 
 class Delay():
 
-    data = pd.read_csv('data/delay_flights.csv')
-
-    data = data[['MONTH', 'DAY_OF_MONTH', 'ORIGIN_CITY_NAME', 'DEP_DELAY_NEW', 'CANCELLED']]
-
-    def cutStateName(df):
-        infos = df['ORIGIN_CITY_NAME'].split(', ')
-        return infos[1]
-
-    data['ORIGIN_CITY_NAME'] = data.apply(cutStateName, axis=1)
-    data = data.rename(columns={'ORIGIN_CITY_NAME':'STATE_NAME'})
-
-    def makeDate(df):
-        month = df['MONTH']
-        day = df['DAY_OF_MONTH']
-        month = '0' + str(month) if month < 10 else str(month)
-        day = '0' + str(day) if day < 10 else str(day)
-        return '2019-' + month + '-' + day
-
-    data['DATE'] = data.apply(makeDate, axis=1)
-
     dico = {1: 'janvier', 2: 'février', 3: 'mars', 4: 'avril', 5: 'mai', 6: 'juin', 7: 'juillet',
-    8: 'août', 9: 'septembre', 10: 'octobre', 11: 'novembre', 12: 'décembre', }
-
-    def showMeTheMonth(df):
-        return dico[df['MONTH']]
-
-
+            8: 'août', 9: 'septembre', 10: 'octobre', 11: 'novembre', 12: 'décembre', }
 
     def __init__(self, application = None):
-        
+
+        data1 = pd.read_csv('data/flights0.csv')
+        data2 = pd.read_csv('data/flights1.csv')
+        data = pd.concat([data1, data2])
+
+        data = data[['MONTH', 'DAY_OF_MONTH', 'ORIGIN_CITY_NAME', 'DEP_DELAY_NEW', 'CANCELLED']]
+
+
+        def cutStateName(df):
+            infos = df['ORIGIN_CITY_NAME'].split(', ')
+            return infos[1]
+
+        data['ORIGIN_CITY_NAME'] = data.apply(cutStateName, axis=1)
+        data = data.rename(columns={'ORIGIN_CITY_NAME': 'STATE_NAME'})
+
+        def makeDate(df):
+            month = df['MONTH']
+            day = df['DAY_OF_MONTH']
+            month = '0' + str(month) if month < 10 else str(month)
+            day = '0' + str(day) if day < 10 else str(day)
+            return '2019-' + month + '-' + day
+
+        data['DATE'] = data.apply(makeDate, axis=1)
+
+        dico = {1: 'janvier', 2: 'février', 3: 'mars', 4: 'avril', 5: 'mai', 6: 'juin', 7: 'juillet',
+                8: 'août', 9: 'septembre', 10: 'octobre', 11: 'novembre', 12: 'décembre', }
+
+        self.df = data
+
         self.main_layout = html.Div(children=[
-            html.H3(children='BLABLABLA'),
+            html.H3(children='Retards et annulations des vols aux Etats-Unis en 2019'),
             html.Div([ dcc.Graph(id='map-graph'), ], style={'width':'100%', }),
             html.Div([
                 html.Div([ html.Div('Status'),
                            dcc.RadioItems(
                                id='status-type',
                                options=[{'label':'Retardé', 'value':'delayed'}, 
-                                        {'label':'Annulé J','value':'cancelled'},],
+                                        {'label':'Annulé','value':'cancelled'},],
                                value='delayed',
                                labelStyle={'display':'block'},
                            )
@@ -107,21 +110,21 @@ class Delay():
         self.app.callback(
                     dash.dependencies.Output('map-graph', 'figure'),
                     [ dash.dependencies.Input('status-type', 'value'),
+                      dash.dependencies.Input('time-type', 'value'),
                       dash.dependencies.Input('which-month', 'value'),
-                      dash.dependencies.Input('which-day', 'value'),
-                      dash.dependencies.Input('time-type', 'value')])(self.makeMap)
-        """self.app.callback(
-                    [ dash.dependencies.Output('nrg-which-month', 'disabled'),
-                      dash.dependencies.Output('nrg-which-year', 'disabled')],
-                      dash.dependencies.Input('nrg-price-type', 'value') )(self.disable_month_year)"""
+                      dash.dependencies.Input('which-day', 'value')])(self.makeMap)
+        self.app.callback(
+                    [ dash.dependencies.Output('which-month', 'disabled'),
+                      dash.dependencies.Output('which-day', 'disabled')],
+                      dash.dependencies.Input('time-type', 'value') )(self.disable_month_year)
 
-    def makeMap(df, state='delayed', timeline='all', month=1, day=1):
-        data_delay = df.drop(['CANCELLED'], axis=1)
-        data_delay = data_delay[data_delay['DEP_DELAY_NEW'] > 0.]
+    def makeMap(self, state='delayed', timeline='all', month=1, day=1):
+        data_delay = self.df.drop(['CANCELLED'], axis=1)
+        data_delay = self.df[self.df['DEP_DELAY_NEW'] > 0.]
 
-        data_cancel = df.drop(['DEP_DELAY_NEW'], axis=1)
-        data_fly = data_cancel[data_cancel['CANCELLED'] == 0.]
-        data_cancel = data_cancel[data_cancel['CANCELLED'] == 1.]
+        data_cancel = self.df.drop(['DEP_DELAY_NEW'], axis=1)
+        data_fly = self.df[self.df['CANCELLED'] == 0.]
+        data_cancel = self.df[self.df['CANCELLED'] == 1.]
 
         if timeline == 'day':
             if state == 'cancelled':
@@ -141,7 +144,7 @@ class Delay():
                 fig = px.choropleth(data_cancel, locations='STATE_NAME', locationmode='USA-states', scope='usa', color='CANCELLED_RATIO',
                                     labels={'CANCELLED_RATIO':'Pourcentage de vols annulés'}, hover_name='STATE_NAME',
                                     hover_data={'STATE_NAME': False}, color_continuous_scale=['white', 'blue'],
-                                    title="Pourcentage de vols annulés par état le " + str(day) + ' ' + dico[month] + ' 2019')
+                                    title="Pourcentage de vols annulés par état le " + str(day) + ' ' + self.dico[month] + ' 2019')
             else:
                 data_delay = data_delay[(data_delay['MONTH'] == month) & (data_delay['DAY_OF_MONTH'] == day)]
                 
@@ -152,7 +155,7 @@ class Delay():
                 fig = px.choropleth(data_delay, locations='STATE_NAME', locationmode='USA-states', scope='usa', color='DELAY_MEAN',
                                     labels={'DELAY_MEAN':'Retard moyen'}, hover_name='STATE_NAME', hover_data={'STATE_NAME': False},
                                     color_continuous_scale=['white', 'blue'],
-                                    title="Retard moyen des vols par état le " + str(day) + ' ' + dico[month] + ' 2019')
+                                    title="Retard moyen des vols par état le " + str(day) + ' ' + self.dico[month] + ' 2019')
         
         elif timeline == 'month':
             if state == 'cancelled':
@@ -172,7 +175,7 @@ class Delay():
                 fig = px.choropleth(data_cancel, locations='STATE_NAME', locationmode='USA-states', scope='usa', color='CANCELLED_RATIO',
                                     animation_frame='DAY_OF_MONTH', labels={'CANCELLED_RATIO':'Pourcentage de vols annulés', 'DAY_OF_MONTH': 'jour'},
                                     hover_name='STATE_NAME', hover_data={'DAY_OF_MONTH': False, 'STATE_NAME': False},
-                                    color_continuous_scale=['white', 'blue'], title="Pourcentage de vols annulés par état en " + dico[month] + ' 2019')
+                                    color_continuous_scale=['white', 'blue'], title="Pourcentage de vols annulés par état en " + self.dico[month] + ' 2019')
             else:
                 data_delay = data_delay[data_delay['MONTH'] == month]
                 
@@ -183,7 +186,7 @@ class Delay():
                 fig = px.choropleth(data_delay, locations='STATE_NAME', locationmode='USA-states', scope='usa', color='DELAY_MEAN',
                                     animation_frame='DAY_OF_MONTH', labels={'DELAY_MEAN':'Retard moyen', 'DAY_OF_MONTH': 'jour'},
                                     hover_name='STATE_NAME', hover_data={'DAY_OF_MONTH': False, 'STATE_NAME': False},
-                                    color_continuous_scale=['white', 'blue'], title="Retard moyen des vols par état en " + dico[month] + ' 2019')
+                                    color_continuous_scale=['white', 'blue'], title="Retard moyen des vols par état en " + self.dico[month] + ' 2019')
         
         elif timeline == 'year':
             if state == 'cancelled':
@@ -198,7 +201,7 @@ class Delay():
                 data_cancel = pd.merge(data_cancel, data_fly, on=['MONTH', 'STATE_NAME'])
                 data_cancel['CANCELLED_RATIO'] = data_cancel['CANCELLED_COUNT'] / data_cancel['FLYING_COUNT'] * 100
                 
-                data_cancel['MONTH'] = data_cancel.apply(showMeTheMonth, axis=1)
+                #data_cancel["MONTH"] = data_cancel["MONTH"].map(lambda x :self.dico["MONTH"][x])
                 fig = px.choropleth(data_cancel, locations='STATE_NAME', locationmode='USA-states', scope='usa', color='CANCELLED_RATIO',
                                     animation_frame='MONTH', labels={'CANCELLED_RATIO':'Pourcentage de vols annulés', 'MONTH': 'mois'},
                                     hover_name='STATE_NAME', hover_data={'MONTH': False, 'STATE_NAME': False},
@@ -207,8 +210,7 @@ class Delay():
                 data_delay = data_delay.groupby(['MONTH', 'STATE_NAME']).agg({'DEP_DELAY_NEW': ['mean']})
                 data_delay.columns = ['DELAY_MEAN']
                 data_delay = data_delay.reset_index()
-                
-                data_delay['MONTH'] = data_delay.apply(showMeTheMonth, axis=1)
+                #data_delay["MONTH"] = data_delay["MONTH"].map(lambda x :self.dico["MONTH"][x])
                 fig = px.choropleth(data_delay, locations='STATE_NAME', locationmode='USA-states', scope='usa', color='DELAY_MEAN',
                                     animation_frame='MONTH', labels={'DELAY_MEAN':'Retard moyen', 'MONTH': 'mois'}, hover_name='STATE_NAME',
                                     hover_data={'MONTH': False, 'STATE_NAME': False}, color_continuous_scale=['white', 'blue'],
@@ -252,7 +254,6 @@ class Delay():
                 
                 data_cancel = pd.merge(data_cancel, data_fly, on=['DATE', 'STATE_NAME'])
                 data_cancel['CANCELLED_RATIO'] = data_cancel['CANCELLED_COUNT'] / data_cancel['FLYING_COUNT'] * 100
-                
                 fig = px.choropleth(data_cancel, locations='STATE_NAME', locationmode='USA-states', scope='usa', color='CANCELLED_RATIO',
                                     animation_frame='DATE', labels={'CANCELLED_RATIO':'Pourcentage de vols annulés'},
                                     hover_name='STATE_NAME', hover_data={'DATE': False, 'STATE_NAME': False},
@@ -261,7 +262,6 @@ class Delay():
                 data_delay = data_delay.groupby(['DATE', 'STATE_NAME']).agg({'DEP_DELAY_NEW': ['mean']})
                 data_delay.columns = ['DELAY_MEAN']
                 data_delay = data_delay.reset_index()
-                
                 fig = px.choropleth(data_delay, locations='STATE_NAME', locationmode='USA-states', scope='usa', color='DELAY_MEAN',
                                     animation_frame='DATE', labels={'DELAY_MEAN':'Retard moyen'}, hover_name='STATE_NAME',
                                     hover_data={'DATE': False, 'STATE_NAME': False}, color_continuous_scale=['white', 'blue'],
@@ -269,11 +269,13 @@ class Delay():
         
         return fig
 
-    """def disable_month_year(self, price_type):
-        if price_type == 2:
+    def disable_month_year(self, type_jour):
+        if type_jour == 'day':
             return False, False
+        elif type_jour == 'month':
+            return False, True
         else:
-            return True, True"""
+            return True,True
         
 if __name__ == '__main__':
     nrg = Delay()
