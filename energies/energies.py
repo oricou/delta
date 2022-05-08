@@ -152,31 +152,28 @@ class Energies():
                       dash.dependencies.Input('nrg-price-type', 'value') )(self.disable_month_year)
 
     def update_graph(self, price_type, month, year, xaxis_type):
-        if price_type == 0 or month == None or year == None:
-            df = self.energie
-        elif price_type == 1:
-            df = self.energie.copy()
-            for c in df.columns:
-                alias = Energies.quoi[c][1]
-                try:
-                    df[c] = df[c] / (Energies.quoi[c][0] * Energies.densité[alias] * Energies.calor[alias])
-                except:  # l'unité est déjà en kg et donc densité n'existe pas
-                    df[c] = df[c] / (Energies.quoi[c][0] * Energies.calor[alias])
-        else:
-            df = self.petrole.copy()
-            df /= df.loc[f"{year}-{month}-15"]
-        fig = px.line(df[df.columns[0]], template='plotly_white')
-        for c in df.columns[1:]:
-            fig.add_scatter(x = df.index, y=df[c], mode='lines', name=c, text=c, hoverinfo='x+y+text')
-        ytitle = ['Prix en €', 'Prix en € pour 1 mégajoule', 'Prix relative (sans unité)']
-        fig.update_layout(
-            #title = 'Évolution des prix de différentes énergies',
-            yaxis = dict( title = ytitle[price_type],
-                          type= 'linear' if xaxis_type == 'Linéaire' else 'log',),
-            height=450,
-            hovermode='closest',
-            legend = {'title': 'Énergie'},
-        )
+        
+        from urllib.request import urlopen
+        import json
+        with urlopen('https://france-geojson.gregoiredavid.fr/repo/departements.geojson') as response:
+            counties = json.load(response)
+
+        pn_df = pd.read_pickle('pn_db.pkl')
+        df = pn_df[['Département', 'Autres délits']]
+
+        fig = px.choropleth_mapbox(df, geojson=counties,
+                                   featureidkey='properties.code',
+                                   locations='Département',
+                                   color='Autres délits',
+                                   color_continuous_scale="Viridis",
+                                   range_color=(0, 12),
+                                   mapbox_style="carto-positron",
+                                   zoom=3, center = {"lat": 48.864716, "lon": 2.349014},
+                                   opacity=0.5,
+                                   labels={'unemp':'unemployment rate'}
+                                  )
+        fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+
         return fig
 
     def disable_month_year(self, price_type):
