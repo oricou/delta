@@ -125,19 +125,12 @@ class MovieProduction():
                             'justifyContent':'flex-start',
                         }),
                 html.Br(),
-                # dcc.Markdown("""
-                # Le graphique est interactif. En passant la souris sur les courbes vous avez une infobulle. 
-                # En cliquant ou double-cliquant sur les lignes de la légende, vous choisissez les courbes à afficher.
-                
-                # Notes :
-                #    * FOD est le fioul domestique.
-                #    * Pour les prix relatifs, seules les énergies fossiles sont prises en compte par manque de données pour les autres.
-                # #### À propos
-                # * Sources : 
-                #    * [base Pégase](http://developpement-durable.bsocom.fr/Statistiques/) du ministère du développement durable
-                #    * [tarifs réglementés de l'électricité](https://www.data.gouv.fr/en/datasets/historique-des-tarifs-reglementes-de-vente-delectricite-pour-les-consommateurs-residentiels/) sur data.gouv.fr
-                # * (c) 2022 Charlie Brosse
-                # """)
+                        dcc.Markdown("""
+                        #### À propos
+                        * Données : [Kaggle / TMdB](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset)
+                        * (c) 2022 Adrien Huet et Charlie Brosse
+                        """),
+                    
         ], style={
             'backgroundColor': 'white',
              'padding': '10px 50px 10px 50px',

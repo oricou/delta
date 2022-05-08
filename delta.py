@@ -3,10 +3,8 @@ import dash
 from dash import dcc
 from dash import html
 from producteurs import producteurs
-# from keywords_popularite import keywords_popularite
 from evolution_production import evolution_production
 from theme_popularite import theme_popularite
-# from critique_budget import critique_budget 
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 

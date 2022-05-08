@@ -51,8 +51,9 @@ class Producer():
 
 
         self.main_layout = html.Div(children=[
-            html.H3(children='Évolution des revenus des films par rapport à leurs genres et au budget alloué'),
+            html.H3(children='Évolution de la répartition de la production de films par pays et entreprises de production'),
 
+            html.Div('Veuillez attendre une dizaine de secondes que les diagrammes s\'affichent.'), 
             html.Br(),
             html.Br(),
             html.Br(),

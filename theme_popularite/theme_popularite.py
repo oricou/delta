@@ -20,9 +20,6 @@ def convert_genres(s):
 
 class ThemeAnalysis():
 
-    START = 'Start'
-    STOP  = 'Stop'
-
     def __init__(self, application = None):
 
         self.df = pd.read_csv('theme_popularite/data/theme_popularite.csv')
@@ -37,6 +34,7 @@ class ThemeAnalysis():
         self.df_bar = self.df_bar.astype({"release_year":"int32"})
         self.df_bar["release_year"] = (self.df_bar["release_year"] * 10)
 
+        self.last_working_year = 1915
         self.df_bar = self.df_bar.groupby(["release_year", "genres"]).agg({"title":"count"}).reset_index()
         
 
@@ -72,12 +70,6 @@ class ThemeAnalysis():
                             marks={str(year): str(year) for year in self.years[::5]},
                     ),
                     style={'display':'inline-block', 'width':"90%"}
-                ),
-                dcc.Interval(            # fire a callback periodically
-                    id='wps-auto-stepper',
-                    interval=500,       # in milliseconds
-                    max_intervals = -1,  # start running
-                    n_intervals = 0
                 ),
                 ], style={
                     'padding': '0px 50px', 
@@ -134,7 +126,13 @@ class ThemeAnalysis():
 
 
     def update_graph(self, year):
-        size = self.df_year.loc[year]['title'].to_numpy()
+        try:
+            size = self.df_year.loc[year]['title'].to_numpy()
+            self.last_working_year = year
+        except:
+            year = self.last_working_year
+            size = self.df_year.loc[year]['title'].to_numpy()
+
         nb_films = size.sum()
         s = [((s/nb_films) * 100)*2 + 10 for s in size]
 
@@ -145,14 +143,15 @@ class ThemeAnalysis():
                         hover_name="genres")
         fig.update_layout(
                     xaxis = dict(title='Budget moyen par film',
-                      type= 'linear'),
-         yaxis = dict(title="Revenu moyen par film", 
+                    type= 'linear'),
+        yaxis = dict(title="Revenu moyen par film", 
             ),
 
-         margin={'l': 40, 'b': 30, 't': 10, 'r': 0},
-         hovermode='closest',
-         showlegend=False,
-         )
+        margin={'l': 40, 'b': 30, 't': 10, 'r': 0},
+        hovermode='closest',
+        showlegend=False,
+        )
+            
 
         return fig
 
@@ -209,32 +208,7 @@ class ThemeAnalysis():
                 'xaxis': {'showgrid': False}
             }
         }
-      
 
-    # start and stop the movie
-    def button_on_click(self, n_clicks, text):
-        if text == self.START:
-            return self.STOP
-        else:
-            return self.START
-
-    # this one is triggered by the previous one because we cannot have 2 outputs
-    # in the same callback
-    def run_movie(self, text):
-        if text == self.START:    # then it means we are stopped
-            return 0 
-        else:
-            return -1
-
-    # see if it should move the slider for simulating a movie
-    def on_interval(self, n_intervals, year, text):
-        if text == self.STOP:  # then we are running
-            if year == self.years[-1]:
-                return self.years[0]
-            else:
-                return year + 1
-        else:
-            return year  # nothing changes
 
     def run(self, debug=False, port=8050):
         self.app.run_server(host="0.0.0.0", debug=debug, port=port)
