@@ -9,89 +9,126 @@ import plotly.graph_objs as go
 import plotly.express as px
 import dateutil as du
 
-from get_data import * 
+from ljad_prenoms.get_data import * 
+
+def compute_percentage(df, groupby_level, col):
+    return 100 * df[col] / df.groupby(level=groupby_level)[col].sum()
+
+def group_val_by_idx_lvl(srt_df, reindex, lvl):
+    return {name: group['percentage'].rename(name).droplevel(lvl).reindex(reindex, fill_value=0) for name, group in srt_df.groupby(level=lvl)}
+
+def group_val_by_idx_lvl_gdr(srt_df_gdr, gdr, reindex, lvl):
+    srt_df = srt_df_gdr.loc[(gdr, slice(None), slice(None), slice(None))]
+    return group_val_by_idx_lvl(srt_df, reindex, lvl)
+
+def get_corr_dpt_cat_name(all_cat_dict, all_prn_dict, dpt, cat, name):
+    cat_dpt = all_cat_dict[cat].loc[dpt]
+    prn_dpt = all_prn_dict[name].loc[dpt]
+    
+    return pd.DataFrame(data=[cat_dpt, prn_dpt]).T.corr().loc[cat, name]
+
+def get_corr_all_dpt_cat_name(all_cat_dict, all_prn_dict, cat, name):
+    # Pour chaque département de la métropole
+    return {i: get_corr_dpt_cat_name(all_cat_dict, all_prn_dict, i, cat, name) for i in range(1, 96)}
 
 class Prenoms():
     xls = pd.ExcelFile('data/irsoceds2013_T102.xls')
 
     def __init__(self, application=None):
-        self.dpt = ["0" + str(i) for i in range(10)] + [str(i) for i in range(10,96)] + ["971", "972", "973", "974"]
+        self.dpt = list(range(96)) + [971, 972, 973, 974]
 
-        self.prenoms = get_prenoms()
-        self.population = get_populations()
+        self.prenoms = get_prenoms().set_index(['sexe', 'dpt', 'annais', 'preusuel'])
+        self.prenoms.sort_index(inplace=True)
+        self.prenoms['percentage'] = compute_percentage(self.prenoms, [0, 1, 2], 'nombre')
+        self.prenoms.index = self.prenoms.index.set_levels(self.prenoms.index.levels[1].astype(int), level=1)
+
+        # Metropole uniquement
+        sorted_prenoms = self.prenoms.loc[(slice(96),),:].sort_values('nombre', ascending=False).sort_index()
+
+        self.secteurs = {
+            secteur[4:] : pd.read_excel(Prenoms.xls, secteur).iloc[1,0].split('-')[1]
+            if len(secteur) > 6
+            else pd.read_excel(Prenoms.xls, secteur).iloc[1,0][7:]
+            for secteur in Prenoms.xls.sheet_names[:48]
+        }
+        self.all_job_sectors = read_all_sheet_emploi(Prenoms.xls)
+
+        self.unique_categories = []
+        for cat in self.secteurs.keys():
+            if all(oth == cat or (not oth.startswith(cat)) for oth in self.secteurs.keys()):
+                self.unique_categories.append(cat)
+
+        base_cat_all_emplois_gdr = self.all_job_sectors.loc[(slice(None), slice(None), slice(None), self.unique_categories), :].copy()
+        base_cat_all_emplois_gdr['percentage'] = compute_percentage(base_cat_all_emplois_gdr, [0, 1, 2], 'nombre')
+        base_cat_all_emplois_gdr = base_cat_all_emplois_gdr.sort_values('nombre', ascending=False).sort_index(level=[0,1,2])
+        mixed_all_cat = base_cat_all_emplois_gdr.groupby(level=['dpt', 'annee', 'categorie']).sum()
+        mixed_all_cat['percentage'] = compute_percentage(mixed_all_cat, [0, 1], 'nombre')
+        cat_index = base_cat_all_emplois_gdr.index.droplevel(['categorie', 'sexe']).unique()
+        self.all_cat_dict_mixed = group_val_by_idx_lvl(mixed_all_cat, cat_index, 'categorie')
+
+        mixed_all_prn = sorted_prenoms.groupby(level=['dpt', 'annais', 'preusuel']).sum()
+        mixed_all_prn['percentage'] = compute_percentage(mixed_all_prn, [0, 1], 'nombre')
+        self.all_prn_dict_mixed = group_val_by_idx_lvl(mixed_all_prn, cat_index, 'preusuel')
+
+        # self.population = get_populations()
         self.departements = get_france_geojson()
         self.chomage = get_chomage()
         
-        self.secteurs = {
-            secteur : pd.read_excel(Prenoms.xls, secteur).iloc[1,0].split('-')[1]
-            if len(secteur) > 6
-            else pd.read_excel(Prenoms.xls, secteur).iloc[1,0][7:]
-            for secteur in Prenoms.xls.sheet_names
-        }
-        self.secteurs_t = {key: val for key, val in self.secteurs.items() if key.startswith('T ')}
-        self.secteurs_h = {key: val for key, val in self.secteurs.items() if key.startswith('TH')}
-        self.secteurs_f = {key: val for key, val in self.secteurs.items() if key.startswith('TF')}
-
-        self.sect_dict = {
-            0: self.secteurs_t,
-            1: self.secteurs_h,
-            2: self.secteurs_f,
-        }
-        self.sect_default_value = {
-            0: 'T - T',
-            1: 'TH - T',
-            2: 'TF - T',
-        }
+        # self.unique_prenoms = self.prenoms.preusuel.unique()
+        self.unique_prenoms = sorted_prenoms.groupby(level=3).sum().sort_values('nombre', ascending=False).index
 
         self.years = np.arange(1994, 2013)
+
         
         self.main_layout = html.Div(children=[
             html.H3(children='Informations prénoms - emplois / départements'),
             html.Div([
-                         html.Div([ dcc.Graph(id='map'), ],
-                                  style={'height':'100%','width':'58%', 'display': 'inline-block'}),
-                         html.Div([ dcc.Graph(id='graph'), ],
-                                  style={'height': '100%','width':'32%', 'display': 'inline-block'}),
+                         html.Div([ dcc.Graph(id='map', style={'height': '40em'}), ],
+                                  style={'height':'100%','width':'54%', 'display': 'inline-block'}),
+                         html.Div([ dcc.Graph(id='graph', style={'height': '40em'}), ],
+                                  style={'height': '100%','width':'46%', 'display': 'inline-block'}),
                      ],style={
-                         'backgroundColor': 'gray',
-                         # 'display': 'flex', 'justify-content': 'space-between',
-                         'height': '60em','width': '100%',
+                        'backgroundColor': 'gray',
+                        'display':'flex',
+                        'flexDirection':'row',
+                        'justifyContent':'flex-start',
+                        'width': '100%',
                      }),
+            html.Br(),
             html.Div([
                 html.Div([ html.Div('Type de cartes'),
                            dcc.RadioItems(
                                id='map-type',
                                options=[{'label':'Prénoms', 'value':0}, 
                                         {'label':'Chomage','value':1},
-                                        {'label':'Emploi','value':2}],
+                                        {'label':'Emploi','value':2},
+                                        {'label':'Prénom/emploi','value':3}],
                                value=0,
                                labelStyle={'display':'block'},
                            )
                          ], style={'width': '9em'} ),
-                html.Div([ dcc.Input(
+                html.Div([ html.Div('Prénom', id='prenom'),
+                            dcc.Dropdown(
                                  id='name',
-                                 type='text',
-                                 placeholder='',
-                                 debounce=True,
-                                 value='GUILLAUME'
-                             ), ], style={'width':'9em', }),
+                                 options=[{'label': i, 'value': i} for i in self.unique_prenoms],
+                                 value='guillaume'
+                             ), ], style={'width':'9em'}),
+                html.Div(style={'width':'2em'}),
+                html.Div([ html.Div('Département', id='departements'),
+                            dcc.Dropdown(
+                                 id='dpt',
+                                 options=[{'label': i, 'value': i} for i in self.dpt],
+                                 value=None
+                             ), ], style={'width':'9em'}),
+                html.Div(style={'width':'2em'}),
                 html.Div([ html.Div('Annee ref.'),
                            dcc.Dropdown(
                                id='year',
                                options=[{'label': i, 'value': i} for i in self.years],
                                value=2000,
                            ),
-                         ], style={'width': '6em', 'padding':'2em 0px 0px 0px'} ),
-                html.Div(style={'width':'2em'}),
-                html.Div([ html.Div('Sheet'),
-                           dcc.Dropdown(
-                               id='secteurs',
-                               options=[{'label': secteurs, 'value': sheet}
-                                     for sheet, secteurs in self.secteurs_t.items()],
-                               value='T - T', # première feuille, 'Tous secteurs'
-                           ),
-                         ], style={'width': '25em', 'margin':"0px 0px 0px 40px"} ), # bas D haut G
-                html.Div([ html.Div('Sexe'),
+                         ], style={'width': '9em'} ),
+                html.Div([ html.Div('Sexe', id='gender'),
                            dcc.RadioItems(
                                id='sexe',
                                options=[{'label':'Tous', 'value':0}, 
@@ -101,12 +138,41 @@ class Prenoms():
                                labelStyle={'display':'block'},
                            )
                          ], style={'width': '9em'} ),
+                html.Div(style={'width':'2em'}),
+                html.Div([ html.Div('Sheet', id='sheet'),
+                           dcc.Dropdown(
+                               id='secteurs',
+                               options=[{'label': description, 'value': code}
+                                     for code, description in self.secteurs.items()],
+                               value='T', # première feuille, 'Tous secteurs'
+                           ),
+                         ], style={'width': '35em'} ), # bas D haut G
+                html.Div(style={'width':'2em'}),
                 ], style={
+                            'backgroundColor': "purple",
                             'padding': '10px 50px', 
                             'display':'flex',
                             'flexDirection':'row',
                             'justifyContent':'flex-start',
                         }),
+                html.Hr(),
+                dcc.Markdown("""
+                La carte est intéractive. En passant la souris sur  les départements vous avez une infobulle.
+
+                Notes :
+                   * Les départements de la petite et de la grande couronne de Paris et de Paris même
+                   (75,77,78,91,92,93,94,95) sont apparuts en 1968 suite à la
+                   [réorganisation de la région parisienne de 1964](https://fr.wikipedia.org/wiki/R%C3%A9organisation_de_la_r%C3%A9gion_parisienne_en_1964).
+                   * Les données des noms de traitent pas les deux départements de la Corse séparemment.
+                   * Les données du chômage et de l'emploi ne traitent pas les territoires d'Outre-mer.
+                   * De fait, les données ne traiteront que les données de métropole, la Corse ne constituera qu'un seul département.
+                   * Sources : 
+                      * [Historique des prénoms donnés à la naissance, par département](https://www.insee.fr/fr/statistiques/2540004#consulter) - Etat Civil - INSEE
+                      * [Historique des populations communales](https://www.insee.fr/fr/statistiques/3698339) - Recensement de la population de 1876 à 2019 - INSEE
+                      * [Chômage départemental](https://www.insee.fr/fr/statistiques/1409932?sommaire=1409948) de 1982 à 2014 - INSEE
+                      * [Emploi départemental et sectoriel](https://www.insee.fr/fr/statistiques/1409895?sommaire=1409948) de 1982 à 2013 pour 38 secteurs - INSEE
+                      * [Fichier geojson pour la carte des départements](https://france-geojson.gregoiredavid.fr/)
+                """)
         ], style={
             'backgroundColor': 'white',
              'padding': '10px 50px 10px 50px',
@@ -128,29 +194,46 @@ class Prenoms():
                 dash.dependencies.Input('name', 'value'),
                 dash.dependencies.Input('year', 'value'),
                 dash.dependencies.Input('secteurs', 'value'),
+                dash.dependencies.Input('dpt', 'value'),
+                dash.dependencies.Input('sexe', 'value'),
             ])(self.update_graph)
 
         self.app.callback(
-            [dash.dependencies.Output('secteurs', 'options'),
-             dash.dependencies.Output('secteurs', 'value')],
-            [dash.dependencies.Input('sexe', 'value')]
-        )(self.update_secteurs)
+            [dash.dependencies.Output('sheet', 'style'),
+             dash.dependencies.Output('secteurs', 'style'),
+             dash.dependencies.Output('secteurs', 'options'),
+             dash.dependencies.Output('gender', 'style'),
+             dash.dependencies.Output('sexe', 'labelStyle'),
+             dash.dependencies.Output('name', 'style'),
+             dash.dependencies.Output('prenom', 'style'),
+            ],
+            [dash.dependencies.Input('map-type', 'value'),]
+        )(self.update_map_display)
 
-        # self.app.callback(
-        #         dash.dependencies.Output('graph', 'figure'),
-        #         [dash.dependencies.Input('name', 'value')
-        #         ,])(self.plot_name_occurence_france)
+    def update_map_display(self, mtype):
+        """
+            Affiche/Cache les options disponibles en fonction du type de carte. 
+        """
+        display = {'diplay':'block'}
+        undisplay = {'display':'None'}
+        width = {'width':'9em'}
+        sheet = width if mtype == 2 or mtype == 3 else undisplay 
+        secteur = {'width': '25em'} if mtype == 2 or mtype == 3 else undisplay
+        if mtype == 3:
+            options = {{'label':self.secteurs[code],'value': code} for code in self.unique_categories} 
+        else:
+            options = {{'label': description, 'value': code} 
+                for code, description in self.secteurs.items()}
+        gender = width if mtype == 2 else undisplay 
+        sexe = display if mtype == 2 else undisplay 
+        name = width if mtype == 0 or mtype == 3 else undisplay
+        prenom = width if mtype == 0 or mtype == 3 else undisplay
+        return sheet, secteur, options, gender, sexe, name, prenom
         
-    def update_secteurs(self, sexe):
-        options = [{'label': secteurs, 'value': sheet}
-                for sheet, secteurs in self.sect_dict[sexe].items()]
-        value = self.sect_default_value[sexe]
-        return options, value
-
     def update_occ_name_year(self, name, year):
         if name == None or year == None:
             return
-        df = get_occ_name_year(self.prenoms, name, year).set_index("dpt").reindex(self.dpt, fill_value=0).reset_index()
+        df = self.prenoms.loc[(slice(None), slice(None), year, name), :].groupby('dpt').sum().reindex(self.dpt, fill_value=0).reset_index()
         fig = px.choropleth_mapbox(df, geojson=self.departements, locations='dpt', color='nombre',
                                featureidkey='properties.code',
                                color_continuous_scale="Amp",
@@ -164,53 +247,84 @@ class Prenoms():
         return fig
 
     def plot_name_occurence_france(self, name):
-        occurences = self.prenoms[self.prenoms.preusuel == name].drop(columns='sexe')
-        occurences = occurences.groupby('annais').sum().reset_index()
-        fig = px.line(occurences, y='nombre', x='annais',
+        if name == None:
+            return
+        df = self.prenoms.loc[(slice(None), slice(None), slice(None), name), :].groupby('annais').sum().reset_index()
+        fig = px.line(df, y='nombre', x='annais',
                       markers=True,
-                      labels={"nombre":f"occurences des {name}", "annais": "années"})
+                      labels={"nombre":f"naissances des {name}", "annais": "années"},
+                      title=f'Historique du prénom {name}')
         return fig
 
     def plot_name_occurence_departement(self, name, departement):
-        occurences = self.prenoms[self.prenoms.preusuel == name].drop(columns='sexe')
-        fig = px.scatter(occurences[occurences.dpt == departement], y='nombre', x='annais', labels={"nombre":f"occurences des {name}", "annais": "années"})
+        if name == None or departement == None:
+            return
+        df = self.prenoms.loc[(slice(None), departement, slice(None), name), :].groupby('annais').sum().reset_index()
+        fig = px.line(df, y='nombre', x='annais',
+                      markers=True,
+                      labels={"nombre":f"occurences des {name}", "annais": "années"},
+                      title=f'Historique du prénom {name} dans le {departement}',
+                      )
         return fig
     
     def update_chomage_year(self, year):
-        fig = px.choropleth_mapbox(self.chomage, geojson=self.departements, locations='dpt', color=year,
+        fig = px.choropleth_mapbox(self.chomage.rename(columns={year: 'taux de chomage'}),
+                                   geojson=self.departements, locations='dpt', color='taux de chomage',
                                featureidkey='properties.code',
                                color_continuous_scale="Amp",
                                range_color=(0, 16),
                                mapbox_style="carto-positron",
                                zoom=5, center = {"lat": 47, "lon": 2},
                                opacity=0.5,
-                               labels={'dpt':'departement', year:'chomage'}
+                               labels={'dpt':'departement', 'taux de chômage':'chomage'}
                               )
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
         return fig
     
-    def plot_emploi_sheet_year(self, sheet, year):
-        df = read_sheet(Prenoms.xls, sheet).loc[:,['dpt', year]]
-        fig = px.choropleth_mapbox(df, geojson=self.departements, locations='dpt', color=year,
+    def plot_emploi_sheet_year(self, sexe, year, secteur):
+        if sexe == 0:
+            df = self.all_job_sectors.groupby(level=[1, 2, 3]).sum().loc[(slice(None), year, secteur), :]
+        else:
+            df = self.all_job_sectors.loc[(sexe, slice(None), year, secteur), :]
+        df = df.reset_index('dpt')
+        fig = px.choropleth_mapbox(df, geojson=self.departements, locations='dpt', color='nombre',
                                featureidkey='properties.code',
                                color_continuous_scale="Amp",
-                               range_color=(0, max(1, df[year].max())),
+                               range_color=(0, max(1, df['nombre'].max())),
                                mapbox_style="carto-positron",
                                zoom=5, center = {"lat": 47, "lon": 2},
                                opacity=0.5,
-                               labels={'dpt':'departement', year:'emploi'}
+                               labels={'dpt':'departement', 'nombre':'emploi'}
                               )
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
         return fig
 
-    def update_graph(self, map_type, name, year, sheet):
-        name = name.lower()
+    def plot_correlation_prenom_emploi(self, name, secteur):
+        dpt_correl_name = get_corr_all_dpt_cat_name(self.all_cat_dict_mixed, self.all_prn_dict_mixed, secteur, name)
+        df = pd.DataFrame.from_dict(dpt_correl_name, orient='index').reset_index().rename(columns={'index':'dpt', 0:'correlation'})
+        fig = px.choropleth_mapbox(df, geojson=self.departements, locations='dpt', color='correlation',
+                           color_continuous_scale="RdBu_r",
+                           range_color=(-1, 1),
+                           mapbox_style="carto-positron",
+                           zoom=5, center = {"lat": 47, "lon": 2},
+                           opacity=0.5,
+                           labels={'dpt':'departement', 'correlation':'corr'}
+                          )
+        fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+        return fig
+
+
+    def update_graph(self, map_type, name, year, secteur, dpt, sexe):
+        fig = self.plot_name_occurence_france(name) if dpt==None else self.plot_name_occurence_departement(name, dpt) 
+        name = name.lower() if name != None and map_type == 0 or map_type == 3 else None
         if map_type == 0:
-            return self.update_occ_name_year(name, year), self.plot_name_occurence_france(name)
+            return self.update_occ_name_year(name, year), fig 
         elif map_type == 1:
-            return self.update_chomage_year(year), self.plot_name_occurence_france(name)
+            return self.update_chomage_year(year), fig 
+        elif map_type == 2:
+            return self.plot_emploi_sheet_year(sexe, year, secteur), fig 
         else:
-            return self.plot_emploi_sheet_year(sheet, year), self.plot_name_occurence_france(name)
+            return self.plot_correlation_prenom_emploi(name, secteur), fig
 
 if __name__ == '__main__':
     nrg = Prenoms()

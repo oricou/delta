@@ -3,7 +3,8 @@ from dash import dcc
 from dash import html
 from energies import energies
 from population import population
-from deces import deces
+# from deces import deces
+from ljad_prenoms import prenoms 
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -11,7 +12,8 @@ app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True) # ,
 server = app.server
 pop = population.WorldPopulationStats(app)
 nrg = energies.Energies(app)
-dec = deces.Deces(app)
+#dec = deces.Deces(app)
+prn = prenoms.Prenoms(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -25,6 +27,8 @@ main_layout = html.Div([
                               dcc.Link(html.Button('Natalité vs revenus', style={'width':"100%"}), href='/population'),
                               html.Br(),
                               dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
+                              html.Br(),
+                              dcc.Link(html.Button('Prénoms', style={'width':"100%"}), href='/prenoms'),
                               html.Br(),
                               html.Br(),
                               html.Br(),
@@ -64,8 +68,10 @@ def display_page(pathname):
         return nrg.main_layout
     elif pathname == '/population':
         return pop.main_layout
-    elif pathname == '/deces':
-        return dec.main_layout
+    # elif pathname == '/deces':
+    #     return dec.main_layout
+    elif pathname == '/prenoms':
+        return prn.main_layout
     else:
         return home_page
 
