@@ -43,7 +43,8 @@ class Delay():
 
         self.main_layout = html.Div(children=[
             html.Div([
-            html.H3(children='Retards et annulations des vols aux Etats-Unis en 2019'),
+            html.H3(children='Retards et annulations des vols aux Etats-Unis en 2019', style={'text-align': 'center', 'font-family': '"Open Sans", verdana, arial, sans-serif', 'font-size': '30px', 'fill':'rgb(42, 63, 95)'}),
+            html.Div([dcc.Markdown("Cette page présente 2 graphiques pour tenter de montrer en quoi le retard voire l'annulation d'un vol aux Etats-Unis peuvent être impactés par le lieu d'origine du vol et par la période de temps en 2019.")], style={'font-family': '"Open Sans", verdana, arial, sans-serif', 'font-size': '20px', 'fill':'rgb(42, 63, 95)'}),
             html.Div([dcc.Graph(id='map-graph'), ], style={'width': '100%', }),
             html.Div([
                 html.Div([html.Div('Status'),
@@ -80,7 +81,7 @@ class Delay():
                                        {'label': 'Tous les mois', 'value': 'year'},
                                        {'label': "A l'année", 'value': 'absolute'},
                                        {'label': 'Tous les jours', 'value': 'all'}],
-                              value='all',
+                              value='absolute',
                               labelStyle={'display': 'block'},
                           )
                           ], style={'width': '15em', 'margin': "0px 0px 0px 40px"}),  # bas D haut G
@@ -91,7 +92,7 @@ class Delay():
                 'justifyContent': 'flex-start',
             }),
             html.Br(),
-            dcc.Markdown("""Separation entre les graph """)
+            dcc.Markdown("On peut observer sur la carte que les états de l'est des Etats-Unis ont tendance à avoir une plus grande moyenne de retards de vols comparé aux états de l'ouest", style={'font-family': '"Open Sans", verdana, arial, sans-serif', 'font-size': '20px', 'fill':'rgb(42, 63, 95)'})
             ]),
             html.Div([
             html.Div([dcc.Graph(id='graph'), ], style={'width': '100%', }),
@@ -105,7 +106,7 @@ class Delay():
                               labelStyle={'display': 'block'},
                           )
                           ], style={'width': '9em'}),
-                html.Div([html.Div('Status_info'),
+                html.Div([html.Div('Rapport'),
                           dcc.RadioItems(
                               id='status_info',
                               options=[{'label': 'Temps', 'value': 'Temps'},
@@ -138,7 +139,14 @@ class Delay():
                 'display': 'flex',
                 'flexDirection': 'row',
                 'justifyContent': 'flex-start',
-            })
+            }),
+            html.Br(),
+            dcc.Markdown("On peut voir sur le graphique que les mois de juillet et août observent un plus grand nombre de vols retardés. Cela peut être expliqué par l'affluence des départs/retours de vacances.", style={'font-family': '"Open Sans", verdana, arial, sans-serif', 'font-size': '20px', 'fill':'rgb(42, 63, 95)'}),
+            dcc.Markdown("Le mois de décembre observe un pic dans le nombre de vols retardés entre le 20 et le 25. Cela peut s'expliquer par la forte affluence en période de Noël.", style={'font-family': '"Open Sans", verdana, arial, sans-serif', 'font-size': '20px', 'fill':'rgb(42, 63, 95)'}),
+            html.Br(),
+            dcc.Markdown("A propos", style={'font-family': '"Open Sans", verdana, arial, sans-serif', 'font-size': '30px', 'fill':'rgb(42, 63, 95)'}),
+            dcc.Markdown("Sources: https://www.kaggle.com/code/threnjen/dataset-cleanup-how-the-train-test-sets-were-made/data?select=raw_data", style={'font-family': '"Open Sans", verdana, arial, sans-serif', 'font-size': '20px', 'fill':'rgb(42, 63, 95)'}),
+            dcc.Markdown("(c) 2022 Corentin Pion & Paul Grolier", style={'font-family': '"Open Sans", verdana, arial, sans-serif', 'font-size': '14px', 'fill':'rgb(42, 63, 95)'})
         ])
         ], style={
             'backgroundColor': 'white',
@@ -170,9 +178,8 @@ class Delay():
              dash.dependencies.Input('month_id', 'value'),
              dash.dependencies.Input('time', 'value')])(self.Delay_time)
         self.app.callback(
-            [
-             dash.dependencies.Output('month_id', 'disabled')],
-            [dash.dependencies.Input('time','value')])(self.disable_time)
+            dash.dependencies.Output('month_id', 'disabled'),
+            dash.dependencies.Input('time','value'))(self.disable_time)
 
     def makeMap(self, state='delayed', timeline='all', month=1, day=1):
         data_delay = self.df.drop(['CANCELLED'], axis=1)
@@ -410,7 +417,7 @@ class Delay():
                          text_auto='.2s', title=titre)
         return figure
 
-    def Delay_time(self, status='delayed', delay_info='nombre', time='year', month=1):
+    def Delay_time(self, status='delayed', delay_info='nombre', month=1, time='year'):
         data_delay = self.df2.drop(['CANCELLED'], axis=1)
         data_delay = data_delay[data_delay['DEP_DELAY_NEW'] > 0.]
         data_cancel = self.df2.drop(['DEP_DELAY_NEW'], axis=1)
