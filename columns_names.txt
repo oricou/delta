@@ -1,0 +1,103 @@
+Règlements de compte entre malfaiteurs
+Homicides pour voler et à l'occasion de vols
+Homicides pour d'autres motifs
+Tentatives d'homicides pour voler et à l'occasion de vols
+Tentatives homicides pour d'autres motifs
+Coups et blessures volontaires suivis de mort
+Autres coups et blessures volontaires criminels ou correctionnels
+Prises d'otages à l'occasion de vols
+Prises d'otages dans un autre but
+Sequestrations
+Menaces ou chantages pour extorsion de fonds
+Menaces ou chantages dans un autre but
+Atteintes à la dignité et à la personnalité
+Violations de domicile
+Vols à main armée contre des établissements financiers
+Vols à main armée contre des établissements industriels ou commerciaux
+Vols à main armée contre des entreprises de transports de fonds
+Vols à main armée contre des particuliers à leur domicile
+Autres vols à main armée
+Vols avec armes blanches contre des établissements financiers, commerciaux ou industriels
+Vols avec armes blanches contre des particuliers à leur domicile
+Autres vols avec armes blanches
+Vols violents sans arme contre des établissements financiers,commerciaux ou industriels
+Vols violents sans arme contre des particuliers à leur domicile
+Vols violents sans arme contre des femmes sur voie publique ou autre lieu public
+Vols violents sans arme contre d'autres victimes
+Cambriolages de locaux d'habitations principales
+Cambriolages de résidences secondaires
+Cambriolages de locaux industriels, commerciaux ou financiers
+Cambriolages d'autres lieux
+Vols avec entrée par ruse en tous lieux
+Vols à la tire
+Vols à l'étalage
+Vols de véhicules de transport avec frêt
+Vols d'automobiles
+Vols de véhicules motorisés à 2 roues
+Vols à la roulotte
+Vols d'accessoires sur véhicules à moteur immatriculés
+Vols simples sur chantier
+Vols simples sur exploitations agricoles
+Autres vols simples contre des établissements publics ou privés
+Autres vols simples contre des particuliers dans des locaux privés
+Autres vols simples contre des particuliers dans des locaux ou lieux publics
+Recels
+Proxénétisme
+Viols sur des majeur(e)s
+Viols sur des mineur(e)s
+Harcèlements sexuels et autres agressions sexuelles contre des majeur(e)s
+Harcèlements sexuels et autres agressions sexuelles contre des mineur(e)s
+Atteintes sexuelles
+Homicides commis contre enfants de moins de 15 ans
+Violences, mauvais traitements et abandons d'enfants.
+Délits au sujet de la garde des mineurs
+Non versement de pension alimentaire
+Trafic et revente sans usage de stupéfiants
+Usage-revente de stupéfiants
+Usage de stupéfiants
+Autres infractions à la législation sur les stupéfiants
+Délits de débits de boissons et infraction à la règlementation sur l'alcool et le tabac
+Fraudes alimentaires et infractions à l'hygiène
+Autres délits contre santé publique et la réglementation des professions médicales
+Incendies volontaires de biens publics
+Incendies volontaires de biens privés
+Attentats à l'explosif contre des biens publics
+Attentats à l'explosif contre des biens privés
+Autres destructions et dégradations de biens publics
+Autres destructions et dégradations de biens privés
+Destructions et dégradations de véhicules privés
+Infractions aux conditions générales d'entrée et de séjour des étrangers
+Aide à l'entrée, à la circulation et au séjour des étrangers
+Autres infractions à la police des étrangers
+Outrages à dépositaires autorité
+Violences à dépositaires autorité
+Port ou détention armes prohibées
+Atteintes aux intérêts fondamentaux de la Nation
+Délits des courses et des jeux
+Délits interdiction de séjour et de paraître
+Destructions, cruautés et autres délits envers les animaux
+Atteintes à l'environnement
+Chasse et pêche
+Faux documents d'identité
+Faux documents concernant la circulation des véhicules
+Autres faux documents administratifs
+Faux en écriture publique et authentique
+Autres faux en écriture
+Fausse monnaie
+Contrefaçons et fraudes industrielles et commerciales
+Contrefaçons littéraires et artistique
+Falsification et usages de chèques volés
+Falsification et usages de cartes de crédit
+Escroqueries et abus de confiance
+Infractions à la législation sur les chèques
+Travail clandestin
+Emploi d'étranger sans titre de travail
+Marchandage - prêt de main d'oeuvre
+Banqueroutes, abus de biens sociaux et autres délits de société
+Prix illicittes, publicité fausse et infractions aux règles de la concurrence
+Achats et ventes sans factures
+Infractions à l'exercice d'une profession règlementée
+Infractions au droit de l'urbanisme et de la construction
+Fraudes fiscales
+Autres délits économiques et financiers
+Autres délits
