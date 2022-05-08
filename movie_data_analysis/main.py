@@ -2,9 +2,9 @@ from turtle import rt
 import dash
 from dash import dcc
 from dash import html
-from producteurs import producteurs
-from evolution_production import evolution_production
-from theme_popularite import theme_popularite
+from movie_data_analysis.producteurs import producteurs
+from movie_data_analysis.evolution_production import evolution_production
+from movie_data_analysis.theme_popularite import theme_popularite
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -21,11 +21,11 @@ main_layout = html.Div([
                  html.Div(className="two columns",
                           children = [
                               html.Center(html.H2("Movie Data")),
-                              dcc.Link(html.Button("Evolution de la production de films", style={'width':"170%"}), href='/production'),
+                              dcc.Link(html.Button("Evolution de la production de films", style={'width':"100%"}), href='/production'),
                               html.Br(),
-                              dcc.Link(html.Button('Corrélation entre thème et popularité', style={'width':"170%"}), href='/themepopularite'),
+                              dcc.Link(html.Button('Corrélation entre thème et popularité', style={'width':"100%"}), href='/themepopularite'),
                               html.Br(),
-                              dcc.Link(html.Button('Analyse de l\'impact des producteurs', style={'width':"170%"}), href='/producteurs'),
+                              dcc.Link(html.Button('Analyse de l\'impact des producteurs', style={'width':"100%"}), href='/producteurs'),
                               html.Br(),
                               html.Br(),
                               html.Center(html.A('Code source', href='https://github.com/CarlitoCepillo/pybd_movie_project')),
@@ -41,8 +41,8 @@ home_page = html.Div([
     html.Br(),
     html.Br(),
     html.Br(),
-    dcc.Markdown("Choisissez le jeu de données dans l'index à gauche.",),
-], style={"margin-left": "30%","width":"400px"})
+    dcc.Markdown("Choisissez le jeu de données ci-dessus.",),
+], style={"margin-left": "40%","width":"400px"})
 
 to_be_done_page = html.Div([
     dcc.Markdown("404 -- Désolé cette page n'est pas disponible."),

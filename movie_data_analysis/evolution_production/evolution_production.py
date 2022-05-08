@@ -103,14 +103,7 @@ class MovieProduction():
                 #            ),
                 #          ], style={'width': '6em', 'padding':'2em 0px 0px 0px'} ),
                 # html.Div(style={'width':'2em'}),
-                html.Div([ html.Div('Échelle en y'),
-                           dcc.RadioItems(
-                               id='bgr-yaxis-type',
-                               options=[{'label': i, 'value': i} for i in ['Linéaire', 'Logarithmique']],
-                               value='Linéaire',
-                               labelStyle={'display':'block'},
-                           ),
-                           html.Div('Prendre en compte l\'inflation'),
+                html.Div([ html.Div('Prendre en compte l\'inflation'),
                             dcc.Checklist(
                                 id='bgr-inflation-bool',
                                 options = [

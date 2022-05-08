@@ -41,7 +41,7 @@ class ThemeAnalysis():
         self.main_layout = html.Div(children=[
             html.H3(children='Évolution des revenus des films par rapport à leurs genres et au budget alloué'),
 
-            html.Div('Déplacez la souris sur une bulle pour avoir les graphiques du thème en bas. Utilisez le slider pour choisir l\'année.'), 
+            html.Div('Commencez par cliquer sur une date de votre choix sur le slider. Déplacez la souris sur une bulle pour avoir les graphiques du thème en bas. Utilisez le slider pour choisir l\'année.'), 
 
             html.Div([
                     html.Div([ dcc.Graph(id='wps-main-graph', animate=True), ], style={'width':'90%', }),
