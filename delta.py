@@ -4,7 +4,7 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
-from chloro import chloro
+from GCYC_chlorophylle_fapar import chloro
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
