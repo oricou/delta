@@ -8,8 +8,9 @@ import plotly.express as px
 import json
 
 
-class Carte:
+class Carte(object):
     def __init__(self, application=None):
+
         self.df = pd.read_pickle('data/deces_par_departements2020.pkl')
 
         self.df_naiss = pd.read_pickle('data/naissances_par_departements2020.pkl')
@@ -26,7 +27,7 @@ class Carte:
                                    zoom=4.6, center={"lat": 47, "lon": 2},
                                    opacity=0.5,
                                    labels={'DEP': 'Numéro du département',
-                                           'deces pour 10000': 'Part des décès pour 10 000',
+                                           'deces pour 10000': 'Part des décès pour 1000',
                                            'DECES': 'Nombre de décès',
                                            'population': 'Population du département'}
                                    )
@@ -41,36 +42,50 @@ class Carte:
                                     zoom=4.6, center={"lat": 47, "lon": 2},
                                     opacity=0.5,
                                     labels={'DEP': 'Numéro du département',
-                                            'Naissances pour 10000': 'Part des naissances pour 10 000',
+                                            'Naissances pour 10000': 'Part des naissances pour 1000',
                                             'NAISSANCES': 'Nombre de naissances',
                                             'population': 'Population du département'}
                                     )
 
         self.main_layout = html.Div(children=[
-            html.H2(children='Cartes de France 2020'),
             html.Br(),
             html.Div(children=[
                 html.Div(children=[
-                    html.Div('Carte des décès par département en France en 2020'),
+                    html.Div('Carte du taux de mortalité par département en France en 2020'),
                     dcc.Graph(
                         id='wps-main-graph',
                         figure=fig
                     )
                 ], style={'flex': 1}),
                 html.Div(children=[
-                    html.Div('Carte des naissances par département en France en 2020'),
+                    html.Div('Carte du taux de natalité par département en France en 2020'),
                     dcc.Graph(
                         id='wps-main-graph2',
                         figure=fig2
                     )
-                ], style={'flex': 1})
+                ], style={'flex': 1}),
+
             ], style={
                 'padding': '5',
                 'display': 'flex',
-                'flex-direction': 'row'}
+                'flex-direction': 'row',
+                'justifyContent': 'center'}
             ),
             html.Br(),
-            html.Div(id='wps-div-dep')
+
+            dcc.Markdown("""
+        Survolez un département avec votre souris pour afficher plus d'informations.
+
+        Note:
+           * Le taux de natalité correspond au nombre de naissances par rapport au nombre total de la population
+           * Lecture: une couleur foncé signifie un faible taux de natalité (peu de naissances par rapport à la population), une couleur claire un haut taux de natalité.
+           * Lecture: En 2020, le taux de mortalité dans le département de la Charente (16) est de 12,1 pour 1000. La population y est de 348180 et les décès sur l'année s'élèvent à 4225.
+
+        Sources:
+           * Décès 2020: https://www.insee.fr/fr/statistiques/5431034?sommaire=5419788&q=d%C3%A9c%C3%A8s
+           * Naissances 2020: https://www.insee.fr/fr/statistiques/5419785
+           * Population 2020: https://www.insee.fr/fr/statistiques/fichier/4277596/T20F013.xlsx\
+        """),
         ], style={
             'backgroundColor': 'white',
             'padding': '10px 30px 10px 30px'
@@ -83,16 +98,3 @@ class Carte:
         else:
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
-
-        # CALLBACKS
-        self.app.callback(
-            dash.dependencies.Output('wps-div-dep', 'children'),
-            dash.dependencies.Input('wps-main-graph', 'hoverData'))(self.country_chosen)
-
-    def get_country(self, hoverData):
-        if hoverData == None:  # init value
-            return 'Département'
-        return hoverData['points'][0]['hovertext']
-
-    def country_chosen(self, hoverData):
-        return self.get_country(hoverData)

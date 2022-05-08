@@ -30,7 +30,7 @@ def deces2020(file, pkl_name):
     # get departements population
     population2020 = pd.read_pickle('population2020.pkl')
     df = pd.merge(df, population2020, on='DEP')
-    df["deces pour 10000"] = (df.DECES * 10000) // df['population']
+    df["deces pour 10000"] = (df.DECES * 1000) // df['population']
     return df.to_pickle(pkl_name)
 
 def naissances2020(file, pkl_name):
@@ -41,7 +41,7 @@ def naissances2020(file, pkl_name):
     # get departements population
     population2020 = pd.read_pickle('population2020.pkl')
     df = pd.merge(df, population2020, on='DEP')
-    df["Naissances pour 10000"] = (df.NAISSANCES * 10000) // df.population
+    df["Naissances pour 10000"] = (df.NAISSANCES * 1000) // df.population
     df.to_pickle(pkl_name)
 
 
@@ -96,7 +96,9 @@ def create_pop():
     for y in lst:
         popDic.update({y: pd.read_pickle(f'population_dep_{y}.pkl')})
     folder = 'population_birth_rate'
-    os.mkdir(folder)
+    if not exists(folder):
+        os.mkdir(folder)
+
     for year in df2.index.values:
         if exists(f'{folder}/{year}.pkl'):
             continue
@@ -113,7 +115,7 @@ def create_pop():
         pop.loc[pop.DEP == '2B', 'DEP'] = 20
         pop.DEP = pop.DEP.astype(int)
         dfm = pd.merge(dfn, pop, on='DEP')
-        dfm['tx_nat_p_1000'] = dfm['naissances'] * 1000 // dfm['Total']
+        dfm['tx_nat_p_1000'] = dfm['naissances'] * 1000 / pd.Series(dfm['Total'], dtype=float)
         dfm['DEP'] = dfm.DEP.astype(object)
         dfm.loc[dfm.index < 9, 'DEP'] = dfm.loc[dfm.index < 9, 'DEP'].apply(lambda x: f'0{x}')
         dfm.loc[dfm.DEPNAME == 'Corse-du-Sud', 'DEP'] = '2A'

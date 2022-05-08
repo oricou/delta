@@ -2,6 +2,7 @@ import pandas as pd
 import dash
 from dash import html
 from dash import dcc
+from CB_MJS_naissance_deces_france import maps_2020
 
 import plotly.express as px
 import json
@@ -9,6 +10,8 @@ import json
 
 class Birth_Map:
     def __init__(self, application=None):
+
+        self.carte_2020 = maps_2020.Carte(application)
 
         self.df = pd.read_pickle('data/naissances_par_dep_1970_2020.pkl')
         self.years = sorted(set(self.df.index.values))
@@ -19,8 +22,8 @@ class Birth_Map:
         for year in self.df.index.values:
             self.df_dict.update({year: pd.read_pickle(f'data/population_birth_rate/{year}.pkl')})
 
-        self.main_layout = html.Div(children=[
-            html.H2(children='Cartes de France'),
+        self.main_layout = html.Div(id='main-layout-page', children=[
+            html.H2(children='Cartes des taux de natalité et mortalité par départements en France'),
             html.Br(),
 
             html.Div('Carte du taux de natalité par départements en France de 1970 à 2020'),
@@ -36,12 +39,12 @@ class Birth_Map:
                     html.Div(id='selected-year-slider', ),
 
                 ], style={'margin-left': '15px', 'width': '7em', 'float': 'right'}),
+
             ], style={
                     'padding': '10px 50px',
                     'display':'flex',
                     'justifyContent':'center'
             }),
-
             dcc.Slider(
                 id='map-year-slider',
                 min=self.years[0],
@@ -49,7 +52,34 @@ class Birth_Map:
                 step=1,
                 value=self.years[0],
                 marks={str(year): str(year) for year in self.years[::5]},
-            )
+            ),
+
+            html.Br(),
+            html.Br(),
+
+            dcc.Markdown("""
+            Déplacez le slider pour afficher la carte de l'année correspondante.
+            Survolez un département avec votre souris pour afficher plus d'informations.
+            
+            Note:
+               * Le taux de natalité correspond au nombre de naissances par rapport au nombre total de la population
+               * Lecture: une couleur foncé signifie un faible taux de natalité (peu de naissances par rapport à la population), une couleur claire un haut taux de natalité.
+               * En 1970, le taux de natalité dans le département de la Cher (18) est de 12,3 pour 1000. La population y est de 304400 et les naissances sur l'année s'élèvent à 3759.
+            
+            Sources:
+               * Naissances: https://www.insee.fr/fr/statistiques/2540004?sommaire=4767262
+               * Population: https://www.insee.fr/fr/statistiques/1893204#consulter.
+
+            A noter que les données sources des naissances sont celle des prénoms attribués sur l'année, mais qu'elle est présentée comme correspondant aux naissances sur l'année [sur le site de data.gouv](https://www.data.gouv.fr/fr/datasets/fichier-des-prenoms-de-1900-a-2019/).
+            Cependant, au vu de l'incohérence de ces données avec d'autres que j'ai pu trouvé sur des années spécifique, les valeurs pour les naissances annuelles sont à prendre avec beaucoup de précaution.
+            """),
+
+            html.Br(),
+            html.Br(),
+            html.Br(),
+            html.Br(),
+
+            html.Div(children=self.carte_2020.main_layout),
 
         ], style={
             'backgroundColor': 'white',
