@@ -1,0 +1,1 @@
+/home/clement/Documents/delta/CB_MJS_naissance_deces_france/data/deces_par_departements2020.pkl

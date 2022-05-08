@@ -7,8 +7,9 @@ from dash import dcc
 import plotly.express as px
 import json
 
-class Carte():
-    def __init__(self, application = None):
+
+class Carte:
+    def __init__(self, application=None):
         self.df = pd.read_pickle('data/deces_par_departements2020.pkl')
 
         self.df_naiss = pd.read_pickle('data/naissances_par_departements2020.pkl')
@@ -31,20 +32,19 @@ class Carte():
                                    )
 
         fig2 = px.choropleth_mapbox(self.df_naiss, geojson=departements,
-                                   locations='DEP', featureidkey='properties.code',  # join keys
-                                   color='Naissances pour 10000',
-                                   hover_name='DEP_NAME',
-                                   hover_data=['Naissances pour 10000', 'NAISSANCES', 'population'],
-                                   color_continuous_scale="Viridis",
-                                   mapbox_style="carto-positron",
-                                   zoom=4.6, center={"lat": 47, "lon": 2},
-                                   opacity=0.5,
-                                   labels={'DEP': 'Numéro du département',
-                                           'Naissances pour 10000': 'Part des naissances pour 10 000',
-                                           'NAISSANCES': 'Nombre de naissances',
-                                           'population': 'Population du département'}
-                                   )
-
+                                    locations='DEP', featureidkey='properties.code',  # join keys
+                                    color='Naissances pour 10000',
+                                    hover_name='DEP_NAME',
+                                    hover_data=['Naissances pour 10000', 'NAISSANCES', 'population'],
+                                    color_continuous_scale="Viridis",
+                                    mapbox_style="carto-positron",
+                                    zoom=4.6, center={"lat": 47, "lon": 2},
+                                    opacity=0.5,
+                                    labels={'DEP': 'Numéro du département',
+                                            'Naissances pour 10000': 'Part des naissances pour 10 000',
+                                            'NAISSANCES': 'Nombre de naissances',
+                                            'population': 'Population du département'}
+                                    )
 
         self.main_layout = html.Div(children=[
             html.H2(children='Cartes de France 2020'),
@@ -73,8 +73,8 @@ class Carte():
             html.Div(id='wps-div-dep')
         ], style={
             'backgroundColor': 'white',
-             'padding': '10px 30px 10px 30px'
-             }
+            'padding': '10px 30px 10px 30px'
+        }
         )
 
         if application:
@@ -88,8 +88,6 @@ class Carte():
         self.app.callback(
             dash.dependencies.Output('wps-div-dep', 'children'),
             dash.dependencies.Input('wps-main-graph', 'hoverData'))(self.country_chosen)
-
-
 
     def get_country(self, hoverData):
         if hoverData == None:  # init value

@@ -1,3 +1,5 @@
+import os
+
 import requests
 import zipfile
 from io import BytesIO
@@ -79,6 +81,47 @@ def exec_zip(url, filename, pkl_name, func):
             with z.open(filename) as f:
                 return func(f, pkl_name)
 
+
+lst = np.asarray([1968, 1975, 1982, 1990, 1999, 2008, 2013, 2018])
+
+
+def closest(k):
+    idx = (np.abs(lst - k)).argmin()
+    return lst[idx]
+
+
+def create_pop():
+    df2 = pd.read_pickle('naissances_par_dep_1970_2020.pkl')
+    popDic = {}
+    for y in lst:
+        popDic.update({y: pd.read_pickle(f'population_dep_{y}.pkl')})
+    folder = 'population_birth_rate'
+    os.mkdir(folder)
+    for year in df2.index.values:
+        if exists(f'{folder}/{year}.pkl'):
+            continue
+        pyear = closest(year)
+        pop = popDic.get(pyear)
+        # get df of 1 year
+        dfn = pd.DataFrame(df2.loc[df2.index == year].reset_index(drop=True).stack(), columns=['naissances'])
+        dfn = dfn.reset_index(1).reset_index(drop=True)
+        dfn.rename(columns={'dpt': 'DEP'}, inplace=True)
+        # prepare pop for merge
+        pop = pop['Total'].reset_index()
+        # change '2A' and '2B' dep (for Corse) to 20
+        pop.loc[pop.DEP == '2A', 'DEP'] = 20
+        pop.loc[pop.DEP == '2B', 'DEP'] = 20
+        pop.DEP = pop.DEP.astype(int)
+        dfm = pd.merge(dfn, pop, on='DEP')
+        dfm['tx_nat_p_1000'] = dfm['naissances'] * 1000 // dfm['Total']
+        dfm['DEP'] = dfm.DEP.astype(object)
+        dfm.loc[dfm.index < 9, 'DEP'] = dfm.loc[dfm.index < 9, 'DEP'].apply(lambda x: f'0{x}')
+        dfm.loc[dfm.DEPNAME == 'Corse-du-Sud', 'DEP'] = '2A'
+        dfm.loc[dfm.DEPNAME == 'Haute-Corse', 'DEP'] = '2B'
+        dfm.to_pickle(f'{folder}/{year}.pkl')
+
+
+
 #####
 #   MAIN
 #####
@@ -130,3 +173,5 @@ if not exists(departements_geojson_file):
     with requests.get(url) as res:
         with open(departements_geojson_file, 'wb') as file:
             file.write(BytesIO(res.content).getbuffer())
+
+create_pop()

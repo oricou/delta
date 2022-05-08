@@ -4,7 +4,7 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
-from CB_MJS_naissance_deces_france import carte_deces, maps
+from CB_MJS_naissance_deces_france import maps_2020, birth_map
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -13,8 +13,8 @@ server = app.server
 pop = population.WorldPopulationStats(app)
 nrg = energies.Energies(app)
 dec = deces.Deces(app)
-carte = carte_deces.Carte(app)
-mmap = maps.Maps(app)
+carte = maps_2020.Carte(app)
+bmap = birth_map.Birth_Map(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -76,7 +76,7 @@ def display_page(pathname):
     elif pathname == '/CB_MJS':
         return carte.main_layout
     elif pathname == '/mmaps':
-        return mmap.main_layout
+        return bmap.main_layout
     else:
         return home_page
 
