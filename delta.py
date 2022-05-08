@@ -1,9 +1,11 @@
+from importlib.resources import path
 import dash
 from dash import dcc
 from dash import html
 from energies import energies
 from population import population
 from deces import deces
+from category import dataAnalysis
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -12,6 +14,7 @@ server = app.server
 pop = population.WorldPopulationStats(app)
 nrg = energies.Energies(app)
 dec = deces.Deces(app)
+cat = dataAnalysis.WineStats(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -25,6 +28,8 @@ main_layout = html.Div([
                               dcc.Link(html.Button('Natalité vs revenus', style={'width':"100%"}), href='/population'),
                               html.Br(),
                               dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
+                              html.Br(),
+                              dcc.Link(html.Button('Vins dans le monde', style={'width':"100%"}), href='/category'),
                               html.Br(),
                               html.Br(),
                               html.Br(),
@@ -66,6 +71,8 @@ def display_page(pathname):
         return pop.main_layout
     elif pathname == '/deces':
         return dec.main_layout
+    elif pathname == '/category':
+        return cat.main_layout
     else:
         return home_page
 
