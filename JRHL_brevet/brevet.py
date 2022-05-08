@@ -52,7 +52,7 @@ class Brevet():
         return data_brevet_par_annee_par_departement
 
 
-    def clean_brevet_data(self):
+    def generate_df(self):
         # On enlève les 0z devant les codes des départements
         self.brevet_data['Code département'] = self.brevet_data['Code département'].map(lambda x: str(x)[1:])
 
@@ -114,9 +114,10 @@ class Brevet():
 
         self.brevet_data_grandes_villes = self.load_grandes_villes()
 
-        ## CLEANING DATA ##
-        self.data_brevet_par_annee_par_secteur, self.data_brevet_par_annee_par_departement = self.clean_brevet_data()
+        ## GENERATE ANALYSED DF##
+        self.data_brevet_par_annee_par_secteur, self.data_brevet_par_annee_par_departement = self.generate_df()
 
+        # ==================== HTML ==================== 
         self.main_layout = html.Div(children=[
             html.H3(children='Taux de réussite et de mentions au brevet selon le secteur (Public / Privé)'),
 
@@ -216,8 +217,8 @@ class Brevet():
             html.H4(children="Etude du taux de réussite selon les départements"),
             dcc.Markdown("""
             On peut remarquer que le taux de réussite au brevet est contrasté selon les départements.
-            Globalement, le département 75 a un taux de mentions Très Bien beaucoup plus élevé que les autres départements.
-            Par exemple en 2017, on observe un taux relativement élevé de mentions Très Bien dans le 75 (40%), contrairement au 93, avec un taux de mentions Très Bien de 18%.
+            Globalement, le département 75 (Paris) a un taux de mentions Très Bien beaucoup plus élevé que les autres départements.
+            Par exemple en 2017, on observe un taux relativement élevé de mentions Très Bien dans le 75 (40%), contrairement au 93 (Seine-Saint-Denis), avec un taux de mentions Très Bien de 18%.
             """
             ),
             html.H4(children="Etude du taux de l'évolution démographique départementale"),
@@ -230,7 +231,7 @@ class Brevet():
             html.H3(children='Etude démographique'),
             html.Div([
                 # Graph
-                html.Div([ dcc.Graph(id='tr-sec-graph'), ], style={'width':'100%', }),
+                html.Div([ dcc.Graph(id='tr-dem-graph'), ], style={'width':'100%', }),
                 # Bouton
                 html.Div([ dcc.RadioItems(id='tr-sec-mean',
                                          options=[{'label':"Taux d'inscrits dans les grandes villes", 'value':0},
@@ -271,15 +272,17 @@ class Brevet():
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
 
+        # ============== CALLBACKS ==============
+
         ## Graph taux de réussite
         self.app.callback(
                     dash.dependencies.Output('tr-main-graph', 'figure'),
-                    dash.dependencies.Input('tr-mean', 'value'))(self.update_graph)
+                    dash.dependencies.Input('tr-mean', 'value'))(self.update_main_graph)
 
         # Evolution démographique
         self.app.callback(
-                    dash.dependencies.Output('tr-sec-graph', 'figure'),
-                    dash.dependencies.Input('tr-sec-mean', 'value'))(self.update_2graph)
+                    dash.dependencies.Output('tr-dem-graph', 'figure'),
+                    dash.dependencies.Input('tr-sec-mean', 'value'))(self.update_dem_graph)
 
         # Taux de réussite par département
         self.app.callback(
@@ -287,52 +290,25 @@ class Brevet():
             [ dash.dependencies.Input('tr-dep-mention', 'value'),
               dash.dependencies.Input('tr-dep-year-slider', 'value')])(self.update_dep_graph)
 
-        """
-        # Bouton Start / STOP
-        self.app.callback(
-            dash.dependencies.Output('tr-button-start-stop', 'children'),
-            dash.dependencies.Input('tr-button-start-stop', 'n_clicks'),
-            dash.dependencies.State('tr-button-start-stop', 'children'))(self.button_on_click)
 
+    # ============== FONCTIONS UPDATE GRAPH ==============
 
-
-        # this one is triggered by the previous one because we cannot have 2 outputs for the same callback
-        self.app.callback(
-            dash.dependencies.Output('tr-dep-auto-stepper', 'max_interval'),
-            [dash.dependencies.Input('tr-button-start-stop', 'children')])(self.run_movie)
-        # triggered by previous
-
-
-        self.app.callback(
-            dash.dependencies.Output('tr-dep-year-slider', 'value'),
-            dash.dependencies.Input('tr-dep-auto-stepper', 'n_intervals'),
-            [dash.dependencies.State('tr-dep-year-slider', 'value'),
-             dash.dependencies.State('tr-button-start-stop', 'children')])(self.on_interval)
-        """
-
-
-
-    def update_2graph(self, mean):
+    # Graph démographie
+    def update_dem_graph(self, mean):
         fig = px.line(self.brevet_data_grandes_villes, x='Session', y='Taux Presents Grandes Villes')
         if mean == 1:
             fig = px.line(self.brevet_data_grandes_villes, x='Session', y='Presents France')
 
         return fig
-        ###############
 
+    # Graph principal
+    def update_main_graph(self, choix):
+        col_name = ['Admis', 'AvecMention', 'B_TB', 'TB', 'Presents']
+        col = col_name[choix]
 
-    def update_graph(self, mean):
-        fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='Admis', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
-        if mean == 1:
-            fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='AvecMention', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
-        elif mean == 2:
-            fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='B_TB', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
-        elif mean == 3:
-            fig = px.line(self.data_brevet_par_annee_par_secteur, x='Session', y='TB', color="Secteur d'enseignement", symbol="Secteur d'enseignement")
-        return fig
+        return px.line(self.data_brevet_par_annee_par_secteur, x='Session', y=col, color="Secteur d'enseignement", symbol="Secteur d'enseignement")
 
     # Carte départements
-
     def update_dep_graph(self, mention, session):
         col_name = ['Admis', 'AvecMention', 'B_TB', 'TB', 'Presents']
         col = col_name[mention]
@@ -349,37 +325,6 @@ class Brevet():
                           )
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
         return fig
-
-    # Bouton start / STOP
-    # start and stop the movie
-    def button_on_click(self, n_clicks, text):
-        if text == self.START:
-            return self.STOP
-        else:
-            return self.START
-
-    # this one is triggered by the previous one because we cannot have 2 outputs
-    # in the same callback
-    def run_movie(self, text):
-        if text == self.START:    # then it means we are stopped
-            return 0
-        else:
-            return -1
-
-    # see if it should move the slider for simulating a movie
-
-    def on_interval(self, n_intervals, year, text):
-        if text == self.STOP:  # then we are running
-            if year == self.years[-1]:
-                return self.years[0]
-            else:
-                return year + 1
-        else:
-            return year  # nothing changes
-
-
-
-
 
 if __name__ == '__main__':
     tr = Brevet()
