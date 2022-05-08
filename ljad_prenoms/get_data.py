@@ -7,7 +7,7 @@ import plotly.express as px
 
 
 def get_prenoms():
-    prenoms_raw = pd.read_csv("data/dpt2020.csv", sep=";", encoding="utf-8")
+    prenoms_raw = pd.read_csv("ljad_prenoms/data/dpt2020.csv", sep=";", encoding="utf-8")
     no_name = prenoms_raw[prenoms_raw.preusuel == "_PRENOMS_RARES"]
     prenoms = prenoms_raw.drop(index = no_name.index)
     
@@ -20,12 +20,12 @@ def get_prenoms():
     return prenoms
 
 def get_populations():
-    population_raw = pd.read_excel('data/base-pop-historiques-1876-2019.xlsx', header=5)
+    population_raw = pd.read_excel('ljad_prenoms/data/base-pop-historiques-1876-2019.xlsx', header=5)
     population_raw_ = population_raw.drop(columns=["CODGEO", "REG"])
     return population_raw_.groupby("DEP").sum()
 
 def get_france_geojson():
-    with open("data/departements.geojson") as response:
+    with open("ljad_prenoms/data/departements.geojson") as response:
         departements = json.load(response)
     
     for departement in departements["features"]:
@@ -43,7 +43,7 @@ def get_chomage():
     # Drop region and useless rows
     to_drop = [0, 1, 2, 11, 16, 20, 23, 30, 34, 39, 42, 47,
         50, 55, 61, 66, 71, 77, 86, 90, 99, 104, 110, 118, 119, 120]
-    chomage_raw = pd.read_excel('data/irsoceds2013_T302.xls', header=2).drop(index=to_drop)
+    chomage_raw = pd.read_excel('ljad_prenoms/data/irsoceds2013_T302.xls', header=2).drop(index=to_drop)
     chomage_raw.DATE = chomage_raw.DATE.str[:2] # works only because no DOM TOM
     chomage_raw.iat[-1,0] = "20"
     chomage_raw.DATE = chomage_raw.DATE.astype(int)
