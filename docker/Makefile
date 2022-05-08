@@ -1,9 +1,9 @@
 all:
-	docker build --no-cache -t oricou/delta .
+	docker build --no-cache -t CarlitoCepillo/pybd_movie_project .
 
 fast:
-	docker build -t oricou/delta .
+	docker build -t CarlitoCepillo/pybd_movie_project .
 
 install:
 	docker login
-	docker push oricou/delta
+	docker push CarlitoCepillo/pybd_movie_project
