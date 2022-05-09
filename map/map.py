@@ -23,7 +23,7 @@ class Map():
         self.years = self.pn_df.index.unique().sort_values()
 
         self.main_layout = html.Div(children=[
-            html.H3(children='Évolution des prix de différentes énergies en France'),
+            html.H3(children='Évolution du nombre de crimes en France.'),
             html.Div([ dcc.Graph(id='map-main-graph'), ], style={'width':'100%', }),
 
             html.Br(),
@@ -57,7 +57,7 @@ class Map():
                     n_clicks=0,
                     style={'display':'inline-block'}
                 ),
-                html.Div([ html.Div('crime'),
+                html.Div([ html.Div('Choix du type de crime:'),
                            dcc.Dropdown(
                                id='map-which-crime',
                                options=[{'label': i, 'value': i} for i in self.pn_df.columns[:-1]],
@@ -93,8 +93,8 @@ class Map():
                 #### À propos
 
                 * Sources : 
-                   * [base Pégase](http://developpement-durable.bsocom.fr/Statistiques/) du ministère du développement durable
-                   * [tarifs réglementés de l'électricité](https://www.data.gouv.fr/en/datasets/historique-des-tarifs-reglementes-de-vente-delectricite-pour-les-consommateurs-residentiels/) sur data.gouv.fr
+                   * [data.gouv.fr](https://www.data.gouv.fr/datasets/chiffres-departementaux-mensuels-relatifs-aux-crimes-et-delits-enregistres-par-les-services-de-police-et-de-gendarmerie-depuis-janvier-1996/)
+                   chiffres departementaux mensuels relatifs aux crimes et delits enregistres par les services de police et de gendarmerie depuis janvier 1996
                 * (c) 2022 Olivier Ricou
                 """)
         ], style={
