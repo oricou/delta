@@ -19,6 +19,8 @@ class Energies():
         with urlopen('https://france-geojson.gregoiredavid.fr/repo/departements.geojson') as response:
             self.counties = json.load(response)
 
+        self.mois = {'janv':'01', 'févr':'02', 'mars':'03', 'avr':'04', 'mai':'05', 'juin':'06', 'juil':'07', 'août':'08', 'sept':'09', 'oct':'10', 'nov':'11', 'déc':'12'}
+        self.years =np.arange(self.pn_df.index.min().year, self.pn_df.index.max().year+1)
 
         self.main_layout = html.Div(children=[
             html.H3(children='Évolution des prix de différentes énergies en France'),
@@ -37,17 +39,17 @@ class Energies():
                 html.Div([ html.Div('Mois ref.'),
                            dcc.Dropdown(
                                id='nrg-which-month',
-                               options=[{'label': i, 'value': i} for i in self.pn_df.index.unique()],
-                               value=self.pn_df.index[0],
+                               options=[{'label': i, 'value': i} for i in self.mois],
+                               value="01",
                                disabled=False,
                            ),
                          ], style={'width': '16em', 'padding':'2em 0px 0px 0px'}), # bas D haut G
                 html.Div([ html.Div('Annee ref.'),
                            dcc.Dropdown(
                                id='nrg-which-year',
-                               options=[{'label': i, 'value': i} for i in self.pn_df.index.unique()],
+                               options=[{'label': i, 'value': i} for i in self.years],
                                value=2000,
-                               disabled=True,
+                               disabled=False,
                            ),
                          ], style={'width': '6em', 'padding':'2em 0px 0px 0px'} ),
                 html.Div([ html.Div('crime'),
@@ -116,11 +118,16 @@ class Energies():
     def update_graph(self, month, year, crime, xaxis_type):
         
         df = self.pn_df[['Département', crime]]
-        if not month in df.index:
-            month = '2000-05-01'
+
+        if not month in self.mois:
+            month = '01'
+        if not year in self.years:
+            year = 2001
         if not crime in df.columns:
             crime = 'Autres délits'
-        df = df.loc[month]
+        date = str(year) + "-" + month + "-01"
+        df = df.loc[date]
+
         val_min = df[crime].min()
         val_max = df[crime].mean()
 
