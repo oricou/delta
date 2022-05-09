@@ -43,8 +43,8 @@ if __name__ == "__main__":
         if pathlib.Path(f'data/{name_db}.pkl').is_file():
             dfs[name_db] = pd.read_pickle(f'data/{name_db}.pkl')
         else:
-            if not pathlib.Path(k).is_file():
+            if not pathlib.Path('data/' + k).is_file():
                 with open('data/' + k, 'wb') as file:
                     file.write(requests.get(v).content)
-            dfs[name_db] = read_excel_sheets(k)
+            dfs[name_db] = read_excel_sheets('data/' + k)
             dfs[name_db].to_pickle(f'data/{name_db}.pkl')
