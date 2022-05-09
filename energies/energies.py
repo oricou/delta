@@ -22,6 +22,7 @@ class Energies():
 
         self.mois = {'janv':'01', 'févr':'02', 'mars':'03', 'avr':'04', 'mai':'05', 'juin':'06', 'juil':'07', 'août':'08', 'sept':'09', 'oct':'10', 'nov':'11', 'déc':'12'}
         self.years =np.arange(self.pn_df.index.min().year, self.pn_df.index.max().year+1)
+        self.years = self.pn_df.index.unique().sort_values()
 
         self.main_layout = html.Div(children=[
             html.H3(children='Évolution des prix de différentes énergies en France'),
@@ -31,12 +32,11 @@ class Energies():
             html.Div([ # slider
                 html.Div(
                     dcc.Slider(
-                            id='wps-crossfilter-year-slider',
-                            min=self.years[0],
-                            max=self.years[-1],
-                            step = 1,
-                            value=self.years[0],
-                            marks={str(year): str(year) for year in self.years[::5]},
+                            id='nrg-crossfilter-year-slider',
+                            min=0,
+                            max=len(self.years) -1,
+                            value=0,
+                            marks={i: str(self.years[i].year) for i in range(0,len(self.years), 12) },
                     ),
                     style={'display':'inline-block', 'width':"90%"}
                 ),
