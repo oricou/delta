@@ -130,7 +130,7 @@ class Energies():
                                    color_continuous_scale="Viridis",
                                    range_color=(val_min, val_max),
                                    mapbox_style="carto-positron",
-                                   zoom=4, center = {"lat": 48.864716, "lon": 2.349014},
+                                   zoom=4.3, center = {"lat": 46, "lon": 2.349014},
                                    opacity=0.5,
                                    labels={'unemp':'unemployment rate'}
                                   )
