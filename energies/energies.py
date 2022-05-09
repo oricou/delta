@@ -20,8 +20,6 @@ class Energies():
         with urlopen('https://france-geojson.gregoiredavid.fr/repo/departements.geojson') as response:
             self.counties = json.load(response)
 
-        self.mois = {'janv':'01', 'févr':'02', 'mars':'03', 'avr':'04', 'mai':'05', 'juin':'06', 'juil':'07', 'août':'08', 'sept':'09', 'oct':'10', 'nov':'11', 'déc':'12'}
-        self.years =np.arange(self.pn_df.index.min().year, self.pn_df.index.max().year+1)
         self.years = self.pn_df.index.unique().sort_values()
 
         self.main_layout = html.Div(children=[
@@ -32,7 +30,7 @@ class Energies():
             html.Div([ # slider
                 html.Div(
                     dcc.Slider(
-                            id='nrg-crossfilter-year-slider',
+                            id='nrg-year-slider',
                             min=0,
                             max=len(self.years) -1,
                             value=0,
@@ -62,22 +60,6 @@ class Energies():
                                labelStyle={'display':'block'},
                            )
                          ], style={'width': '9em'} ),
-                html.Div([ html.Div('Mois ref.'),
-                           dcc.Dropdown(
-                               id='nrg-which-month',
-                               options=[{'label': i, 'value': self.mois[i]} for i in self.mois],
-                               value='01',
-                               disabled=False,
-                           ),
-                         ], style={'width': '16em', 'padding':'2em 0px 0px 0px'}), # bas D haut G
-                html.Div([ html.Div('Annee ref.'),
-                           dcc.Dropdown(
-                               id='nrg-which-year',
-                               options=[{'label': i, 'value': i} for i in self.years],
-                               value=2000,
-                               disabled=False,
-                           ),
-                         ], style={'width': '6em', 'padding':'2em 0px 0px 0px'} ),
                 html.Div([ html.Div('crime'),
                            dcc.Dropdown(
                                id='nrg-which-crime',
@@ -133,16 +115,15 @@ class Energies():
 
         self.app.callback(
                     dash.dependencies.Output('nrg-main-graph', 'figure'),
-                    [ dash.dependencies.Input('nrg-which-month', 'value'),
-                      dash.dependencies.Input('nrg-which-year', 'value'),
+                    [ dash.dependencies.Input('nrg-year-slider', 'value'),
                       dash.dependencies.Input('nrg-which-crime', 'value'),
                       dash.dependencies.Input('nrg-xaxis-type', 'value'),])(self.update_graph)
 
-    def update_graph(self, month, year, crime, xaxis_type):
+    def update_graph(self, date_index, crime, xaxis_type):
         
         df = self.departament[['Département', crime]]
 
-        date = str(year) + "-" + month + "-01"
+        date = self.years[date_index]
         df = df.loc[date]
 
         if xaxis_type:
