@@ -125,7 +125,7 @@ class Energies():
         fig = px.choropleth_mapbox(df, geojson=self.counties,
                                    featureidkey='properties.code',
                                    locations='Département',
-                                   color='Autres délits',
+                                   color=crime,
                                    color_continuous_scale="Viridis",
                                    range_color=(val_min, val_max),
                                    mapbox_style="carto-positron",
