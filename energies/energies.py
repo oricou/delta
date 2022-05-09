@@ -57,16 +57,6 @@ class Energies():
                     n_clicks=0,
                     style={'display':'inline-block'}
                 ),
-                html.Div([ html.Div('Prix'),
-                           dcc.RadioItems(
-                               id='nrg-price-type',
-                               options=[{'label':'Absolu', 'value':0}, 
-                                        {'label':'Équivalent J','value':1},
-                                        {'label':'Relatif : 1 en ','value':2}],
-                               value=1,
-                               labelStyle={'display':'block'},
-                           )
-                         ], style={'width': '9em'} ),
                 html.Div([ html.Div('crime'),
                            dcc.Dropdown(
                                id='nrg-which-crime',
@@ -74,7 +64,7 @@ class Energies():
                                value='Autres délits',
                                disabled=False,
                            ),
-                         ], style={'width': '32em', 'padding':'2em 0px 0px 0px'}), # bas D haut G
+                         ], style={'width': '32em', 'margin':"0px 0px 0px 40px"}), # bas D haut G
                 html.Div(style={'width':'2em'}),
                 html.Div([ html.Div('Échelle en y'),
                            dcc.RadioItems(
