@@ -40,6 +40,14 @@ class Chart():
                     value=[0, 1, 2, 3],
                     inline=False
                 ),
+                html.Div([ html.Div('Échelle en y'),
+                           dcc.RadioItems(
+                               id='chart-xaxis-type',
+                               options=[{'label': i, 'value': i != 'Linéaire'} for i in ['Linéaire', 'Logarithmique']],
+                               value=True,
+                               labelStyle={'display':'block'},
+                           )
+                         ], style={'width': '15em', 'margin':"0px 0px 0px 40px"} ), # bas D haut G
                 html.Div(style={'width':'2em'}),
                 ], style={
                             'padding': '10px 50px', 
@@ -85,6 +93,7 @@ class Chart():
         self.app.callback(
                 dash.dependencies.Output('chart-evolution', 'figure'),
                 dash.dependencies.Input('chart-items-crimes', 'value'),
+                dash.dependencies.Input('chart-xaxis-type', 'value'),
                 )(self.update_evolution)
 
     def update_heatmap(self, items):
@@ -100,8 +109,17 @@ class Chart():
 
         return fig
 
-    def update_evolution(self, items):
-        fig = px.line(x=["a","b","c"], y=[1,3,2], title="sample figure")
+    def update_evolution(self, items, xaxis_type):
+        df = self.all_france[self.ts_df.columns[items]]
+        if xaxis_type:
+            df = np.log(df+1)
+
+        fig = px.line(
+                df,
+                title="Evolution au cours du temps",
+        )
+
+        fig.update(layout_showlegend=False)
 
         return fig
 
