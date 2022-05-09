@@ -61,6 +61,13 @@ class Chart():
                 }),
 
             html.Div([
+                dcc.Checklist(
+                    id='chart-items-crimes',
+                    options=[{'label': self.pn_df.columns[i], 'value': i }
+                        for i in range(len(self.pn_df.columns) - 1)],
+                    value=[0, 1, 2, 3],
+                    inline=True
+                ),
                 html.Button(
                     'START',
                     id='chart-button-start-stop', 
