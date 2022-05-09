@@ -24,8 +24,17 @@ class Chart():
 
         self.main_layout = html.Div(children=[
             html.H3(children='Évolution du nombre de crimes en France.'),
-            html.Div([ dcc.Graph(id='chart-heatmap'), ], style={'width':'50%', }),
-            html.Div([ dcc.Graph(id='chart-evolution'), ], style={'width':'50%', }),
+            html.Div(
+                [
+                    dcc.Graph(id='chart-heatmap'),
+                    dcc.Graph(id='chart-evolution'),
+                ],
+                style={
+                    'display':'flex',
+                    'flexDirection':'row',
+                    'justifyContent':'flex-start',
+                }
+            ),
 
             html.Br(),
             html.Div([ # slider
