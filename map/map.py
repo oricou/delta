@@ -15,12 +15,12 @@ import json
 class Map():
 
     def __init__(self, application = None):
-        self.pn_df = pd.read_pickle('data/pn_db.pkl')
-        self.departament = self.pn_df[(self.pn_df['Département'] != 'France_Métro') & (self.pn_df['Département'] != 'France_Entière')]
+        self.ts_df = pd.read_pickle('data/ts_db.pkl')
+        self.departament = self.ts_df[(self.ts_df['Département'] != 'France_Métro') & (self.ts_df['Département'] != 'France_Entière')]
         with urlopen('https://france-geojson.gregoiredavid.fr/repo/departements.geojson') as response:
             self.counties = json.load(response)
 
-        self.years = self.pn_df.index.unique().sort_values()
+        self.years = self.ts_df.index.unique().sort_values()
 
         self.main_layout = html.Div(children=[
             html.H3(children='Évolution du nombre de crimes en France.'),
@@ -60,7 +60,7 @@ class Map():
                 html.Div([ html.Div('Choix du type de crime:'),
                            dcc.Dropdown(
                                id='map-which-crime',
-                               options=[{'label': i, 'value': i} for i in self.pn_df.columns[:-1]],
+                               options=[{'label': i, 'value': i} for i in self.ts_df.columns[:-1]],
                                value='Autres délits',
                                disabled=False,
                            ),
