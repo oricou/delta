@@ -1,7 +1,7 @@
 import dash
 from dash import dcc
 from dash import html
-from energies import energies 
+from map import map
 #from population import population
 #from deces import deces
 
@@ -10,7 +10,7 @@ from energies import energies
 app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
 server = app.server
 # pop = population.WorldPopulationStats(app)
-map = energies.Map(app)
+map = map.Map(app)
 # dec = deces.Deces(app)
 
 main_layout = html.Div([
@@ -20,7 +20,7 @@ main_layout = html.Div([
                  html.Div(className="two columns",
                           children = [
                               html.Center(html.H2("Δelta δata")),
-                              dcc.Link(html.Button("Prix d'énergies", style={'width':"100%"}), href='/energies'),
+                              dcc.Link(html.Button("Carte", style={'width':"100%"}), href='/map'),
                               html.Br(),
                               #dcc.Link(html.Button('Natalité vs revenus', style={'width':"100%"}), href='/population'),
                               html.Br(),
@@ -53,7 +53,7 @@ app.layout = main_layout
 @app.callback(dash.dependencies.Output('page_content', 'children'),
               [dash.dependencies.Input('url', 'pathname')])
 def display_page(pathname):
-    if pathname == '/energies':
+    if pathname == '/map':
         return map.main_layout
 #    elif pathname == '/population':
 #        return pop.main_layout
