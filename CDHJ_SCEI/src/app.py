@@ -1,11 +1,15 @@
-import warnings
+import flask
+import dash_bootstrap_components as dbc
+from dash import (
+    Dash,
+)
 
-warnings.filterwarnings("ignore")
+from CDHJ_SCEI.src.SCEI_graph import SCEI_graph
 
-import dash_layout
+flask_app = flask.Flask(__name__)
+app = Dash("SCEI", server=flask_app, external_stylesheets=[dbc.themes.ZEPHYR])
 
-flask_app = dash_layout.flask_app
-dash_app = dash_layout.dash_app
+SCEI_graph(app)
 
 if __name__ == "__main__":
-    dash_app.run_server(debug=True)
+    app.run_server(debug=True)

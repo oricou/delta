@@ -4,7 +4,9 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pgeocode
 
-STATS_LYCEE_FILE_PATH = os.path.join("data", "stats_lycees", "stats_lycees.csv")
+STATS_LYCEE_FILE_PATH = os.path.join(
+    os.path.dirname(__file__), "..", "..", "data", "stats_lycees", "stats_lycees.csv"
+)
 
 stats_lycees = pd.read_csv(STATS_LYCEE_FILE_PATH, index_col=[0])
 
@@ -42,16 +44,14 @@ def update_pie(concours, year):
         )["state_name"]
         category_data.loc[
             category_data[category] < category_data[category].mean(), "region"
-        ] = "Autres regions dont la proportion est inférieure à la moyenne".format(
-            category
-        )
+        ] = "Autres regions dont la proportion est inférieure à la moyenne"
         group_category_data = (
             category_data.groupby("region").sum()[category].sort_values()
         )
         pull_list = [0 for i in range(len(group_category_data))]
         if (
             group_category_data.index[-1]
-            == "Autres régions dont la proportion est inférieure à la moyenne"
+            == "Autres regions dont la proportion est inférieure à la moyenne"
         ):
             pull_list[-2] = 0.2
         else:

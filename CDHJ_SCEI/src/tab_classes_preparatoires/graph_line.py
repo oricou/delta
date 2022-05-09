@@ -4,7 +4,9 @@ import os
 import plotly.express as px
 import plotly.graph_objects as go
 
-STATS_LYCEE_FILE_PATH = os.path.join("data", "stats_lycees", "stats_lycees.csv")
+STATS_LYCEE_FILE_PATH = os.path.join(
+    os.path.dirname(__file__), "..", "..", "data", "stats_lycees", "stats_lycees.csv"
+)
 PARIS_COORDS = (48.52, 2.19)
 GRAPH_PRECISION = 1000
 ROLLING_WINDOW = 100

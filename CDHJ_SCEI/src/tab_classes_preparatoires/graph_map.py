@@ -4,7 +4,9 @@ import pandas as pd
 import plotly.express as px
 import os
 
-STATS_LYCEE_FILE_PATH = os.path.join("data", "stats_lycees", "stats_lycees.csv")
+STATS_LYCEE_FILE_PATH = os.path.join(
+    os.path.dirname(__file__), "..", "..", "data", "stats_lycees", "stats_lycees.csv"
+)
 
 stats_lycees = pd.read_csv(STATS_LYCEE_FILE_PATH, index_col=[0])
 

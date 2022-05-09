@@ -1,4 +1,5 @@
 import dash
+import dash_bootstrap_components as dbc
 from dash import dcc
 from dash import html
 from energies import energies
@@ -9,18 +10,23 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "CDHJ_SCEI", "src"))
-from CDHJ_SCEI.src import dash_layout
+from CDHJ_SCEI.src import SCEI_graph
+
+from CDHJ_SCEI.src.SCEI_graph import SCEI_graph
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(
-    __name__, title="Delta", suppress_callback_exceptions=True
-)  # , external_stylesheets=external_stylesheets)
+    __name__,
+    title="Delta",
+    external_stylesheets=[dbc.themes.ZEPHYR],
+    suppress_callback_exceptions=True,
+)
 server = app.server
 pop = population.WorldPopulationStats(app)
 nrg = energies.Energies(app)
 dec = deces.Deces(app)
-scia = dash_layout.scia(app)
+scei = SCEI_graph(app)
 
 main_layout = html.Div(
     [
@@ -48,7 +54,7 @@ main_layout = html.Div(
                         ),
                         html.Br(),
                         dcc.Link(
-                            html.Button("CD-HJ_SCEI-Graph", style={"width": "100%"}),
+                            html.Button("Intégration SCEI", style={"width": "100%"}),
                             href="/CD-HJ_SCEI-Graph",
                         ),
                         html.Br(),
@@ -107,7 +113,7 @@ def display_page(pathname):
     elif pathname == "/deces":
         return dec.main_layout
     elif pathname == "/CD-HJ_SCEI-Graph":
-        return dash_layout.dash_app
+        return scei.main_layout
     else:
         return home_page
 

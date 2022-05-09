@@ -4,8 +4,15 @@ import os
 import plotly.express as px
 import numpy as np
 
-STATS_ECOLES = os.path.join("data", "ecole.csv")
-STATS_GENERALES = os.path.join("data", "stats_generales", "stats_generales.csv")
+STATS_ECOLES = os.path.join(os.path.dirname(__file__), "..", "..", "data", "ecole.csv")
+STATS_GENERALES = os.path.join(
+    os.path.dirname(__file__),
+    "..",
+    "..",
+    "data",
+    "stats_generales",
+    "stats_generales.csv",
+)
 
 stats_ecoles = pd.read_csv(STATS_ECOLES, index_col=[0])
 stats_generales = stats_generales = pd.read_csv(STATS_GENERALES, index_col=[0])
