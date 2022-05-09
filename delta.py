@@ -2,6 +2,7 @@ import dash
 from dash import dcc
 from dash import html
 from map import map
+from chart import chart
 #from population import population
 #from deces import deces
 
@@ -11,6 +12,7 @@ app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True) # ,
 server = app.server
 # pop = population.WorldPopulationStats(app)
 map = map.Map(app)
+chart = chart.Chart(app)
 # dec = deces.Deces(app)
 
 main_layout = html.Div([
@@ -21,6 +23,8 @@ main_layout = html.Div([
                           children = [
                               html.Center(html.H2("Δelta δata")),
                               dcc.Link(html.Button("Carte", style={'width':"100%"}), href='/map'),
+                              html.Br(),
+                              dcc.Link(html.Button('Chart', style={'width':"100%"}), href='/chart'),
                               html.Br(),
                               #dcc.Link(html.Button('Natalité vs revenus', style={'width':"100%"}), href='/population'),
                               html.Br(),
@@ -55,6 +59,8 @@ app.layout = main_layout
 def display_page(pathname):
     if pathname == '/map':
         return map.main_layout
+    elif pathname == '/chart':
+        return chart.main_layout
 #    elif pathname == '/population':
 #        return pop.main_layout
 #    elif pathname == '/deces':
