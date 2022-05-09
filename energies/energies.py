@@ -65,8 +65,8 @@ class Energies():
                 html.Div([ html.Div('Échelle en y'),
                            dcc.RadioItems(
                                id='nrg-xaxis-type',
-                               options=[{'label': i, 'value': i} for i in ['Linéaire', 'Logarithmique']],
-                               value='Logarithmique',
+                               options=[{'label': i, 'value': i != 'Linéaire'} for i in ['Linéaire', 'Logarithmique']],
+                               value=True,
                                labelStyle={'display':'block'},
                            )
                          ], style={'width': '15em', 'margin':"0px 0px 0px 40px"} ), # bas D haut G
@@ -119,6 +119,10 @@ class Energies():
 
         date = str(year) + "-" + month + "-01"
         df = df.loc[date]
+
+        if xaxis_type:
+            df[crime] += 1
+            df[crime] = np.log(df[crime])
 
         val_min = df[crime].min()
         val_max = df[crime].max()
