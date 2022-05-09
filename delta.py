@@ -2,16 +2,16 @@ import dash
 from dash import dcc
 from dash import html
 from energies import energies
-from population import population
-from deces import deces
+#from population import population
+#from deces import deces
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
 server = app.server
-pop = population.WorldPopulationStats(app)
+# pop = population.WorldPopulationStats(app)
 nrg = energies.Energies(app)
-dec = deces.Deces(app)
+# dec = deces.Deces(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -22,9 +22,9 @@ main_layout = html.Div([
                               html.Center(html.H2("Δelta δata")),
                               dcc.Link(html.Button("Prix d'énergies", style={'width':"100%"}), href='/energies'),
                               html.Br(),
-                              dcc.Link(html.Button('Natalité vs revenus', style={'width':"100%"}), href='/population'),
+                              #dcc.Link(html.Button('Natalité vs revenus', style={'width':"100%"}), href='/population'),
                               html.Br(),
-                              dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
+                              # dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
                               html.Br(),
                               html.Br(),
                               html.Br(),
@@ -49,23 +49,16 @@ to_be_done_page = html.Div([
 
 app.layout = main_layout
 
-# "complete" layout (not sure that I need that)
-app.validation_layout = html.Div([
-    main_layout,
-    to_be_done_page,
-    pop.main_layout,
-])
-
 # Update the index
 @app.callback(dash.dependencies.Output('page_content', 'children'),
               [dash.dependencies.Input('url', 'pathname')])
 def display_page(pathname):
     if pathname == '/energies':
         return nrg.main_layout
-    elif pathname == '/population':
-        return pop.main_layout
-    elif pathname == '/deces':
-        return dec.main_layout
+#    elif pathname == '/population':
+#        return pop.main_layout
+#    elif pathname == '/deces':
+#        return dec.main_layout
     else:
         return home_page
 
