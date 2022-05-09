@@ -24,7 +24,7 @@ main_layout = html.Div([
                               html.Br(),
                               html.Br(),
                               html.Br(),
-                              html.Center(html.A('Code source', href='https://github.com/oricou/delta')),
+                              html.Center(html.A('Code source', href='https://github.com/OrpheeLonie/delta')),
                           ]),
                  html.Div(id='page_content', className="ten columns"),
             ]),
