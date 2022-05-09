@@ -1,7 +1,7 @@
 import dash
 from dash import dcc
 from dash import html
-from energies import energies
+from energies import energies 
 #from population import population
 #from deces import deces
 
@@ -10,7 +10,7 @@ from energies import energies
 app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
 server = app.server
 # pop = population.WorldPopulationStats(app)
-nrg = energies.Energies(app)
+map = energies.Map(app)
 # dec = deces.Deces(app)
 
 main_layout = html.Div([
@@ -54,7 +54,7 @@ app.layout = main_layout
               [dash.dependencies.Input('url', 'pathname')])
 def display_page(pathname):
     if pathname == '/energies':
-        return nrg.main_layout
+        return map.main_layout
 #    elif pathname == '/population':
 #        return pop.main_layout
 #    elif pathname == '/deces':

@@ -12,7 +12,7 @@ import dateutil as du
 from urllib.request import urlopen
 import json
 
-class Energies():
+class Map():
 
     def __init__(self, application = None):
         self.pn_df = pd.read_pickle('data/pn_db.pkl')
@@ -24,13 +24,13 @@ class Energies():
 
         self.main_layout = html.Div(children=[
             html.H3(children='Évolution des prix de différentes énergies en France'),
-            html.Div([ dcc.Graph(id='nrg-main-graph'), ], style={'width':'100%', }),
+            html.Div([ dcc.Graph(id='map-main-graph'), ], style={'width':'100%', }),
 
             html.Br(),
             html.Div([ # slider
                 html.Div(
                     dcc.Slider(
-                            id='nrg-year-slider',
+                            id='map-year-slider',
                             min=0,
                             max=len(self.years) -1,
                             value=0,
@@ -39,7 +39,7 @@ class Energies():
                     style={'display':'inline-block', 'width':"90%"}
                 ),
                 dcc.Interval(            # fire a callback periodically
-                    id='nrg-auto-stepper',
+                    id='map-auto-stepper',
                     interval=1000,       # in milliseconds
                     max_intervals = -1,  # start running
                     n_intervals = 0,
@@ -53,13 +53,13 @@ class Energies():
             html.Div([
                 html.Button(
                     'START',
-                    id='nrg-button-start-stop', 
+                    id='map-button-start-stop', 
                     n_clicks=0,
                     style={'display':'inline-block'}
                 ),
                 html.Div([ html.Div('crime'),
                            dcc.Dropdown(
-                               id='nrg-which-crime',
+                               id='map-which-crime',
                                options=[{'label': i, 'value': i} for i in self.pn_df.columns[:-1]],
                                value='Autres délits',
                                disabled=False,
@@ -68,7 +68,7 @@ class Energies():
                 html.Div(style={'width':'2em'}),
                 html.Div([ html.Div('Échelle en y'),
                            dcc.RadioItems(
-                               id='nrg-xaxis-type',
+                               id='map-xaxis-type',
                                options=[{'label': i, 'value': i != 'Linéaire'} for i in ['Linéaire', 'Logarithmique']],
                                value=True,
                                labelStyle={'display':'block'},
@@ -111,21 +111,21 @@ class Energies():
             self.app.layout = self.main_layout
 
         self.app.callback(
-                    dash.dependencies.Output('nrg-main-graph', 'figure'),
-                    [ dash.dependencies.Input('nrg-year-slider', 'value'),
-                      dash.dependencies.Input('nrg-which-crime', 'value'),
-                      dash.dependencies.Input('nrg-xaxis-type', 'value'),])(self.update_graph)
+                    dash.dependencies.Output('map-main-graph', 'figure'),
+                    [ dash.dependencies.Input('map-year-slider', 'value'),
+                      dash.dependencies.Input('map-which-crime', 'value'),
+                      dash.dependencies.Input('map-xaxis-type', 'value'),])(self.update_graph)
 
         self.app.callback(
-                dash.dependencies.Output('nrg-year-slider', 'value'),
-                dash.dependencies.Input ('nrg-auto-stepper', 'n_intervals'),
-                dash.dependencies.State('nrg-year-slider', 'value'))(self.on_interval)
+                dash.dependencies.Output('map-year-slider', 'value'),
+                dash.dependencies.Input ('map-auto-stepper', 'n_intervals'),
+                dash.dependencies.State('map-year-slider', 'value'))(self.on_interval)
 
         self.app.callback(
-                dash.dependencies.Output('nrg-auto-stepper', 'disabled'),
-                dash.dependencies.Output('nrg-button-start-stop', 'children'),
-                dash.dependencies.Input('nrg-button-start-stop', 'n_clicks'),
-                dash.dependencies.State('nrg-auto-stepper', 'disabled'),
+                dash.dependencies.Output('map-auto-stepper', 'disabled'),
+                dash.dependencies.Output('map-button-start-stop', 'children'),
+                dash.dependencies.Input('map-button-start-stop', 'n_clicks'),
+                dash.dependencies.State('map-auto-stepper', 'disabled'),
                 )(self.on_click)
 
 
@@ -169,5 +169,5 @@ class Energies():
 
 
 if __name__ == '__main__':
-    nrg = Energies()
-    nrg.app.run_server(debug=True, port=8051)
+    map = Map()
+    map.app.run_server(debug=True, port=8051)
