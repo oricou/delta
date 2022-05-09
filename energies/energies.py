@@ -39,8 +39,8 @@ class Energies():
                     style={'display':'inline-block', 'width':"90%"}
                 ),
                 dcc.Interval(            # fire a callback periodically
-                    id='wps-auto-stepper',
-                    interval=500,       # in milliseconds
+                    id='nrg-auto-stepper',
+                    interval=1000,       # in milliseconds
                     max_intervals = -1,  # start running
                     n_intervals = 0
                 ),
@@ -119,6 +119,12 @@ class Energies():
                       dash.dependencies.Input('nrg-which-crime', 'value'),
                       dash.dependencies.Input('nrg-xaxis-type', 'value'),])(self.update_graph)
 
+        self.app.callback(
+                dash.dependencies.Output('nrg-year-slider', 'value'),
+                dash.dependencies.Input ('nrg-auto-stepper', 'n_intervals'),
+                dash.dependencies.Input('nrg-year-slider', 'value'))(self.on_interval)
+
+
     def update_graph(self, date_index, crime, xaxis_type):
         
         df = self.departament[['Département', crime]]
@@ -146,6 +152,13 @@ class Energies():
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 
         return fig
+
+
+    def on_interval(self, _, year):
+        if year == self.years[-1]:
+            return self.years[0]
+        else:
+            return year + 1
 
 
 if __name__ == '__main__':
