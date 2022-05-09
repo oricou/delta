@@ -1,1 +1,0 @@
-../deces/data/morts_par_jour-1970-1979.pkl
