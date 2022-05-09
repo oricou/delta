@@ -16,6 +16,7 @@ class Energies():
 
     def __init__(self, application = None):
         self.pn_df = pd.read_pickle('pn_db.pkl')
+        self.departament = self.pn_df[(self.pn_df['Département'] != 'France_Métro') & (self.pn_df['Département'] != 'France_Entière')]
         with urlopen('https://france-geojson.gregoiredavid.fr/repo/departements.geojson') as response:
             self.counties = json.load(response)
 
@@ -114,13 +115,13 @@ class Energies():
 
     def update_graph(self, month, year, crime, xaxis_type):
         
-        df = self.pn_df[['Département', crime]]
+        df = self.departament[['Département', crime]]
 
         date = str(year) + "-" + month + "-01"
         df = df.loc[date]
 
         val_min = df[crime].min()
-        val_max = df[crime].mean()
+        val_max = df[crime].max()
 
         fig = px.choropleth_mapbox(df, geojson=self.counties,
                                    featureidkey='properties.code',
