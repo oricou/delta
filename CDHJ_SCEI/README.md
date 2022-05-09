@@ -11,7 +11,7 @@ SCEI Graph is a tool that allows you to visualize the data from the SCEI platfor
     - *enrich_data.ipynb* : This notebook allows to enrich the data with geographical coordinates.
 2. This project has been tested with **python3.9.5** and the libraries that you can install with the following command
 ```shell
-pip install -r requirements.txt
+pip install -r requirements.txt --no-deps
 ```
 3. To run the project, simply run the **app.py** script.
 ```shell
