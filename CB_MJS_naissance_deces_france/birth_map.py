@@ -186,7 +186,8 @@ class Birth_Map:
 
     def create_pop_graph(self, dep, depname):
         df = self.df_pop.loc[self.df_pop.DEP == str(dep)]['Total'].reset_index()
-        return px.line(df, x='year', y='Total', title=f'Evolution de la population en {depname}')
+        return px.line(df, x='year', y='Total', title=f'Evolution de la population en {depname}',
+                       labels={'year': 'Années', 'Total': 'Population'})
 
     def update_pop_graph(self, hoverData):
         if hoverData == None:
