@@ -24,7 +24,8 @@ class Chart():
 
         self.main_layout = html.Div(children=[
             html.H3(children='Évolution du nombre de crimes en France.'),
-            html.Div([ dcc.Graph(id='chart-main-graph'), ], style={'width':'100%', }),
+            html.Div([ dcc.Graph(id='chart-heatmap'), ], style={'width':'50%', }),
+            html.Div([ dcc.Graph(id='chart-evolution'), ], style={'width':'50%', }),
 
             html.Br(),
             html.Div([ # slider
@@ -111,10 +112,14 @@ class Chart():
             self.app.layout = self.main_layout
 
         self.app.callback(
-                    dash.dependencies.Output('chart-main-graph', 'figure'),
-                    [ dash.dependencies.Input('chart-year-slider', 'value'),
-                      dash.dependencies.Input('chart-which-crime', 'value'),
-                      dash.dependencies.Input('chart-xaxis-type', 'value'),])(self.update_graph)
+                dash.dependencies.Output('chart-heatmap', 'figure'),
+                dash.dependencies.Input('chart-year-slider', 'value'),
+                )(self.update_heatmap)
+
+        self.app.callback(
+                dash.dependencies.Output('chart-evolution', 'figure'),
+                dash.dependencies.Input('chart-year-slider', 'value'),
+                )(self.update_evolution)
 
         self.app.callback(
                 dash.dependencies.Output('chart-year-slider', 'value'),
@@ -128,35 +133,17 @@ class Chart():
                 dash.dependencies.State('chart-auto-stepper', 'disabled'),
                 )(self.on_click)
 
-
-    def update_graph(self, date_index, crime, xaxis_type):
-        
-        df = self.departament[['Département', crime]]
-
-        date = self.years[date_index]
-        df = df.loc[date]
-
-        if xaxis_type:
-            df[crime] += 1
-            df[crime] = np.log(df[crime])
-
-        val_min = df[crime].min()
-        val_max = df[crime].max()
-
-        fig = px.choropleth_mapbox(df, geojson=self.counties,
-                                   featureidkey='properties.code',
-                                   locations='Département',
-                                   color=crime,
-                                   color_continuous_scale="Viridis",
-                                   range_color=(val_min, val_max),
-                                   mapbox_style="carto-positron",
-                                   zoom=4.3, center = {"lat": 46, "lon": 2.349014},
-                                   opacity=0.5,
-                                  )
-        fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+    def update_heatmap(self, date_index):
+        fig = px.imshow([[1, 20, 30],
+                 [20, 1, 60],
+                 [30, 60, 1]])
 
         return fig
 
+    def update_evolution(self, date_index):
+        fig = px.line(x=["a","b","c"], y=[1,3,2], title="sample figure")
+
+        return fig
 
     def on_interval(self, _, year):
         if year == self.years[-1]:
