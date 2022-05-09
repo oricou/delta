@@ -16,6 +16,9 @@ class Energies():
 
     def __init__(self, application = None):
         self.pn_df = pd.read_pickle('pn_db.pkl')
+        with urlopen('https://france-geojson.gregoiredavid.fr/repo/departements.geojson') as response:
+            self.counties = json.load(response)
+
 
         self.main_layout = html.Div(children=[
             html.H3(children='Évolution des prix de différentes énergies en France'),
@@ -101,20 +104,16 @@ class Energies():
 
         self.app.callback(
                     dash.dependencies.Output('nrg-main-graph', 'figure'),
-                    [ dash.dependencies.Input('nrg-price-type', 'value'),
-                      dash.dependencies.Input('nrg-which-month', 'value'),
+                    [ dash.dependencies.Input('nrg-which-month', 'value'),
                       dash.dependencies.Input('nrg-which-year', 'value'),
-                      dash.dependencies.Input('nrg-xaxis-type', 'value'),
-                      dash.dependencies.Input('nrg-which-crime', 'value')])(self.update_graph)
+                      dash.dependencies.Input('nrg-which-crime', 'value'),
+                      dash.dependencies.Input('nrg-xaxis-type', 'value'),])(self.update_graph)
         self.app.callback(
                     [ dash.dependencies.Output('nrg-which-year', 'disabled')],
                       dash.dependencies.Input('nrg-price-type', 'value') )(self.disable_month_year)
 
-    def update_graph(self, price_type, month, year, xaxis_type, crime):
+    def update_graph(self, month, year, crime, xaxis_type):
         
-        with urlopen('https://france-geojson.gregoiredavid.fr/repo/departements.geojson') as response:
-            counties = json.load(response)
-
         df = self.pn_df[['Département', crime]]
         if not month in df.index:
             month = '2000-05-01'
@@ -124,7 +123,7 @@ class Energies():
         val_min = df[crime].min()
         val_max = df[crime].mean()
 
-        fig = px.choropleth_mapbox(df, geojson=counties,
+        fig = px.choropleth_mapbox(df, geojson=self.counties,
                                    featureidkey='properties.code',
                                    locations='Département',
                                    color='Autres délits',
