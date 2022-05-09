@@ -26,6 +26,31 @@ class Energies():
         self.main_layout = html.Div(children=[
             html.H3(children='Évolution des prix de différentes énergies en France'),
             html.Div([ dcc.Graph(id='nrg-main-graph'), ], style={'width':'100%', }),
+
+            html.Br(),
+            html.Div([ # slider
+                html.Div(
+                    dcc.Slider(
+                            id='wps-crossfilter-year-slider',
+                            min=self.years[0],
+                            max=self.years[-1],
+                            step = 1,
+                            value=self.years[0],
+                            marks={str(year): str(year) for year in self.years[::5]},
+                    ),
+                    style={'display':'inline-block', 'width':"90%"}
+                ),
+                dcc.Interval(            # fire a callback periodically
+                    id='wps-auto-stepper',
+                    interval=500,       # in milliseconds
+                    max_intervals = -1,  # start running
+                    n_intervals = 0
+                ),
+                ], style={
+                    'padding': '0px 50px', 
+                    'width':'100%'
+                }),
+
             html.Div([
                 html.Div([ html.Div('Prix'),
                            dcc.RadioItems(
