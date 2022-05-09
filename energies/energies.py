@@ -132,10 +132,10 @@ class Energies():
                 dash.dependencies.State('nrg-year-slider', 'value'))(self.on_interval)
 
         self.app.callback(
-                dash.dependencies.Output('nrg-button-start-stop', 'disabled'),
+                dash.dependencies.Output('nrg-auto-stepper', 'disabled'),
                 dash.dependencies.Output('nrg-button-start-stop', 'children'),
                 dash.dependencies.Input('nrg-button-start-stop', 'n_clicks'),
-                dash.dependencies.State('nrg-button-start-stop', 'disabled'),
+                dash.dependencies.State('nrg-auto-stepper', 'disabled'),
                 )(self.on_click)
 
 
@@ -174,9 +174,8 @@ class Energies():
         else:
             return year + 1
 
-    def on_click(self, disabled, n_clicks):
-        print('test')
-        return not disabled, str(n_clicks)
+    def on_click(self, n_clicks, disabled):
+        return (not disabled, ("STOP" if disabled else "START"))
 
 
 if __name__ == '__main__':
