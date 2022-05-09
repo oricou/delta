@@ -2,16 +2,14 @@ import dash
 from dash import dcc
 from dash import html
 from map import map
-#from population import population
-#from deces import deces
+from chart import chart
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
 server = app.server
-# pop = population.WorldPopulationStats(app)
 map = map.Map(app)
-# dec = deces.Deces(app)
+chart = chart.Chart(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -22,9 +20,7 @@ main_layout = html.Div([
                               html.Center(html.H2("Δelta δata")),
                               dcc.Link(html.Button("Carte", style={'width':"100%"}), href='/map'),
                               html.Br(),
-                              #dcc.Link(html.Button('Natalité vs revenus', style={'width':"100%"}), href='/population'),
-                              html.Br(),
-                              # dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
+                              dcc.Link(html.Button('Chart', style={'width':"100%"}), href='/chart'),
                               html.Br(),
                               html.Br(),
                               html.Br(),
@@ -55,10 +51,8 @@ app.layout = main_layout
 def display_page(pathname):
     if pathname == '/map':
         return map.main_layout
-#    elif pathname == '/population':
-#        return pop.main_layout
-#    elif pathname == '/deces':
-#        return dec.main_layout
+    elif pathname == '/chart':
+        return chart.main_layout
     else:
         return home_page
 
