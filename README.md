@@ -1,16 +1,29 @@
 # Δelta δata
 
-### Analyse de données ouvertes
+## Setup
 
-L'exercice consiste à prendre des données ouvertes et à les mettre en forme pour aider à l'analyse. Cela peut se faire sous forme d'articles avec des graphiques (voir les feuilles Jupyter dans le dépôt) ou de graphiques interactifs (voir  https://delta.lrde.epita.fr/).
+Pour pouvoir lancer le projet, vous aurez besoin de toutes les bibliothèques
+spécifiées par le `requirements.txt`.
 
-### Code source
+```sh
+python3 -m pip install -r requirements.txt
+```
 
-Ce dépôt GitHub propose des pages Jupyter et des service Dash pour analyser des données ouvertes. Les sous-dépôts sont :
+## Télécharger les données
 
-* [Natalité / revenus](https://github.com/oricou/delta/tree/main/population) : exemple classique qui montre la chute de natalité à travers le monde et la croissance des revenus
-* [Prix de l'énergie](https://github.com/oricou/delta/tree/main/energies) : compare le prix grand public de différentes énergies en France
+Pour télécharger les données, il suffit de lancer le script `get_data.py`.
 
-Note : le choix du français est volontaire, il s'agit de promouvoir l'usage
-       des données ouvertes auprès du grand public en France. Cela étant il
-       est possible d'en faire une version dans une autre langue.
+```sh
+python3 get_data.py
+```
+
+## Lancer le projet
+
+Pour lancer le pojet, il faut lancer le fichier `delta.py`.
+
+```sh
+python3 delta.py
+```
+
+Vous serez ensuite invités à vous connecter à l'adresse
+[127.0.0.1:8050](http://127.0.0.1:8050/).
