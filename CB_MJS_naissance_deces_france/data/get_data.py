@@ -118,12 +118,8 @@ def create_pop():
             continue
         pyear = closest(year)
         pop = df_pop.loc[pyear].copy()
-        # get df of 1 year
-        dfn = pd.DataFrame(df2.loc[df2.index == year].reset_index(drop=True).stack(), columns=['naissances'])
-        dfn = dfn.reset_index(1).reset_index(drop=True)
-        dfn.rename(columns={'dpt': 'DEP'}, inplace=True)
         # prepare pop for merge
-        pop = pop['Total'].reset_index()
+        pop = pop[['Total', 'DEP', 'DEPNAME']].reset_index()
         # change '2A' and '2B' dep (for Corse) to 20
         pop.loc[pop.DEP == '2A', 'DEP'] = 20
         pop.loc[pop.DEP == '2B', 'DEP'] = 20
@@ -131,6 +127,12 @@ def create_pop():
         # Give 2A and 2B population the value of their sum
         corse_total = pop.loc[pop.DEP == 20].groupby(by='DEP').sum().Total.values[0]
         pop.loc[pop.DEP == 20, 'Total'] = corse_total
+
+        # get df of 1 year
+        dfn = pd.DataFrame(df2.loc[df2.index == year].reset_index(drop=True).stack(), columns=['naissances'])
+        dfn = dfn.reset_index(1).reset_index(drop=True)
+        dfn.rename(columns={'dpt': 'DEP'}, inplace=True)
+        # merge
         dfm = pd.merge(dfn, pop, on='DEP')
         dfm['tx_nat_p_1000'] = dfm['naissances'] * 1000 / pd.Series(dfm['Total'], dtype=float)
         dfm['DEP'] = dfm.DEP.astype(object)
