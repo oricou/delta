@@ -167,8 +167,8 @@ class Map():
 
 
     def on_interval(self, _, year):
-        if year == self.years[-1]:
-            return self.years[0]
+        if year >= len(self.years) - 1:
+            return 0
         else:
             return year + 1
 
