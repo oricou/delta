@@ -14,6 +14,7 @@ class Birth_Map:
     def __init__(self, application=None):
 
         self.df_naiss = pd.read_pickle('data/naissances_par_dep_1970_2020.pkl')
+        self.df_pop = pd.read_pickle('data/population_dep_1968_2018.pkl')
         self.years = sorted(set(self.df_naiss.index.values))
         self.year = self.years[0]
         self.df_dict = {}
@@ -69,6 +70,7 @@ class Birth_Map:
                 dcc.Interval(  # fire a callback periodically
                     id='bmap-auto-stepper',
                     interval=5000,  # in milliseconds
+                    disabled=False,
                     max_intervals=-1,  # start running
                     n_intervals=0
                 ),
@@ -83,6 +85,7 @@ class Birth_Map:
                 dcc.Graph(id='bmap-naissances-graph',
                           style={'width': '50%', 'display': 'inline-block', 'padding-left': '0.5%'}),
             ], style={'display': 'flex',
+                      'height': '40vh',
                       'borderTop': 'thin lightgrey solid',
                       'borderBottom': 'thin lightgrey solid',
                       'justifyContent': 'center', }),
@@ -92,22 +95,25 @@ class Birth_Map:
 
             dcc.Markdown("""
             Déplacez le slider pour afficher la carte de l'année correspondante, ou laissez le avancer tout seul.
-            Survolez un département avec votre souris pour afficher plus d'informations.
+            Survolez un département avec votre souris pour afficher plus d'informations et les graphiques correspondants.
             
             Note:
                * Le taux de natalité correspond au nombre de naissances par rapport au nombre total de la population
                * Lecture: une couleur foncé signifie un faible taux de natalité (peu de naissances par rapport à la population), une couleur claire un haut taux de natalité.
                * En 1970, le taux de natalité dans le département de la Cher (18) est de 12,3 pour 1000. La population y est de 304400 et les naissances sur l'année s'élèvent à 3759.
-            
-            Sources:
-               * Naissances: https://www.insee.fr/fr/statistiques/2540004?sommaire=4767262
-               * Population: https://www.insee.fr/fr/statistiques/1893204#consulter.
-
+                
             A noter que les données sources des naissances sont celle des prénoms attribués sur l'année,
             mais qu'elle est présentée comme ne présentant pas d'écart significatifs aux naissances sur l'année
             à partir de 1946 [sur le site de l'INSEE.](https://www.insee.fr/fr/statistiques/2540004?sommaire=4767262#documentation).
             Cependant, au vu de l'incohérence de ces données avec d'autres que j'ai pu trouvé sur des années spécifique,
             les valeurs pour les naissances annuelles sont à prendre avec précaution.
+            
+            A Propos:
+               * Sources:
+                  * Naissances: https://www.insee.fr/fr/statistiques/2540004?sommaire=4767262
+                  * Population: https://www.insee.fr/fr/statistiques/1893204#consulter.
+               * (c) 2022 Clément BIEBER & Mohamed-Jordan SOUMANO
+
             """),
         ], style={
             'backgroundColor': 'white',
@@ -136,7 +142,7 @@ class Birth_Map:
             dash.dependencies.State('bmap-button-start-stop', 'children'))(self.button_on_click)
         # this one is triggered by the previous one because we cannot have 2 outputs for the same callback
         self.app.callback(
-            dash.dependencies.Output('bmap-auto-stepper', 'max_interval'),
+            dash.dependencies.Output('bmap-auto-stepper', 'disabled'),
             [dash.dependencies.Input('bmap-button-start-stop', 'children')])(self.run_movie)
         # triggered by previous
         self.app.callback(
@@ -178,16 +184,17 @@ class Birth_Map:
         fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
         return fig
 
-
+    def create_pop_graph(self, dep, depname):
+        df = self.df_pop.loc[self.df_pop.DEP == str(dep)]['Total'].reset_index()
+        return px.line(df, x='year', y='Total', title=f'Evolution de la population en {depname}')
 
     def update_pop_graph(self, hoverData):
         if hoverData == None:
-            return self.create_naiss_graph(1, 'Ain')
+            return self.create_pop_graph('01', 'Ain')
         hover = hoverData['points'][0]
         dep = hover['location']
         depname = hover['hovertext']
-        return self.create_naiss_graph(1, 'Ain')
-
+        return self.create_pop_graph(dep, depname)
 
     def create_naiss_graph(self, dep, depname):
         return px.line(self.df_naiss[dep], title=f'Evolution des naissances en {depname}',
@@ -206,7 +213,6 @@ class Birth_Map:
             dep = 20
         return self.create_naiss_graph(dep, depname)
 
-
     # start and stop the movie
     def button_on_click(self, n_clicks, text):
         if text == self.START:
@@ -217,10 +223,8 @@ class Birth_Map:
     # this one is triggered by the previous one because we cannot have 2 outputs
     # in the same callback
     def run_movie(self, text):
-        if text == self.START:  # then it means we are stopped
-            return 0
-        else:
-            return -1
+        return text == self.START  # if text is START (must stop), disabled = True
+
 
     # see if it should move the slider for simulating a movie
     def on_interval(self, n_intervals, year, text):

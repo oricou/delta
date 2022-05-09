@@ -21,11 +21,7 @@ class MapsPage:
             ], style={'display': 'flex',
                       'justifyContent': 'space-evenly', }),
 
-            html.Div(id='subpage-maps-page', children=[
-                dcc.Markdown("""
-                Cliquez sur l'un des bouttons suivants pour afficher la ou les cartes correspondantes.
-                """)
-            ], style={
+            html.Div(id='subpage-maps-page', style={
                 'justifyContent': 'center'
             }),
 
@@ -52,3 +48,17 @@ class MapsPage:
             return self.birth_map.main_layout
         elif '2020-button' in changed_id:
             return self.maps_2020.main_layout
+        else:
+            return html.Div(children=[
+                html.Br(),
+                html.Br(),
+                html.Br(),
+                html.Div("Cliquez sur l'un des bouttons suivants pour afficher la ou les cartes correspondantes."),
+                html.Br(),
+                html.Br(),
+                html.Br(),
+                html.Br(),
+                dcc.Markdown("""            
+               * (c) 2022 Clément BIEBER & Mohamed-Jordan SOUMANO
+            """)
+            ])

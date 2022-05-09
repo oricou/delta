@@ -46,9 +46,9 @@ def naissances2020(file, pkl_name):
 
 
 def population(file, pkl_name):
+    if exists(pkl_name):
+        return False
     for date in pop_years:
-        if exists(f'{pkl_name}{date}.pkl'):
-            continue
         pop = pd.read_excel(file, sheet_name=f'DEP_{date}', header=[0, 1, 2], index_col=[1, 2], skiprows=8)
         pop.dropna(inplace=True)
         pop.columns = pop.columns.droplevel(2)
@@ -61,7 +61,21 @@ def population(file, pkl_name):
         pop = pop.astype(int)
         pop = pop.groupby(by='AGE', axis=1).sum()
         pop['Total'] = pop.sum(axis=1)
-        pop.to_pickle(f'{pkl_name}{date}.pkl')
+        pop['year'] = date
+        pop.set_index('year', append=True, inplace=True)
+        pop = pop.reorder_levels([2, 0, 1], axis='index')
+        pop_to_concat.append(pop.reset_index(1).reset_index(1))
+    return True
+
+def concat_pop():
+    l = []
+    for y in pop_years:
+        df = pd.read_pickle(f'population_dep_{y}.pkl')
+        df['year'] = y
+        df.set_index('year', append=True, inplace=True)
+        df = df.reorder_levels([2, 0, 1], axis='index')
+        l.append(df)
+    df = pd.concat(l)
 
 
 def naissances(file, pkl_name):
@@ -93,9 +107,8 @@ def closest(k):
 
 def create_pop():
     df2 = pd.read_pickle('naissances_par_dep_1970_2020.pkl')
-    popDic = {}
-    for y in lst:
-        popDic.update({y: pd.read_pickle(f'population_dep_{y}.pkl')})
+    df_pop = pd.read_pickle('population_dep_1968_2018.pkl')
+
     folder = 'population_birth_rate'
     if not exists(folder):
         os.mkdir(folder)
@@ -104,7 +117,7 @@ def create_pop():
         if exists(f'{folder}/{year}.pkl'):
             continue
         pyear = closest(year)
-        pop = popDic.get(pyear)
+        pop = df_pop.loc[pyear].copy()
         # get df of 1 year
         dfn = pd.DataFrame(df2.loc[df2.index == year].reset_index(drop=True).stack(), columns=['naissances'])
         dfn = dfn.reset_index(1).reset_index(drop=True)
@@ -142,11 +155,13 @@ if not exists(pkl):
         population2020(BytesIO(res.content), pkl)
 
 # from 1970 to 2020
+pop_to_concat = []
 pop_years = [1968, 1975, 1982, 1990, 1999, 2008, 2013, 2018]
-pkl = 'population_dep_'
+pkl = 'population_dep_1968_2018.pkl'
 file = 'pop-sexe-age-quinquennal6818.xls'
 url = 'https://www.insee.fr/fr/statistiques/fichier/1893204/pop-sexe-age-quinquennal6817.zip'
-exec_zip(url, file, pkl, population)
+if exec_zip(url, file, pkl, population):
+    pd.concat(pop_to_concat).to_pickle(pkl)
 
 # DECES
 

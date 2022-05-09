@@ -80,10 +80,15 @@ class Carte(object):
            * Lecture: une couleur foncé signifie un faible taux de natalité (peu de naissances par rapport à la population), une couleur claire un haut taux de natalité.
            * Lecture: En 2020, le taux de mortalité dans le département de la Charente (16) est de 12,1 pour 1000. La population y est de 348180 et les décès sur l'année s'élèvent à 4225.
 
-        Sources:
-           * Décès 2020: https://www.insee.fr/fr/statistiques/5431034?sommaire=5419788&q=d%C3%A9c%C3%A8s
-           * Naissances 2020: https://www.insee.fr/fr/statistiques/5419785
-           * Population 2020: https://www.insee.fr/fr/statistiques/fichier/4277596/T20F013.xlsx\
+        A propos:
+           * Sources:
+              * Décès 2020: https://www.insee.fr/fr/statistiques/5431034?sommaire=5419788&q=d%C3%A9c%C3%A8s
+              * Naissances 2020: https://www.insee.fr/fr/statistiques/5419785
+              * Population 2020: https://www.insee.fr/fr/statistiques/fichier/4277596/T20F013.xlsx
+           * (c) 2022 Clément BIEBER & Mohamed-Jordan SOUMANO
+        
+           
+           
         """),
         ], style={
             'backgroundColor': 'white',
