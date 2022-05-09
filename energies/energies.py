@@ -42,7 +42,8 @@ class Energies():
                     id='nrg-auto-stepper',
                     interval=1000,       # in milliseconds
                     max_intervals = -1,  # start running
-                    n_intervals = 0
+                    n_intervals = 0,
+                    disabled=True,
                 ),
                 ], style={
                     'padding': '0px 50px', 
@@ -50,6 +51,11 @@ class Energies():
                 }),
 
             html.Div([
+                html.Button(
+                    'START',
+                    id='nrg-button-start-stop', 
+                    n_clicks=0,
+                ),
                 html.Div([ html.Div('Prix'),
                            dcc.RadioItems(
                                id='nrg-price-type',
@@ -122,7 +128,14 @@ class Energies():
         self.app.callback(
                 dash.dependencies.Output('nrg-year-slider', 'value'),
                 dash.dependencies.Input ('nrg-auto-stepper', 'n_intervals'),
-                dash.dependencies.Input('nrg-year-slider', 'value'))(self.on_interval)
+                dash.dependencies.State('nrg-year-slider', 'value'))(self.on_interval)
+
+        self.app.callback(
+                dash.dependencies.Output('nrg-button-start-stop', 'disabled'),
+                dash.dependencies.Output('nrg-button-start-stop', 'children'),
+                dash.dependencies.Input('nrg-button-start-stop', 'n_clicks'),
+                dash.dependencies.State('nrg-button-start-stop', 'disabled'),
+                )(self.on_click)
 
 
     def update_graph(self, date_index, crime, xaxis_type):
@@ -159,6 +172,10 @@ class Energies():
             return self.years[0]
         else:
             return year + 1
+
+    def on_click(self, disabled, n_clicks):
+        print('test')
+        return not disabled, str(n_clicks)
 
 
 if __name__ == '__main__':
