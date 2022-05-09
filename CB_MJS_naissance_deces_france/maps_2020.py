@@ -27,7 +27,7 @@ class Carte(object):
                                    zoom=4.6, center={"lat": 47, "lon": 2},
                                    opacity=0.5,
                                    labels={'DEP': 'Numéro du département',
-                                           'deces pour 10000': 'Part des décès pour 1000',
+                                           'deces pour 10000': 'Taux de mortalité pour 1000',
                                            'DECES': 'Nombre de décès',
                                            'population': 'Population du département'}
                                    )
@@ -42,13 +42,12 @@ class Carte(object):
                                     zoom=4.6, center={"lat": 47, "lon": 2},
                                     opacity=0.5,
                                     labels={'DEP': 'Numéro du département',
-                                            'Naissances pour 10000': 'Part des naissances pour 1000',
+                                            'Naissances pour 10000': 'Taux de natalité pour 1000',
                                             'NAISSANCES': 'Nombre de naissances',
                                             'population': 'Population du département'}
                                     )
 
         self.main_layout = html.Div(children=[
-            html.Br(),
             html.Div(children=[
                 html.Div(children=[
                     html.Div('Carte du taux de mortalité par département en France en 2020'),

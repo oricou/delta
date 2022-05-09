@@ -115,6 +115,9 @@ def create_pop():
         pop.loc[pop.DEP == '2A', 'DEP'] = 20
         pop.loc[pop.DEP == '2B', 'DEP'] = 20
         pop.DEP = pop.DEP.astype(int)
+        # Give 2A and 2B population the value of their sum
+        corse_total = pop.loc[pop.DEP == 20].groupby(by='DEP').sum().Total.values[0]
+        pop.loc[pop.DEP == 20, 'Total'] = corse_total
         dfm = pd.merge(dfn, pop, on='DEP')
         dfm['tx_nat_p_1000'] = dfm['naissances'] * 1000 / pd.Series(dfm['Total'], dtype=float)
         dfm['DEP'] = dfm.DEP.astype(object)
