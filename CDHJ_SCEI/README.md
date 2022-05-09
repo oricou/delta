@@ -15,7 +15,7 @@ pip install -r requirements.txt --no-deps
 ```
 3. To run the project, simply run the **app.py** script.
 ```shell
-python app.py
+python src/app.py
 ```
 
 ## Data sources
