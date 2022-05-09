@@ -75,6 +75,7 @@ class Energies():
                         }),
                 html.Br(),
                 dcc.Markdown("""
+                # TODO: correct all following
                 Le graphique est interactif. En passant la souris sur les courbes vous avez une infobulle. 
                 En cliquant ou double-cliquant sur les lignes de la légende, vous choisissez les courbes à afficher.
                 
