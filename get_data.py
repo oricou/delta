@@ -22,6 +22,10 @@ def read_excel_sheets(xls_path):
     return pd.concat(df)
 
 if __name__ == "__main__":
+    data_dir = pathlib.Path('data')
+    if not data_dir.is_dir():
+        data_dir.mkdir()
+
     url = "https://www.data.gouv.fr/api/1/datasets/chiffres-departementaux-mensuels-relatifs-aux-crimes-et-delits-enregistres-par-les-services-de-police-et-de-gendarmerie-depuis-janvier-1996/"
     crimes_resources = requests.get(url).json()
 
@@ -36,11 +40,11 @@ if __name__ == "__main__":
     dfs = {}
     for k, v in filenames.items():
         name_db = f'{v[-7:-5]}_db'
-        if pathlib.Path(f'{name_db}.pkl').is_file():
-            dfs[name_db] = pd.read_pickle(f'{name_db}.pkl')
+        if pathlib.Path(f'data/{name_db}.pkl').is_file():
+            dfs[name_db] = pd.read_pickle(f'data/{name_db}.pkl')
         else:
             if not pathlib.Path(k).is_file():
-                with open(k, 'wb') as file:
+                with open('data/' + k, 'wb') as file:
                     file.write(requests.get(v).content)
             dfs[name_db] = read_excel_sheets(k)
-            dfs[name_db].to_pickle(f'{name_db}.pkl')
+            dfs[name_db].to_pickle(f'data/{name_db}.pkl')
