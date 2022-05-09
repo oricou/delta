@@ -86,9 +86,12 @@ class Map():
                                 
                 En faisant défiler le curseur sur la frise vous pouvez le mois et l'année qui vous intéresse.
 
-                Cette base de donnée est mise à jour mensuellement, aussi nous avons fait attention à ce que notre site tienne compte de nouvels ajouts de données.
-                
+                Cette map représente le nombre de crimes déclarés chaque mois dans chaque département de France.
+
+
                 #### À propos
+
+                Cette base de donnée est mise à jour mensuellement, aussi nous avons fait attention à ce que notre site tienne compte de nouvels ajouts de données.
 
                 * Sources : 
                    * [data.gouv.fr](https://www.data.gouv.fr/datasets/chiffres-departementaux-mensuels-relatifs-aux-crimes-et-delits-enregistres-par-les-services-de-police-et-de-gendarmerie-depuis-janvier-1996/)
@@ -131,7 +134,7 @@ class Map():
         name_ladder = "Nombre de crimes" if not xaxis_type else "Log du nombre de crimes"
 
         df = self.departament[['Département', crime]]
-        
+
         df.rename(columns={crime:name_ladder}, inplace=True)
         crime = name_ladder
 
