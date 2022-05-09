@@ -128,8 +128,12 @@ class Map():
 
 
     def update_graph(self, date_index, crime, xaxis_type):
-        
+        name_ladder = "Nombre de crimes" if not xaxis_type else "Log du nombre de crimes"
+
         df = self.departament[['Département', crime]]
+        
+        df.rename(columns={crime:name_ladder}, inplace=True)
+        crime = name_ladder
 
         val_max = df[crime].max()
         val_min = 0
