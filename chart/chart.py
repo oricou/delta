@@ -102,6 +102,7 @@ class Chart():
                 corr,
                 zmin = -1,
                 zmax = 1,
+                title = "Mise en corrélation des différents crimes",
         )
         fig.update_yaxes(matches=None, visible=False)
         fig.update_xaxes(matches=None, visible=False)
