@@ -55,6 +55,7 @@ class Energies():
                     'START',
                     id='nrg-button-start-stop', 
                     n_clicks=0,
+                    style={'display':'inline-block'}
                 ),
                 html.Div([ html.Div('Prix'),
                            dcc.RadioItems(
