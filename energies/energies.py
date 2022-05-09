@@ -111,9 +111,6 @@ class Energies():
                       dash.dependencies.Input('nrg-which-year', 'value'),
                       dash.dependencies.Input('nrg-which-crime', 'value'),
                       dash.dependencies.Input('nrg-xaxis-type', 'value'),])(self.update_graph)
-        self.app.callback(
-                    [ dash.dependencies.Output('nrg-which-year', 'disabled')],
-                      dash.dependencies.Input('nrg-price-type', 'value') )(self.disable_month_year)
 
     def update_graph(self, month, year, crime, xaxis_type):
         
@@ -146,12 +143,7 @@ class Energies():
 
         return fig
 
-    def disable_month_year(self, price_type):
-        if price_type == 2:
-            return False, False
-        else:
-            return True, True
-        
+
 if __name__ == '__main__':
     nrg = Energies()
     nrg.app.run_server(debug=True, port=8051)
