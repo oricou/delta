@@ -144,9 +144,7 @@ class Map():
 
         if xaxis_type:
             val_max = np.log(val_max + 1)
-            df[crime] += 1
-            df[crime] = np.log(df[crime])
-
+            df[crime] = np.log(1 + df[crime])
 
         fig = px.choropleth_mapbox(df, geojson=self.counties,
                                    featureidkey='properties.code',
