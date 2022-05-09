@@ -58,15 +58,13 @@ class Chart():
                         }),
                 html.Br(),
                 dcc.Markdown("""
-                # TODO: correct all following
-                Le graphique est interactif. En passant la souris sur les courbes vous avez une infobulle. 
-                En cliquant ou double-cliquant sur les lignes de la légende, vous choisissez les courbes à afficher.
-                
-                Notes :
-                   * FOD est le fioul domestique.
-                   * Pour les prix relatifs, seules les énergies fossiles sont prises en compte par manque de données pour les autres.
+                Le graphique est interactif. En passant la souris sur les courbes vous avez une infobulle.  
+                En sélectionnant les différentes catégories, vous pouvez choisir
+                celles corréllées et affichées sur les graphiques.  
 
                 #### À propos
+
+                Cette base de donnée est mise à jour mensuellement, aussi nous avons fait attention à ce que notre site tienne compte de nouvels ajouts de données.
 
                 * Sources : 
                    * [data.gouv.fr](https://www.data.gouv.fr/datasets/chiffres-departementaux-mensuels-relatifs-aux-crimes-et-delits-enregistres-par-les-services-de-police-et-de-gendarmerie-depuis-janvier-1996/)

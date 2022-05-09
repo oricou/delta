@@ -82,12 +82,9 @@ class Map():
                         }),
                 html.Br(),
                 dcc.Markdown("""
-                Le graphique est interactif. En passant la souris sur les départements vous aurez une infobulle. 
-                                
-                En faisant défiler le curseur sur la frise vous pouvez le mois et l'année qui vous intéresse.
-
-                Cette map représente le nombre de crimes déclarés chaque mois dans chaque département de France.
-
+                Le graphique est interactif. En passant la souris sur les départements vous aurez une infobulle.  
+                En faisant défiler le curseur sur la frise vous pouvez le mois et l'année qui vous intéresse.  
+                Cette map représente le nombre de crimes déclarés chaque mois dans chaque département de France.  
 
                 #### À propos
 
