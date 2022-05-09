@@ -15,7 +15,7 @@ import json
 class Energies():
 
     def __init__(self, application = None):
-        self.pn_df = pd.read_pickle('pn_db.pkl')
+        self.pn_df = pd.read_pickle('data/pn_db.pkl')
         self.departament = self.pn_df[(self.pn_df['Département'] != 'France_Métro') & (self.pn_df['Département'] != 'France_Entière')]
         with urlopen('https://france-geojson.gregoiredavid.fr/repo/departements.geojson') as response:
             self.counties = json.load(response)
