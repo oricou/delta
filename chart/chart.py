@@ -33,13 +33,14 @@ class Chart():
             ),
 
             html.Div([
-                dcc.Checklist(
-                    id='chart-items-crimes',
-                    options=[{'label': self.ts_df.columns[i], 'value': i }
-                        for i in range(len(self.ts_df.columns) - 1)],
-                    value=[0, 1, 2, 3],
-                    inline=False
-                ),
+                html.Div([ html.Div('Sélectionner catégorie'),
+                    dcc.Checklist(
+                        id='chart-items-crimes',
+                        options=[{'label': self.ts_df.columns[i], 'value': i }
+                            for i in range(len(self.ts_df.columns) - 1)],
+                        value=[0, 1, 2, 3],
+                        inline=False),],
+                    style={'margin':"0px 0px 0px 40px"}),
                 html.Div([ html.Div('Échelle en y'),
                            dcc.RadioItems(
                                id='chart-xaxis-type',
