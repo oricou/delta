@@ -142,7 +142,6 @@ class Energies():
                                    mapbox_style="carto-positron",
                                    zoom=4.3, center = {"lat": 46, "lon": 2.349014},
                                    opacity=0.5,
-                                   labels={'unemp':'unemployment rate'}
                                   )
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 
