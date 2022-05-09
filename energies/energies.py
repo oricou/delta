@@ -39,8 +39,8 @@ class Energies():
                 html.Div([ html.Div('Mois ref.'),
                            dcc.Dropdown(
                                id='nrg-which-month',
-                               options=[{'label': i, 'value': i} for i in self.mois],
-                               value="01",
+                               options=[{'label': i, 'value': self.mois[i]} for i in self.mois],
+                               value='01',
                                disabled=False,
                            ),
                          ], style={'width': '16em', 'padding':'2em 0px 0px 0px'}), # bas D haut G
@@ -116,12 +116,6 @@ class Energies():
         
         df = self.pn_df[['Département', crime]]
 
-        if not month in self.mois:
-            month = '01'
-        if not year in self.years:
-            year = 2001
-        if not crime in df.columns:
-            crime = 'Autres délits'
         date = str(year) + "-" + month + "-01"
         df = df.loc[date]
 
