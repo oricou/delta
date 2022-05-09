@@ -82,14 +82,12 @@ class Map():
                         }),
                 html.Br(),
                 dcc.Markdown("""
-                # TODO: correct all following
-                Le graphique est interactif. En passant la souris sur les courbes vous avez une infobulle. 
-                En cliquant ou double-cliquant sur les lignes de la légende, vous choisissez les courbes à afficher.
-                
-                Notes :
-                   * FOD est le fioul domestique.
-                   * Pour les prix relatifs, seules les énergies fossiles sont prises en compte par manque de données pour les autres.
+                Le graphique est interactif. En passant la souris sur les départements vous aurez une infobulle. 
+                                
+                En faisant défiler le curseur sur la frise vous pouvez le mois et l'année qui vous intéresse.
 
+                Cette base de donnée est mise à jour mensuellement, aussi nous avons fait attention à ce que notre site tienne compte de nouvels ajouts de données.
+                
                 #### À propos
 
                 * Sources : 
@@ -133,15 +131,18 @@ class Map():
         
         df = self.departament[['Département', crime]]
 
+        val_max = df[crime].max()
+        val_min = 0
+
         date = self.years[date_index]
+
         df = df.loc[date]
 
         if xaxis_type:
+            val_max = np.log(val_max + 1)
             df[crime] += 1
             df[crime] = np.log(df[crime])
 
-        val_min = df[crime].min()
-        val_max = df[crime].max()
 
         fig = px.choropleth_mapbox(df, geojson=self.counties,
                                    featureidkey='properties.code',
