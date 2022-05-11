@@ -1,0 +1,17 @@
+numpy
+xarray
+pandas
+pandas-datareader
+beautifulsoup4
+lxml
+openpyxl
+xlrd
+imageio
+folium
+seaborn
+plotly
+dash
+gunicorn
+flask
+scipy
+statsmodels
