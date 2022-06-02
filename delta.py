@@ -13,7 +13,7 @@ server = app.server
 pop = population.WorldPopulationStats(app)
 nrg = energies.Energies(app)
 dec = deces.Deces(app)
-ine = mzgl_inegalites_de_revenus.Inegalites_de_revenus(app)
+mzgl_ine_rev = mzgl_inegalites_de_revenus.Inegalites_de_revenus(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -28,7 +28,7 @@ main_layout = html.Div([
                               html.Br(),
                               dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
                               html.Br(),
-                              dcc.Link(html.Button('Inégalités de revenus', style={'width':"100%"}), href='/inegalites'),
+                              dcc.Link(html.Button('Inégalités de revenus', style={'width':"100%"}), href='/mzgl_inegalites_revenus'),
                               html.Br(),
                               html.Br(),
                               html.Br(),
@@ -70,8 +70,8 @@ def display_page(pathname):
         return pop.main_layout
     elif pathname == '/deces':
         return dec.main_layout
-    elif pathname == '/inegalites':
-        return ine.main_layout
+    elif pathname == '/mzgl_inegalites_revenus':
+        return mzgl_ine_rev.main_layout
     else:
         return home_page
 
