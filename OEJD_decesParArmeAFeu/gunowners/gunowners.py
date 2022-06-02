@@ -28,7 +28,7 @@ class Gunowners():
         self.begin = 1980
         self.end = 2016
         self.years = get_years_dic(self.begin, self.end)
-        
+
         datas = GunOwnersData(self.begin, self.end)
         self.df_wages = datas.init_wages()
         self.df_gowners = datas.init_gowners()
@@ -36,8 +36,8 @@ class Gunowners():
         self.main_layout = html.Div(children=[
             html.Div([
                 html.H3("Possession d'arme à feu aux Etats-Unis"),
-                dcc.Graph(id="graph-plot-line"),
-                dcc.RadioItems(id='check-plot-line',
+                dcc.Graph(id="oejd--graph-plot-line"),
+                dcc.RadioItems(id='oejd--check-plot-line',
                                          options=[{'label':'Moyenne de chaque état', 'value':0},
                                                   {'label':'Moyenne du pays', 'value':1}],
                                          value=1,
@@ -64,8 +64,8 @@ class Gunowners():
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
         self.app.callback(
-                    dash.dependencies.Output("graph-plot-line", "figure"),
-                    dash.dependencies.Input("check-plot-line", "value"))(self.update_plotline)
+                    dash.dependencies.Output("oejd--graph-plot-line", "figure"),
+                    dash.dependencies.Input("oejd--check-plot-line", "value"))(self.update_plotline)
 
     def update_plotline(self, value):
         df = self.df_gowners

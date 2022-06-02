@@ -31,7 +31,7 @@ class Usamap():
     STOP  = 'Stop'
 
     def __init__(self, application = None):
-        
+
         self.begin = 2001
         self.end = 2020
         self.years = get_years_dic(self.begin, self.end)
@@ -44,19 +44,19 @@ class Usamap():
 
         self.main_layout = html.Div(children=[
             html.H3(children='Nombre de morts par arme à feu en fonction du niveau de richesse aux Etats-Unis'),
-            html.Div([ dcc.Graph(id='mpj-main-graph_usamap'), ], style={'width':'100%', }),
+            html.Div([ dcc.Graph(id='oejd--mpj-main-graph_usamap'), ], style={'width':'100%', }),
 
-            html.Div([dcc.Slider(self.begin, self.end, 1, value=self.begin, id='my-slider', marks=self.years),
-                html.Div(id='slider-output-container')]),
+            html.Div([dcc.Slider(self.begin, self.end, 1, value=self.begin, id='oejd--my-slider', marks=self.years),
+                html.Div(id='oejd--slider-output-container')]),
             dcc.Interval(            # fire a callback periodically
-                id='auto-stepper',
+                id='oejd--auto-stepper',
                 interval=500,       # in milliseconds
                 max_intervals = -1,  # start running
                 n_intervals = 0
             ),
             html.Button(
                             self.START,
-                            id='button-start-stop',
+                            id='oejd--button-start-stop',
                             style={'display':'inline-block'}
                         ),
             html.Br(),
@@ -76,12 +76,12 @@ class Usamap():
              'padding': '10px 50px 10px 50px',
              }
         )
-                    
+
         self.gunowners = Gunowners(application)
         self.gundeaths = Gundeaths(application)
         self.main_layout.children.append(self.gunowners.main_layout.children[0])
         self.main_layout.children.append(self.gundeaths.main_layout.children[0])
-        
+
         if application:
             self.app = application
             # application should have its own layout and use self.main_layout as a page or in a component
@@ -91,24 +91,24 @@ class Usamap():
 
 
         self.app.callback(
-                    dash.dependencies.Output('mpj-main-graph_usamap', 'figure'),
-                    [dash.dependencies.Input('my-slider', 'value')])(self.update_graph)
+                    dash.dependencies.Output('oejd--mpj-main-graph_usamap', 'figure'),
+                    [dash.dependencies.Input('oejd--my-slider', 'value')])(self.update_graph)
 
 
         self.app.callback(
-            dash.dependencies.Output('button-start-stop', 'children'),
-            dash.dependencies.Input('button-start-stop', 'n_clicks'),
-            dash.dependencies.State('button-start-stop', 'children'))(self.button_on_click)
+            dash.dependencies.Output('oejd--button-start-stop', 'children'),
+            dash.dependencies.Input('oejd--button-start-stop', 'n_clicks'),
+            dash.dependencies.State('oejd--button-start-stop', 'children'))(self.button_on_click)
 
         self.app.callback(
-            dash.dependencies.Output('my-slider', 'value'),
-            dash.dependencies.Input('auto-stepper', 'n_intervals'),
-            [dash.dependencies.State('my-slider', 'value'),
-             dash.dependencies.State('button-start-stop', 'children')])(self.on_interval)
+            dash.dependencies.Output('oejd--my-slider', 'value'),
+            dash.dependencies.Input('oejd--auto-stepper', 'n_intervals'),
+            [dash.dependencies.State('oejd--my-slider', 'value'),
+             dash.dependencies.State('oejd--button-start-stop', 'children')])(self.on_interval)
 
         self.app.callback(
-            dash.dependencies.Output('auto-stepper', 'max_interval'),
-            [dash.dependencies.Input('button-start-stop', 'children')])(self.run_movie)
+            dash.dependencies.Output('oejd--auto-stepper', 'max_interval'),
+            [dash.dependencies.Input('oejd--button-start-stop', 'children')])(self.run_movie)
 
     def button_on_click(self, n_clicks, text):
         if text == self.START:

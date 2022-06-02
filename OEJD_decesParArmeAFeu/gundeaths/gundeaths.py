@@ -46,7 +46,7 @@ class Gundeaths():
             html.Div(html.H3("Raisons et victimes des meurtres avec une arme à feu aux États-Unis")),
             html.Br(),
             html.Div([
-                dcc.Graph(id='graph-cod', figure=self.init_fig_cod()),
+                dcc.Graph(id='oejd--graph-cod', figure=self.init_fig_cod()),
                 dcc.Markdown('Le graphique représente les raisons principales ayant causé des morts avec arme à feu\
                 aux États-Unis en 2020. Le total sur cette année est de 45 222, ce qui est 13,9 % de plus par rapport à 2019 (39 707).\
                  86% des 45 222 défunts sont des hommes.')
@@ -54,7 +54,7 @@ class Gundeaths():
             html.Br(),
             html.Div([
             html.Div([
-                dcc.Graph(id='graph-agedeaths'), ], style={'width':'90%', }),
+                dcc.Graph(id='oejd--graph-agedeaths'), ], style={'width':'90%', }),
             html.Div([
                 html.Br(),
                 html.Br(),
@@ -66,7 +66,7 @@ class Gundeaths():
                                },
                                value=['Male', 'Female'],
                                labelStyle={'display':'block'},
-                               id='checklist'
+                               id='oejd--checklist'
                             )], style={'margin-left':'2px', 'width': '6em', 'float':'right'}),
                 ], style={
                     'padding': '10px 50px',
@@ -74,8 +74,8 @@ class Gundeaths():
                     'justifyContent':'center'
                 }),
             html.Div([
-                html.Div([dcc.Slider(self.begin, self.end, 1, value=self.begin, id='my-slider-deaths', marks=self.years),
-                    html.Div(id='slider-output-deaths')]),
+                html.Div([dcc.Slider(self.begin, self.end, 1, value=self.begin, id='oejd--my-slider-deaths', marks=self.years),
+                    html.Div(id='oejd--slider-output-deaths')]),
                 html.Br(),
                 dcc.Markdown("""
                             Le graphique est interactif. En passant la souris sur les courbes vous avez une infobulle.
@@ -88,7 +88,7 @@ class Gundeaths():
                                * À partir de 2019 les raisons "Indéterminé" et "Intervention judiciaire" ne sont pas présentes.
 
                             #### À propos
-                            * Sources : 
+                            * Sources :
                                * database de National Safety Council créé à partir de [CDC Wonder](https://wonder.cdc.gov/mcd-icd10.html)
                                * [base des salaires moyens](https://data.bls.gov/maps/cew/US?period=2021-Q3&industry=10&geo_id=US000&chartData=3&distribution=1&pos_color=blue&neg_color=orange&showHideChart=show&ownerType=0) du U.S. BUREAU OF LABOR STATISTICS
                                * [base des morts par arme à feu](https://usafacts.org/data/topics/security-safety/crime-and-justice/firearms/firearm-deaths/) de US gun deaths créée à partir de la base du [Centers for Disease Control and Prevention](https://wisqars.cdc.gov/data/explore-data/home).
@@ -102,7 +102,7 @@ class Gundeaths():
              'padding': '10px 50px 10px 50px',
              }
         )])
-        
+
         if application:
             self.app = application
             # application should have its own layout and use self.main_layout as a page or in a component
@@ -111,9 +111,9 @@ class Gundeaths():
             self.app.layout = self.main_layout
 
         self.app.callback(
-                    dash.dependencies.Output('graph-agedeaths', 'figure'),
-                    [dash.dependencies.Input('my-slider-deaths', 'value'),
-                    dash.dependencies.Input('checklist', 'value')])(self.update_fig_agedeaths)
+                    dash.dependencies.Output('oejd--graph-agedeaths', 'figure'),
+                    [dash.dependencies.Input('oejd--my-slider-deaths', 'value'),
+                    dash.dependencies.Input('oejd--checklist', 'value')])(self.update_fig_agedeaths)
 
 
 
@@ -138,4 +138,3 @@ class Gundeaths():
         )
         fig.update_layout(title="Tranches d'âge des morts par arme à feu aux États-Unis par sexe avec leurs raisons")
         return fig
-
