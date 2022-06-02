@@ -16,23 +16,24 @@ class TGV:
     pas_de_taux = [
         "Nombre de circulations prévues",
         "Retard moyen de tous les trains au départ",
-        "Retard moyen de tous les trains à l'arrivée"
+        "Retard moyen de tous les trains à l'arrivée",
     ]
 
     def update_map_visibility(self, map):
-        match map:
-            case "Trajet":
-                return {"display": "block"}
-            case "Gare":
-                return {"display": "none"}
+        if map == "Trajet":
+            return {"display": "block"}
+        elif map == "Gare":
+            return {"display": "none"}
+        else:
+            raise Exception(f"Invalid map: {map}")
 
     def update_hist_visibility(self, map):
-        match map:
-            case "Trajet":
-                return {"display": "none"}
-            case "Gare":
-                return {"display": "block"}
-
+        if map == "Trajet":
+            return {"display": "none"}
+        elif map == "Gare":
+            return {"display": "block"}
+        else:
+            raise Exception(f"Invalid map: {map}")
 
     def update_map(self, year, colonne, filter, data):
         """
