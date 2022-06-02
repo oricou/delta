@@ -61,7 +61,7 @@ from formations import formations as formations_lib
 from APAAL_criminalite_education import criminalite_education
 from ADHD_Movies import movies
 from ab_wg_apb_parcoursup import apb_parcoursup
-from pdlr_mg_sujet import bonheur as pdlr_mg_bonheur
+from pdlr_mg_bonheur import bonheur as pdlr_mg_bonheur
 
 #@profile
 def init():
@@ -257,7 +257,7 @@ def init():
             return inc.main_layout
         elif pathname == '/pollution':
             return pol.main_layout
-            return dec.main_layout 
+            return dec.main_layout
         elif pathname == '/cancer':
             return cncr.main_layout
         elif pathname == '/music':
