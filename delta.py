@@ -190,7 +190,7 @@ def init():
                                   dcc.Link(html.Button("Criminalité et Education", style={"width": "100%"}), href="/criminalite-education"),
                                   dcc.Link(html.Button('Rentabilité des films', style={'width':"100%"}), href='/ADHD_Movies'),
                                   dcc.Link( html.Button("APB / Parcoursup", style={"width": "100%"}), href="/ab-wg_apb-parcoursup",),
-                                  dcc.Link(html.Button('Bonheur', style={'width':"100%"}), href="/bonheur"),
+                                  dcc.Link(html.Button('Bonheur', style={'width':"100%"}), href="/pdlr_mg_bonheur"),
                                   html.Br(),
                                   html.Br(),
                                   html.Br(),
@@ -338,7 +338,7 @@ def init():
             return mvs.main_layout
         elif pathname == "/ab-wg_apb-parcoursup":
             return apb.main_layout
-        elif pathname == '/bonheur':
+        elif pathname == '/pdlr_mg_bonheur':
             return bnh.main_layout
         else:
             return home_page
