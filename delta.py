@@ -13,11 +13,11 @@ server = app.server
 pop = population.WorldPopulationStats(app)
 nrg = energies.Energies(app)
 dec = deces.Deces(app)
-frm = usamap.Usamap(app)
+oejd_frm = usamap.Usamap(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
-             children=[ 
+             children=[
                  dcc.Location(id='url', refresh=False),
                  html.Div(className="two columns",
                           children = [
@@ -71,7 +71,7 @@ def display_page(pathname):
     elif pathname == '/deces':
         return dec.main_layout
     elif pathname == '/OEJD_decesParArmeAFeu':
-        return frm.main_layout
+        return oejd_frm.main_layout
     else:
         return home_page
 
