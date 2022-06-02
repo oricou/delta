@@ -1,22 +1,8 @@
-import sys
-import glob
-from tkinter import W
 import dash
-import flask
 from dash import dcc
 from dash import html
 import pandas as pd
-import numpy as np
 import plotly.graph_objs as go
-import plotly.express as px
-import dateutil as du
-from scipy import stats
-from scipy import fft
-import datetime
-import xarray as xr
-
-import numpy as np
-
 class Chloro():
     def create_fig(self, chldf, fapardf, chl_colormap, fapar_colormap):
 
