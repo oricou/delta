@@ -30,6 +30,7 @@ class Presidentielles():
         df_lepen = df[df["candidat"] == "Marine Le Pen"]
         df_macron = df[df["candidat"] == "Emmanuel Macron"]
 
+        res_lepen = [41.45 for _ in range(len(df_lepen))]
         fig_sond_t2 = go.Figure()
         fig_sond_t2.add_trace(go.Scatter(x=df_lepen["date_enquete"], y=df_lepen["intentions"], name="Marine Le Pen",
                                          line=dict(color='royalblue', width=2)))
@@ -39,9 +40,11 @@ class Presidentielles():
         fig_sond_t2.add_trace(
             go.Scatter(x=df_lepen["date_enquete"], y=df_lepen["erreur_inf"], name="Erreur Inf : Marine Le Pen",
                        line=dict(color='royalblue', width=2, dash='dot')))
+        fig_sond_t2.add_trace(
+            go.Scatter(x=df_lepen["date_enquete"], y=res_lepen, name="Res : Marine Le Pen",
+                       line=dict(color='red', width=1, dash='dot')))
 
-
-        df_macron["res"] = 58.5
+        res_macron = [58.55 for _ in range(len(df_macron))]
         fig_sond_t2.add_trace(go.Scatter(x=df_macron["date_enquete"], y=df_macron["intentions"], name="Emmanuel Macron",
                                          line=dict(color='firebrick', width=2)))
         fig_sond_t2.add_trace(
@@ -51,12 +54,8 @@ class Presidentielles():
             go.Scatter(x=df_macron["date_enquete"], y=df_macron["erreur_inf"], name="Erreur Inf : Emmanuel Macron",
                        line=dict(color='firebrick', width=2, dash='dot')))
         fig_sond_t2.add_trace(
-            go.Scatter(x=df_macron["date_enquete"], y=df_macron["res"], name="Res : Emmanuel Macron",
+            go.Scatter(x=df_macron["date_enquete"], y=res_macron, name="Res : Emmanuel Macron",
                        line=dict(color='green', width=1, dash='dot')))
-        df_lepen["res"] = 41.45
-        fig_sond_t2.add_trace(
-            go.Scatter(x=df_lepen["date_enquete"], y=df_lepen["res"], name="Res : Marine Le Pen",
-                       line=dict(color='red', width=1, dash='dot')))
 
         fig_sond_t2.update_layout(title='Sondages présidentiels du second tour avec prise en compte de l\'erreur',
                                   xaxis_title='Temps',
