@@ -1,15 +1,13 @@
 .PHONY: docker
 
+run:
+	python3 --version
+	poetry run python3 delta.py
+
 debug:
 	sed -i -e 's/^@profile/#@profile/' delta.py
 	sed -i -e 's/profile = True/profile = False/' delta.py
-	poetry run python delta.py
-
-run:
-	sed -i -e 's/^@profile/#@profile/' delta.py
-	sed -i -e 's/profile = True/profile = False/' delta.py
-	#poetry run gunicorn --workers 1 -b 0.0.0.0:8000 delta:server
-	poetry run gunicorn --timeout 360 --workers 1 -b 0.0.0.0:8000 delta:server
+	poetry run python delta.pyi
 
 profile:
 	sed -i -e 's/^#@profile/@profile/' delta.py
