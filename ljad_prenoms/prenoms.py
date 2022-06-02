@@ -195,9 +195,9 @@ class Prenoms():
         self.main_layout = html.Div(children=[
             html.H3(children='Historique des prénoms de naissance, secteur d\'activité et chomâge par département'),
             html.Div([
-                         html.Div([ dcc.Graph(id='map', style={'height': '40em'}), ],
+                         html.Div([ dcc.Graph(id='ljad-map', style={'height': '40em'}), ],
                                   style={'height':'100%','width':'54%', 'display': 'inline-block'}),
-                         html.Div([ dcc.Graph(id='graph', style={'height': '40em'}), ],
+                         html.Div([ dcc.Graph(id='ljad-graph', style={'height': '40em'}), ],
                                   style={'height': '100%','width':'46%', 'display': 'inline-block'}),
                      ],style={
                         'backgroundColor': 'gray',
@@ -210,7 +210,7 @@ class Prenoms():
             html.Div([
                 html.Div([ html.Div('Type de cartes'),
                            dcc.RadioItems(
-                               id='map-type',
+                               id='ljad-map-type',
                                options=[{'label':'Occurrence des prénoms de naissance', 'value':0}, 
                                         {'label':'Taux de Chomage','value':1},
                                         {'label':'Secteur d\'activité','value':2},
@@ -219,31 +219,31 @@ class Prenoms():
                                labelStyle={'display':'block'},
                            )
                          ], style={'width': '15em'} ),
-                html.Div([ html.Div('Prénom de naissance', id='prenom'),
+                html.Div([ html.Div('Prénom de naissance', id='ljad-prenom'),
                             dcc.Dropdown(
-                                 id='name',
+                                 id='ljad-name',
                                  options=[{'label': i, 'value': i} for i in self.unique_prenoms],
                                  value='guillaume'
                              ), ], style={'width':'9em'}),
                 html.Div(style={'width':'2em'}),
-                html.Div([ html.Div('Département', id='departements'),
+                html.Div([ html.Div('Département', id='ljad-departements'),
                             dcc.Dropdown(
-                                 id='dpt',
+                                 id='ljad-dpt',
                                  options=[{'label': f"{i} - {DEPARTMENTS[i]}", 'value': i} for i in self.dpt],
                                  value=None
                              ), ], style={'width':'9em'}),
                 html.Div(style={'width':'2em'}),
                 html.Div([ html.Div('Année ref.'),
                            dcc.Dropdown(
-                               id='year',
+                               id='ljad-year',
                                options=[{'label': i, 'value': i} for i in self.years],
                                value=2000,
                            ),
                          ], style={'width': '9em'} ),
                 html.Div(style={'width':'2em'}),
-                html.Div([ html.Div('Sexe', id='gender'),
+                html.Div([ html.Div('Sexe', id='ljad-gender'),
                            dcc.RadioItems(
-                               id='sexe',
+                               id='ljad-sexe',
                                options=[{'label':'Tous', 'value':0}, 
                                         {'label':'Homme','value':1},
                                         {'label':'Femme','value':2}],
@@ -252,9 +252,9 @@ class Prenoms():
                            )
                          ], style={'width': '9em'} ),
                 html.Div(style={'width':'2em'}),
-                html.Div([ html.Div("Secteur d'activité", id='sheet'),
+                html.Div([ html.Div("Secteur d'activité", id='ljad-sheet'),
                            dcc.Dropdown(
-                               id='secteurs',
+                               id='ljad-secteurs',
                                options=[{'label': description, 'value': code}
                                      for code, description in self.secteurs.items()],
                                value='TAZ', # première feuille, 'Tous secteurs'
@@ -301,30 +301,30 @@ class Prenoms():
 
 
         self.app.callback(
-                [dash.dependencies.Output('map', 'figure'),
-                dash.dependencies.Output('graph', 'figure'),],
-                [dash.dependencies.Input('map-type', 'value'),
-                dash.dependencies.Input('name', 'value'),
-                dash.dependencies.Input('year', 'value'),
-                dash.dependencies.Input('secteurs', 'value'),
-                dash.dependencies.Input('dpt', 'value'),
-                dash.dependencies.Input('sexe', 'value'),
+                [dash.dependencies.Output('ljad-map', 'figure'),
+                dash.dependencies.Output('ljad-graph', 'figure'),],
+                [dash.dependencies.Input('ljad-map-type', 'value'),
+                dash.dependencies.Input('ljad-name', 'value'),
+                dash.dependencies.Input('ljad-year', 'value'),
+                dash.dependencies.Input('ljad-secteurs', 'value'),
+                dash.dependencies.Input('ljad-dpt', 'value'),
+                dash.dependencies.Input('ljad-sexe', 'value'),
             ])(self.update_graph)
 
         self.app.callback(
-            [dash.dependencies.Output('sheet', 'style'),
-             dash.dependencies.Output('secteurs', 'style'),
-             dash.dependencies.Output('secteurs', 'options'),
-             dash.dependencies.Output('gender', 'style'),
-             dash.dependencies.Output('sexe', 'labelStyle'),
-             dash.dependencies.Output('name', 'style'),
-             dash.dependencies.Output('prenom', 'style'),
-             dash.dependencies.Output('departements', 'style'),
-             dash.dependencies.Output('dpt', 'style'),
-             dash.dependencies.Output('year', 'options'),
-             dash.dependencies.Output('year', 'value')
+            [dash.dependencies.Output('ljad-sheet', 'style'),
+             dash.dependencies.Output('ljad-secteurs', 'style'),
+             dash.dependencies.Output('ljad-secteurs', 'options'),
+             dash.dependencies.Output('ljad-gender', 'style'),
+             dash.dependencies.Output('ljad-sexe', 'labelStyle'),
+             dash.dependencies.Output('ljad-name', 'style'),
+             dash.dependencies.Output('ljad-prenom', 'style'),
+             dash.dependencies.Output('ljad-departements', 'style'),
+             dash.dependencies.Output('ljad-dpt', 'style'),
+             dash.dependencies.Output('ljad-year', 'options'),
+             dash.dependencies.Output('ljad-year', 'value')
             ],
-            [dash.dependencies.Input('map-type', 'value'),]
+            [dash.dependencies.Input('ljad-map-type', 'value'),]
         )(self.update_map_display)
 
     def update_map_display(self, mtype):
