@@ -1,7 +1,8 @@
 .PHONY: docker
 
 run:
-	poetry run python delta.py
+	python3 --version
+	poetry run python3 delta.py
 
 docker:
 	tar czvf apps.tgz delta.py */

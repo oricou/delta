@@ -7,7 +7,7 @@ import numpy as np
 import plotly.graph_objs as go
 import plotly.express as px
 import dateutil as du
-from text import *
+from .text import *
 
 
 def load_vaccinations(filename):
