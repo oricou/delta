@@ -61,6 +61,7 @@ from formations import formations as formations_lib
 from APAAL_criminalite_education import criminalite_education
 from ADHD_Movies import movies
 from ab_wg_apb_parcoursup import apb_parcoursup
+from ljad_prenoms import prenoms 
 
 #@profile
 def init():
@@ -121,6 +122,7 @@ def init():
     crim_edu = criminalite_education.Criminalite_Education(app)
     mvs = movies.MoviesStats(app)
     apb = apb_parcoursup.APB_PARCOURSUP(app)
+    prn = prenoms.Prenoms(app)
 
     # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -188,6 +190,7 @@ def init():
                                   dcc.Link(html.Button("Criminalité et Education", style={"width": "100%"}), href="/criminalite-education"),
                                   dcc.Link(html.Button('Rentabilité des films', style={'width':"100%"}), href='/ADHD_Movies'),
                                   dcc.Link( html.Button("APB / Parcoursup", style={"width": "100%"}), href="/ab-wg_apb-parcoursup",),
+                                  dcc.Link(html.Button('Prénoms', style={'width':"100%"}), href='/prenoms'),
                                   html.Br(),
                                   html.Br(),
                                   html.Br(),
@@ -335,6 +338,8 @@ def init():
             return mvs.main_layout
         elif pathname == "/ab-wg_apb-parcoursup":
             return apb.main_layout
+        elif pathname == '/prenoms':
+            return prn.main_layout
         else:
             return home_page
     return app
