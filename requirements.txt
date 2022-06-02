@@ -14,5 +14,4 @@ dash
 gunicorn
 flask
 scipy
-chart-studio
 statsmodels
