@@ -4,7 +4,6 @@ pandas~=1.4.1
 pandas-datareader
 beautifulsoup4
 lxml
-openpyxl
 xlrd
 imageio
 folium
@@ -15,3 +14,15 @@ gunicorn
 flask~=2.1.2
 scipy~=1.8.0
 python-dateutil~=2.8.2
+gunicorn
+flask~=2.1.2
+scipy~=1.8.0
+numpy==1.22.3
+pandas==1.4.2
+plotly~=5.7.0
+dash~=2.3.1
+pycountry-convert==0.7.2
+python-dateutil~=2.8.2
+openpyxl==3.0.9
+statsmodels
+geopandas
