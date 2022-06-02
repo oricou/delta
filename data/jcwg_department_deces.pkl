@@ -1,1 +1,0 @@
-../jcwg_naissance_deces/data/jcwg_department_deces.pkl
