@@ -1,5 +1,4 @@
 import dash
-import dash_bootstrap_components as dbc
 from dash import dcc
 from dash import html
 from energies import energies
@@ -19,7 +18,6 @@ from CDHJ_SCEI.src.SCEI_graph import SCEI_graph
 app = dash.Dash(
     __name__,
     title="Delta",
-    external_stylesheets=[dbc.themes.ZEPHYR],
     suppress_callback_exceptions=True,
 )
 server = app.server

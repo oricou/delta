@@ -1,5 +1,4 @@
 import flask
-import dash_bootstrap_components as dbc
 import dash
 
 from tab_classes_preparatoires.classes_preparatoires import Tab_classes_preparatoires
@@ -13,9 +12,7 @@ class SCEI_graph:
             self.app = dash_app
         else:
             flask_app = flask.Flask(__name__)
-            self.app = dash.Dash(
-                "SCEI", server=flask_app, external_stylesheets=[dbc.themes.ZEPHYR]
-            )
+            self.app = dash.Dash("SCEI", server=flask_app)
 
         self.tab_classes_preparatoires = Tab_classes_preparatoires(dash_app)
         self.tab_grandes_ecoles = Tab_grandes_ecoles(dash_app)

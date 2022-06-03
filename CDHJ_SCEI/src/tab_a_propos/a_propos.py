@@ -1,4 +1,3 @@
-import dash_bootstrap_components as dbc
 import dash
 
 
@@ -59,8 +58,31 @@ class Tab_a_propos:
 
         self.layout = dash.html.Div(
             [
-                dash.html.Div(children=card_1_content),
-                dash.html.Div(children=card_2_content),
-                dash.html.Div(children=card_3_content),
+                dash.html.Div(
+                    children=card_1_content,
+                    style={
+                        "background-color": "#B6DDA6 ",
+                        "border": "1px solid #4b8f29",
+                        "border-radius": "4px",
+                    },
+                ),
+                dash.html.Br(),
+                dash.html.Div(
+                    children=card_2_content,
+                    style={
+                        "background-color": "#7CC5DC",
+                        "border": "1px solid #269BC1",
+                        "border-radius": "4px",
+                    },
+                ),
+                dash.html.Br(),
+                dash.html.Div(
+                    children=card_3_content,
+                    style={
+                        "background-color": "#D77869",
+                        "border": "1px solid #BF422E",
+                        "border-radius": "4px",
+                    },
+                ),
             ],
         )

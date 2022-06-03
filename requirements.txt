@@ -1,4 +1,3 @@
-dash-bootstrap-components
 pgeocode
 numpy
 xarray
