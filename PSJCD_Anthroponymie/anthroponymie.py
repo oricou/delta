@@ -10,36 +10,27 @@ import dateutil as du
 from urllib.request import urlopen
 import json
 import geopandas as gpd
-from Levenshtein import ratio
 import re
 
+from PSJCD_Anthroponymie.get_data import get_nomsParDpt
 
-def to_str(n):
-    try:
-        return "0" + str(n) if n < 10 else str(n)
-    except:
-        return n
-
+def ratio(s1, s2):
+    rows = len(s1) + 1
+    cols = len(s2) + 1
+    cur = np.arange(cols)
+    for r in range(1, rows):
+        prev, cur = cur, [r] + [0] * (cols - 1)
+        for c in range(1, cols):
+            deletion = prev[c] + 1
+            insertion = cur[c - 1] + 1
+            dist = s1[r - 1] == s2[c - 1]
+            edit = prev[c - 1] + (not dist)
+            cur[c] = min(edit, deletion, insertion)
+    return 1 - cur[-1] / max(rows - 1, cols - 1)
 
 class Anthroponymie():
     def __init__(self, application=None):
-        url = "https://france-geojson.gregoiredavid.fr/repo/departements.geojson"
-        self.dpts_json = json.loads(urlopen(url).read())
-        gdf = gpd.GeoDataFrame.from_features(self.dpts_json["features"])
-        df_name = gdf.drop(columns=['geometry']).set_index("code")
-        name_map = df_name.to_dict()['nom']
-
-        df = pd.read_csv('PSJCD_Anthroponymie/data/nomsParDpt.txt', sep='\t', lineterminator='\n')
-
-        df["DEP"] = df["DEP"].map(to_str)
-        df.rename(columns={"NOM": "Nom", "DEP": "Dpt", "_1991_2000\r": "_1991_2000"}, inplace=True)
-        dpt_arr = np.unique(df.Dpt.to_numpy(dtype=str))
-        df = df[[dep in dpt_arr[:-6] for dep in df['Dpt']]]
-        dpt_names = df.Dpt.map(name_map)
-        df.insert(2, "Nom_Dpt", dpt_names)
-        df.columns = df.columns.str.replace(r'^_', '')
-
-        self.df = df
+        self.dpts_json, self.df = get_nomsParDpt()
         self.decades = [str(i) + '_' + str(i + 9) for i in range(1891, 2001, 10)]
         self.funcs = [self.extract_exact_names, self.extract_composed_names, self.extract_levenstein,
                       self.extract_all_names]
@@ -81,6 +72,9 @@ class Anthroponymie():
         La carte est interactive. En passant la souris sur les départements colorés vous avez une infobulle.
         Vous retrouverez les noms similaires à celui que vous avez choisi pour chaque départements. 
         En utilisant la souris, on peut zoomer dans la carte et se déplacer dessus, réinitialiser, etc.
+        
+        Malheureusement l'option noms proches ne fonctionne pas car une implémentation de levenshtein en python n'est
+        pas assez rapide pour que ce soit intéractif. Il faudrait importer la bibliothèque python-Levenshtein.
 
         #### À propos
 
