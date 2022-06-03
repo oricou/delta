@@ -1,0 +1,94 @@
+#!/usr/bin/env ipython
+
+import xarray as xr
+import numpy as np
+
+
+
+# This function returns True if at least one point in the selected dataframe is close enough to selected coordinates
+def is_neighboring(df, lat, lon, max_dist):
+    close = df.loc[np.sqrt((df["latbin"]- lat)**2 + (df["lonbin"] - lon)**2) <= max_dist]
+    return close.shape[0] > 0
+
+
+
+#dist will define minimum distance for a point to be consired coastline
+dist = 3
+
+#step will define latitude & longitude step at which we regroup data points 
+step = 0.5
+
+to_bin = lambda x: np.floor(x / step) * step
+
+def build_dataframes(chlnc, faparnc, startdate, enddate):
+
+    print("- building whole map dataframes ...")
+    dset = xr.open_dataset(chlnc)
+    chl = dset['chl']
+    chl= chl.sel(time=slice(startdate, enddate))
+
+    dset2 = xr.open_dataset(faparnc)
+    fapar = dset2[["FAPAR"]]
+    #fapar datasets are overly huge, we begin by selecting one in ten data point by coordinate before any other operation
+    fapar = fapar.isel(time = [0], lat = [i for i in range (0, 15680, 5)], lon = [i for i in range (0, 40320, 5)])
+
+
+    chldf = chl.to_dataframe()
+    chldf = chldf[np.isfinite(chldf['chl'])]
+    chldf["latbin"] = chldf.index.get_level_values('latitude').map(to_bin)
+    chldf["lonbin"] = chldf.index.get_level_values('longitude').map(to_bin)
+    chldf = chldf.groupby(['latbin', 'lonbin'], as_index=False).mean()
+
+    fapardf = fapar.to_dataframe()
+    fapardf = fapardf[np.isfinite(fapardf['FAPAR'])]
+    fapardf["latbin"] = fapardf.index.get_level_values('lat').map(to_bin)
+    fapardf["lonbin"] = fapardf.index.get_level_values('lon').map(to_bin)
+    fapardf = fapardf.groupby(['latbin', 'lonbin'], as_index=False).mean()
+
+    #We group data points by their latbin and lonbin coordinates,
+    #which are latitude ang longitude rounded to "step"
+
+    chldf['coordinates'] = list(zip(chldf.latbin, chldf.lonbin))
+    fapardf['coordinates'] = list(zip(fapardf.latbin, fapardf.lonbin))
+    fapardf = fapardf[~fapardf['coordinates'].isin(chldf['coordinates'])]
+    fapardf = fapardf.reset_index(drop=True)
+    
+    #on coordinates where we have both info, we only keep chlorophyll information
+    #this is beacause while chlorophyll data points are only available on oceanic points,
+    #fapar data points are available everywhere, even though it is not relevant on oceanic points  
+
+    print("- building coastline dataframes ...")
+
+    chldf_c=chldf
+
+    chldf_c["neighbor"] = [is_neighboring(fapardf, chldf_c["latbin"][i], chldf_c["lonbin"][i], dist) for i in range(chldf_c.shape[0])]
+
+    chldf_c = chldf_c[chldf_c["neighbor"]]
+
+    fapardf_c=fapardf
+
+    fapardf_c["neighbor"] = [is_neighboring(chldf_c, fapardf_c["latbin"][i], fapardf_c["lonbin"][i], dist) for i in range(fapardf_c.shape[0])]
+    fapardf_c = fapardf_c[fapardf_c["neighbor"]]
+
+    #we create a new dataframe containing only chlorophyll data points less than "dist" degrees away from FAPAR data points
+    #and we do the same for fapar
+    #this is to create dataframes containing only points close to coastlines
+
+    print("- exporting pickles...")
+
+
+    chldf.to_pickle("chldf_" + enddate + ".pkl")
+    fapardf.to_pickle("fapardf_" + enddate + ".pkl")
+
+    chldf_c.to_pickle("chldf_coastline_" + enddate + ".pkl")
+    fapardf_c.to_pickle("fapardf_coastline_" + enddate + ".pkl")
+    #Finally we export the data
+
+
+print("Building summer dataframes :")
+build_dataframes("CHL_summer.nc", "FAPAR_summer.nc", "2019-06-11", "2019-06-20")
+print("Building winter dataframes :")
+build_dataframes("CHL_winter.nc", "FAPAR_winter.nc", "2019-12-11", "2019-12-20")
+print("Creating symbolic links")
+!ln -f -sr ./*.pkl ../../data
+print("Done !")
