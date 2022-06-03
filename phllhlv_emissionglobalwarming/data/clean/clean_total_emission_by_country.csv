@@ -1,0 +1,5656 @@
+,Country,Year,TotalEmission
+0,World,2018,36441.55
+1,China,2018,9663.36
+2,United States,2018,4749.57
+3,European Union (27),2018,2636.99
+4,India,2018,2400.25
+5,Indonesia,2018,1269.55
+6,Japan,2018,1074.08
+7,Russia,2018,1049.05
+8,Brazil,2018,812.02
+9,Germany,2018,680.06
+10,Iran,2018,629.35
+11,Canada,2018,609.67
+12,Democratic Republic of the Congo,2018,603.57
+13,South Korea,2018,585.07
+14,Saudi Arabia,2018,514.6
+15,Mexico,2018,486.58
+16,South Africa,2018,439.8
+17,Australia,2018,388.81
+18,Turkey,2018,384.32
+19,United Kingdom,2018,347.84
+20,Malaysia,2018,319.59
+21,Italy,2018,312.03
+22,Poland,2018,279.83
+23,Thailand,2018,270.9
+24,France,2018,247.98
+25,Egypt,2018,246.45
+26,Vietnam,2018,245.36
+27,Spain,2018,244.45
+28,Kazakhstan,2018,217.46
+29,Pakistan,2018,215.37
+30,Argentina,2018,207.11
+31,United Arab Emirates,2018,200.3
+32,Iraq,2018,188.64
+33,Venezuela,2018,181.29
+34,Nigeria,2018,176.66
+35,Ukraine,2018,173.18
+36,Colombia,2018,162.46
+37,Netherlands,2018,152.52
+38,Algeria,2018,151.87
+39,Philippines,2018,144.7
+40,Peru,2018,144.07
+41,Myanmar,2018,136.92
+42,Uzbekistan,2018,108.72
+43,Bangladesh,2018,104.5
+44,Zimbabwe,2018,99.43
+45,Czech Republic,2018,96.66
+46,Belgium,2018,93.63
+47,Qatar,2018,90.17
+48,Bolivia,2018,90.09
+49,Kuwait,2018,89.45
+50,Tanzania,2018,75.68
+51,Oman,2018,73.39
+52,Turkmenistan,2018,71.73
+53,Greece,2018,66.68
+54,Ecuador,2018,65.68
+55,Morocco,2018,64.74
+56,Angola,2018,62.93
+57,Israel,2018,62.05
+58,Mozambique,2018,59.47
+59,Libya,2018,58.94
+60,Austria,2018,56.06
+61,Paraguay,2018,54.4
+62,Romania,2018,52.0
+63,Finland,2018,51.3
+64,Portugal,2018,50.07
+65,Botswana,2018,49.54
+66,Papua New Guinea,2018,48.46
+67,Hungary,2018,48.28
+68,Ethiopia,2018,48.0
+69,Singapore,2018,47.39
+70,Solomon Islands,2018,45.78
+71,Serbia,2018,45.45
+72,Cameroon,2018,42.38
+73,Sudan,2018,41.2
+74,Zambia,2018,40.47
+75,Cambodia,2018,40.16
+76,Belarus,2018,37.8
+77,Côte d'Ivoire,2018,36.55
+78,Switzerland,2018,35.23
+79,Ireland,2018,34.32
+80,Denmark,2018,34.23
+81,Slovakia,2018,31.93
+82,Bahrain,2018,30.75
+83,Azerbaijan,2018,30.1
+84,Chile,2018,28.75
+85,Burkina Faso,2018,28.37
+86,Syria,2018,27.92
+87,Lebanon,2018,27.63
+88,Laos,2018,27.46
+89,Tunisia,2018,26.19
+90,Nicaragua,2018,24.72
+91,Jordan,2018,24.7
+92,Mongolia,2018,24.42
+93,Chad,2018,24.4
+94,Dominican Republic,2018,23.56
+95,Sri Lanka,2018,23.54
+96,Uganda,2018,21.95
+97,Cuba,2018,21.92
+98,New Zealand,2018,21.59
+99,Guatemala,2018,21.48
+100,North Korea,2018,21.41
+101,Bosnia and Herzegovina,2018,20.81
+102,Sweden,2018,19.68
+103,Benin,2018,18.62
+104,Norway,2018,18.43
+105,Somalia,2018,18.04
+106,Estonia,2018,17.96
+107,Trinidad and Tobago,2018,17.88
+108,Guyana,2018,16.51
+109,Guinea,2018,15.35
+110,Honduras,2018,15.3
+111,Nepal,2018,14.97
+112,Namibia,2018,14.81
+113,Liberia,2018,14.76
+114,Panama,2018,14.53
+115,Slovenia,2018,14.39
+116,Central African Republic,2018,14.31
+117,Senegal,2018,14.19
+118,Republic of Congo,2018,13.69
+119,Madagascar,2018,13.49
+120,Croatia,2018,12.24
+121,Suriname,2018,11.44
+122,Gabon,2018,11.08
+123,Lithuania,2018,10.95
+124,Kenya,2018,10.78
+125,Equatorial Guinea,2018,10.51
+126,South Sudan,2018,10.28
+127,Malawi,2018,9.71
+128,Georgia,2018,9.46
+129,Yemen,2018,9.31
+130,Luxembourg,2018,9.04
+131,Moldova,2018,8.7
+132,Jamaica,2018,8.69
+133,El Salvador,2018,7.89
+134,Kyrgyzstan,2018,7.73
+135,Afghanistan,2018,7.59
+136,Brunei,2018,7.47
+137,Macedonia,2018,7.37
+138,Bulgaria,2018,7.32
+139,Tajikistan,2018,7.2
+140,Cyprus,2018,6.98
+141,Belize,2018,5.92
+142,Mali,2018,5.62
+143,Armenia,2018,5.59
+144,Albania,2018,5.32
+145,Latvia,2018,4.85
+146,Uruguay,2018,4.75
+147,Sierra Leone,2018,4.36
+148,Mauritius,2018,4.11
+149,Burundi,2018,4.07
+150,Haiti,2018,3.96
+151,Niger,2018,3.53
+152,Togo,2018,3.07
+153,Mauritania,2018,2.92
+154,Rwanda,2018,2.73
+155,Lesotho,2018,2.57
+156,Montenegro,2018,2.55
+157,Bahamas,2018,2.26
+158,Iceland,2018,2.11
+159,Maldives,2018,1.91
+160,Guinea-Bissau,2018,1.8
+161,Malta,2018,1.54
+162,Barbados,2018,1.25
+163,Eritrea,2018,1.24
+164,Gambia,2018,1.1
+165,Timor-Leste,2018,1.1
+166,Eswatini,2018,0.96
+167,Costa Rica,2018,0.95
+168,Seychelles,2018,0.62
+169,Cape Verde,2018,0.56
+170,Antigua and Barbuda,2018,0.53
+171,Djibouti,2018,0.49
+172,Andorra,2018,0.46
+173,Samoa,2018,0.43
+174,Sao Tome and Principe,2018,0.35
+175,Comoros,2018,0.32
+176,Grenada,2018,0.3
+177,Palau,2018,0.29
+178,Saint Vincent and the Grenadines,2018,0.28
+179,Saint Kitts and Nevis,2018,0.26
+180,Saint Lucia,2018,0.24
+181,Marshall Islands,2018,0.19
+182,Tonga,2018,0.19
+183,Vanuatu,2018,0.18
+184,Dominica,2018,0.16
+185,Micronesia,2018,0.15
+186,Liechtenstein,2018,0.14
+187,Cook Islands,2018,0.08
+188,Kiribati,2018,0.08
+189,Bhutan,2018,0.07
+190,Nauru,2018,0.07
+191,Tuvalu,2018,0.01
+192,Niue,2018,0.0
+193,Fiji,2018,-0.65
+194,Ghana,2018,-8.82
+195,World,2017,35588.7
+196,China,2017,9367.67
+197,United States,2017,4581.9
+198,European Union (27),2017,2692.12
+199,India,2017,2267.16
+200,Indonesia,2017,1081.11
+201,Japan,2017,1119.86
+202,Russia,2017,998.24
+203,Brazil,2017,834.14
+204,Germany,2017,702.73
+205,Iran,2017,620.83
+206,Canada,2017,597.4
+207,Democratic Republic of the Congo,2017,603.66
+208,South Korea,2017,579.56
+209,Saudi Arabia,2017,540.7
+210,Mexico,2017,486.25
+211,South Africa,2017,441.69
+212,Australia,2017,389.39
+213,Turkey,2017,387.25
+214,United Kingdom,2017,355.42
+215,Malaysia,2017,298.1
+216,Italy,2017,316.37
+217,Poland,2017,279.92
+218,Thailand,2017,273.7
+219,France,2017,254.37
+220,Egypt,2017,238.87
+221,Vietnam,2017,209.66
+222,Spain,2017,249.55
+223,Kazakhstan,2017,222.57
+224,Pakistan,2017,204.7
+225,Argentina,2017,209.83
+226,United Arab Emirates,2017,208.25
+227,Iraq,2017,174.79
+228,Venezuela,2017,191.71
+229,Nigeria,2017,158.91
+230,Ukraine,2017,162.66
+231,Colombia,2017,159.03
+232,Netherlands,2017,157.27
+233,Algeria,2017,145.3
+234,Philippines,2017,139.05
+235,Peru,2017,143.78
+236,Myanmar,2017,133.48
+237,Uzbekistan,2017,108.02
+238,Bangladesh,2017,100.46
+239,Zimbabwe,2017,97.4
+240,Czech Republic,2017,97.6
+241,Belgium,2017,92.93
+242,Qatar,2017,87.68
+243,Bolivia,2017,89.64
+244,Kuwait,2017,89.71
+245,Tanzania,2017,75.47
+246,Oman,2017,69.92
+247,Turkmenistan,2017,71.96
+248,Greece,2017,68.19
+249,Ecuador,2017,63.91
+250,Morocco,2017,63.99
+251,Angola,2017,66.44
+252,Israel,2017,66.12
+253,Mozambique,2017,58.85
+254,Libya,2017,56.81
+255,Austria,2017,58.71
+256,Paraguay,2017,54.0
+257,Romania,2017,51.22
+258,Finland,2017,49.7
+259,Portugal,2017,53.63
+260,Botswana,2017,49.2
+261,Papua New Guinea,2017,48.52
+262,Hungary,2017,48.45
+263,Ethiopia,2017,47.23
+264,Singapore,2017,47.46
+265,Solomon Islands,2017,45.76
+266,Serbia,2017,46.81
+267,Cameroon,2017,42.1
+268,Sudan,2017,41.34
+269,Zambia,2017,39.82
+270,Cambodia,2017,40.38
+271,Belarus,2017,34.8
+272,Côte d'Ivoire,2017,37.02
+273,Switzerland,2017,36.38
+274,Ireland,2017,34.74
+275,Denmark,2017,34.19
+276,Slovakia,2017,32.51
+277,Bahrain,2017,30.38
+278,Azerbaijan,2017,30.05
+279,Chile,2017,29.17
+280,Burkina Faso,2017,28.17
+281,Syria,2017,29.1
+282,Lebanon,2017,29.2
+283,Laos,2017,27.18
+284,Tunisia,2017,26.11
+285,Nicaragua,2017,24.91
+286,Jordan,2017,26.1
+287,Mongolia,2017,22.56
+288,Chad,2017,24.36
+289,Dominican Republic,2017,21.83
+290,Sri Lanka,2017,25.22
+291,Uganda,2017,21.66
+292,Cuba,2017,22.6
+293,New Zealand,2017,22.31
+294,Guatemala,2017,19.78
+295,North Korea,2017,25.67
+296,Bosnia and Herzegovina,2017,20.91
+297,Sweden,2017,21.76
+298,Benin,2017,18.07
+299,Norway,2017,17.95
+300,Somalia,2017,18.01
+301,Estonia,2017,18.21
+302,Trinidad and Tobago,2017,18.32
+303,Guyana,2017,16.39
+304,Guinea,2017,15.19
+305,Honduras,2017,14.53
+306,Nepal,2017,13.98
+307,Namibia,2017,14.89
+308,Liberia,2017,14.7
+309,Panama,2017,14.65
+310,Slovenia,2017,14.49
+311,Central African Republic,2017,14.29
+312,Senegal,2017,13.9
+313,Republic of Congo,2017,13.66
+314,Madagascar,2017,13.61
+315,Croatia,2017,13.14
+316,Suriname,2017,11.49
+317,Gabon,2017,11.15
+318,Lithuania,2017,10.6
+319,Kenya,2017,11.27
+320,Equatorial Guinea,2017,9.46
+321,South Sudan,2017,10.44
+322,Malawi,2017,9.65
+323,Georgia,2017,9.63
+324,Yemen,2017,10.06
+325,Luxembourg,2017,8.72
+326,Moldova,2017,8.26
+327,Jamaica,2017,7.37
+328,El Salvador,2017,7.46
+329,Kyrgyzstan,2017,6.08
+330,Afghanistan,2017,7.53
+331,Brunei,2017,7.03
+332,Macedonia,2017,7.86
+333,Bulgaria,2017,10.24
+334,Tajikistan,2017,6.25
+335,Cyprus,2017,7.05
+336,Belize,2017,5.88
+337,Mali,2017,5.05
+338,Armenia,2017,5.36
+339,Albania,2017,5.37
+340,Latvia,2017,4.33
+341,Uruguay,2017,4.31
+342,Sierra Leone,2017,4.31
+343,Mauritius,2017,4.15
+344,Burundi,2017,4.06
+345,Haiti,2017,4.0
+346,Niger,2017,3.31
+347,Togo,2017,2.88
+348,Mauritania,2017,2.72
+349,Rwanda,2017,2.72
+350,Lesotho,2017,2.44
+351,Montenegro,2017,2.25
+352,Bahamas,2017,2.15
+353,Iceland,2017,2.09
+354,Maldives,2017,1.82
+355,Guinea-Bissau,2017,1.78
+356,Malta,2017,1.51
+357,Barbados,2017,1.19
+358,Eritrea,2017,1.17
+359,Gambia,2017,1.07
+360,Timor-Leste,2017,1.07
+361,Eswatini,2017,0.91
+362,Costa Rica,2017,0.88
+363,Seychelles,2017,0.59
+364,Cape Verde,2017,0.53
+365,Antigua and Barbuda,2017,0.5
+366,Djibouti,2017,0.47
+367,Andorra,2017,0.47
+368,Samoa,2017,0.41
+369,Sao Tome and Principe,2017,0.35
+370,Comoros,2017,0.31
+371,Grenada,2017,0.29
+372,Palau,2017,0.27
+373,Saint Vincent and the Grenadines,2017,0.27
+374,Saint Kitts and Nevis,2017,0.24
+375,Saint Lucia,2017,0.22
+376,Marshall Islands,2017,0.18
+377,Tonga,2017,0.18
+378,Vanuatu,2017,0.17
+379,Dominica,2017,0.15
+380,Micronesia,2017,0.14
+381,Liechtenstein,2017,0.16
+382,Cook Islands,2017,0.08
+383,Kiribati,2017,0.08
+384,Bhutan,2017,0.01
+385,Nauru,2017,0.07
+386,Tuvalu,2017,0.01
+387,Niue,2017,0.0
+388,Fiji,2017,-0.73
+389,Ghana,2017,-10.15
+390,World,2016,35160.6
+391,China,2016,9164.21
+392,United States,2016,4656.84
+393,European Union (27),2016,2669.54
+394,India,2016,2149.01
+395,Indonesia,2016,1068.1
+396,Japan,2016,1139.33
+397,Russia,2016,971.87
+398,Brazil,2016,826.21
+399,Germany,2016,717.68
+400,Iran,2016,605.81
+401,Canada,2016,585.58
+402,Democratic Republic of the Congo,2016,603.43
+403,South Korea,2016,568.98
+404,Saudi Arabia,2016,556.74
+405,Mexico,2016,493.7
+406,South Africa,2016,431.74
+407,Australia,2016,386.15
+408,Turkey,2016,345.94
+409,United Kingdom,2016,367.93
+410,Malaysia,2016,310.17
+411,Italy,2016,320.52
+412,Poland,2016,266.86
+413,Thailand,2016,273.79
+414,France,2016,250.72
+415,Egypt,2016,234.14
+416,Vietnam,2016,211.7
+417,Spain,2016,233.15
+418,Kazakhstan,2016,220.04
+419,Pakistan,2016,187.57
+420,Argentina,2016,213.99
+421,United Arab Emirates,2016,199.46
+422,Iraq,2016,172.84
+423,Venezuela,2016,204.88
+424,Nigeria,2016,154.41
+425,Ukraine,2016,189.1
+426,Colombia,2016,166.72
+427,Netherlands,2016,159.64
+428,Algeria,2016,143.55
+429,Philippines,2016,127.38
+430,Peru,2016,146.32
+431,Myanmar,2016,125.78
+432,Uzbekistan,2016,103.98
+433,Bangladesh,2016,95.49
+434,Zimbabwe,2016,98.15
+435,Czech Republic,2016,97.04
+436,Belgium,2016,94.48
+437,Qatar,2016,85.28
+438,Bolivia,2016,88.99
+439,Kuwait,2016,89.87
+440,Tanzania,2016,75.03
+441,Oman,2016,69.56
+442,Turkmenistan,2016,72.02
+443,Greece,2016,68.25
+444,Ecuador,2016,65.16
+445,Morocco,2016,61.14
+446,Angola,2016,71.01
+447,Israel,2016,65.34
+448,Mozambique,2016,58.61
+449,Libya,2016,51.18
+450,Austria,2016,56.27
+451,Paraguay,2016,53.1
+452,Romania,2016,48.26
+453,Finland,2016,52.33
+454,Portugal,2016,49.06
+455,Botswana,2016,48.45
+456,Papua New Guinea,2016,48.47
+457,Hungary,2016,46.39
+458,Ethiopia,2016,46.75
+459,Singapore,2016,46.19
+460,Solomon Islands,2016,45.77
+461,Serbia,2016,46.16
+462,Cameroon,2016,42.33
+463,Sudan,2016,41.49
+464,Zambia,2016,38.41
+465,Cambodia,2016,38.9
+466,Belarus,2016,33.85
+467,Côte d'Ivoire,2016,35.96
+468,Switzerland,2016,37.37
+469,Ireland,2016,35.91
+470,Denmark,2016,36.23
+471,Slovakia,2016,30.43
+472,Bahrain,2016,30.2
+473,Azerbaijan,2016,30.74
+474,Chile,2016,28.29
+475,Burkina Faso,2016,27.6
+476,Syria,2016,26.46
+477,Lebanon,2016,27.73
+478,Laos,2016,24.03
+479,Tunisia,2016,25.2
+480,Nicaragua,2016,24.89
+481,Jordan,2016,24.86
+482,Mongolia,2016,21.28
+483,Chad,2016,24.35
+484,Dominican Republic,2016,22.9
+485,Sri Lanka,2016,23.85
+486,Uganda,2016,21.5
+487,Cuba,2016,25.4
+488,New Zealand,2016,20.57
+489,Guatemala,2016,20.73
+490,North Korea,2016,33.38
+491,Bosnia and Herzegovina,2016,20.6
+492,Sweden,2016,22.14
+493,Benin,2016,17.94
+494,Norway,2016,18.99
+495,Somalia,2016,18.01
+496,Estonia,2016,17.58
+497,Trinidad and Tobago,2016,18.35
+498,Guyana,2016,16.39
+499,Guinea,2016,15.04
+500,Honduras,2016,14.92
+501,Nepal,2016,12.3
+502,Namibia,2016,14.92
+503,Liberia,2016,14.85
+504,Panama,2016,15.17
+505,Slovenia,2016,14.27
+506,Central African Republic,2016,14.29
+507,Senegal,2016,14.25
+508,Republic of Congo,2016,13.76
+509,Madagascar,2016,13.33
+510,Croatia,2016,12.59
+511,Suriname,2016,11.67
+512,Gabon,2016,12.16
+513,Lithuania,2016,10.59
+514,Kenya,2016,11.15
+515,Equatorial Guinea,2016,9.43
+516,South Sudan,2016,10.67
+517,Malawi,2016,9.5
+518,Georgia,2016,9.65
+519,Yemen,2016,10.88
+520,Luxembourg,2016,8.58
+521,Moldova,2016,8.25
+522,Jamaica,2016,7.93
+523,El Salvador,2016,8.25
+524,Kyrgyzstan,2016,6.43
+525,Afghanistan,2016,7.55
+526,Brunei,2016,6.79
+527,Macedonia,2016,7.39
+528,Bulgaria,2016,7.94
+529,Tajikistan,2016,5.83
+530,Cyprus,2016,6.9
+531,Belize,2016,5.87
+532,Mali,2016,4.42
+533,Armenia,2016,5.1
+534,Albania,2016,4.7
+535,Latvia,2016,4.37
+536,Uruguay,2016,4.76
+537,Sierra Leone,2016,4.31
+538,Mauritius,2016,4.01
+539,Burundi,2016,3.96
+540,Haiti,2016,4.04
+541,Niger,2016,3.22
+542,Togo,2016,3.11
+543,Mauritania,2016,1.73
+544,Rwanda,2016,2.73
+545,Lesotho,2016,2.27
+546,Montenegro,2016,2.14
+547,Bahamas,2016,2.19
+548,Iceland,2016,1.98
+549,Maldives,2016,1.75
+550,Guinea-Bissau,2016,1.78
+551,Malta,2016,1.34
+552,Barbados,2016,1.31
+553,Eritrea,2016,1.11
+554,Gambia,2016,1.06
+555,Timor-Leste,2016,1.15
+556,Eswatini,2016,1.1
+557,Costa Rica,2016,0.79
+558,Seychelles,2016,0.54
+559,Cape Verde,2016,0.48
+560,Antigua and Barbuda,2016,0.5
+561,Djibouti,2016,0.49
+562,Andorra,2016,0.47
+563,Samoa,2016,0.4
+564,Sao Tome and Principe,2016,0.34
+565,Comoros,2016,0.26
+566,Grenada,2016,0.28
+567,Palau,2016,0.26
+568,Saint Vincent and the Grenadines,2016,0.27
+569,Saint Kitts and Nevis,2016,0.25
+570,Saint Lucia,2016,0.2
+571,Marshall Islands,2016,0.18
+572,Tonga,2016,0.15
+573,Vanuatu,2016,0.18
+574,Dominica,2016,0.17
+575,Micronesia,2016,0.14
+576,Liechtenstein,2016,0.15
+577,Cook Islands,2016,0.07
+578,Kiribati,2016,0.08
+579,Bhutan,2016,-0.09
+580,Nauru,2016,0.06
+581,Tuvalu,2016,0.01
+582,Niue,2016,0.0
+583,Fiji,2016,-0.81
+584,Ghana,2016,-10.82
+585,World,2015,34521.91
+586,China,2015,9120.27
+587,United States,2015,4563.52
+588,European Union (27),2015,2321.61
+589,India,2015,2085.38
+590,Indonesia,2015,1574.76
+591,Japan,2015,1131.74
+592,Russia,2015,870.02
+593,Brazil,2015,741.96
+594,Germany,2015,713.08
+595,Iran,2015,602.23
+596,Canada,2015,693.99
+597,Democratic Republic of the Congo,2015,604.26
+598,South Korea,2015,556.05
+599,Saudi Arabia,2015,561.14
+600,Mexico,2015,486.44
+601,South Africa,2015,431.17
+602,Australia,2015,346.53
+603,Turkey,2015,291.92
+604,United Kingdom,2015,389.41
+605,Malaysia,2015,124.54
+606,Italy,2015,303.19
+607,Poland,2015,261.94
+608,Thailand,2015,263.34
+609,France,2015,249.42
+610,Egypt,2015,226.86
+611,Vietnam,2015,186.54
+612,Spain,2015,248.42
+613,Kazakhstan,2015,196.78
+614,Pakistan,2015,169.04
+615,Argentina,2015,251.66
+616,United Arab Emirates,2015,194.04
+617,Iraq,2015,162.27
+618,Venezuela,2015,282.4
+619,Nigeria,2015,154.14
+620,Ukraine,2015,176.6
+621,Colombia,2015,137.53
+622,Netherlands,2015,159.47
+623,Algeria,2015,145.35
+624,Philippines,2015,116.1
+625,Peru,2015,142.68
+626,Myanmar,2015,128.25
+627,Uzbekistan,2015,98.41
+628,Bangladesh,2015,93.58
+629,Zimbabwe,2015,23.72
+630,Czech Republic,2015,97.35
+631,Belgium,2015,92.84
+632,Qatar,2015,83.31
+633,Bolivia,2015,80.19
+634,Kuwait,2015,88.03
+635,Tanzania,2015,63.65
+636,Oman,2015,68.3
+637,Turkmenistan,2015,72.08
+638,Greece,2015,69.41
+639,Ecuador,2015,57.76
+640,Morocco,2015,61.71
+641,Angola,2015,70.76
+642,Israel,2015,66.09
+643,Mozambique,2015,51.22
+644,Libya,2015,53.84
+645,Austria,2015,56.08
+646,Paraguay,2015,74.5
+647,Romania,2015,-212.22
+648,Finland,2015,-11.81
+649,Portugal,2015,49.04
+650,Botswana,2015,48.54
+651,Papua New Guinea,2015,46.54
+652,Hungary,2015,44.72
+653,Ethiopia,2015,44.46
+654,Singapore,2015,45.45
+655,Solomon Islands,2015,-17.52
+656,Serbia,2015,42.32
+657,Cameroon,2015,41.72
+658,Sudan,2015,39.32
+659,Zambia,2015,37.91
+660,Cambodia,2015,73.51
+661,Belarus,2015,38.47
+662,Côte d'Ivoire,2015,36.19
+663,Switzerland,2015,36.82
+664,Ireland,2015,34.75
+665,Denmark,2015,31.65
+666,Slovakia,2015,23.15
+667,Bahrain,2015,30.59
+668,Azerbaijan,2015,29.32
+669,Chile,2015,0.62
+670,Burkina Faso,2015,9.27
+671,Syria,2015,25.37
+672,Lebanon,2015,26.97
+673,Laos,2015,17.32
+674,Tunisia,2015,33.55
+675,Nicaragua,2015,16.25
+676,Jordan,2015,25.36
+677,Mongolia,2015,20.48
+678,Chad,2015,26.87
+679,Dominican Republic,2015,22.27
+680,Sri Lanka,2015,20.97
+681,Uganda,2015,20.69
+682,Cuba,2015,14.78
+683,New Zealand,2015,15.47
+684,Guatemala,2015,24.05
+685,North Korea,2015,28.5
+686,Bosnia and Herzegovina,2015,15.9
+687,Sweden,2015,17.0
+688,Benin,2015,16.7
+689,Norway,2015,19.7
+690,Somalia,2015,18.0
+691,Estonia,2015,9.21
+692,Trinidad and Tobago,2015,21.37
+693,Guyana,2015,18.76
+694,Guinea,2015,13.68
+695,Honduras,2015,15.76
+696,Nepal,2015,9.48
+697,Namibia,2015,14.83
+698,Liberia,2015,14.7
+699,Panama,2015,15.1
+700,Slovenia,2015,10.54
+701,Central African Republic,2015,14.28
+702,Senegal,2015,13.76
+703,Republic of Congo,2015,12.91
+704,Madagascar,2015,13.43
+705,Croatia,2015,15.18
+706,Suriname,2015,11.0
+707,Gabon,2015,11.93
+708,Lithuania,2015,4.98
+709,Kenya,2015,25.38
+710,Equatorial Guinea,2015,10.97
+711,South Sudan,2015,8.51
+712,Malawi,2015,9.34
+713,Georgia,2015,9.2
+714,Yemen,2015,14.21
+715,Luxembourg,2015,8.89
+716,Moldova,2015,7.57
+717,Jamaica,2015,7.53
+718,El Salvador,2015,8.08
+719,Kyrgyzstan,2015,9.53
+720,Afghanistan,2015,7.74
+721,Brunei,2015,6.35
+722,Macedonia,2015,7.48
+723,Bulgaria,2015,32.57
+724,Tajikistan,2015,4.36
+725,Cyprus,2015,6.46
+726,Belize,2015,6.13
+727,Mali,2015,3.41
+728,Armenia,2015,5.26
+729,Albania,2015,4.23
+730,Latvia,2015,4.64
+731,Uruguay,2015,-0.31
+732,Sierra Leone,2015,4.28
+733,Mauritius,2015,3.97
+734,Burundi,2015,-1.0
+735,Haiti,2015,3.97
+736,Niger,2015,3.2
+737,Togo,2015,2.76
+738,Mauritania,2015,3.34
+739,Rwanda,2015,2.7
+740,Lesotho,2015,2.23
+741,Montenegro,2015,2.39
+742,Bahamas,2015,2.37
+743,Iceland,2015,1.98
+744,Maldives,2015,1.35
+745,Guinea-Bissau,2015,1.77
+746,Malta,2015,1.65
+747,Barbados,2015,1.29
+748,Eritrea,2015,1.03
+749,Gambia,2015,1.06
+750,Timor-Leste,2015,1.07
+751,Eswatini,2015,0.9
+752,Costa Rica,2015,0.25
+753,Seychelles,2015,0.5
+754,Cape Verde,2015,0.44
+755,Antigua and Barbuda,2015,0.49
+756,Djibouti,2015,0.54
+757,Andorra,2015,0.47
+758,Samoa,2015,0.35
+759,Sao Tome and Principe,2015,0.34
+760,Comoros,2015,0.24
+761,Grenada,2015,0.27
+762,Palau,2015,0.22
+763,Saint Vincent and the Grenadines,2015,0.22
+764,Saint Kitts and Nevis,2015,0.24
+765,Saint Lucia,2015,0.23
+766,Marshall Islands,2015,0.15
+767,Tonga,2015,0.11
+768,Vanuatu,2015,0.14
+769,Dominica,2015,0.17
+770,Micronesia,2015,0.12
+771,Liechtenstein,2015,0.16
+772,Cook Islands,2015,0.06
+773,Kiribati,2015,0.06
+774,Bhutan,2015,-0.35
+775,Nauru,2015,0.05
+776,Tuvalu,2015,0.01
+777,Niue,2015,0.0
+778,Fiji,2015,-1.03
+779,Ghana,2015,44.53
+780,World,2014,34558.59
+781,China,2014,9184.77
+782,United States,2014,4683.35
+783,European Union (27),2014,2263.78
+784,India,2014,2072.03
+785,Indonesia,2014,1539.23
+786,Japan,2014,1170.11
+787,Russia,2014,919.33
+788,Brazil,2014,768.77
+789,Germany,2014,708.25
+790,Iran,2014,610.67
+791,Canada,2014,697.02
+792,Democratic Republic of the Congo,2014,606.16
+793,South Korea,2014,535.54
+794,Saudi Arabia,2014,536.81
+795,Mexico,2014,472.17
+796,South Africa,2014,454.27
+797,Australia,2014,340.43
+798,Turkey,2014,280.97
+799,United Kingdom,2014,403.89
+800,Malaysia,2014,135.37
+801,Italy,2014,292.83
+802,Poland,2014,258.63
+803,Thailand,2014,259.38
+804,France,2014,243.42
+805,Egypt,2014,217.56
+806,Vietnam,2014,146.44
+807,Spain,2014,233.1
+808,Kazakhstan,2014,195.37
+809,Pakistan,2014,159.12
+810,Argentina,2014,245.48
+811,United Arab Emirates,2014,183.84
+812,Iraq,2014,168.92
+813,Venezuela,2014,296.87
+814,Nigeria,2014,162.19
+815,Ukraine,2014,223.34
+816,Colombia,2014,136.32
+817,Netherlands,2014,151.26
+818,Algeria,2014,138.18
+819,Philippines,2014,106.84
+820,Peru,2014,141.68
+821,Myanmar,2014,124.63
+822,Uzbekistan,2014,102.29
+823,Bangladesh,2014,85.7
+824,Zimbabwe,2014,23.47
+825,Czech Republic,2014,96.12
+826,Belgium,2014,87.8
+827,Qatar,2014,80.4
+828,Bolivia,2014,79.95
+829,Kuwait,2014,83.57
+830,Tanzania,2014,62.68
+831,Oman,2014,64.47
+832,Turkmenistan,2014,69.49
+833,Greece,2014,70.95
+834,Ecuador,2014,58.25
+835,Morocco,2014,59.72
+836,Angola,2014,70.23
+837,Israel,2014,64.67
+838,Mozambique,2014,50.05
+839,Libya,2014,59.7
+840,Austria,2014,54.92
+841,Paraguay,2014,73.8
+842,Romania,2014,-213.71
+843,Finland,2014,-8.47
+844,Portugal,2014,45.12
+845,Botswana,2014,48.46
+846,Papua New Guinea,2014,45.98
+847,Hungary,2014,41.96
+848,Ethiopia,2014,43.91
+849,Singapore,2014,44.41
+850,Solomon Islands,2014,-17.48
+851,Serbia,2014,35.88
+852,Cameroon,2014,41.46
+853,Sudan,2014,36.85
+854,Zambia,2014,37.64
+855,Cambodia,2014,71.55
+856,Belarus,2014,43.05
+857,Côte d'Ivoire,2014,35.59
+858,Switzerland,2014,37.51
+859,Ireland,2014,33.3
+860,Denmark,2014,33.81
+861,Slovakia,2014,22.84
+862,Bahrain,2014,30.22
+863,Azerbaijan,2014,29.78
+864,Chile,2014,-4.97
+865,Burkina Faso,2014,8.89
+866,Syria,2014,26.4
+867,Lebanon,2014,24.86
+868,Laos,2014,13.09
+869,Tunisia,2014,32.71
+870,Nicaragua,2014,15.74
+871,Jordan,2014,25.59
+872,Mongolia,2014,21.3
+873,Chad,2014,26.83
+874,Dominican Republic,2014,20.14
+875,Sri Lanka,2014,18.22
+876,Uganda,2014,20.57
+877,Cuba,2014,14.17
+878,New Zealand,2014,15.07
+879,Guatemala,2014,21.66
+880,North Korea,2014,34.62
+881,Bosnia and Herzegovina,2014,15.77
+882,Sweden,2014,16.89
+883,Benin,2014,16.22
+884,Norway,2014,19.34
+885,Somalia,2014,18.0
+886,Estonia,2014,11.67
+887,Trinidad and Tobago,2014,22.03
+888,Guyana,2014,18.77
+889,Guinea,2014,13.38
+890,Honduras,2014,15.36
+891,Nepal,2014,10.15
+892,Namibia,2014,14.56
+893,Liberia,2014,14.66
+894,Panama,2014,15.68
+895,Slovenia,2014,10.55
+896,Central African Republic,2014,14.28
+897,Senegal,2014,13.04
+898,Republic of Congo,2014,13.55
+899,Madagascar,2014,13.15
+900,Croatia,2014,14.84
+901,Suriname,2014,10.89
+902,Gabon,2014,11.95
+903,Lithuania,2014,4.78
+904,Kenya,2014,23.32
+905,Equatorial Guinea,2014,11.92
+906,South Sudan,2014,8.07
+907,Malawi,2014,9.24
+908,Georgia,2014,8.47
+909,Yemen,2014,26.71
+910,Luxembourg,2014,9.41
+911,Moldova,2014,7.27
+912,Jamaica,2014,7.64
+913,El Salvador,2014,7.67
+914,Kyrgyzstan,2014,8.97
+915,Afghanistan,2014,7.56
+916,Brunei,2014,7.37
+917,Macedonia,2014,7.78
+918,Bulgaria,2014,30.12
+919,Tajikistan,2014,4.07
+920,Cyprus,2014,6.43
+921,Belize,2014,5.96
+922,Mali,2014,3.12
+923,Armenia,2014,5.4
+924,Albania,2014,4.37
+925,Latvia,2014,4.6
+926,Uruguay,2014,-0.4
+927,Sierra Leone,2014,4.52
+928,Mauritius,2014,3.96
+929,Burundi,2014,-1.02
+930,Haiti,2014,3.71
+931,Niger,2014,3.21
+932,Togo,2014,2.53
+933,Mauritania,2014,2.91
+934,Rwanda,2014,2.59
+935,Lesotho,2014,2.31
+936,Montenegro,2014,2.25
+937,Bahamas,2014,2.62
+938,Iceland,2014,1.97
+939,Maldives,2014,1.36
+940,Guinea-Bissau,2014,1.76
+941,Malta,2014,2.35
+942,Barbados,2014,1.29
+943,Eritrea,2014,1.06
+944,Gambia,2014,1.04
+945,Timor-Leste,2014,0.99
+946,Eswatini,2014,0.83
+947,Costa Rica,2014,0.54
+948,Seychelles,2014,0.46
+949,Cape Verde,2014,0.44
+950,Antigua and Barbuda,2014,0.48
+951,Djibouti,2014,0.46
+952,Andorra,2014,0.46
+953,Samoa,2014,0.32
+954,Sao Tome and Principe,2014,0.33
+955,Comoros,2014,0.22
+956,Grenada,2014,0.25
+957,Palau,2014,0.22
+958,Saint Vincent and the Grenadines,2014,0.29
+959,Saint Kitts and Nevis,2014,0.23
+960,Saint Lucia,2014,0.21
+961,Marshall Islands,2014,0.15
+962,Tonga,2014,0.11
+963,Vanuatu,2014,0.16
+964,Dominica,2014,0.17
+965,Micronesia,2014,0.11
+966,Liechtenstein,2014,0.16
+967,Cook Islands,2014,0.07
+968,Kiribati,2014,0.06
+969,Bhutan,2014,-0.38
+970,Nauru,2014,0.05
+971,Tuvalu,2014,0.01
+972,Niue,2014,0.0
+973,Fiji,2014,-1.24
+974,Ghana,2014,43.77
+975,World,2013,34217.18
+976,China,2013,9226.51
+977,United States,2013,4670.34
+978,European Union (27),2013,2408.39
+979,India,2013,1901.98
+980,Indonesia,2013,1250.27
+981,Japan,2013,1211.27
+982,Russia,2013,936.52
+983,Brazil,2013,744.85
+984,Germany,2013,748.42
+985,Iran,2013,592.48
+986,Canada,2013,691.53
+987,Democratic Republic of the Congo,2013,605.02
+988,South Korea,2013,547.18
+989,Saudi Arabia,2013,499.38
+990,Mexico,2013,483.71
+991,South Africa,2013,443.16
+992,Australia,2013,349.83
+993,Turkey,2013,258.5
+994,United Kingdom,2013,442.1
+995,Malaysia,2013,109.59
+996,Italy,2013,311.79
+997,Poland,2013,271.24
+998,Thailand,2013,262.72
+999,France,2013,275.53
+1000,Egypt,2013,211.34
+1001,Vietnam,2013,132.72
+1002,Spain,2013,234.94
+1003,Kazakhstan,2013,246.48
+1004,Pakistan,2013,150.55
+1005,Argentina,2013,249.58
+1006,United Arab Emirates,2013,184.1
+1007,Iraq,2013,162.63
+1008,Venezuela,2013,296.03
+1009,Nigeria,2013,156.71
+1010,Ukraine,2013,254.33
+1011,Colombia,2013,134.29
+1012,Netherlands,2013,158.49
+1013,Algeria,2013,129.29
+1014,Philippines,2013,100.23
+1015,Peru,2013,138.39
+1016,Myanmar,2013,121.56
+1017,Uzbekistan,2013,110.01
+1018,Bangladesh,2013,82.55
+1019,Zimbabwe,2013,23.68
+1020,Czech Republic,2013,99.08
+1021,Belgium,2013,94.25
+1022,Qatar,2013,74.6
+1023,Bolivia,2013,78.34
+1024,Kuwait,2013,85.25
+1025,Tanzania,2013,62.76
+1026,Oman,2013,60.99
+1027,Turkmenistan,2013,67.78
+1028,Greece,2013,73.89
+1029,Ecuador,2013,56.47
+1030,Morocco,2013,58.28
+1031,Angola,2013,68.42
+1032,Israel,2013,66.95
+1033,Mozambique,2013,49.04
+1034,Libya,2013,54.99
+1035,Austria,2013,58.68
+1036,Paraguay,2013,73.47
+1037,Romania,2013,-213.11
+1038,Finland,2013,-4.46
+1039,Portugal,2013,45.75
+1040,Botswana,2013,46.89
+1041,Papua New Guinea,2013,45.44
+1042,Hungary,2013,42.1
+1043,Ethiopia,2013,41.97
+1044,Singapore,2013,43.87
+1045,Solomon Islands,2013,-17.44
+1046,Serbia,2013,43.3
+1047,Cameroon,2013,41.08
+1048,Sudan,2013,36.01
+1049,Zambia,2013,37.09
+1050,Cambodia,2013,70.5
+1051,Belarus,2013,43.53
+1052,Côte d'Ivoire,2013,35.08
+1053,Switzerland,2013,41.27
+1054,Ireland,2013,33.47
+1055,Denmark,2013,38.03
+1056,Slovakia,2013,25.34
+1057,Bahrain,2013,28.76
+1058,Azerbaijan,2013,28.54
+1059,Chile,2013,1.59
+1060,Burkina Faso,2013,8.84
+1061,Syria,2013,29.85
+1062,Lebanon,2013,23.17
+1063,Laos,2013,12.58
+1064,Tunisia,2013,30.65
+1065,Nicaragua,2013,15.48
+1066,Jordan,2013,23.8
+1067,Mongolia,2013,21.55
+1068,Chad,2013,26.82
+1069,Dominican Republic,2013,20.07
+1070,Sri Lanka,2013,15.11
+1071,Uganda,2013,20.1
+1072,Cuba,2013,14.64
+1073,New Zealand,2013,15.03
+1074,Guatemala,2013,20.72
+1075,North Korea,2013,31.02
+1076,Bosnia and Herzegovina,2013,18.13
+1077,Sweden,2013,18.3
+1078,Benin,2013,15.73
+1079,Norway,2013,19.27
+1080,Somalia,2013,18.01
+1081,Estonia,2013,13.04
+1082,Trinidad and Tobago,2013,22.84
+1083,Guyana,2013,18.7
+1084,Guinea,2013,13.31
+1085,Honduras,2013,15.24
+1086,Nepal,2013,9.1
+1087,Namibia,2013,14.38
+1088,Liberia,2013,14.36
+1089,Panama,2013,15.0
+1090,Slovenia,2013,11.97
+1091,Central African Republic,2013,14.27
+1092,Senegal,2013,12.48
+1093,Republic of Congo,2013,13.41
+1094,Madagascar,2013,13.03
+1095,Croatia,2013,15.54
+1096,Suriname,2013,10.54
+1097,Gabon,2013,12.15
+1098,Lithuania,2013,5.27
+1099,Kenya,2013,22.39
+1100,Equatorial Guinea,2013,13.18
+1101,South Sudan,2013,8.02
+1102,Malawi,2013,9.39
+1103,Georgia,2013,7.84
+1104,Yemen,2013,26.35
+1105,Luxembourg,2013,9.91
+1106,Moldova,2013,6.73
+1107,Jamaica,2013,7.82
+1108,El Salvador,2013,7.54
+1109,Kyrgyzstan,2013,8.64
+1110,Afghanistan,2013,8.27
+1111,Brunei,2013,7.36
+1112,Macedonia,2013,8.24
+1113,Bulgaria,2013,27.7
+1114,Tajikistan,2013,2.76
+1115,Cyprus,2013,6.07
+1116,Belize,2013,5.97
+1117,Mali,2013,3.05
+1118,Armenia,2013,5.42
+1119,Albania,2013,3.95
+1120,Latvia,2013,4.8
+1121,Uruguay,2013,0.46
+1122,Sierra Leone,2013,4.41
+1123,Mauritius,2013,3.82
+1124,Burundi,2013,-1.0
+1125,Haiti,2013,3.38
+1126,Niger,2013,3.02
+1127,Togo,2013,2.69
+1128,Mauritania,2013,2.59
+1129,Rwanda,2013,2.56
+1130,Lesotho,2013,2.29
+1131,Montenegro,2013,2.3
+1132,Bahamas,2013,3.11
+1133,Iceland,2013,1.95
+1134,Maldives,2013,1.13
+1135,Guinea-Bissau,2013,1.75
+1136,Malta,2013,2.37
+1137,Barbados,2013,1.48
+1138,Eritrea,2013,1.03
+1139,Gambia,2013,0.97
+1140,Timor-Leste,2013,0.92
+1141,Eswatini,2013,1.42
+1142,Costa Rica,2013,0.51
+1143,Seychelles,2013,0.41
+1144,Cape Verde,2013,0.44
+1145,Antigua and Barbuda,2013,0.47
+1146,Djibouti,2013,0.56
+1147,Andorra,2013,0.48
+1148,Samoa,2013,0.31
+1149,Sao Tome and Principe,2013,0.34
+1150,Comoros,2013,0.24
+1151,Grenada,2013,0.32
+1152,Palau,2013,0.22
+1153,Saint Vincent and the Grenadines,2013,0.22
+1154,Saint Kitts and Nevis,2013,0.23
+1155,Saint Lucia,2013,0.17
+1156,Marshall Islands,2013,0.14
+1157,Tonga,2013,0.12
+1158,Vanuatu,2013,0.11
+1159,Dominica,2013,0.17
+1160,Micronesia,2013,0.11
+1161,Liechtenstein,2013,0.19
+1162,Cook Islands,2013,0.07
+1163,Kiribati,2013,0.06
+1164,Bhutan,2013,-0.46
+1165,Nauru,2013,0.05
+1166,Tuvalu,2013,0.01
+1167,Niue,2013,0.0
+1168,Fiji,2013,-1.42
+1169,Ghana,2013,44.42
+1170,World,2012,33620.34
+1171,China,2012,8823.05
+1172,United States,2012,4531.16
+1173,European Union (27),2012,2482.45
+1174,India,2012,1843.74
+1175,Indonesia,2012,1303.87
+1176,Japan,2012,1202.66
+1177,Russia,2012,979.37
+1178,Brazil,2012,713.75
+1179,Germany,2012,730.81
+1180,Iran,2012,571.12
+1181,Canada,2012,682.31
+1182,Democratic Republic of the Congo,2012,603.8
+1183,South Korea,2012,548.5
+1184,Saudi Arabia,2012,488.75
+1185,Mexico,2012,494.56
+1186,South Africa,2012,432.99
+1187,Australia,2012,356.33
+1188,Turkey,2012,269.21
+1189,United Kingdom,2012,456.12
+1190,Malaysia,2012,91.92
+1191,Italy,2012,342.08
+1192,Poland,2012,276.27
+1193,Thailand,2012,252.33
+1194,France,2012,275.23
+1195,Egypt,2012,213.32
+1196,Vietnam,2012,124.61
+1197,Spain,2012,261.41
+1198,Kazakhstan,2012,231.63
+1199,Pakistan,2012,149.2
+1200,Argentina,2012,244.1
+1201,United Arab Emirates,2012,175.73
+1202,Iraq,2012,151.94
+1203,Venezuela,2012,292.24
+1204,Nigeria,2012,146.67
+1205,Ukraine,2012,263.01
+1206,Colombia,2012,126.78
+1207,Netherlands,2012,158.89
+1208,Algeria,2012,126.01
+1209,Philippines,2012,90.49
+1210,Peru,2012,137.24
+1211,Myanmar,2012,118.38
+1212,Uzbekistan,2012,108.17
+1213,Bangladesh,2012,80.01
+1214,Zimbabwe,2012,23.43
+1215,Czech Republic,2012,103.54
+1216,Belgium,2012,92.6
+1217,Qatar,2012,73.29
+1218,Bolivia,2012,77.02
+1219,Kuwait,2012,83.58
+1220,Tanzania,2012,61.83
+1221,Oman,2012,58.65
+1222,Turkmenistan,2012,66.3
+1223,Greece,2012,81.49
+1224,Ecuador,2012,53.68
+1225,Morocco,2012,58.71
+1226,Angola,2012,65.85
+1227,Israel,2012,76.01
+1228,Mozambique,2012,48.66
+1229,Libya,2012,52.3
+1230,Austria,2012,58.04
+1231,Paraguay,2012,73.35
+1232,Romania,2012,-203.39
+1233,Finland,2012,-5.25
+1234,Portugal,2012,47.42
+1235,Botswana,2012,46.46
+1236,Papua New Guinea,2012,45.2
+1237,Hungary,2012,44.77
+1238,Ethiopia,2012,40.2
+1239,Singapore,2012,43.64
+1240,Solomon Islands,2012,-17.47
+1241,Serbia,2012,42.61
+1242,Cameroon,2012,40.77
+1243,Sudan,2012,36.73
+1244,Zambia,2012,36.89
+1245,Cambodia,2012,70.35
+1246,Belarus,2012,43.38
+1247,Côte d'Ivoire,2012,34.5
+1248,Switzerland,2012,40.26
+1249,Ireland,2012,34.85
+1250,Denmark,2012,36.25
+1251,Slovakia,2012,24.76
+1252,Bahrain,2012,26.57
+1253,Azerbaijan,2012,27.91
+1254,Chile,2012,-2.86
+1255,Burkina Faso,2012,8.58
+1256,Syria,2012,45.32
+1257,Lebanon,2012,23.41
+1258,Laos,2012,11.94
+1259,Tunisia,2012,30.56
+1260,Nicaragua,2012,15.67
+1261,Jordan,2012,24.12
+1262,Mongolia,2012,20.31
+1263,Chad,2012,26.79
+1264,Dominican Republic,2012,20.47
+1265,Sri Lanka,2012,17.47
+1266,Uganda,2012,19.74
+1267,Cuba,2012,16.14
+1268,New Zealand,2012,15.3
+1269,Guatemala,2012,19.86
+1270,North Korea,2012,41.7
+1271,Bosnia and Herzegovina,2012,18.25
+1272,Sweden,2012,19.9
+1273,Benin,2012,15.45
+1274,Norway,2012,20.16
+1275,Somalia,2012,17.98
+1276,Estonia,2012,10.63
+1277,Trinidad and Tobago,2012,22.23
+1278,Guyana,2012,18.74
+1279,Guinea,2012,13.62
+1280,Honduras,2012,15.04
+1281,Nepal,2012,9.01
+1282,Namibia,2012,14.1
+1283,Liberia,2012,14.4
+1284,Panama,2012,14.86
+1285,Slovenia,2012,12.54
+1286,Central African Republic,2012,14.27
+1287,Senegal,2012,11.93
+1288,Republic of Congo,2012,14.11
+1289,Madagascar,2012,12.85
+1290,Croatia,2012,15.96
+1291,Suriname,2012,10.69
+1292,Gabon,2012,12.27
+1293,Lithuania,2012,5.86
+1294,Kenya,2012,20.42
+1295,Equatorial Guinea,2012,13.84
+1296,South Sudan,2012,7.99
+1297,Malawi,2012,9.3
+1298,Georgia,2012,7.19
+1299,Yemen,2012,19.68
+1300,Luxembourg,2012,10.45
+1301,Moldova,2012,7.69
+1302,Jamaica,2012,7.35
+1303,El Salvador,2012,7.85
+1304,Kyrgyzstan,2012,9.32
+1305,Afghanistan,2012,10.2
+1306,Brunei,2012,7.48
+1307,Macedonia,2012,9.13
+1308,Bulgaria,2012,33.01
+1309,Tajikistan,2012,2.59
+1310,Cyprus,2012,6.7
+1311,Belize,2012,6.16
+1312,Mali,2012,3.11
+1313,Armenia,2012,5.64
+1314,Albania,2012,3.74
+1315,Latvia,2012,4.92
+1316,Uruguay,2012,1.62
+1317,Sierra Leone,2012,4.24
+1318,Mauritius,2012,3.73
+1319,Burundi,2012,-1.01
+1320,Haiti,2012,3.15
+1321,Niger,2012,3.12
+1322,Togo,2012,3.17
+1323,Mauritania,2012,2.79
+1324,Rwanda,2012,2.5
+1325,Lesotho,2012,2.28
+1326,Montenegro,2012,2.36
+1327,Bahamas,2012,3.64
+1328,Iceland,2012,1.78
+1329,Maldives,2012,1.14
+1330,Guinea-Bissau,2012,1.74
+1331,Malta,2012,2.71
+1332,Barbados,2012,2.21
+1333,Eritrea,2012,1.01
+1334,Gambia,2012,0.99
+1335,Timor-Leste,2012,0.76
+1336,Eswatini,2012,0.93
+1337,Costa Rica,2012,0.18
+1338,Seychelles,2012,0.45
+1339,Cape Verde,2012,0.47
+1340,Antigua and Barbuda,2012,0.72
+1341,Djibouti,2012,0.51
+1342,Andorra,2012,0.49
+1343,Samoa,2012,0.31
+1344,Sao Tome and Principe,2012,0.33
+1345,Comoros,2012,0.21
+1346,Grenada,2012,0.42
+1347,Palau,2012,0.21
+1348,Saint Vincent and the Grenadines,2012,0.4
+1349,Saint Kitts and Nevis,2012,0.35
+1350,Saint Lucia,2012,0.38
+1351,Marshall Islands,2012,0.14
+1352,Tonga,2012,0.11
+1353,Vanuatu,2012,0.12
+1354,Dominica,2012,0.25
+1355,Micronesia,2012,0.1
+1356,Liechtenstein,2012,0.19
+1357,Cook Islands,2012,0.07
+1358,Kiribati,2012,0.06
+1359,Bhutan,2012,-0.56
+1360,Nauru,2012,0.04
+1361,Tuvalu,2012,0.01
+1362,Niue,2012,0.0
+1363,Fiji,2012,-1.52
+1364,Ghana,2012,43.63
+1365,World,2011,33226.01
+1366,China,2011,8568.09
+1367,United States,2011,4753.12
+1368,European Union (27),2011,2541.91
+1369,India,2011,1695.97
+1370,Indonesia,2011,1285.69
+1371,Japan,2011,1162.67
+1372,Russia,2011,974.12
+1373,Brazil,2011,679.1
+1374,Germany,2011,717.17
+1375,Iran,2011,561.73
+1376,Canada,2011,682.88
+1377,Democratic Republic of the Congo,2011,603.89
+1378,South Korea,2011,546.83
+1379,Saudi Arabia,2011,456.67
+1380,Mexico,2011,494.81
+1381,South Africa,2011,415.41
+1382,Australia,2011,356.33
+1383,Turkey,2011,258.05
+1384,United Kingdom,2011,433.47
+1385,Malaysia,2011,92.13
+1386,Italy,2011,362.02
+1387,Poland,2011,283.51
+1388,Thailand,2011,234.88
+1389,France,2011,272.44
+1390,Egypt,2011,202.53
+1391,Vietnam,2011,126.39
+1392,Spain,2011,266.54
+1393,Kazakhstan,2011,232.33
+1394,Pakistan,2011,147.09
+1395,Argentina,2011,242.84
+1396,United Arab Emirates,2011,166.32
+1397,Iraq,2011,131.12
+1398,Venezuela,2011,278.48
+1399,Nigeria,2011,148.08
+1400,Ukraine,2011,269.24
+1401,Colombia,2011,126.41
+1402,Netherlands,2011,160.24
+1403,Algeria,2011,117.51
+1404,Philippines,2011,86.9
+1405,Peru,2011,137.45
+1406,Myanmar,2011,114.79
+1407,Uzbekistan,2011,121.91
+1408,Bangladesh,2011,76.45
+1409,Zimbabwe,2011,22.81
+1410,Czech Republic,2011,107.35
+1411,Belgium,2011,93.21
+1412,Qatar,2011,65.77
+1413,Bolivia,2011,76.22
+1414,Kuwait,2011,81.15
+1415,Tanzania,2011,60.13
+1416,Oman,2011,52.38
+1417,Turkmenistan,2011,63.41
+1418,Greece,2011,85.95
+1419,Ecuador,2011,52.55
+1420,Morocco,2011,56.35
+1421,Angola,2011,65.07
+1422,Israel,2011,69.77
+1423,Mozambique,2011,48.78
+1424,Libya,2011,38.05
+1425,Austria,2011,61.2
+1426,Paraguay,2011,73.39
+1427,Romania,2011,-201.17
+1428,Finland,2011,0.44
+1429,Portugal,2011,49.06
+1430,Botswana,2011,45.33
+1431,Papua New Guinea,2011,45.47
+1432,Hungary,2011,48.25
+1433,Ethiopia,2011,39.29
+1434,Singapore,2011,44.72
+1435,Solomon Islands,2011,-17.47
+1436,Serbia,2011,47.97
+1437,Cameroon,2011,41.65
+1438,Sudan,2011,36.5
+1439,Zambia,2011,35.92
+1440,Cambodia,2011,70.11
+1441,Belarus,2011,41.94
+1442,Côte d'Ivoire,2011,32.6
+1443,Switzerland,2011,38.98
+1444,Ireland,2011,34.11
+1445,Denmark,2011,41.14
+1446,Slovakia,2011,26.53
+1447,Bahrain,2011,26.03
+1448,Azerbaijan,2011,25.71
+1449,Chile,2011,-4.88
+1450,Burkina Faso,2011,8.07
+1451,Syria,2011,55.25
+1452,Lebanon,2011,21.1
+1453,Laos,2011,11.71
+1454,Tunisia,2011,29.6
+1455,Nicaragua,2011,15.76
+1456,Jordan,2011,20.76
+1457,Mongolia,2011,18.9
+1458,Chad,2011,26.72
+1459,Dominican Republic,2011,19.7
+1460,Sri Lanka,2011,16.07
+1461,Uganda,2011,19.99
+1462,Cuba,2011,15.83
+1463,New Zealand,2011,13.64
+1464,Guatemala,2011,19.45
+1465,North Korea,2011,40.24
+1466,Bosnia and Herzegovina,2011,20.02
+1467,Sweden,2011,22.31
+1468,Benin,2011,15.69
+1469,Norway,2011,21.2
+1470,Somalia,2011,17.99
+1471,Estonia,2011,11.9
+1472,Trinidad and Tobago,2011,23.3
+1473,Guyana,2011,18.58
+1474,Guinea,2011,13.75
+1475,Honduras,2011,14.68
+1476,Nepal,2011,8.21
+1477,Namibia,2011,13.88
+1478,Liberia,2011,14.29
+1479,Panama,2011,14.39
+1480,Slovenia,2011,13.1
+1481,Central African Republic,2011,14.26
+1482,Senegal,2011,12.04
+1483,Republic of Congo,2011,13.99
+1484,Madagascar,2011,12.3
+1485,Croatia,2011,17.54
+1486,Suriname,2011,10.2
+1487,Gabon,2011,12.09
+1488,Lithuania,2011,5.78
+1489,Kenya,2011,21.33
+1490,Equatorial Guinea,2011,13.54
+1491,South Sudan,2011,6.95
+1492,Malawi,2011,9.32
+1493,Georgia,2011,6.52
+1494,Yemen,2011,20.69
+1495,Luxembourg,2011,10.69
+1496,Moldova,2011,7.9
+1497,Jamaica,2011,7.83
+1498,El Salvador,2011,7.86
+1499,Kyrgyzstan,2011,6.88
+1500,Afghanistan,2011,12.02
+1501,Brunei,2011,7.36
+1502,Macedonia,2011,9.64
+1503,Bulgaria,2011,37.56
+1504,Tajikistan,2011,2.14
+1505,Cyprus,2011,7.23
+1506,Belize,2011,6.11
+1507,Mali,2011,3.12
+1508,Armenia,2011,4.86
+1509,Albania,2011,4.2
+1510,Latvia,2011,5.24
+1511,Uruguay,2011,0.71
+1512,Sierra Leone,2011,4.11
+1513,Mauritius,2011,3.64
+1514,Burundi,2011,-1.04
+1515,Haiti,2011,3.45
+1516,Niger,2011,2.64
+1517,Togo,2011,3.45
+1518,Mauritania,2011,2.59
+1519,Rwanda,2011,2.42
+1520,Lesotho,2011,2.21
+1521,Montenegro,2011,2.56
+1522,Bahamas,2011,2.42
+1523,Iceland,2011,1.81
+1524,Maldives,2011,1.01
+1525,Guinea-Bissau,2011,1.73
+1526,Malta,2011,2.57
+1527,Barbados,2011,1.66
+1528,Eritrea,2011,0.96
+1529,Gambia,2011,0.98
+1530,Timor-Leste,2011,0.71
+1531,Eswatini,2011,0.89
+1532,Costa Rica,2011,0.16
+1533,Seychelles,2011,0.4
+1534,Cape Verde,2011,0.5
+1535,Antigua and Barbuda,2011,0.51
+1536,Djibouti,2011,0.48
+1537,Andorra,2011,0.49
+1538,Samoa,2011,0.3
+1539,Sao Tome and Principe,2011,0.32
+1540,Comoros,2011,0.21
+1541,Grenada,2011,0.29
+1542,Palau,2011,0.22
+1543,Saint Vincent and the Grenadines,2011,0.23
+1544,Saint Kitts and Nevis,2011,0.26
+1545,Saint Lucia,2011,0.24
+1546,Marshall Islands,2011,0.14
+1547,Tonga,2011,0.11
+1548,Vanuatu,2011,0.13
+1549,Dominica,2011,0.16
+1550,Micronesia,2011,0.09
+1551,Liechtenstein,2011,0.18
+1552,Cook Islands,2011,0.06
+1553,Kiribati,2011,0.05
+1554,Bhutan,2011,-0.65
+1555,Nauru,2011,0.04
+1556,Tuvalu,2011,0.01
+1557,Niue,2011,0.0
+1558,Fiji,2011,-1.44
+1559,Ghana,2011,41.62
+1560,World,2010,33328.38
+1561,China,2010,8138.34
+1562,United States,2010,4990.96
+1563,European Union (27),2010,2900.69
+1564,India,2010,1670.29
+1565,Indonesia,2010,773.92
+1566,Japan,2010,1057.96
+1567,Russia,2010,814.11
+1568,Brazil,2010,1498.84
+1569,Germany,2010,754.58
+1570,Iran,2010,506.63
+1571,Canada,2010,836.28
+1572,Democratic Republic of the Congo,2010,369.76
+1573,South Korea,2010,514.14
+1574,Saudi Arabia,2010,439.23
+1575,Mexico,2010,402.21
+1576,South Africa,2010,431.5
+1577,Australia,2010,416.72
+1578,Turkey,2010,254.16
+1579,United Kingdom,2010,470.83
+1580,Malaysia,2010,316.2
+1581,Italy,2010,370.56
+1582,Poland,2010,242.12
+1583,Thailand,2010,202.37
+1584,France,2010,281.45
+1585,Egypt,2010,196.33
+1586,Vietnam,2010,167.68
+1587,Spain,2010,254.12
+1588,Kazakhstan,2010,222.05
+1589,Pakistan,2010,147.68
+1590,Argentina,2010,262.97
+1591,United Arab Emirates,2010,162.82
+1592,Iraq,2010,120.18
+1593,Venezuela,2010,258.53
+1594,Nigeria,2010,136.73
+1595,Ukraine,2010,244.87
+1596,Colombia,2010,145.22
+1597,Netherlands,2010,172.28
+1598,Algeria,2010,110.74
+1599,Philippines,2010,85.95
+1600,Peru,2010,110.45
+1601,Myanmar,2010,134.15
+1602,Uzbekistan,2010,110.95
+1603,Bangladesh,2010,73.09
+1604,Zimbabwe,2010,20.75
+1605,Czech Republic,2010,106.98
+1606,Belgium,2010,103.46
+1607,Qatar,2010,62.27
+1608,Bolivia,2010,71.94
+1609,Kuwait,2010,78.22
+1610,Tanzania,2010,58.88
+1611,Oman,2010,46.47
+1612,Turkmenistan,2010,57.19
+1613,Greece,2010,86.49
+1614,Ecuador,2010,63.22
+1615,Morocco,2010,49.14
+1616,Angola,2010,64.14
+1617,Israel,2010,70.51
+1618,Mozambique,2010,51.64
+1619,Libya,2010,57.23
+1620,Austria,2010,63.79
+1621,Paraguay,2010,61.35
+1622,Romania,2010,74.81
+1623,Finland,2010,47.7
+1624,Portugal,2010,51.53
+1625,Botswana,2010,44.71
+1626,Papua New Guinea,2010,38.24
+1627,Hungary,2010,50.15
+1628,Ethiopia,2010,37.72
+1629,Singapore,2010,42.36
+1630,Solomon Islands,2010,2.03
+1631,Serbia,2010,11.07
+1632,Cameroon,2010,50.41
+1633,Sudan,2010,37.68
+1634,Zambia,2010,20.09
+1635,Cambodia,2010,8.5
+1636,Belarus,2010,36.42
+1637,Côte d'Ivoire,2010,32.83
+1638,Switzerland,2010,42.85
+1639,Ireland,2010,38.5
+1640,Denmark,2010,48.16
+1641,Slovakia,2010,27.05
+1642,Bahrain,2010,25.98
+1643,Azerbaijan,2010,22.33
+1644,Chile,2010,33.63
+1645,Burkina Faso,2010,18.54
+1646,Syria,2010,59.02
+1647,Lebanon,2010,20.89
+1648,Laos,2010,15.05
+1649,Tunisia,2010,26.13
+1650,Nicaragua,2010,28.15
+1651,Jordan,2010,20.2
+1652,Mongolia,2010,18.42
+1653,Chad,2010,17.7
+1654,Dominican Republic,2010,18.7
+1655,Sri Lanka,2010,15.53
+1656,Uganda,2010,19.68
+1657,Cuba,2010,20.01
+1658,New Zealand,2010,8.3
+1659,Guatemala,2010,25.16
+1660,North Korea,2010,53.32
+1661,Bosnia and Herzegovina,2010,21.19
+1662,Sweden,2010,37.15
+1663,Benin,2010,15.8
+1664,Norway,2010,19.05
+1665,Somalia,2010,17.98
+1666,Estonia,2010,17.58
+1667,Trinidad and Tobago,2010,22.76
+1668,Guyana,2010,10.84
+1669,Guinea,2010,13.58
+1670,Honduras,2010,13.56
+1671,Nepal,2010,0.48
+1672,Namibia,2010,13.69
+1673,Liberia,2010,14.17
+1674,Panama,2010,13.58
+1675,Slovenia,2010,4.28
+1676,Central African Republic,2010,14.24
+1677,Senegal,2010,13.39
+1678,Republic of Congo,2010,14.02
+1679,Madagascar,2010,23.91
+1680,Croatia,2010,18.63
+1681,Suriname,2010,5.71
+1682,Gabon,2010,7.95
+1683,Lithuania,2010,12.64
+1684,Kenya,2010,27.75
+1685,Equatorial Guinea,2010,13.35
+1686,South Sudan,2010,7.17
+1687,Malawi,2010,9.22
+1688,Georgia,2010,1.81
+1689,Yemen,2010,23.99
+1690,Luxembourg,2010,10.54
+1691,Moldova,2010,7.29
+1692,Jamaica,2010,5.05
+1693,El Salvador,2010,7.62
+1694,Kyrgyzstan,2010,6.34
+1695,Afghanistan,2010,8.79
+1696,Brunei,2010,8.11
+1697,Macedonia,2010,8.73
+1698,Bulgaria,2010,21.29
+1699,Tajikistan,2010,2.07
+1700,Cyprus,2010,7.55
+1701,Belize,2010,3.81
+1702,Mali,2010,2.78
+1703,Armenia,2010,4.46
+1704,Albania,2010,3.46
+1705,Latvia,2010,-5.28
+1706,Uruguay,2010,-3.69
+1707,Sierra Leone,2010,3.94
+1708,Mauritius,2010,3.75
+1709,Burundi,2010,3.86
+1710,Haiti,2010,2.53
+1711,Niger,2010,2.6
+1712,Togo,2010,3.57
+1713,Mauritania,2010,2.47
+1714,Rwanda,2010,3.24
+1715,Lesotho,2010,2.16
+1716,Montenegro,2010,-1.55
+1717,Bahamas,2010,2.08
+1718,Iceland,2010,1.93
+1719,Maldives,2010,0.96
+1720,Guinea-Bissau,2010,1.73
+1721,Malta,2010,2.58
+1722,Barbados,2010,1.59
+1723,Eritrea,2010,0.96
+1724,Gambia,2010,0.97
+1725,Timor-Leste,2010,0.71
+1726,Eswatini,2010,0.88
+1727,Costa Rica,2010,6.65
+1728,Seychelles,2010,0.44
+1729,Cape Verde,2010,0.48
+1730,Antigua and Barbuda,2010,0.49
+1731,Djibouti,2010,0.52
+1732,Andorra,2010,0.52
+1733,Samoa,2010,0.3
+1734,Sao Tome and Principe,2010,0.11
+1735,Comoros,2010,0.22
+1736,Grenada,2010,0.29
+1737,Palau,2010,0.21
+1738,Saint Vincent and the Grenadines,2010,0.25
+1739,Saint Kitts and Nevis,2010,0.24
+1740,Saint Lucia,2010,0.28
+1741,Marshall Islands,2010,0.14
+1742,Tonga,2010,0.12
+1743,Vanuatu,2010,0.13
+1744,Dominica,2010,0.17
+1745,Micronesia,2010,0.08
+1746,Liechtenstein,2010,0.22
+1747,Cook Islands,2010,0.06
+1748,Kiribati,2010,0.05
+1749,Bhutan,2010,-6.14
+1750,Nauru,2010,0.04
+1751,Tuvalu,2010,0.01
+1752,Niue,2010,0.01
+1753,Fiji,2010,-1.39
+1754,Ghana,2010,57.0
+1755,World,2009,31769.89
+1756,China,2009,7382.89
+1757,United States,2009,4757.65
+1758,European Union (27),2009,2814.76
+1759,India,2009,1573.51
+1760,Indonesia,2009,1036.71
+1761,Japan,2009,1003.19
+1762,Russia,2009,726.06
+1763,Brazil,2009,1451.95
+1764,Germany,2009,716.32
+1765,Iran,2009,507.16
+1766,Canada,2009,822.04
+1767,Democratic Republic of the Congo,2009,369.61
+1768,South Korea,2009,465.27
+1769,Saudi Arabia,2009,399.63
+1770,Mexico,2009,395.03
+1771,South Africa,2009,410.42
+1772,Australia,2009,424.33
+1773,Turkey,2009,244.87
+1774,United Kingdom,2009,454.16
+1775,Malaysia,2009,303.97
+1776,Italy,2009,362.34
+1777,Poland,2009,225.64
+1778,Thailand,2009,187.79
+1779,France,2009,277.4
+1780,Egypt,2009,195.32
+1781,Vietnam,2009,149.73
+1782,Spain,2009,268.35
+1783,Kazakhstan,2009,202.7
+1784,Pakistan,2009,152.2
+1785,Argentina,2009,252.27
+1786,United Arab Emirates,2009,157.18
+1787,Iraq,2009,107.46
+1788,Venezuela,2009,251.06
+1789,Nigeria,2009,120.23
+1790,Ukraine,2009,227.7
+1791,Colombia,2009,143.48
+1792,Netherlands,2009,161.66
+1793,Algeria,2009,110.37
+1794,Philippines,2009,79.91
+1795,Peru,2009,106.56
+1796,Myanmar,2009,132.1
+1797,Uzbekistan,2009,102.75
+1798,Bangladesh,2009,67.24
+1799,Zimbabwe,2009,18.69
+1800,Czech Republic,2009,104.22
+1801,Belgium,2009,96.65
+1802,Qatar,2009,57.17
+1803,Bolivia,2009,70.77
+1804,Kuwait,2009,75.01
+1805,Tanzania,2009,57.89
+1806,Oman,2009,42.73
+1807,Turkmenistan,2009,50.21
+1808,Greece,2009,93.65
+1809,Ecuador,2009,61.0
+1810,Morocco,2009,46.02
+1811,Angola,2009,62.75
+1812,Israel,2009,65.71
+1813,Mozambique,2009,51.44
+1814,Libya,2009,53.81
+1815,Austria,2009,58.26
+1816,Paraguay,2009,60.68
+1817,Romania,2009,77.83
+1818,Finland,2009,39.31
+1819,Portugal,2009,56.89
+1820,Botswana,2009,45.43
+1821,Papua New Guinea,2009,38.26
+1822,Hungary,2009,50.11
+1823,Ethiopia,2009,38.16
+1824,Singapore,2009,38.78
+1825,Solomon Islands,2009,2.02
+1826,Serbia,2009,11.48
+1827,Cameroon,2009,50.18
+1828,Sudan,2009,36.79
+1829,Zambia,2009,19.9
+1830,Cambodia,2009,8.3
+1831,Belarus,2009,32.15
+1832,Côte d'Ivoire,2009,32.52
+1833,Switzerland,2009,41.31
+1834,Ireland,2009,38.89
+1835,Denmark,2009,47.87
+1836,Slovakia,2009,25.44
+1837,Bahrain,2009,24.73
+1838,Azerbaijan,2009,23.33
+1839,Chile,2009,29.28
+1840,Burkina Faso,2009,18.38
+1841,Syria,2009,58.48
+1842,Lebanon,2009,21.92
+1843,Laos,2009,14.71
+1844,Tunisia,2009,23.79
+1845,Nicaragua,2009,28.03
+1846,Jordan,2009,20.66
+1847,Mongolia,2009,17.75
+1848,Chad,2009,17.64
+1849,Dominican Republic,2009,17.69
+1850,Sri Lanka,2009,14.76
+1851,Uganda,2009,19.24
+1852,Cuba,2009,16.85
+1853,New Zealand,2009,8.49
+1854,Guatemala,2009,25.57
+1855,North Korea,2009,57.06
+1856,Bosnia and Herzegovina,2009,20.93
+1857,Sweden,2009,31.76
+1858,Benin,2009,15.41
+1859,Norway,2009,14.63
+1860,Somalia,2009,17.97
+1861,Estonia,2009,13.63
+1862,Trinidad and Tobago,2009,20.33
+1863,Guyana,2009,10.7
+1864,Guinea,2009,13.2
+1865,Honduras,2009,13.5
+1866,Nepal,2009,-0.28
+1867,Namibia,2009,13.59
+1868,Liberia,2009,13.98
+1869,Panama,2009,13.09
+1870,Slovenia,2009,4.01
+1871,Central African Republic,2009,14.23
+1872,Senegal,2009,13.02
+1873,Republic of Congo,2009,14.45
+1874,Madagascar,2009,23.72
+1875,Croatia,2009,19.48
+1876,Suriname,2009,5.42
+1877,Gabon,2009,7.39
+1878,Lithuania,2009,11.72
+1879,Kenya,2009,26.82
+1880,Equatorial Guinea,2009,13.49
+1881,South Sudan,2009,7.16
+1882,Malawi,2009,9.3
+1883,Georgia,2009,2.11
+1884,Yemen,2009,25.65
+1885,Luxembourg,2009,9.95
+1886,Moldova,2009,6.63
+1887,Jamaica,2009,5.45
+1888,El Salvador,2009,7.76
+1889,Kyrgyzstan,2009,6.75
+1890,Afghanistan,2009,6.12
+1891,Brunei,2009,8.7
+1892,Macedonia,2009,8.96
+1893,Bulgaria,2009,19.41
+1894,Tajikistan,2009,2.04
+1895,Cyprus,2009,7.91
+1896,Belize,2009,4.72
+1897,Mali,2009,2.51
+1898,Armenia,2009,4.63
+1899,Albania,2009,3.2
+1900,Latvia,2009,-6.45
+1901,Uruguay,2009,-2.3
+1902,Sierra Leone,2009,3.89
+1903,Mauritius,2009,3.51
+1904,Burundi,2009,3.73
+1905,Haiti,2009,2.06
+1906,Niger,2009,2.32
+1907,Togo,2009,3.77
+1908,Mauritania,2009,2.39
+1909,Rwanda,2009,3.23
+1910,Lesotho,2009,2.1
+1911,Montenegro,2009,-2.38
+1912,Bahamas,2009,6.02
+1913,Iceland,2009,2.08
+1914,Maldives,2009,0.91
+1915,Guinea-Bissau,2009,1.72
+1916,Malta,2009,2.5
+1917,Barbados,2009,4.62
+1918,Eritrea,2009,0.93
+1919,Gambia,2009,1.01
+1920,Timor-Leste,2009,0.7
+1921,Eswatini,2009,0.94
+1922,Costa Rica,2009,6.74
+1923,Seychelles,2009,0.51
+1924,Cape Verde,2009,0.45
+1925,Antigua and Barbuda,2009,1.39
+1926,Djibouti,2009,0.46
+1927,Andorra,2009,0.52
+1928,Samoa,2009,0.3
+1929,Sao Tome and Principe,2009,0.1
+1930,Comoros,2009,0.19
+1931,Grenada,2009,0.81
+1932,Palau,2009,0.2
+1933,Saint Vincent and the Grenadines,2009,0.99
+1934,Saint Kitts and Nevis,2009,0.7
+1935,Saint Lucia,2009,0.93
+1936,Marshall Islands,2009,0.14
+1937,Tonga,2009,0.14
+1938,Vanuatu,2009,0.13
+1939,Dominica,2009,0.49
+1940,Micronesia,2009,0.1
+1941,Liechtenstein,2009,0.23
+1942,Cook Islands,2009,0.05
+1943,Kiribati,2009,0.06
+1944,Bhutan,2009,-6.24
+1945,Nauru,2009,0.04
+1946,Tuvalu,2009,0.01
+1947,Niue,2009,0.01
+1948,Fiji,2009,-1.58
+1949,Ghana,2009,55.8
+1950,World,2008,31856.76
+1951,China,2008,6862.78
+1952,United States,2008,5161.51
+1953,European Union (27),2008,3064.51
+1954,India,2008,1428.85
+1955,Indonesia,2008,731.76
+1956,Japan,2008,1061.73
+1957,Russia,2008,844.09
+1958,Brazil,2008,1473.28
+1959,Germany,2008,771.22
+1960,Iran,2008,489.82
+1961,Canada,2008,851.45
+1962,Democratic Republic of the Congo,2008,369.57
+1963,South Korea,2008,453.07
+1964,Saudi Arabia,2008,382.24
+1965,Mexico,2008,410.68
+1966,South Africa,2008,432.95
+1967,Australia,2008,417.88
+1968,Turkey,2008,244.24
+1969,United Kingdom,2008,503.46
+1970,Malaysia,2008,309.7
+1971,Italy,2008,410.27
+1972,Poland,2008,236.73
+1973,Thailand,2008,194.8
+1974,France,2008,291.73
+1975,Egypt,2008,188.94
+1976,Vietnam,2008,135.62
+1977,Spain,2008,305.03
+1978,Kazakhstan,2008,230.49
+1979,Pakistan,2008,149.23
+1980,Argentina,2008,262.98
+1981,United Arab Emirates,2008,156.2
+1982,Iraq,2008,85.99
+1983,Venezuela,2008,250.61
+1984,Nigeria,2008,137.52
+1985,Ukraine,2008,276.79
+1986,Colombia,2008,140.52
+1987,Netherlands,2008,166.5
+1988,Algeria,2008,101.59
+1989,Philippines,2008,79.11
+1990,Peru,2008,103.44
+1991,Myanmar,2008,130.98
+1992,Uzbekistan,2008,112.59
+1993,Bangladesh,2008,64.06
+1994,Zimbabwe,2008,18.54
+1995,Czech Republic,2008,111.36
+1996,Belgium,2008,103.92
+1997,Qatar,2008,55.23
+1998,Bolivia,2008,69.91
+1999,Kuwait,2008,72.89
+2000,Tanzania,2008,58.07
+2001,Oman,2008,40.08
+2002,Turkmenistan,2008,56.68
+2003,Greece,2008,99.32
+2004,Ecuador,2008,58.84
+2005,Morocco,2008,45.66
+2006,Angola,2008,60.69
+2007,Israel,2008,66.7
+2008,Mozambique,2008,51.17
+2009,Libya,2008,51.47
+2010,Austria,2008,64.56
+2011,Paraguay,2008,60.48
+2012,Romania,2008,92.52
+2013,Finland,2008,41.74
+2014,Portugal,2008,57.43
+2015,Botswana,2008,45.75
+2016,Papua New Guinea,2008,38.23
+2017,Hungary,2008,55.29
+2018,Ethiopia,2008,38.04
+2019,Singapore,2008,38.37
+2020,Solomon Islands,2008,2.01
+2021,Serbia,2008,15.76
+2022,Cameroon,2008,49.57
+2023,Sudan,2008,36.31
+2024,Zambia,2008,19.64
+2025,Cambodia,2008,7.52
+2026,Belarus,2008,35.27
+2027,Côte d'Ivoire,2008,32.95
+2028,Switzerland,2008,42.6
+2029,Ireland,2008,44.22
+2030,Denmark,2008,50.1
+2031,Slovakia,2008,28.64
+2032,Bahrain,2008,24.77
+2033,Azerbaijan,2008,27.77
+2034,Chile,2008,32.16
+2035,Burkina Faso,2008,18.36
+2036,Syria,2008,63.39
+2037,Lebanon,2008,18.67
+2038,Laos,2008,14.22
+2039,Tunisia,2008,23.48
+2040,Nicaragua,2008,28.1
+2041,Jordan,2008,20.01
+2042,Mongolia,2008,17.07
+2043,Chad,2008,17.63
+2044,Dominican Republic,2008,18.6
+2045,Sri Lanka,2008,15.28
+2046,Uganda,2008,19.02
+2047,Cuba,2008,16.06
+2048,New Zealand,2008,11.54
+2049,Guatemala,2008,24.96
+2050,North Korea,2008,74.53
+2051,Bosnia and Herzegovina,2008,21.11
+2052,Sweden,2008,34.94
+2053,Benin,2008,15.06
+2054,Norway,2008,14.23
+2055,Somalia,2008,17.97
+2056,Estonia,2008,16.96
+2057,Trinidad and Tobago,2008,21.28
+2058,Guyana,2008,10.68
+2059,Guinea,2008,13.09
+2060,Honduras,2008,14.01
+2061,Nepal,2008,-1.16
+2062,Namibia,2008,13.52
+2063,Liberia,2008,13.98
+2064,Panama,2008,11.7
+2065,Slovenia,2008,5.86
+2066,Central African Republic,2008,14.23
+2067,Senegal,2008,12.77
+2068,Republic of Congo,2008,14.42
+2069,Madagascar,2008,23.82
+2070,Croatia,2008,20.91
+2071,Suriname,2008,5.42
+2072,Gabon,2008,7.32
+2073,Lithuania,2008,13.11
+2074,Kenya,2008,25.03
+2075,Equatorial Guinea,2008,12.81
+2076,South Sudan,2008,7.16
+2077,Malawi,2008,9.29
+2078,Georgia,2008,1.32
+2079,Yemen,2008,22.01
+2080,Luxembourg,2008,10.53
+2081,Moldova,2008,7.14
+2082,Jamaica,2008,7.19
+2083,El Salvador,2008,7.99
+2084,Kyrgyzstan,2008,7.5
+2085,Afghanistan,2008,4.51
+2086,Brunei,2008,8.48
+2087,Macedonia,2008,9.58
+2088,Bulgaria,2008,26.47
+2089,Tajikistan,2008,2.68
+2090,Cyprus,2008,8.13
+2091,Belize,2008,3.74
+2092,Mali,2008,2.09
+2093,Armenia,2008,5.81
+2094,Albania,2008,3.05
+2095,Latvia,2008,-5.71
+2096,Uruguay,2008,-2.22
+2097,Sierra Leone,2008,3.9
+2098,Mauritius,2008,3.55
+2099,Burundi,2008,3.73
+2100,Haiti,2008,2.1
+2101,Niger,2008,2.1
+2102,Togo,2008,2.51
+2103,Mauritania,2008,2.19
+2104,Rwanda,2008,3.2
+2105,Lesotho,2008,2.01
+2106,Montenegro,2008,-1.44
+2107,Bahamas,2008,2.11
+2108,Iceland,2008,2.16
+2109,Maldives,2008,0.87
+2110,Guinea-Bissau,2008,1.71
+2111,Malta,2008,2.72
+2112,Barbados,2008,1.78
+2113,Eritrea,2008,0.9
+2114,Gambia,2008,0.96
+2115,Timor-Leste,2008,0.67
+2116,Eswatini,2008,0.89
+2117,Costa Rica,2008,7.06
+2118,Seychelles,2008,0.7
+2119,Cape Verde,2008,0.41
+2120,Antigua and Barbuda,2008,0.48
+2121,Djibouti,2008,0.47
+2122,Andorra,2008,0.54
+2123,Samoa,2008,0.29
+2124,Sao Tome and Principe,2008,0.1
+2125,Comoros,2008,0.18
+2126,Grenada,2008,0.29
+2127,Palau,2008,0.21
+2128,Saint Vincent and the Grenadines,2008,0.22
+2129,Saint Kitts and Nevis,2008,0.25
+2130,Saint Lucia,2008,0.2
+2131,Marshall Islands,2008,0.13
+2132,Tonga,2008,0.13
+2133,Vanuatu,2008,0.1
+2134,Dominica,2008,0.17
+2135,Micronesia,2008,0.09
+2136,Liechtenstein,2008,0.25
+2137,Cook Islands,2008,0.06
+2138,Kiribati,2008,0.06
+2139,Bhutan,2008,-6.21
+2140,Nauru,2008,0.04
+2141,Tuvalu,2008,0.01
+2142,Niue,2008,0.01
+2143,Fiji,2008,-1.59
+2144,Ghana,2008,54.42
+2145,World,2007,31608.28
+2146,China,2007,6655.98
+2147,United States,2007,5338.52
+2148,European Union (27),2007,3142.06
+2149,India,2007,1341.07
+2150,Indonesia,2007,738.57
+2151,Japan,2007,1128.57
+2152,Russia,2007,822.52
+2153,Brazil,2007,1452.63
+2154,Germany,2007,765.28
+2155,Iran,2007,479.47
+2156,Canada,2007,872.59
+2157,Democratic Republic of the Congo,2007,369.45
+2158,South Korea,2007,441.38
+2159,Saudi Arabia,2007,347.53
+2160,Mexico,2007,395.67
+2161,South Africa,2007,403.29
+2162,Australia,2007,414.75
+2163,Turkey,2007,246.01
+2164,United Kingdom,2007,518.2
+2165,Malaysia,2007,298.83
+2166,Italy,2007,424.66
+2167,Poland,2007,241.79
+2168,Thailand,2007,190.63
+2169,France,2007,296.43
+2170,Egypt,2007,182.06
+2171,Vietnam,2007,123.43
+2172,Spain,2007,335.55
+2173,Kazakhstan,2007,187.59
+2174,Pakistan,2007,153.32
+2175,Argentina,2007,258.46
+2176,United Arab Emirates,2007,131.69
+2177,Iraq,2007,77.42
+2178,Venezuela,2007,239.91
+2179,Nigeria,2007,136.12
+2180,Ukraine,2007,287.66
+2181,Colombia,2007,139.7
+2182,Netherlands,2007,165.74
+2183,Algeria,2007,98.12
+2184,Philippines,2007,76.94
+2185,Peru,2007,98.99
+2186,Myanmar,2007,135.08
+2187,Uzbekistan,2007,106.74
+2188,Bangladesh,2007,60.48
+2189,Zimbabwe,2007,20.7
+2190,Czech Republic,2007,116.68
+2191,Belgium,2007,101.57
+2192,Qatar,2007,51.05
+2193,Bolivia,2007,68.93
+2194,Kuwait,2007,68.71
+2195,Tanzania,2007,57.92
+2196,Oman,2007,41.03
+2197,Turkmenistan,2007,56.03
+2198,Greece,2007,103.23
+2199,Ecuador,2007,58.14
+2200,Morocco,2007,43.21
+2201,Angola,2007,59.1
+2202,Israel,2007,66.58
+2203,Mozambique,2007,51.16
+2204,Libya,2007,46.29
+2205,Austria,2007,65.08
+2206,Paraguay,2007,60.25
+2207,Romania,2007,93.74
+2208,Finland,2007,50.15
+2209,Portugal,2007,59.39
+2210,Botswana,2007,45.67
+2211,Papua New Guinea,2007,39.11
+2212,Hungary,2007,56.13
+2213,Ethiopia,2007,37.2
+2214,Singapore,2007,38.23
+2215,Solomon Islands,2007,2.03
+2216,Serbia,2007,16.99
+2217,Cameroon,2007,49.47
+2218,Sudan,2007,35.22
+2219,Zambia,2007,19.42
+2220,Cambodia,2007,7.18
+2221,Belarus,2007,32.48
+2222,Côte d'Ivoire,2007,32.14
+2223,Switzerland,2007,41.18
+2224,Ireland,2007,44.89
+2225,Denmark,2007,53.38
+2226,Slovakia,2007,28.82
+2227,Bahrain,2007,23.01
+2228,Azerbaijan,2007,25.7
+2229,Chile,2007,28.66
+2230,Burkina Faso,2007,18.13
+2231,Syria,2007,61.44
+2232,Lebanon,2007,15.06
+2233,Laos,2007,13.91
+2234,Tunisia,2007,23.21
+2235,Nicaragua,2007,28.3
+2236,Jordan,2007,21.09
+2237,Mongolia,2007,17.13
+2238,Chad,2007,17.55
+2239,Dominican Republic,2007,18.65
+2240,Sri Lanka,2007,16.07
+2241,Uganda,2007,18.78
+2242,Cuba,2007,16.95
+2243,New Zealand,2007,10.57
+2244,Guatemala,2007,26.12
+2245,North Korea,2007,67.33
+2246,Bosnia and Herzegovina,2007,19.23
+2247,Sweden,2007,35.88
+2248,Benin,2007,15.1
+2249,Norway,2007,15.16
+2250,Somalia,2007,17.98
+2251,Estonia,2007,18.52
+2252,Trinidad and Tobago,2007,22.21
+2253,Guyana,2007,10.69
+2254,Guinea,2007,13.06
+2255,Honduras,2007,13.96
+2256,Nepal,2007,-1.46
+2257,Namibia,2007,13.18
+2258,Liberia,2007,14.08
+2259,Panama,2007,11.88
+2260,Slovenia,2007,4.77
+2261,Central African Republic,2007,14.23
+2262,Senegal,2007,12.57
+2263,Republic of Congo,2007,14.09
+2264,Madagascar,2007,23.76
+2265,Croatia,2007,22.06
+2266,Suriname,2007,5.38
+2267,Gabon,2007,7.24
+2268,Lithuania,2007,13.26
+2269,Kenya,2007,24.48
+2270,Equatorial Guinea,2007,11.38
+2271,South Sudan,2007,7.16
+2272,Malawi,2007,9.16
+2273,Georgia,2007,2.11
+2274,Yemen,2007,20.63
+2275,Luxembourg,2007,10.62
+2276,Moldova,2007,7.13
+2277,Jamaica,2007,9.59
+2278,El Salvador,2007,8.71
+2279,Kyrgyzstan,2007,6.46
+2280,Afghanistan,2007,2.49
+2281,Brunei,2007,8.1
+2282,Macedonia,2007,9.81
+2283,Bulgaria,2007,29.07
+2284,Tajikistan,2007,2.9
+2285,Cyprus,2007,7.97
+2286,Belize,2007,3.78
+2287,Mali,2007,2.07
+2288,Armenia,2007,5.33
+2289,Albania,2007,3.1
+2290,Latvia,2007,-5.3
+2291,Uruguay,2007,-4.12
+2292,Sierra Leone,2007,3.88
+2293,Mauritius,2007,3.48
+2294,Burundi,2007,3.73
+2295,Haiti,2007,2.11
+2296,Niger,2007,2.05
+2297,Togo,2007,2.44
+2298,Mauritania,2007,2.11
+2299,Rwanda,2007,3.21
+2300,Lesotho,2007,1.96
+2301,Montenegro,2007,-2.03
+2302,Bahamas,2007,2.07
+2303,Iceland,2007,2.36
+2304,Maldives,2007,0.87
+2305,Guinea-Bissau,2007,1.72
+2306,Malta,2007,2.71
+2307,Barbados,2007,1.48
+2308,Eritrea,2007,0.97
+2309,Gambia,2007,0.93
+2310,Timor-Leste,2007,0.67
+2311,Eswatini,2007,0.91
+2312,Costa Rica,2007,7.14
+2313,Seychelles,2007,0.65
+2314,Cape Verde,2007,0.4
+2315,Antigua and Barbuda,2007,0.46
+2316,Djibouti,2007,0.47
+2317,Andorra,2007,0.54
+2318,Samoa,2007,0.3
+2319,Sao Tome and Principe,2007,0.09
+2320,Comoros,2007,0.18
+2321,Grenada,2007,0.28
+2322,Palau,2007,0.24
+2323,Saint Vincent and the Grenadines,2007,0.3
+2324,Saint Kitts and Nevis,2007,0.25
+2325,Saint Lucia,2007,0.19
+2326,Marshall Islands,2007,0.14
+2327,Tonga,2007,0.13
+2328,Vanuatu,2007,0.11
+2329,Dominica,2007,0.17
+2330,Micronesia,2007,0.11
+2331,Liechtenstein,2007,0.23
+2332,Cook Islands,2007,0.06
+2333,Kiribati,2007,0.06
+2334,Bhutan,2007,-6.22
+2335,Nauru,2007,0.04
+2336,Tuvalu,2007,0.01
+2337,Niue,2007,0.01
+2338,Fiji,2007,-1.28
+2339,Ghana,2007,54.91
+2340,World,2006,30905.93
+2341,China,2006,6099.67
+2342,United States,2006,5254.87
+2343,European Union (27),2006,3182.24
+2344,India,2006,1219.23
+2345,Indonesia,2006,1152.83
+2346,Japan,2006,1092.63
+2347,Russia,2006,821.2
+2348,Brazil,2006,1435.1
+2349,Germany,2006,795.83
+2350,Iran,2006,446.5
+2351,Canada,2006,842.42
+2352,Democratic Republic of the Congo,2006,369.3
+2353,South Korea,2006,426.82
+2354,Saudi Arabia,2006,328.35
+2355,Mexico,2006,382.98
+2356,South Africa,2006,385.95
+2357,Australia,2006,404.44
+2358,Turkey,2006,218.13
+2359,United Kingdom,2006,530.68
+2360,Malaysia,2006,277.26
+2361,Italy,2006,431.94
+2362,Poland,2006,242.51
+2363,Thailand,2006,184.56
+2364,France,2006,305.12
+2365,Egypt,2006,168.96
+2366,Vietnam,2006,113.77
+2367,Spain,2006,322.65
+2368,Kazakhstan,2006,178.69
+2369,Pakistan,2006,139.55
+2370,Argentina,2006,250.19
+2371,United Arab Emirates,2006,121.46
+2372,Iraq,2006,83.84
+2373,Venezuela,2006,237.03
+2374,Nigeria,2006,138.2
+2375,Ukraine,2006,279.54
+2376,Colombia,2006,138.22
+2377,Netherlands,2006,164.82
+2378,Algeria,2006,91.35
+2379,Philippines,2006,73.19
+2380,Peru,2006,95.96
+2381,Myanmar,2006,135.2
+2382,Uzbekistan,2006,110.33
+2383,Bangladesh,2006,58.36
+2384,Zimbabwe,2006,20.77
+2385,Czech Republic,2006,113.65
+2386,Belgium,2006,105.63
+2387,Qatar,2006,44.98
+2388,Bolivia,2006,68.05
+2389,Kuwait,2006,69.65
+2390,Tanzania,2006,58.1
+2391,Oman,2006,37.52
+2392,Turkmenistan,2006,49.57
+2393,Greece,2006,99.62
+2394,Ecuador,2006,57.68
+2395,Morocco,2006,41.66
+2396,Angola,2006,55.95
+2397,Israel,2006,64.32
+2398,Mozambique,2006,50.79
+2399,Libya,2006,49.37
+2400,Austria,2006,67.93
+2401,Paraguay,2006,60.13
+2402,Romania,2006,96.25
+2403,Finland,2006,52.06
+2404,Portugal,2006,61.04
+2405,Botswana,2006,45.44
+2406,Papua New Guinea,2006,39.01
+2407,Hungary,2006,57.73
+2408,Ethiopia,2006,36.53
+2409,Singapore,2006,37.12
+2410,Solomon Islands,2006,2.03
+2411,Serbia,2006,18.17
+2412,Cameroon,2006,48.29
+2413,Sudan,2006,34.23
+2414,Zambia,2006,19.62
+2415,Cambodia,2006,6.52
+2416,Belarus,2006,33.97
+2417,Côte d'Ivoire,2006,32.21
+2418,Switzerland,2006,43.12
+2419,Ireland,2006,45.68
+2420,Denmark,2006,58.19
+2421,Slovakia,2006,29.48
+2422,Bahrain,2006,22.49
+2423,Azerbaijan,2006,32.36
+2424,Chile,2006,20.96
+2425,Burkina Faso,2006,17.85
+2426,Syria,2006,58.15
+2427,Lebanon,2006,16.24
+2428,Laos,2006,13.82
+2429,Tunisia,2006,22.76
+2430,Nicaragua,2006,28.15
+2431,Jordan,2006,20.17
+2432,Mongolia,2006,16.53
+2433,Chad,2006,17.49
+2434,Dominican Republic,2006,18.38
+2435,Sri Lanka,2006,14.9
+2436,Uganda,2006,18.45
+2437,Cuba,2006,16.05
+2438,New Zealand,2006,11.48
+2439,Guatemala,2006,25.23
+2440,North Korea,2006,80.64
+2441,Bosnia and Herzegovina,2006,18.26
+2442,Sweden,2006,37.61
+2443,Benin,2006,14.54
+2444,Norway,2006,14.51
+2445,Somalia,2006,17.93
+2446,Estonia,2006,14.54
+2447,Trinidad and Tobago,2006,22.36
+2448,Guyana,2006,10.42
+2449,Guinea,2006,12.99
+2450,Honduras,2006,13.39
+2451,Nepal,2006,-1.53
+2452,Namibia,2006,13.1
+2453,Liberia,2006,14.13
+2454,Panama,2006,11.89
+2455,Slovenia,2006,4.78
+2456,Central African Republic,2006,14.22
+2457,Senegal,2006,11.94
+2458,Republic of Congo,2006,13.94
+2459,Madagascar,2006,23.67
+2460,Croatia,2006,20.79
+2461,Suriname,2006,5.5
+2462,Gabon,2006,7.23
+2463,Lithuania,2006,13.07
+2464,Kenya,2006,24.41
+2465,Equatorial Guinea,2006,13.0
+2466,South Sudan,2006,7.16
+2467,Malawi,2006,9.11
+2468,Georgia,2006,1.18
+2469,Yemen,2006,19.41
+2470,Luxembourg,2006,11.22
+2471,Moldova,2006,6.97
+2472,Jamaica,2006,9.63
+2473,El Salvador,2006,8.32
+2474,Kyrgyzstan,2006,5.31
+2475,Afghanistan,2006,2.06
+2476,Brunei,2006,8.48
+2477,Macedonia,2006,9.37
+2478,Bulgaria,2006,25.41
+2479,Tajikistan,2006,2.32
+2480,Cyprus,2006,7.67
+2481,Belize,2006,3.75
+2482,Mali,2006,1.89
+2483,Armenia,2006,4.61
+2484,Albania,2006,2.94
+2485,Latvia,2006,-5.65
+2486,Uruguay,2006,-3.64
+2487,Sierra Leone,2006,3.97
+2488,Mauritius,2006,3.39
+2489,Burundi,2006,3.73
+2490,Haiti,2006,1.79
+2491,Niger,2006,1.98
+2492,Togo,2006,2.51
+2493,Mauritania,2006,1.85
+2494,Rwanda,2006,3.18
+2495,Lesotho,2006,1.92
+2496,Montenegro,2006,-1.95
+2497,Bahamas,2006,2.02
+2498,Iceland,2006,2.31
+2499,Maldives,2006,0.87
+2500,Guinea-Bissau,2006,1.7
+2501,Malta,2006,2.65
+2502,Barbados,2006,1.47
+2503,Eritrea,2006,0.98
+2504,Gambia,2006,0.89
+2505,Timor-Leste,2006,0.67
+2506,Eswatini,2006,0.88
+2507,Costa Rica,2006,6.09
+2508,Seychelles,2006,0.74
+2509,Cape Verde,2006,0.44
+2510,Antigua and Barbuda,2006,0.44
+2511,Djibouti,2006,0.43
+2512,Andorra,2006,0.55
+2513,Samoa,2006,0.3
+2514,Sao Tome and Principe,2006,0.09
+2515,Comoros,2006,0.21
+2516,Grenada,2006,0.26
+2517,Palau,2006,0.25
+2518,Saint Vincent and the Grenadines,2006,0.25
+2519,Saint Kitts and Nevis,2006,0.23
+2520,Saint Lucia,2006,0.29
+2521,Marshall Islands,2006,0.14
+2522,Tonga,2006,0.15
+2523,Vanuatu,2006,0.07
+2524,Dominica,2006,0.16
+2525,Micronesia,2006,0.11
+2526,Liechtenstein,2006,0.26
+2527,Cook Islands,2006,0.06
+2528,Kiribati,2006,0.07
+2529,Bhutan,2006,-6.21
+2530,Nauru,2006,0.05
+2531,Tuvalu,2006,0.01
+2532,Niue,2006,0.01
+2533,Fiji,2006,-1.18
+2534,Ghana,2006,54.29
+2535,World,2005,29663.75
+2536,China,2005,5486.88
+2537,United States,2005,5354.45
+2538,European Union (27),2005,3174.41
+2539,India,2005,1142.71
+2540,Indonesia,2005,829.93
+2541,Japan,2005,1116.25
+2542,Russia,2005,762.04
+2543,Brazil,2005,1431.63
+2544,Germany,2005,783.85
+2545,Iran,2005,406.93
+2546,Canada,2005,851.37
+2547,Democratic Republic of the Congo,2005,369.19
+2548,South Korea,2005,419.96
+2549,Saudi Arabia,2005,308.97
+2550,Mexico,2005,365.66
+2551,South Africa,2005,384.03
+2552,Australia,2005,398.89
+2553,Turkey,2005,192.05
+2554,United Kingdom,2005,529.64
+2555,Malaysia,2005,279.59
+2556,Italy,2005,439.12
+2557,Poland,2005,229.77
+2558,Thailand,2005,182.59
+2559,France,2005,314.34
+2560,Egypt,2005,160.42
+2561,Vietnam,2005,110.49
+2562,Spain,2005,331.38
+2563,Kazakhstan,2005,160.96
+2564,Pakistan,2005,128.74
+2565,Argentina,2005,241.14
+2566,United Arab Emirates,2005,116.28
+2567,Iraq,2005,88.17
+2568,Venezuela,2005,244.71
+2569,Nigeria,2005,144.43
+2570,Ukraine,2005,270.97
+2571,Colombia,2005,138.41
+2572,Netherlands,2005,169.08
+2573,Algeria,2005,86.58
+2574,Philippines,2005,80.49
+2575,Peru,2005,96.24
+2576,Myanmar,2005,134.24
+2577,Uzbekistan,2005,103.2
+2578,Bangladesh,2005,55.17
+2579,Zimbabwe,2005,21.45
+2580,Czech Republic,2005,113.05
+2581,Belgium,2005,107.6
+2582,Qatar,2005,41.28
+2583,Bolivia,2005,66.97
+2584,Kuwait,2005,67.23
+2585,Tanzania,2005,57.72
+2586,Oman,2005,27.87
+2587,Turkmenistan,2005,48.19
+2588,Greece,2005,100.86
+2589,Ecuador,2005,55.72
+2590,Morocco,2005,39.96
+2591,Angola,2005,53.82
+2592,Israel,2005,60.98
+2593,Mozambique,2005,50.64
+2594,Libya,2005,49.13
+2595,Austria,2005,70.07
+2596,Paraguay,2005,60.0
+2597,Romania,2005,93.11
+2598,Finland,2005,40.47
+2599,Portugal,2005,66.07
+2600,Botswana,2005,45.63
+2601,Papua New Guinea,2005,39.43
+2602,Hungary,2005,58.23
+2603,Ethiopia,2005,36.18
+2604,Singapore,2005,36.85
+2605,Solomon Islands,2005,2.03
+2606,Serbia,2005,15.92
+2607,Cameroon,2005,47.95
+2608,Sudan,2005,31.86
+2609,Zambia,2005,19.75
+2610,Cambodia,2005,6.21
+2611,Belarus,2005,31.68
+2612,Côte d'Ivoire,2005,32.4
+2613,Switzerland,2005,43.49
+2614,Ireland,2005,44.65
+2615,Denmark,2005,50.25
+2616,Slovakia,2005,30.12
+2617,Bahrain,2005,20.7
+2618,Azerbaijan,2005,34.84
+2619,Chile,2005,19.63
+2620,Burkina Faso,2005,17.6
+2621,Syria,2005,54.92
+2622,Lebanon,2005,17.29
+2623,Laos,2005,13.43
+2624,Tunisia,2005,21.84
+2625,Nicaragua,2005,27.94
+2626,Jordan,2005,19.87
+2627,Mongolia,2005,15.17
+2628,Chad,2005,17.47
+2629,Dominican Republic,2005,16.73
+2630,Sri Lanka,2005,16.48
+2631,Uganda,2005,18.07
+2632,Cuba,2005,15.6
+2633,New Zealand,2005,11.43
+2634,Guatemala,2005,25.24
+2635,North Korea,2005,79.28
+2636,Bosnia and Herzegovina,2005,16.57
+2637,Sweden,2005,38.88
+2638,Benin,2005,13.49
+2639,Norway,2005,13.52
+2640,Somalia,2005,17.93
+2641,Estonia,2005,15.77
+2642,Trinidad and Tobago,2005,19.8
+2643,Guyana,2005,10.57
+2644,Guinea,2005,12.92
+2645,Honduras,2005,12.38
+2646,Nepal,2005,-0.96
+2647,Namibia,2005,13.09
+2648,Liberia,2005,14.11
+2649,Panama,2005,11.52
+2650,Slovenia,2005,4.4
+2651,Central African Republic,2005,14.2
+2652,Senegal,2005,12.03
+2653,Republic of Congo,2005,13.79
+2654,Madagascar,2005,23.73
+2655,Croatia,2005,20.63
+2656,Suriname,2005,5.66
+2657,Gabon,2005,7.82
+2658,Lithuania,2005,12.88
+2659,Kenya,2005,23.44
+2660,Equatorial Guinea,2005,11.92
+2661,South Sudan,2005,7.16
+2662,Malawi,2005,9.1
+2663,Georgia,2005,0.73
+2664,Yemen,2005,19.38
+2665,Luxembourg,2005,11.42
+2666,Moldova,2005,7.17
+2667,Jamaica,2005,8.13
+2668,El Salvador,2005,7.92
+2669,Kyrgyzstan,2005,5.29
+2670,Afghanistan,2005,1.76
+2671,Brunei,2005,6.11
+2672,Macedonia,2005,9.36
+2673,Bulgaria,2005,24.32
+2674,Tajikistan,2005,2.1
+2675,Cyprus,2005,7.61
+2676,Belize,2005,3.7
+2677,Mali,2005,1.65
+2678,Armenia,2005,4.58
+2679,Albania,2005,2.95
+2680,Latvia,2005,-6.14
+2681,Uruguay,2005,-4.56
+2682,Sierra Leone,2005,3.83
+2683,Mauritius,2005,3.05
+2684,Burundi,2005,3.69
+2685,Haiti,2005,1.78
+2686,Niger,2005,1.99
+2687,Togo,2005,2.69
+2688,Mauritania,2005,1.84
+2689,Rwanda,2005,3.18
+2690,Lesotho,2005,1.9
+2691,Montenegro,2005,-2.12
+2692,Bahamas,2005,2.02
+2693,Iceland,2005,2.26
+2694,Maldives,2005,0.71
+2695,Guinea-Bissau,2005,1.7
+2696,Malta,2005,2.62
+2697,Barbados,2005,1.41
+2698,Eritrea,2005,1.06
+2699,Gambia,2005,0.86
+2700,Timor-Leste,2005,0.67
+2701,Eswatini,2005,0.88
+2702,Costa Rica,2005,5.81
+2703,Seychelles,2005,0.7
+2704,Cape Verde,2005,0.38
+2705,Antigua and Barbuda,2005,0.41
+2706,Djibouti,2005,0.43
+2707,Andorra,2005,0.58
+2708,Samoa,2005,0.29
+2709,Sao Tome and Principe,2005,0.09
+2710,Comoros,2005,0.2
+2711,Grenada,2005,0.25
+2712,Palau,2005,0.26
+2713,Saint Vincent and the Grenadines,2005,0.25
+2714,Saint Kitts and Nevis,2005,0.22
+2715,Saint Lucia,2005,0.26
+2716,Marshall Islands,2005,0.14
+2717,Tonga,2005,0.13
+2718,Vanuatu,2005,0.07
+2719,Dominica,2005,0.15
+2720,Micronesia,2005,0.13
+2721,Liechtenstein,2005,0.26
+2722,Cook Islands,2005,0.06
+2723,Kiribati,2005,0.07
+2724,Bhutan,2005,-6.2
+2725,Nauru,2005,0.07
+2726,Tuvalu,2005,0.01
+2727,Niue,2005,0.01
+2728,Fiji,2005,-1.27
+2729,Ghana,2005,52.88
+2730,World,2004,28826.48
+2731,China,2004,4789.59
+2732,United States,2004,5338.46
+2733,European Union (27),2004,3193.98
+2734,India,2004,1092.16
+2735,Indonesia,2004,1031.49
+2736,Japan,2004,1113.6
+2737,Russia,2004,765.36
+2738,Brazil,2004,1427.88
+2739,Germany,2004,802.5
+2740,Iran,2004,375.44
+2741,Canada,2004,838.71
+2742,Democratic Republic of the Congo,2004,368.87
+2743,South Korea,2004,424.78
+2744,Saudi Arabia,2004,294.21
+2745,Mexico,2004,347.46
+2746,South Africa,2004,386.36
+2747,Australia,2004,394.65
+2748,Turkey,2004,181.64
+2749,United Kingdom,2004,531.36
+2750,Malaysia,2004,268.09
+2751,Italy,2004,437.69
+2752,Poland,2004,230.24
+2753,Thailand,2004,176.75
+2754,France,2004,311.47
+2755,Egypt,2004,142.52
+2756,Vietnam,2004,102.81
+2757,Spain,2004,316.44
+2758,Kazakhstan,2004,148.7
+2759,Pakistan,2004,125.72
+2760,Argentina,2004,236.68
+2761,United Arab Emirates,2004,109.98
+2762,Iraq,2004,75.24
+2763,Venezuela,2004,229.89
+2764,Nigeria,2004,134.63
+2765,Ukraine,2004,282.73
+2766,Colombia,2004,136.72
+2767,Netherlands,2004,173.27
+2768,Algeria,2004,82.49
+2769,Philippines,2004,78.71
+2770,Peru,2004,96.19
+2771,Myanmar,2004,136.38
+2772,Uzbekistan,2004,109.82
+2773,Bangladesh,2004,52.99
+2774,Zimbabwe,2004,20.71
+2775,Czech Republic,2004,116.49
+2776,Belgium,2004,111.01
+2777,Qatar,2004,31.91
+2778,Bolivia,2004,66.32
+2779,Kuwait,2004,59.47
+2780,Tanzania,2004,57.14
+2781,Oman,2004,27.52
+2782,Turkmenistan,2004,46.65
+2783,Greece,2004,98.76
+2784,Ecuador,2004,53.98
+2785,Morocco,2004,37.64
+2786,Angola,2004,54.9
+2787,Israel,2004,63.15
+2788,Mozambique,2004,50.84
+2789,Libya,2004,45.49
+2790,Austria,2004,69.63
+2791,Paraguay,2004,60.28
+2792,Romania,2004,94.04
+2793,Finland,2004,52.66
+2794,Portugal,2004,62.72
+2795,Botswana,2004,45.33
+2796,Papua New Guinea,2004,39.71
+2797,Hungary,2004,58.66
+2798,Ethiopia,2004,36.42
+2799,Singapore,2004,39.56
+2800,Solomon Islands,2004,2.0
+2801,Serbia,2004,21.96
+2802,Cameroon,2004,47.88
+2803,Sudan,2004,30.31
+2804,Zambia,2004,19.57
+2805,Cambodia,2004,5.95
+2806,Belarus,2004,30.99
+2807,Côte d'Ivoire,2004,32.01
+2808,Switzerland,2004,42.93
+2809,Ireland,2004,42.73
+2810,Denmark,2004,53.87
+2811,Slovakia,2004,29.04
+2812,Bahrain,2004,17.93
+2813,Azerbaijan,2004,32.28
+2814,Chile,2004,18.64
+2815,Burkina Faso,2004,17.58
+2816,Syria,2004,44.01
+2817,Lebanon,2004,17.89
+2818,Laos,2004,13.39
+2819,Tunisia,2004,21.52
+2820,Nicaragua,2004,28.14
+2821,Jordan,2004,18.58
+2822,Mongolia,2004,13.66
+2823,Chad,2004,17.45
+2824,Dominican Republic,2004,15.32
+2825,Sri Lanka,2004,15.37
+2826,Uganda,2004,17.62
+2827,Cuba,2004,14.72
+2828,New Zealand,2004,10.04
+2829,Guatemala,2004,24.47
+2830,North Korea,2004,76.02
+2831,Bosnia and Herzegovina,2004,15.92
+2832,Sweden,2004,42.17
+2833,Benin,2004,13.24
+2834,Norway,2004,14.6
+2835,Somalia,2004,17.93
+2836,Estonia,2004,15.55
+2837,Trinidad and Tobago,2004,16.11
+2838,Guyana,2004,10.78
+2839,Guinea,2004,12.86
+2840,Honduras,2004,12.97
+2841,Nepal,2004,-1.33
+2842,Namibia,2004,12.94
+2843,Liberia,2004,14.0
+2844,Panama,2004,10.01
+2845,Slovenia,2004,4.18
+2846,Central African Republic,2004,14.2
+2847,Senegal,2004,11.76
+2848,Republic of Congo,2004,11.81
+2849,Madagascar,2004,23.67
+2850,Croatia,2004,20.27
+2851,Suriname,2004,5.37
+2852,Gabon,2004,7.62
+2853,Lithuania,2004,11.98
+2854,Kenya,2004,22.55
+2855,Equatorial Guinea,2004,11.08
+2856,South Sudan,2004,7.16
+2857,Malawi,2004,9.09
+2858,Georgia,2004,-0.14
+2859,Yemen,2004,18.4
+2860,Luxembourg,2004,11.17
+2861,Moldova,2004,6.77
+2862,Jamaica,2004,8.14
+2863,El Salvador,2004,7.76
+2864,Kyrgyzstan,2004,5.55
+2865,Afghanistan,2004,1.25
+2866,Brunei,2004,6.2
+2867,Macedonia,2004,8.92
+2868,Bulgaria,2004,23.63
+2869,Tajikistan,2004,2.23
+2870,Cyprus,2004,7.45
+2871,Belize,2004,3.68
+2872,Mali,2004,1.48
+2873,Armenia,2004,3.89
+2874,Albania,2004,3.18
+2875,Latvia,2004,-6.24
+2876,Uruguay,2004,-4.51
+2877,Sierra Leone,2004,3.91
+2878,Mauritius,2004,2.85
+2879,Burundi,2004,3.68
+2880,Haiti,2004,1.74
+2881,Niger,2004,2.02
+2882,Togo,2004,2.72
+2883,Mauritania,2004,1.81
+2884,Rwanda,2004,3.18
+2885,Lesotho,2004,1.87
+2886,Montenegro,2004,-4.13
+2887,Bahamas,2004,2.16
+2888,Iceland,2004,2.29
+2889,Maldives,2004,0.74
+2890,Guinea-Bissau,2004,1.69
+2891,Malta,2004,2.6
+2892,Barbados,2004,1.36
+2893,Eritrea,2004,1.14
+2894,Gambia,2004,0.85
+2895,Timor-Leste,2004,0.66
+2896,Eswatini,2004,0.86
+2897,Costa Rica,2004,5.48
+2898,Seychelles,2004,0.75
+2899,Cape Verde,2004,0.27
+2900,Antigua and Barbuda,2004,0.4
+2901,Djibouti,2004,0.4
+2902,Andorra,2004,0.56
+2903,Samoa,2004,0.28
+2904,Sao Tome and Principe,2004,0.08
+2905,Comoros,2004,0.21
+2906,Grenada,2004,0.23
+2907,Palau,2004,0.23
+2908,Saint Vincent and the Grenadines,2004,0.25
+2909,Saint Kitts and Nevis,2004,0.24
+2910,Saint Lucia,2004,0.3
+2911,Marshall Islands,2004,0.13
+2912,Tonga,2004,0.13
+2913,Vanuatu,2004,0.07
+2914,Dominica,2004,0.14
+2915,Micronesia,2004,0.13
+2916,Liechtenstein,2004,0.26
+2917,Cook Islands,2004,0.05
+2918,Kiribati,2004,0.05
+2919,Bhutan,2004,-6.3
+2920,Nauru,2004,0.07
+2921,Tuvalu,2004,0.01
+2922,Niue,2004,0.01
+2923,Fiji,2004,-1.08
+2924,Ghana,2004,52.48
+2925,World,2003,27308.37
+2926,China,2003,4081.05
+2927,United States,2003,5258.12
+2928,European Union (27),2003,3188.85
+2929,India,2003,1020.87
+2930,Indonesia,2003,761.93
+2931,Japan,2003,1118.29
+2932,Russia,2003,753.44
+2933,Brazil,2003,1410.4
+2934,Germany,2003,818.31
+2935,Iran,2003,346.42
+2936,Canada,2003,846.79
+2937,Democratic Republic of the Congo,2003,368.77
+2938,South Korea,2003,404.49
+2939,Saudi Arabia,2003,278.11
+2940,Mexico,2003,340.27
+2941,South Africa,2003,359.5
+2942,Australia,2003,381.38
+2943,Turkey,2003,176.2
+2944,United Kingdom,2003,531.12
+2945,Malaysia,2003,247.43
+2946,Italy,2003,427.49
+2947,Poland,2003,226.19
+2948,Thailand,2003,157.31
+2949,France,2003,310.45
+2950,Egypt,2003,131.07
+2951,Vietnam,2003,88.48
+2952,Spain,2003,299.53
+2953,Kazakhstan,2003,134.78
+2954,Pakistan,2003,112.73
+2955,Argentina,2003,223.19
+2956,United Arab Emirates,2003,103.53
+2957,Iraq,2003,72.03
+2958,Venezuela,2003,225.21
+2959,Nigeria,2003,134.68
+2960,Ukraine,2003,305.94
+2961,Colombia,2003,136.47
+2962,Netherlands,2003,171.59
+2963,Algeria,2003,81.43
+2964,Philippines,2003,77.15
+2965,Peru,2003,91.76
+2966,Myanmar,2003,134.72
+2967,Uzbekistan,2003,106.71
+2968,Bangladesh,2003,51.21
+2969,Zimbabwe,2003,21.12
+2970,Czech Republic,2003,115.82
+2971,Belgium,2003,112.49
+2972,Qatar,2003,28.91
+2973,Bolivia,2003,66.0
+2974,Kuwait,2003,55.61
+2975,Tanzania,2003,55.84
+2976,Oman,2003,27.67
+2977,Turkmenistan,2003,44.25
+2978,Greece,2003,99.14
+2979,Ecuador,2003,52.45
+2980,Morocco,2003,33.69
+2981,Angola,2003,53.63
+2982,Israel,2003,62.88
+2983,Mozambique,2003,50.83
+2984,Libya,2003,44.28
+2985,Austria,2003,68.3
+2986,Paraguay,2003,60.24
+2987,Romania,2003,96.93
+2988,Finland,2003,56.53
+2989,Portugal,2003,61.11
+2990,Botswana,2003,45.24
+2991,Papua New Guinea,2003,38.72
+2992,Hungary,2003,60.56
+2993,Ethiopia,2003,36.09
+2994,Singapore,2003,38.16
+2995,Solomon Islands,2003,1.96
+2996,Serbia,2003,17.51
+2997,Cameroon,2003,47.42
+2998,Sudan,2003,29.54
+2999,Zambia,2003,19.54
+3000,Cambodia,2003,5.95
+3001,Belarus,2003,27.87
+3002,Côte d'Ivoire,2003,31.74
+3003,Switzerland,2003,42.49
+3004,Ireland,2003,42.09
+3005,Denmark,2003,59.33
+3006,Slovakia,2003,29.94
+3007,Bahrain,2003,17.95
+3008,Azerbaijan,2003,32.52
+3009,Chile,2003,13.83
+3010,Burkina Faso,2003,17.55
+3011,Syria,2003,41.61
+3012,Lebanon,2003,17.42
+3013,Laos,2003,13.33
+3014,Tunisia,2003,20.56
+3015,Nicaragua,2003,28.17
+3016,Jordan,2003,17.31
+3017,Mongolia,2003,13.39
+3018,Chad,2003,17.44
+3019,Dominican Republic,2003,16.78
+3020,Sri Lanka,2003,14.92
+3021,Uganda,2003,17.47
+3022,Cuba,2003,14.97
+3023,New Zealand,2003,10.62
+3024,Guatemala,2003,24.26
+3025,North Korea,2003,74.43
+3026,Bosnia and Herzegovina,2003,15.21
+3027,Sweden,2003,43.7
+3028,Benin,2003,13.09
+3029,Norway,2003,14.25
+3030,Somalia,2003,17.93
+3031,Estonia,2003,15.44
+3032,Trinidad and Tobago,2003,15.45
+3033,Guyana,2003,10.3
+3034,Guinea,2003,12.79
+3035,Honduras,2003,12.13
+3036,Nepal,2003,-1.12
+3037,Namibia,2003,12.83
+3038,Liberia,2003,13.92
+3039,Panama,2003,9.93
+3040,Slovenia,2003,3.89
+3041,Central African Republic,2003,14.2
+3042,Senegal,2003,10.85
+3043,Republic of Congo,2003,11.9
+3044,Madagascar,2003,23.57
+3045,Croatia,2003,20.78
+3046,Suriname,2003,5.04
+3047,Gabon,2003,7.56
+3048,Lithuania,2003,11.32
+3049,Kenya,2003,21.64
+3050,Equatorial Guinea,2003,8.99
+3051,South Sudan,2003,7.16
+3052,Malawi,2003,9.06
+3053,Georgia,2003,-0.36
+3054,Yemen,2003,17.4
+3055,Luxembourg,2003,9.75
+3056,Moldova,2003,6.76
+3057,Jamaica,2003,8.16
+3058,El Salvador,2003,7.59
+3059,Kyrgyzstan,2003,5.58
+3060,Afghanistan,2003,1.47
+3061,Brunei,2003,6.65
+3062,Macedonia,2003,9.21
+3063,Bulgaria,2003,24.35
+3064,Tajikistan,2003,1.82
+3065,Cyprus,2003,7.51
+3066,Belize,2003,3.74
+3067,Mali,2003,1.4
+3068,Armenia,2003,3.62
+3069,Albania,2003,2.99
+3070,Latvia,2003,-6.29
+3071,Uruguay,2003,-5.48
+3072,Sierra Leone,2003,3.93
+3073,Mauritius,2003,2.83
+3074,Burundi,2003,3.7
+3075,Haiti,2003,1.88
+3076,Niger,2003,1.99
+3077,Togo,2003,2.78
+3078,Mauritania,2003,1.7
+3079,Rwanda,2003,3.18
+3080,Lesotho,2003,1.82
+3081,Montenegro,2003,-4.13
+3082,Bahamas,2003,2.25
+3083,Iceland,2003,2.2
+3084,Maldives,2003,0.53
+3085,Guinea-Bissau,2003,1.68
+3086,Malta,2003,2.61
+3087,Barbados,2003,1.38
+3088,Eritrea,2003,1.15
+3089,Gambia,2003,0.83
+3090,Timor-Leste,2003,0.63
+3091,Eswatini,2003,0.87
+3092,Costa Rica,2003,5.34
+3093,Seychelles,2003,0.55
+3094,Cape Verde,2003,0.24
+3095,Antigua and Barbuda,2003,0.41
+3096,Djibouti,2003,0.41
+3097,Andorra,2003,0.53
+3098,Samoa,2003,0.27
+3099,Sao Tome and Principe,2003,0.08
+3100,Comoros,2003,0.19
+3101,Grenada,2003,0.25
+3102,Palau,2003,0.22
+3103,Saint Vincent and the Grenadines,2003,0.23
+3104,Saint Kitts and Nevis,2003,0.23
+3105,Saint Lucia,2003,0.3
+3106,Marshall Islands,2003,0.11
+3107,Tonga,2003,0.12
+3108,Vanuatu,2003,0.09
+3109,Dominica,2003,0.13
+3110,Micronesia,2003,0.13
+3111,Liechtenstein,2003,0.26
+3112,Cook Islands,2003,0.04
+3113,Kiribati,2003,0.05
+3114,Bhutan,2003,-6.25
+3115,Nauru,2003,0.07
+3116,Tuvalu,2003,0.01
+3117,Niue,2003,0.01
+3118,Fiji,2003,-1.46
+3119,Ghana,2003,52.99
+3120,World,2002,26486.63
+3121,China,2002,3476.08
+3122,United States,2002,5192.68
+3123,European Union (27),2002,3096.47
+3124,India,2002,992.51
+3125,Indonesia,2002,1001.39
+3126,Japan,2002,1109.5
+3127,Russia,2002,723.05
+3128,Brazil,2002,1418.33
+3129,Germany,2002,815.01
+3130,Iran,2002,324.45
+3131,Canada,2002,826.9
+3132,Democratic Republic of the Congo,2002,368.58
+3133,South Korea,2002,401.82
+3134,Saudi Arabia,2002,266.91
+3135,Mexico,2002,322.01
+3136,South Africa,2002,337.79
+3137,Australia,2002,382.28
+3138,Turkey,2002,165.15
+3139,United Kingdom,2002,519.27
+3140,Malaysia,2002,240.01
+3141,Italy,2002,408.76
+3142,Poland,2002,215.84
+3143,Thailand,2002,149.6
+3144,France,2002,304.82
+3145,Egypt,2002,127.57
+3146,Vietnam,2002,86.61
+3147,Spain,2002,293.62
+3148,Kazakhstan,2002,119.94
+3149,Pakistan,2002,109.37
+3150,Argentina,2002,212.28
+3151,United Arab Emirates,2002,98.12
+3152,Iraq,2002,79.36
+3153,Venezuela,2002,232.75
+3154,Nigeria,2002,132.1
+3155,Ukraine,2002,279.72
+3156,Colombia,2002,136.86
+3157,Netherlands,2002,168.66
+3158,Algeria,2002,78.01
+3159,Philippines,2002,75.33
+3160,Peru,2002,92.36
+3161,Myanmar,2002,131.21
+3162,Uzbekistan,2002,113.78
+3163,Bangladesh,2002,50.03
+3164,Zimbabwe,2002,23.43
+3165,Czech Republic,2002,111.58
+3166,Belgium,2002,107.84
+3167,Qatar,2002,27.6
+3168,Bolivia,2002,65.12
+3169,Kuwait,2002,53.37
+3170,Tanzania,2002,55.66
+3171,Oman,2002,26.94
+3172,Turkmenistan,2002,39.75
+3173,Greece,2002,95.52
+3174,Ecuador,2002,52.08
+3175,Morocco,2002,33.75
+3176,Angola,2002,49.24
+3177,Israel,2002,61.07
+3178,Mozambique,2002,50.5
+3179,Libya,2002,43.6
+3180,Austria,2002,63.2
+3181,Paraguay,2002,60.08
+3182,Romania,2002,90.9
+3183,Finland,2002,48.21
+3184,Portugal,2002,66.19
+3185,Botswana,2002,45.34
+3186,Papua New Guinea,2002,38.4
+3187,Hungary,2002,58.0
+3188,Ethiopia,2002,35.65
+3189,Singapore,2002,41.32
+3190,Solomon Islands,2002,1.95
+3191,Serbia,2002,14.12
+3192,Cameroon,2002,47.55
+3193,Sudan,2002,29.35
+3194,Zambia,2002,19.38
+3195,Cambodia,2002,5.78
+3196,Belarus,2002,27.13
+3197,Côte d'Ivoire,2002,32.96
+3198,Switzerland,2002,41.23
+3199,Ireland,2002,41.92
+3200,Denmark,2002,53.96
+3201,Slovakia,2002,29.68
+3202,Bahrain,2002,17.22
+3203,Azerbaijan,2002,36.32
+3204,Chile,2002,12.6
+3205,Burkina Faso,2002,17.48
+3206,Syria,2002,41.32
+3207,Lebanon,2002,16.84
+3208,Laos,2002,13.28
+3209,Tunisia,2002,20.43
+3210,Nicaragua,2002,27.7
+3211,Jordan,2002,16.87
+3212,Mongolia,2002,13.69
+3213,Chad,2002,17.21
+3214,Dominican Republic,2002,18.93
+3215,Sri Lanka,2002,13.89
+3216,Uganda,2002,17.39
+3217,Cuba,2002,15.71
+3218,New Zealand,2002,8.76
+3219,Guatemala,2002,24.19
+3220,North Korea,2002,72.9
+3221,Bosnia and Herzegovina,2002,14.9
+3222,Sweden,2002,42.49
+3223,Benin,2002,12.83
+3224,Norway,2002,11.6
+3225,Somalia,2002,17.92
+3226,Estonia,2002,13.46
+3227,Trinidad and Tobago,2002,16.15
+3228,Guyana,2002,10.3
+3229,Guinea,2002,12.72
+3230,Honduras,2002,11.49
+3231,Nepal,2002,-1.35
+3232,Namibia,2002,12.69
+3233,Liberia,2002,13.88
+3234,Panama,2002,9.81
+3235,Slovenia,2002,4.0
+3236,Central African Republic,2002,14.21
+3237,Senegal,2002,10.95
+3238,Republic of Congo,2002,11.79
+3239,Madagascar,2002,23.14
+3240,Croatia,2002,19.45
+3241,Suriname,2002,4.92
+3242,Gabon,2002,7.49
+3243,Lithuania,2002,11.31
+3244,Kenya,2002,22.54
+3245,Equatorial Guinea,2002,7.86
+3246,South Sudan,2002,7.16
+3247,Malawi,2002,9.05
+3248,Georgia,2002,-0.56
+3249,Yemen,2002,15.14
+3250,Luxembourg,2002,9.33
+3251,Moldova,2002,6.18
+3252,Jamaica,2002,7.82
+3253,El Salvador,2002,7.02
+3254,Kyrgyzstan,2002,4.96
+3255,Afghanistan,2002,1.22
+3256,Brunei,2002,5.66
+3257,Macedonia,2002,8.43
+3258,Bulgaria,2002,20.08
+3259,Tajikistan,2002,1.78
+3260,Cyprus,2002,6.85
+3261,Belize,2002,3.76
+3262,Mali,2002,1.4
+3263,Armenia,2002,3.24
+3264,Albania,2002,2.63
+3265,Latvia,2002,-6.54
+3266,Uruguay,2002,-5.44
+3267,Sierra Leone,2002,3.88
+3268,Mauritius,2002,2.7
+3269,Burundi,2002,3.74
+3270,Haiti,2002,1.89
+3271,Niger,2002,1.93
+3272,Togo,2002,2.29
+3273,Mauritania,2002,1.66
+3274,Rwanda,2002,3.19
+3275,Lesotho,2002,1.8
+3276,Montenegro,2002,-4.13
+3277,Bahamas,2002,2.28
+3278,Iceland,2002,2.22
+3279,Maldives,2002,0.61
+3280,Guinea-Bissau,2002,1.64
+3281,Malta,2002,2.32
+3282,Barbados,2002,1.37
+3283,Eritrea,2002,1.14
+3284,Gambia,2002,0.83
+3285,Timor-Leste,2002,0.63
+3286,Eswatini,2002,0.94
+3287,Costa Rica,2002,5.07
+3288,Seychelles,2002,0.54
+3289,Cape Verde,2002,0.22
+3290,Antigua and Barbuda,2002,0.39
+3291,Djibouti,2002,0.4
+3292,Andorra,2002,0.53
+3293,Samoa,2002,0.26
+3294,Sao Tome and Principe,2002,0.07
+3295,Comoros,2002,0.17
+3296,Grenada,2002,0.24
+3297,Palau,2002,0.22
+3298,Saint Vincent and the Grenadines,2002,0.23
+3299,Saint Kitts and Nevis,2002,0.23
+3300,Saint Lucia,2002,0.26
+3301,Marshall Islands,2002,0.12
+3302,Tonga,2002,0.1
+3303,Vanuatu,2002,0.08
+3304,Dominica,2002,0.11
+3305,Micronesia,2002,0.11
+3306,Liechtenstein,2002,0.25
+3307,Cook Islands,2002,0.04
+3308,Kiribati,2002,0.04
+3309,Bhutan,2002,-6.21
+3310,Nauru,2002,0.08
+3311,Tuvalu,2002,0.01
+3312,Niue,2002,0.01
+3313,Fiji,2002,-1.62
+3314,Ghana,2002,53.28
+3315,World,2001,25726.42
+3316,China,2001,3194.5
+3317,United States,2001,5347.79
+3318,European Union (27),2001,3103.48
+3319,India,2001,958.86
+3320,Indonesia,2001,631.16
+3321,Japan,2001,1073.16
+3322,Russia,2001,721.85
+3323,Brazil,2001,1420.6
+3324,Germany,2001,829.38
+3325,Iran,2001,306.74
+3326,Canada,2001,808.34
+3327,Democratic Republic of the Congo,2001,368.5
+3328,South Korea,2001,410.4
+3329,Saudi Arabia,2001,248.6
+3330,Mexico,2001,316.03
+3331,South Africa,2001,326.95
+3332,Australia,2001,374.35
+3333,Turkey,2001,154.82
+3334,United Kingdom,2001,533.53
+3335,Malaysia,2001,224.83
+3336,Italy,2001,401.86
+3337,Poland,2001,222.2
+3338,Thailand,2001,138.28
+3339,France,2001,310.56
+3340,Egypt,2001,124.84
+3341,Vietnam,2001,73.93
+3342,Spain,2001,275.62
+3343,Kazakhstan,2001,110.36
+3344,Pakistan,2001,106.88
+3345,Argentina,2001,219.67
+3346,United Arab Emirates,2001,96.26
+3347,Iraq,2001,84.25
+3348,Venezuela,2001,224.46
+3349,Nigeria,2001,131.14
+3350,Ukraine,2001,276.38
+3351,Colombia,2001,138.97
+3352,Netherlands,2001,168.59
+3353,Algeria,2001,72.36
+3354,Philippines,2001,74.05
+3355,Peru,2001,91.18
+3356,Myanmar,2001,131.84
+3357,Uzbekistan,2001,111.13
+3358,Bangladesh,2001,48.44
+3359,Zimbabwe,2001,24.84
+3360,Czech Republic,2001,115.78
+3361,Belgium,2001,115.34
+3362,Qatar,2001,23.49
+3363,Bolivia,2001,64.78
+3364,Kuwait,2001,50.8
+3365,Tanzania,2001,55.24
+3366,Oman,2001,25.28
+3367,Turkmenistan,2001,37.92
+3368,Greece,2001,95.53
+3369,Ecuador,2001,51.91
+3370,Morocco,2001,32.4
+3371,Angola,2001,48.53
+3372,Israel,2001,57.94
+3373,Mozambique,2001,50.34
+3374,Libya,2001,41.43
+3375,Austria,2001,61.75
+3376,Paraguay,2001,59.92
+3377,Romania,2001,91.42
+3378,Finland,2001,45.79
+3379,Portugal,2001,61.97
+3380,Botswana,2001,45.17
+3381,Papua New Guinea,2001,37.87
+3382,Hungary,2001,58.7
+3383,Ethiopia,2001,35.42
+3384,Singapore,2001,42.22
+3385,Solomon Islands,2001,1.94
+3386,Serbia,2001,10.58
+3387,Cameroon,2001,47.65
+3388,Sudan,2001,27.92
+3389,Zambia,2001,19.25
+3390,Cambodia,2001,5.73
+3391,Belarus,2001,27.14
+3392,Côte d'Ivoire,2001,32.84
+3393,Switzerland,2001,42.83
+3394,Ireland,2001,42.79
+3395,Denmark,2001,53.84
+3396,Slovakia,2001,30.18
+3397,Bahrain,2001,16.39
+3398,Azerbaijan,2001,36.91
+3399,Chile,2001,11.78
+3400,Burkina Faso,2001,17.47
+3401,Syria,2001,40.62
+3402,Lebanon,2001,16.9
+3403,Laos,2001,13.17
+3404,Tunisia,2001,20.34
+3405,Nicaragua,2001,27.56
+3406,Jordan,2001,16.25
+3407,Mongolia,2001,13.06
+3408,Chad,2001,17.2
+3409,Dominican Republic,2001,17.03
+3410,Sri Lanka,2001,13.35
+3411,Uganda,2001,17.19
+3412,Cuba,2001,16.94
+3413,New Zealand,2001,8.9
+3414,Guatemala,2001,23.53
+3415,North Korea,2001,76.08
+3416,Bosnia and Herzegovina,2001,14.11
+3417,Sweden,2001,40.95
+3418,Benin,2001,12.55
+3419,Norway,2001,11.91
+3420,Somalia,2001,17.86
+3421,Estonia,2001,13.87
+3422,Trinidad and Tobago,2001,15.57
+3423,Guyana,2001,10.32
+3424,Guinea,2001,12.67
+3425,Honduras,2001,11.21
+3426,Nepal,2001,-0.67
+3427,Namibia,2001,13.02
+3428,Liberia,2001,13.89
+3429,Panama,2001,10.62
+3430,Slovenia,2001,3.85
+3431,Central African Republic,2001,14.22
+3432,Senegal,2001,10.82
+3433,Republic of Congo,2001,11.98
+3434,Madagascar,2001,23.69
+3435,Croatia,2001,18.37
+3436,Suriname,2001,5.32
+3437,Gabon,2001,7.73
+3438,Lithuania,2001,11.25
+3439,Kenya,2001,22.73
+3440,Equatorial Guinea,2001,6.56
+3441,South Sudan,2001,7.17
+3442,Malawi,2001,9.06
+3443,Georgia,2001,0.0
+3444,Yemen,2001,15.08
+3445,Luxembourg,2001,8.63
+3446,Moldova,2001,6.02
+3447,Jamaica,2001,7.65
+3448,El Salvador,2001,6.95
+3449,Kyrgyzstan,2001,3.96
+3450,Afghanistan,2001,0.93
+3451,Brunei,2001,5.66
+3452,Macedonia,2001,8.99
+3453,Bulgaria,2001,22.63
+3454,Tajikistan,2001,1.8
+3455,Cyprus,2001,6.67
+3456,Belize,2001,3.76
+3457,Mali,2001,1.61
+3458,Armenia,2001,3.73
+3459,Albania,2001,2.11
+3460,Latvia,2001,-6.54
+3461,Uruguay,2001,-5.02
+3462,Sierra Leone,2001,3.77
+3463,Mauritius,2001,2.65
+3464,Burundi,2001,3.74
+3465,Haiti,2001,1.67
+3466,Niger,2001,1.9
+3467,Togo,2001,2.12
+3468,Mauritania,2001,1.57
+3469,Rwanda,2001,3.2
+3470,Lesotho,2001,1.77
+3471,Montenegro,2001,-4.13
+3472,Bahamas,2001,2.13
+3473,Iceland,2001,2.14
+3474,Maldives,2001,0.48
+3475,Guinea-Bissau,2001,1.64
+3476,Malta,2001,2.49
+3477,Barbados,2001,1.31
+3478,Eritrea,2001,1.15
+3479,Gambia,2001,0.84
+3480,Timor-Leste,2001,0.46
+3481,Eswatini,2001,0.95
+3482,Costa Rica,2001,4.97
+3483,Seychelles,2001,0.64
+3484,Cape Verde,2001,0.18
+3485,Antigua and Barbuda,2001,0.35
+3486,Djibouti,2001,0.38
+3487,Andorra,2001,0.52
+3488,Samoa,2001,0.26
+3489,Sao Tome and Principe,2001,0.06
+3490,Comoros,2001,0.17
+3491,Grenada,2001,0.23
+3492,Palau,2001,0.22
+3493,Saint Vincent and the Grenadines,2001,0.21
+3494,Saint Kitts and Nevis,2001,0.21
+3495,Saint Lucia,2001,0.29
+3496,Marshall Islands,2001,0.11
+3497,Tonga,2001,0.1
+3498,Vanuatu,2001,0.09
+3499,Dominica,2001,0.14
+3500,Micronesia,2001,0.12
+3501,Liechtenstein,2001,0.24
+3502,Cook Islands,2001,0.04
+3503,Kiribati,2001,0.03
+3504,Bhutan,2001,-6.25
+3505,Nauru,2001,0.08
+3506,Tuvalu,2001,0.01
+3507,Niue,2001,0.01
+3508,Fiji,2001,-1.47
+3509,Ghana,2001,52.07
+3510,World,2000,25637.87
+3511,China,2000,2994.73
+3512,United States,2000,5357.88
+3513,European Union (27),2000,3086.68
+3514,India,2000,719.07
+3515,Indonesia,2000,795.62
+3516,Japan,2000,1107.18
+3517,Russia,2000,1115.29
+3518,Brazil,2000,1351.16
+3519,Germany,2000,778.97
+3520,Iran,2000,320.34
+3521,Canada,2000,580.65
+3522,Democratic Republic of the Congo,2000,368.63
+3523,South Korea,2000,413.25
+3524,Saudi Arabia,2000,244.34
+3525,Mexico,2000,406.79
+3526,South Africa,2000,291.05
+3527,Australia,2000,389.23
+3528,Turkey,2000,199.67
+3529,United Kingdom,2000,519.16
+3530,Malaysia,2000,233.1
+3531,Italy,2000,401.78
+3532,Poland,2000,282.27
+3533,Thailand,2000,174.79
+3534,France,2000,348.31
+3535,Egypt,2000,112.45
+3536,Vietnam,2000,-22.17
+3537,Spain,2000,250.68
+3538,Kazakhstan,2000,113.85
+3539,Pakistan,2000,106.42
+3540,Argentina,2000,176.25
+3541,United Arab Emirates,2000,84.54
+3542,Iraq,2000,74.44
+3543,Venezuela,2000,279.51
+3544,Nigeria,2000,122.06
+3545,Ukraine,2000,248.7
+3546,Colombia,2000,150.83
+3547,Netherlands,2000,163.75
+3548,Algeria,2000,79.17
+3549,Philippines,2000,75.59
+3550,Peru,2000,88.18
+3551,Myanmar,2000,150.72
+3552,Uzbekistan,2000,120.9
+3553,Bangladesh,2000,43.87
+3554,Zimbabwe,2000,24.1
+3555,Czech Republic,2000,113.72
+3556,Belgium,2000,113.27
+3557,Qatar,2000,21.73
+3558,Bolivia,2000,84.31
+3559,Kuwait,2000,47.15
+3560,Tanzania,2000,55.08
+3561,Oman,2000,22.54
+3562,Turkmenistan,2000,36.85
+3563,Greece,2000,93.53
+3564,Ecuador,2000,57.94
+3565,Morocco,2000,28.39
+3566,Angola,2000,22.67
+3567,Israel,2000,56.97
+3568,Mozambique,2000,49.78
+3569,Libya,2000,39.87
+3570,Austria,2000,50.06
+3571,Paraguay,2000,45.56
+3572,Romania,2000,89.58
+3573,Finland,2000,24.44
+3574,Portugal,2000,63.11
+3575,Botswana,2000,45.33
+3576,Papua New Guinea,2000,37.59
+3577,Hungary,2000,56.26
+3578,Ethiopia,2000,29.97
+3579,Singapore,2000,42.53
+3580,Solomon Islands,2000,4.15
+3581,Serbia,2000,41.07
+3582,Cameroon,2000,59.65
+3583,Sudan,2000,27.03
+3584,Zambia,2000,19.21
+3585,Cambodia,2000,6.13
+3586,Belarus,2000,20.46
+3587,Côte d'Ivoire,2000,66.99
+3588,Switzerland,2000,42.24
+3589,Ireland,2000,40.15
+3590,Denmark,2000,53.04
+3591,Slovakia,2000,28.64
+3592,Bahrain,2000,15.88
+3593,Azerbaijan,2000,38.43
+3594,Chile,2000,32.46
+3595,Burkina Faso,2000,13.31
+3596,Syria,2000,38.86
+3597,Lebanon,2000,15.69
+3598,Laos,2000,11.41
+3599,Tunisia,2000,20.01
+3600,Nicaragua,2000,23.3
+3601,Jordan,2000,16.27
+3602,Mongolia,2000,13.21
+3603,Chad,2000,8.13
+3604,Dominican Republic,2000,11.39
+3605,Sri Lanka,2000,15.55
+3606,Uganda,2000,17.19
+3607,Cuba,2000,17.38
+3608,New Zealand,2000,3.6
+3609,Guatemala,2000,25.54
+3610,North Korea,2000,78.18
+3611,Bosnia and Herzegovina,2000,17.21
+3612,Sweden,2000,55.31
+3613,Benin,2000,16.52
+3614,Norway,2000,19.02
+3615,Somalia,2000,17.84
+3616,Estonia,2000,13.38
+3617,Trinidad and Tobago,2000,14.44
+3618,Guyana,2000,9.63
+3619,Guinea,2000,12.24
+3620,Honduras,2000,10.57
+3621,Nepal,2000,1.93
+3622,Namibia,2000,12.5
+3623,Liberia,2000,13.85
+3624,Panama,2000,11.27
+3625,Slovenia,2000,5.18
+3626,Central African Republic,2000,14.2
+3627,Senegal,2000,8.95
+3628,Republic of Congo,2000,12.04
+3629,Madagascar,2000,30.57
+3630,Croatia,2000,17.19
+3631,Suriname,2000,4.94
+3632,Gabon,2000,8.32
+3633,Lithuania,2000,11.12
+3634,Kenya,2000,3.88
+3635,Equatorial Guinea,2000,6.18
+3636,South Sudan,2000,7.06
+3637,Malawi,2000,9.06
+3638,Georgia,2000,-13.5
+3639,Yemen,2000,13.89
+3640,Luxembourg,2000,8.03
+3641,Moldova,2000,6.4
+3642,Jamaica,2000,10.5
+3643,El Salvador,2000,6.71
+3644,Kyrgyzstan,2000,3.65
+3645,Afghanistan,2000,-1.62
+3646,Brunei,2000,5.75
+3647,Macedonia,2000,8.82
+3648,Bulgaria,2000,21.56
+3649,Tajikistan,2000,2.23
+3650,Cyprus,2000,7.0
+3651,Belize,2000,6.97
+3652,Mali,2000,1.41
+3653,Armenia,2000,3.69
+3654,Albania,2000,3.36
+3655,Latvia,2000,-5.77
+3656,Uruguay,2000,-7.78
+3657,Sierra Leone,2000,3.74
+3658,Mauritius,2000,2.41
+3659,Burundi,2000,5.87
+3660,Haiti,2000,1.54
+3661,Niger,2000,6.34
+3662,Togo,2000,3.93
+3663,Mauritania,2000,1.51
+3664,Rwanda,2000,3.43
+3665,Lesotho,2000,1.75
+3666,Montenegro,2000,-0.34
+3667,Bahamas,2000,2.14
+3668,Iceland,2000,2.24
+3669,Maldives,2000,0.46
+3670,Guinea-Bissau,2000,1.63
+3671,Malta,2000,2.13
+3672,Barbados,2000,1.24
+3673,Eritrea,2000,1.07
+3674,Gambia,2000,0.77
+3675,Timor-Leste,2000,0.46
+3676,Eswatini,2000,1.0
+3677,Costa Rica,2000,7.41
+3678,Seychelles,2000,0.58
+3679,Cape Verde,2000,-0.29
+3680,Antigua and Barbuda,2000,0.33
+3681,Djibouti,2000,0.37
+3682,Andorra,2000,0.52
+3683,Samoa,2000,0.25
+3684,Sao Tome and Principe,2000,0.06
+3685,Comoros,2000,0.16
+3686,Grenada,2000,0.21
+3687,Palau,2000,0.21
+3688,Saint Vincent and the Grenadines,2000,0.12
+3689,Saint Kitts and Nevis,2000,0.19
+3690,Saint Lucia,2000,0.22
+3691,Marshall Islands,2000,0.1
+3692,Tonga,2000,0.1
+3693,Vanuatu,2000,0.09
+3694,Dominica,2000,0.19
+3695,Micronesia,2000,0.1
+3696,Liechtenstein,2000,0.24
+3697,Cook Islands,2000,0.03
+3698,Kiribati,2000,0.04
+3699,Bhutan,2000,-6.24
+3700,Nauru,2000,0.09
+3701,Tuvalu,2000,0.01
+3702,Niue,2000,0.01
+3703,Fiji,2000,-1.69
+3704,Ghana,2000,15.62
+3705,World,1999,24957.3
+3706,China,1999,2799.84
+3707,United States,1999,5191.66
+3708,European Union (27),1999,3079.46
+3709,India,1999,683.0
+3710,Indonesia,1999,849.42
+3711,Japan,1999,1090.14
+3712,Russia,1999,1081.87
+3713,Brazil,1999,1339.1
+3714,Germany,1999,782.33
+3715,Iran,1999,306.0
+3716,Canada,1999,560.63
+3717,Democratic Republic of the Congo,1999,369.03
+3718,South Korea,1999,358.5
+3719,Saudi Arabia,1999,234.53
+3720,Mexico,1999,382.78
+3721,South Africa,1999,284.79
+3722,Australia,1999,383.46
+3723,Turkey,1999,175.93
+3724,United Kingdom,1999,511.41
+3725,Malaysia,1999,222.59
+3726,Italy,1999,398.49
+3727,Poland,1999,295.56
+3728,Thailand,1999,174.18
+3729,France,1999,350.09
+3730,Egypt,1999,114.26
+3731,Vietnam,1999,-27.25
+3732,Spain,1999,235.67
+3733,Kazakhstan,1999,117.43
+3734,Pakistan,1999,106.8
+3735,Argentina,1999,178.51
+3736,United Arab Emirates,1999,86.0
+3737,Iraq,1999,64.47
+3738,Venezuela,1999,272.6
+3739,Nigeria,1999,120.65
+3740,Ukraine,1999,257.09
+3741,Colombia,1999,148.44
+3742,Netherlands,1999,163.09
+3743,Algeria,1999,78.12
+3744,Philippines,1999,74.84
+3745,Peru,1999,88.59
+3746,Myanmar,1999,150.15
+3747,Uzbekistan,1999,114.15
+3748,Bangladesh,1999,42.46
+3749,Zimbabwe,1999,26.22
+3750,Czech Republic,1999,102.5
+3751,Belgium,1999,111.59
+3752,Qatar,1999,22.95
+3753,Bolivia,1999,84.28
+3754,Kuwait,1999,43.71
+3755,Tanzania,1999,54.67
+3756,Oman,1999,20.43
+3757,Turkmenistan,1999,35.77
+3758,Greece,1999,86.47
+3759,Ecuador,1999,57.29
+3760,Morocco,1999,27.7
+3761,Angola,1999,22.94
+3762,Israel,1999,52.96
+3763,Mozambique,1999,49.59
+3764,Libya,1999,38.06
+3765,Austria,1999,49.58
+3766,Paraguay,1999,46.3
+3767,Romania,1999,86.2
+3768,Finland,1999,25.64
+3769,Portugal,1999,63.66
+3770,Botswana,1999,45.13
+3771,Papua New Guinea,1999,36.0
+3772,Hungary,1999,59.53
+3773,Ethiopia,1999,29.6
+3774,Singapore,1999,38.42
+3775,Solomon Islands,1999,4.14
+3776,Serbia,1999,37.87
+3777,Cameroon,1999,59.42
+3778,Sudan,1999,26.66
+3779,Zambia,1999,19.1
+3780,Cambodia,1999,6.08
+3781,Belarus,1999,22.42
+3782,Côte d'Ivoire,1999,67.32
+3783,Switzerland,1999,43.06
+3784,Ireland,1999,37.81
+3785,Denmark,1999,57.29
+3786,Slovakia,1999,31.22
+3787,Bahrain,1999,15.45
+3788,Azerbaijan,1999,37.2
+3789,Chile,1999,36.41
+3790,Burkina Faso,1999,13.19
+3791,Syria,1999,38.61
+3792,Lebanon,1999,17.05
+3793,Laos,1999,11.35
+3794,Tunisia,1999,18.92
+3795,Nicaragua,1999,23.08
+3796,Jordan,1999,14.63
+3797,Mongolia,1999,12.81
+3798,Chad,1999,8.12
+3799,Dominican Republic,1999,10.52
+3800,Sri Lanka,1999,14.12
+3801,Uganda,1999,17.19
+3802,Cuba,1999,17.0
+3803,New Zealand,1999,2.82
+3804,Guatemala,1999,24.33
+3805,North Korea,1999,72.93
+3806,Bosnia and Herzegovina,1999,13.77
+3807,Sweden,1999,59.21
+3808,Benin,1999,16.41
+3809,Norway,1999,24.3
+3810,Somalia,1999,17.85
+3811,Estonia,1999,13.7
+3812,Trinidad and Tobago,1999,14.29
+3813,Guyana,1999,9.68
+3814,Guinea,1999,12.2
+3815,Honduras,1999,10.31
+3816,Nepal,1999,1.81
+3817,Namibia,1999,12.54
+3818,Liberia,1999,13.81
+3819,Panama,1999,11.0
+3820,Slovenia,1999,5.54
+3821,Central African Republic,1999,14.2
+3822,Senegal,1999,8.85
+3823,Republic of Congo,1999,12.28
+3824,Madagascar,1999,30.58
+3825,Croatia,1999,17.65
+3826,Suriname,1999,5.58
+3827,Gabon,1999,8.47
+3828,Lithuania,1999,12.86
+3829,Kenya,1999,3.13
+3830,Equatorial Guinea,1999,5.65
+3831,South Sudan,1999,7.06
+3832,Malawi,1999,9.13
+3833,Georgia,1999,-13.75
+3834,Yemen,1999,13.17
+3835,Luxembourg,1999,7.31
+3836,Moldova,1999,7.05
+3837,Jamaica,1999,10.41
+3838,El Salvador,1999,6.69
+3839,Kyrgyzstan,1999,3.77
+3840,Afghanistan,1999,-1.57
+3841,Brunei,1999,5.5
+3842,Macedonia,1999,9.14
+3843,Bulgaria,1999,22.53
+3844,Tajikistan,1999,2.58
+3845,Cyprus,1999,6.74
+3846,Belize,1999,6.95
+3847,Mali,1999,0.8
+3848,Armenia,1999,3.24
+3849,Albania,1999,3.16
+3850,Latvia,1999,-5.24
+3851,Uruguay,1999,-6.45
+3852,Sierra Leone,1999,3.5
+3853,Mauritius,1999,2.18
+3854,Burundi,1999,5.84
+3855,Haiti,1999,1.45
+3856,Niger,1999,6.35
+3857,Togo,1999,4.37
+3858,Mauritania,1999,1.51
+3859,Rwanda,1999,3.41
+3860,Lesotho,1999,1.72
+3861,Montenegro,1999,-0.34
+3862,Bahamas,1999,2.23
+3863,Iceland,1999,2.13
+3864,Maldives,1999,0.43
+3865,Guinea-Bissau,1999,1.68
+3866,Malta,1999,2.41
+3867,Barbados,1999,1.3
+3868,Eritrea,1999,1.08
+3869,Gambia,1999,0.79
+3870,Timor-Leste,1999,0.46
+3871,Eswatini,1999,1.09
+3872,Costa Rica,1999,7.5
+3873,Seychelles,1999,0.52
+3874,Cape Verde,1999,-0.32
+3875,Antigua and Barbuda,1999,0.33
+3876,Djibouti,1999,0.35
+3877,Andorra,1999,0.51
+3878,Samoa,1999,0.25
+3879,Sao Tome and Principe,1999,0.06
+3880,Comoros,1999,0.15
+3881,Grenada,1999,0.22
+3882,Palau,1999,0.2
+3883,Saint Vincent and the Grenadines,1999,0.14
+3884,Saint Kitts and Nevis,1999,0.18
+3885,Saint Lucia,1999,0.23
+3886,Marshall Islands,1999,0.1
+3887,Tonga,1999,0.11
+3888,Vanuatu,1999,0.09
+3889,Dominica,1999,0.17
+3890,Micronesia,1999,0.1
+3891,Liechtenstein,1999,0.25
+3892,Cook Islands,1999,0.03
+3893,Kiribati,1999,0.03
+3894,Bhutan,1999,-6.25
+3895,Nauru,1999,0.09
+3896,Tuvalu,1999,0.01
+3897,Niue,1999,0.01
+3898,Fiji,1999,-1.74
+3899,Ghana,1999,16.46
+3900,World,1998,24895.32
+3901,China,1998,2882.75
+3902,United States,1998,5172.06
+3903,European Union (27),1998,3134.03
+3904,India,1998,618.73
+3905,Indonesia,1998,907.96
+3906,Japan,1998,1055.5
+3907,Russia,1998,1043.96
+3908,Brazil,1998,1329.24
+3909,Germany,1998,812.12
+3910,Iran,1998,272.42
+3911,Canada,1998,552.1
+3912,Democratic Republic of the Congo,1998,369.04
+3913,South Korea,1998,323.23
+3914,Saudi Arabia,1998,230.41
+3915,Mexico,1998,395.43
+3916,South Africa,1998,302.8
+3917,Australia,1998,378.07
+3918,Turkey,1998,176.91
+3919,United Kingdom,1998,514.07
+3920,Malaysia,1998,233.95
+3921,Italy,1998,391.85
+3922,Poland,1998,305.04
+3923,Thailand,1998,167.52
+3924,France,1998,356.3
+3925,Egypt,1998,108.86
+3926,Vietnam,1998,-27.51
+3927,Spain,1998,213.54
+3928,Kazakhstan,1998,129.49
+3929,Pakistan,1998,98.21
+3930,Argentina,1998,177.49
+3931,United Arab Emirates,1998,83.85
+3932,Iraq,1998,81.32
+3933,Venezuela,1998,277.56
+3934,Nigeria,1998,122.63
+3935,Ukraine,1998,260.74
+3936,Colombia,1998,156.64
+3937,Netherlands,1998,168.37
+3938,Algeria,1998,75.11
+3939,Philippines,1998,77.33
+3940,Peru,1998,86.4
+3941,Myanmar,1998,149.01
+3942,Uzbekistan,1998,112.93
+3943,Bangladesh,1998,41.77
+3944,Zimbabwe,1998,24.48
+3945,Czech Republic,1998,109.48
+3946,Belgium,1998,115.49
+3947,Qatar,1998,20.81
+3948,Bolivia,1998,84.92
+3949,Kuwait,1998,39.87
+3950,Tanzania,1998,54.83
+3951,Oman,1998,17.28
+3952,Turkmenistan,1998,30.59
+3953,Greece,1998,86.2
+3954,Ecuador,1998,59.95
+3955,Morocco,1998,26.15
+3956,Angola,1998,21.65
+3957,Israel,1998,51.48
+3958,Mozambique,1998,49.6
+3959,Libya,1998,39.9
+3960,Austria,1998,51.2
+3961,Paraguay,1998,46.3
+3962,Romania,1998,100.09
+3963,Finland,1998,26.22
+3964,Portugal,1998,57.06
+3965,Botswana,1998,44.91
+3966,Papua New Guinea,1998,34.75
+3967,Hungary,1998,58.98
+3968,Ethiopia,1998,29.59
+3969,Singapore,1998,37.94
+3970,Solomon Islands,1998,4.13
+3971,Serbia,1998,54.38
+3972,Cameroon,1998,59.63
+3973,Sudan,1998,26.1
+3974,Zambia,1998,19.46
+3975,Cambodia,1998,6.11
+3976,Belarus,1998,24.49
+3977,Côte d'Ivoire,1998,65.46
+3978,Switzerland,1998,42.78
+3979,Ireland,1998,36.2
+3980,Denmark,1998,60.08
+3981,Slovakia,1998,31.97
+3982,Bahrain,1998,15.51
+3983,Azerbaijan,1998,37.81
+3984,Chile,1998,34.04
+3985,Burkina Faso,1998,13.14
+3986,Syria,1998,39.38
+3987,Lebanon,1998,16.27
+3988,Laos,1998,11.32
+3989,Tunisia,1998,18.0
+3990,Nicaragua,1998,23.05
+3991,Jordan,1998,14.61
+3992,Mongolia,1998,12.75
+3993,Chad,1998,8.1
+3994,Dominican Republic,1998,9.34
+3995,Sri Lanka,1998,13.24
+3996,Uganda,1998,17.16
+3997,Cuba,1998,16.12
+3998,New Zealand,1998,1.45
+3999,Guatemala,1998,24.41
+4000,North Korea,1998,67.3
+4001,Bosnia and Herzegovina,1998,14.02
+4002,Sweden,1998,60.26
+4003,Benin,1998,16.29
+4004,Norway,1998,22.47
+4005,Somalia,1998,17.87
+4006,Estonia,1998,14.59
+4007,Trinidad and Tobago,1998,14.18
+4008,Guyana,1998,9.51
+4009,Guinea,1998,12.13
+4010,Honduras,1998,10.24
+4011,Nepal,1998,0.73
+4012,Namibia,1998,12.58
+4013,Liberia,1998,13.9
+4014,Panama,1998,11.71
+4015,Slovenia,1998,6.1
+4016,Central African Republic,1998,14.19
+4017,Senegal,1998,8.48
+4018,Republic of Congo,1998,12.54
+4019,Madagascar,1998,30.46
+4020,Croatia,1998,17.62
+4021,Suriname,1998,5.49
+4022,Gabon,1998,8.54
+4023,Lithuania,1998,15.35
+4024,Kenya,1998,2.81
+4025,Equatorial Guinea,1998,5.45
+4026,South Sudan,1998,7.03
+4027,Malawi,1998,9.08
+4028,Georgia,1998,-13.28
+4029,Yemen,1998,11.73
+4030,Luxembourg,1998,6.95
+4031,Moldova,1998,8.35
+4032,Jamaica,1998,10.12
+4033,El Salvador,1998,6.75
+4034,Kyrgyzstan,1998,5.01
+4035,Afghanistan,1998,-1.34
+4036,Brunei,1998,8.74
+4037,Macedonia,1998,9.88
+4038,Bulgaria,1998,28.83
+4039,Tajikistan,1998,2.8
+4040,Cyprus,1998,6.48
+4041,Belize,1998,7.01
+4042,Mali,1998,0.77
+4043,Armenia,1998,3.6
+4044,Albania,1998,1.99
+4045,Latvia,1998,-4.72
+4046,Uruguay,1998,-7.45
+4047,Sierra Leone,1998,3.61
+4048,Mauritius,1998,1.77
+4049,Burundi,1998,5.79
+4050,Haiti,1998,1.38
+4051,Niger,1998,6.37
+4052,Togo,1998,3.86
+4053,Mauritania,1998,1.39
+4054,Rwanda,1998,3.39
+4055,Lesotho,1998,1.71
+4056,Montenegro,1998,-0.34
+4057,Bahamas,1998,2.27
+4058,Iceland,1998,2.17
+4059,Maldives,1998,0.31
+4060,Guinea-Bissau,1998,1.66
+4061,Malta,1998,2.37
+4062,Barbados,1998,1.27
+4063,Eritrea,1998,1.05
+4064,Gambia,1998,0.77
+4065,Timor-Leste,1998,0.46
+4066,Eswatini,1998,1.01
+4067,Costa Rica,1998,7.48
+4068,Seychelles,1998,0.44
+4069,Cape Verde,1998,-0.35
+4070,Antigua and Barbuda,1998,0.33
+4071,Djibouti,1998,0.35
+4072,Andorra,1998,0.49
+4073,Samoa,1998,0.24
+4074,Sao Tome and Principe,1998,0.06
+4075,Comoros,1998,0.15
+4076,Grenada,1998,0.23
+4077,Palau,1998,0.2
+4078,Saint Vincent and the Grenadines,1998,0.15
+4079,Saint Kitts and Nevis,1998,0.18
+4080,Saint Lucia,1998,0.23
+4081,Marshall Islands,1998,0.1
+4082,Tonga,1998,0.1
+4083,Vanuatu,1998,0.08
+4084,Dominica,1998,0.16
+4085,Micronesia,1998,0.1
+4086,Liechtenstein,1998,0.25
+4087,Cook Islands,1998,0.02
+4088,Kiribati,1998,0.03
+4089,Bhutan,1998,-6.25
+4090,Nauru,1998,0.1
+4091,Tuvalu,1998,0.01
+4092,Niue,1998,0.01
+4093,Fiji,1998,-1.76
+4094,Ghana,1998,15.98
+4095,World,1997,25292.92
+4096,China,1997,2779.27
+4097,United States,1997,5129.29
+4098,European Union (27),1997,3142.23
+4099,India,1997,600.38
+4100,Indonesia,1997,1484.56
+4101,Japan,1997,1098.26
+4102,Russia,1997,1052.5
+4103,Brazil,1997,1319.99
+4104,Germany,1997,819.93
+4105,Iran,1997,271.0
+4106,Canada,1997,543.72
+4107,Democratic Republic of the Congo,1997,368.92
+4108,South Korea,1997,388.04
+4109,Saudi Arabia,1997,214.93
+4110,Mexico,1997,371.54
+4111,South Africa,1997,295.2
+4112,Australia,1997,357.18
+4113,Turkey,1997,176.65
+4114,United Kingdom,1997,511.37
+4115,Malaysia,1997,214.34
+4116,Italy,1997,381.0
+4117,Poland,1997,331.29
+4118,Thailand,1997,188.5
+4119,France,1997,334.26
+4120,Egypt,1997,103.55
+4121,Vietnam,1997,-32.4
+4122,Spain,1997,205.91
+4123,Kazakhstan,1997,125.99
+4124,Pakistan,1997,97.36
+4125,Argentina,1997,171.64
+4126,United Arab Emirates,1997,81.45
+4127,Iraq,1997,115.65
+4128,Venezuela,1997,280.97
+4129,Nigeria,1997,129.54
+4130,Ukraine,1997,279.68
+4131,Colombia,1997,156.12
+4132,Netherlands,1997,167.94
+4133,Algeria,1997,73.41
+4134,Philippines,1997,77.73
+4135,Peru,1997,87.7
+4136,Myanmar,1997,147.66
+4137,Uzbekistan,1997,97.66
+4138,Bangladesh,1997,41.6
+4139,Zimbabwe,1997,24.23
+4140,Czech Republic,1997,115.35
+4141,Belgium,1997,112.72
+4142,Qatar,1997,19.45
+4143,Bolivia,1997,84.59
+4144,Kuwait,1997,34.04
+4145,Tanzania,1997,55.02
+4146,Oman,1997,17.24
+4147,Turkmenistan,1997,29.94
+4148,Greece,1997,82.84
+4149,Ecuador,1997,60.11
+4150,Morocco,1997,25.43
+4151,Angola,1997,22.0
+4152,Israel,1997,50.94
+4153,Mozambique,1997,49.64
+4154,Libya,1997,38.94
+4155,Austria,1997,50.75
+4156,Paraguay,1997,46.14
+4157,Romania,1997,114.12
+4158,Finland,1997,29.53
+4159,Portugal,1997,52.39
+4160,Botswana,1997,44.28
+4161,Papua New Guinea,1997,33.89
+4162,Hungary,1997,58.62
+4163,Ethiopia,1997,29.38
+4164,Singapore,1997,39.45
+4165,Solomon Islands,1997,4.13
+4166,Serbia,1997,54.36
+4167,Cameroon,1997,59.45
+4168,Sudan,1997,26.55
+4169,Zambia,1997,19.56
+4170,Cambodia,1997,5.87
+4171,Belarus,1997,26.24
+4172,Côte d'Ivoire,1997,65.37
+4173,Switzerland,1997,41.28
+4174,Ireland,1997,33.68
+4175,Denmark,1997,64.06
+4176,Slovakia,1997,32.84
+4177,Bahrain,1997,14.41
+4178,Azerbaijan,1997,37.89
+4179,Chile,1997,33.19
+4180,Burkina Faso,1997,13.08
+4181,Syria,1997,36.48
+4182,Lebanon,1997,16.14
+4183,Laos,1997,11.29
+4184,Tunisia,1997,17.26
+4185,Nicaragua,1997,22.56
+4186,Jordan,1997,14.37
+4187,Mongolia,1997,12.71
+4188,Chad,1997,8.09
+4189,Dominican Republic,1997,7.24
+4190,Sri Lanka,1997,12.97
+4191,Uganda,1997,17.0
+4192,Cuba,1997,16.58
+4193,New Zealand,1997,1.93
+4194,Guatemala,1997,22.67
+4195,North Korea,1997,73.88
+4196,Bosnia and Herzegovina,1997,11.75
+4197,Sweden,1997,59.26
+4198,Benin,1997,16.23
+4199,Norway,1997,20.75
+4200,Somalia,1997,17.9
+4201,Estonia,1997,15.09
+4202,Trinidad and Tobago,1997,13.85
+4203,Guyana,1997,9.47
+4204,Guinea,1997,12.05
+4205,Honduras,1997,9.6
+4206,Nepal,1997,0.59
+4207,Namibia,1997,12.53
+4208,Liberia,1997,13.86
+4209,Panama,1997,10.63
+4210,Slovenia,1997,6.32
+4211,Central African Republic,1997,14.13
+4212,Senegal,1997,8.1
+4213,Republic of Congo,1997,12.64
+4214,Madagascar,1997,30.24
+4215,Croatia,1997,16.2
+4216,Suriname,1997,5.47
+4217,Gabon,1997,8.44
+4218,Lithuania,1997,14.57
+4219,Kenya,1997,2.29
+4220,Equatorial Guinea,1997,5.46
+4221,South Sudan,1997,7.02
+4222,Malawi,1997,9.1
+4223,Georgia,1997,-12.75
+4224,Yemen,1997,10.85
+4225,Luxembourg,1997,7.63
+4226,Moldova,1997,9.28
+4227,Jamaica,1997,9.57
+4228,El Salvador,1997,6.4
+4229,Kyrgyzstan,1997,4.67
+4230,Afghanistan,1997,-1.29
+4231,Brunei,1997,6.58
+4232,Macedonia,1997,9.04
+4233,Bulgaria,1997,31.61
+4234,Tajikistan,1997,2.55
+4235,Cyprus,1997,6.18
+4236,Belize,1997,7.01
+4237,Mali,1997,0.53
+4238,Armenia,1997,3.47
+4239,Albania,1997,1.67
+4240,Latvia,1997,-4.34
+4241,Uruguay,1997,-7.68
+4242,Sierra Leone,1997,3.57
+4243,Mauritius,1997,1.6
+4244,Burundi,1997,5.76
+4245,Haiti,1997,1.34
+4246,Niger,1997,6.32
+4247,Togo,1997,3.43
+4248,Mauritania,1997,1.45
+4249,Rwanda,1997,3.39
+4250,Lesotho,1997,1.67
+4251,Montenegro,1997,-0.34
+4252,Bahamas,1997,1.77
+4253,Iceland,1997,2.17
+4254,Maldives,1997,0.34
+4255,Guinea-Bissau,1997,1.68
+4256,Malta,1997,2.47
+4257,Barbados,1997,1.17
+4258,Eritrea,1997,1.26
+4259,Gambia,1997,0.76
+4260,Timor-Leste,1997,0.46
+4261,Eswatini,1997,0.98
+4262,Costa Rica,1997,6.96
+4263,Seychelles,1997,0.35
+4264,Cape Verde,1997,-0.37
+4265,Antigua and Barbuda,1997,0.3
+4266,Djibouti,1997,0.35
+4267,Andorra,1997,0.47
+4268,Samoa,1997,0.24
+4269,Sao Tome and Principe,1997,0.06
+4270,Comoros,1997,0.14
+4271,Grenada,1997,0.2
+4272,Palau,1997,0.2
+4273,Saint Vincent and the Grenadines,1997,0.11
+4274,Saint Kitts and Nevis,1997,0.16
+4275,Saint Lucia,1997,0.18
+4276,Marshall Islands,1997,0.09
+4277,Tonga,1997,0.09
+4278,Vanuatu,1997,0.09
+4279,Dominica,1997,0.16
+4280,Micronesia,1997,0.1
+4281,Liechtenstein,1997,0.24
+4282,Cook Islands,1997,0.02
+4283,Kiribati,1997,0.03
+4284,Bhutan,1997,-6.24
+4285,Nauru,1997,0.1
+4286,Tuvalu,1997,0.01
+4287,Niue,1997,0.01
+4288,Fiji,1997,-1.74
+4289,Ghana,1997,14.18
+4290,World,1996,24214.92
+4291,China,1996,2715.5
+4292,United States,1996,4864.46
+4293,European Union (27),1996,3210.93
+4294,India,1996,555.6
+4295,Indonesia,1996,772.38
+4296,Japan,1996,1110.51
+4297,Russia,1996,1159.83
+4298,Brazil,1996,1301.37
+4299,Germany,1996,851.78
+4300,Iran,1996,259.83
+4301,Canada,1996,528.32
+4302,Democratic Republic of the Congo,1996,368.97
+4303,South Korea,1996,366.44
+4304,Saudi Arabia,1996,234.09
+4305,Mexico,1996,348.39
+4306,South Africa,1996,280.26
+4307,Australia,1996,349.99
+4308,Turkey,1996,168.5
+4309,United Kingdom,1996,533.7
+4310,Malaysia,1996,206.21
+4311,Italy,1996,377.63
+4312,Poland,1996,342.0
+4313,Thailand,1996,185.34
+4314,France,1996,343.1
+4315,Egypt,1996,96.36
+4316,Vietnam,1996,-38.3
+4317,Spain,1996,187.41
+4318,Kazakhstan,1996,149.08
+4319,Pakistan,1996,93.87
+4320,Argentina,1996,170.88
+4321,United Arab Emirates,1996,75.81
+4322,Iraq,1996,98.08
+4323,Venezuela,1996,275.67
+4324,Nigeria,1996,133.18
+4325,Ukraine,1996,297.56
+4326,Colombia,1996,151.38
+4327,Netherlands,1996,175.38
+4328,Algeria,1996,71.99
+4329,Philippines,1996,69.9
+4330,Peru,1996,87.49
+4331,Myanmar,1996,148.08
+4332,Uzbekistan,1996,96.3
+4333,Bangladesh,1996,39.47
+4334,Zimbabwe,1996,25.26
+4335,Czech Republic,1996,117.3
+4336,Belgium,1996,115.53
+4337,Qatar,1996,17.91
+4338,Bolivia,1996,84.44
+4339,Kuwait,1996,32.93
+4340,Tanzania,1996,55.19
+4341,Oman,1996,15.82
+4342,Turkmenistan,1996,29.69
+4343,Greece,1996,81.83
+4344,Ecuador,1996,59.06
+4345,Morocco,1996,23.99
+4346,Angola,1996,21.68
+4347,Israel,1996,48.71
+4348,Mozambique,1996,49.52
+4349,Libya,1996,39.4
+4350,Austria,1996,51.43
+4351,Paraguay,1996,45.75
+4352,Romania,1996,124.65
+4353,Finland,1996,31.47
+4354,Portugal,1996,50.2
+4355,Botswana,1996,44.13
+4356,Papua New Guinea,1996,33.56
+4357,Hungary,1996,60.1
+4358,Ethiopia,1996,29.2
+4359,Singapore,1996,39.81
+4360,Solomon Islands,1996,4.12
+4361,Serbia,1996,49.78
+4362,Cameroon,1996,59.2
+4363,Sudan,1996,25.61
+4364,Zambia,1996,19.04
+4365,Cambodia,1996,5.78
+4366,Belarus,1996,25.62
+4367,Côte d'Ivoire,1996,64.42
+4368,Switzerland,1996,42.54
+4369,Ireland,1996,32.51
+4370,Denmark,1996,73.65
+4371,Slovakia,1996,32.74
+4372,Bahrain,1996,14.17
+4373,Azerbaijan,1996,38.8
+4374,Chile,1996,26.69
+4375,Burkina Faso,1996,12.98
+4376,Syria,1996,36.13
+4377,Lebanon,1996,14.14
+4378,Laos,1996,11.25
+4379,Tunisia,1996,16.68
+4380,Nicaragua,1996,22.35
+4381,Jordan,1996,13.87
+4382,Mongolia,1996,12.87
+4383,Chad,1996,8.07
+4384,Dominican Republic,1996,5.46
+4385,Sri Lanka,1996,12.98
+4386,Uganda,1996,16.94
+4387,Cuba,1996,14.2
+4388,New Zealand,1996,-0.39
+4389,Guatemala,1996,22.31
+4390,North Korea,1996,80.36
+4391,Bosnia and Herzegovina,1996,7.44
+4392,Sweden,1996,65.52
+4393,Benin,1996,16.05
+4394,Norway,1996,18.99
+4395,Somalia,1996,17.93
+4396,Estonia,1996,15.46
+4397,Trinidad and Tobago,1996,13.38
+4398,Guyana,1996,9.22
+4399,Guinea,1996,12.0
+4400,Honduras,1996,9.46
+4401,Nepal,1996,0.35
+4402,Namibia,1996,12.48
+4403,Liberia,1996,13.84
+4404,Panama,1996,10.4
+4405,Slovenia,1996,5.89
+4406,Central African Republic,1996,14.13
+4407,Senegal,1996,7.81
+4408,Republic of Congo,1996,12.14
+4409,Madagascar,1996,30.12
+4410,Croatia,1996,14.49
+4411,Suriname,1996,5.44
+4412,Gabon,1996,8.32
+4413,Lithuania,1996,14.89
+4414,Kenya,1996,2.62
+4415,Equatorial Guinea,1996,5.34
+4416,South Sudan,1996,7.01
+4417,Malawi,1996,9.05
+4418,Georgia,1996,-11.9
+4419,Yemen,1996,10.08
+4420,Luxembourg,1996,8.12
+4421,Moldova,1996,10.1
+4422,Jamaica,1996,9.41
+4423,El Salvador,1996,5.47
+4424,Kyrgyzstan,1996,4.75
+4425,Afghanistan,1996,-1.21
+4426,Brunei,1996,6.07
+4427,Macedonia,1996,10.11
+4428,Bulgaria,1996,33.3
+4429,Tajikistan,1996,2.27
+4430,Cyprus,1996,6.09
+4431,Belize,1996,6.92
+4432,Mali,1996,0.49
+4433,Armenia,1996,2.71
+4434,Albania,1996,2.16
+4435,Latvia,1996,-3.87
+4436,Uruguay,1996,-7.78
+4437,Sierra Leone,1996,3.64
+4438,Mauritius,1996,1.59
+4439,Burundi,1996,5.74
+4440,Haiti,1996,1.13
+4441,Niger,1996,6.31
+4442,Togo,1996,4.02
+4443,Mauritania,1996,1.46
+4444,Rwanda,1996,3.37
+4445,Lesotho,1996,1.64
+4446,Montenegro,1996,-0.34
+4447,Bahamas,1996,1.97
+4448,Iceland,1996,2.28
+4449,Maldives,1996,0.28
+4450,Guinea-Bissau,1996,1.66
+4451,Malta,1996,2.32
+4452,Barbados,1996,1.07
+4453,Eritrea,1996,1.31
+4454,Gambia,1996,0.75
+4455,Timor-Leste,1996,0.46
+4456,Eswatini,1996,0.65
+4457,Costa Rica,1996,6.99
+4458,Seychelles,1996,0.24
+4459,Cape Verde,1996,-0.37
+4460,Antigua and Barbuda,1996,0.28
+4461,Djibouti,1996,0.34
+4462,Andorra,1996,0.45
+4463,Samoa,1996,0.24
+4464,Sao Tome and Principe,1996,0.06
+4465,Comoros,1996,0.14
+4466,Grenada,1996,0.19
+4467,Palau,1996,0.2
+4468,Saint Vincent and the Grenadines,1996,0.1
+4469,Saint Kitts and Nevis,1996,0.15
+4470,Saint Lucia,1996,0.18
+4471,Marshall Islands,1996,0.09
+4472,Tonga,1996,0.08
+4473,Vanuatu,1996,0.09
+4474,Dominica,1996,0.13
+4475,Micronesia,1996,0.09
+4476,Liechtenstein,1996,0.23
+4477,Cook Islands,1996,0.02
+4478,Kiribati,1996,0.03
+4479,Bhutan,1996,-6.33
+4480,Nauru,1996,0.1
+4481,Tuvalu,1996,0.01
+4482,Niue,1996,0.01
+4483,Fiji,1996,-1.72
+4484,Ghana,1996,13.98
+4485,World,1995,23890.22
+4486,China,1995,2735.48
+4487,United States,1995,4708.31
+4488,European Union (27),1995,3113.68
+4489,India,1995,519.98
+4490,Indonesia,1995,909.21
+4491,Japan,1995,1097.1
+4492,Russia,1995,1190.39
+4493,Brazil,1995,1279.97
+4494,Germany,1995,822.15
+4495,Iran,1995,251.99
+4496,Canada,1995,514.62
+4497,Democratic Republic of the Congo,1995,368.95
+4498,South Korea,1995,341.87
+4499,Saudi Arabia,1995,222.4
+4500,Mexico,1995,328.84
+4501,South Africa,1995,270.47
+4502,Australia,1995,339.4
+4503,Turkey,1995,151.32
+4504,United Kingdom,1995,513.33
+4505,Malaysia,1995,197.88
+4506,Italy,1995,381.89
+4507,Poland,1995,326.79
+4508,Thailand,1995,166.83
+4509,France,1995,327.43
+4510,Egypt,1995,91.46
+4511,Vietnam,1995,-41.95
+4512,Spain,1995,197.88
+4513,Kazakhstan,1995,171.65
+4514,Pakistan,1995,90.78
+4515,Argentina,1995,158.13
+4516,United Arab Emirates,1995,72.64
+4517,Iraq,1995,95.97
+4518,Venezuela,1995,261.98
+4519,Nigeria,1995,127.53
+4520,Ukraine,1995,350.76
+4521,Colombia,1995,151.59
+4522,Netherlands,1995,165.81
+4523,Algeria,1995,73.63
+4524,Philippines,1995,64.21
+4525,Peru,1995,85.15
+4526,Myanmar,1995,148.94
+4527,Uzbekistan,1995,95.33
+4528,Bangladesh,1995,39.2
+4529,Zimbabwe,1995,25.89
+4530,Czech Republic,1995,115.74
+4531,Belgium,1995,110.65
+4532,Qatar,1995,17.02
+4533,Bolivia,1995,84.64
+4534,Kuwait,1995,33.78
+4535,Tanzania,1995,54.86
+4536,Oman,1995,15.6
+4537,Turkmenistan,1995,33.43
+4538,Greece,1995,81.91
+4539,Ecuador,1995,56.35
+4540,Morocco,1995,24.3
+4541,Angola,1995,21.05
+4542,Israel,1995,46.75
+4543,Mozambique,1995,49.53
+4544,Libya,1995,37.49
+4545,Austria,1995,47.71
+4546,Paraguay,1995,45.81
+4547,Romania,1995,121.43
+4548,Finland,1995,24.98
+4549,Portugal,1995,52.16
+4550,Botswana,1995,44.41
+4551,Papua New Guinea,1995,33.49
+4552,Hungary,1995,59.07
+4553,Ethiopia,1995,28.9
+4554,Singapore,1995,38.83
+4555,Solomon Islands,1995,4.11
+4556,Serbia,1995,42.42
+4557,Cameroon,1995,59.97
+4558,Sudan,1995,25.82
+4559,Zambia,1995,19.42
+4560,Cambodia,1995,5.68
+4561,Belarus,1995,24.64
+4562,Côte d'Ivoire,1995,63.77
+4563,Switzerland,1995,41.98
+4564,Ireland,1995,31.05
+4565,Denmark,1995,60.26
+4566,Slovakia,1995,32.94
+4567,Bahrain,1995,13.54
+4568,Azerbaijan,1995,44.19
+4569,Chile,1995,20.89
+4570,Burkina Faso,1995,12.9
+4571,Syria,1995,33.02
+4572,Lebanon,1995,13.32
+4573,Laos,1995,11.17
+4574,Tunisia,1995,16.12
+4575,Nicaragua,1995,22.19
+4576,Jordan,1995,13.6
+4577,Mongolia,1995,14.45
+4578,Chad,1995,8.06
+4579,Dominican Republic,1995,4.58
+4580,Sri Lanka,1995,10.45
+4581,Uganda,1995,16.83
+4582,Cuba,1995,12.25
+4583,New Zealand,1995,-1.5
+4584,Guatemala,1995,22.48
+4585,North Korea,1995,89.78
+4586,Bosnia and Herzegovina,1995,6.63
+4587,Sweden,1995,60.1
+4588,Benin,1995,15.45
+4589,Norway,1995,18.05
+4590,Somalia,1995,17.95
+4591,Estonia,1995,14.48
+4592,Trinidad and Tobago,1995,13.24
+4593,Guyana,1995,8.89
+4594,Guinea,1995,11.93
+4595,Honduras,1995,9.42
+4596,Nepal,1995,0.29
+4597,Namibia,1995,12.33
+4598,Liberia,1995,13.82
+4599,Panama,1995,10.35
+4600,Slovenia,1995,5.07
+4601,Central African Republic,1995,14.13
+4602,Senegal,1995,7.65
+4603,Republic of Congo,1995,12.33
+4604,Madagascar,1995,30.18
+4605,Croatia,1995,14.55
+4606,Suriname,1995,5.36
+4607,Gabon,1995,8.21
+4608,Lithuania,1995,14.42
+4609,Kenya,1995,2.02
+4610,Equatorial Guinea,1995,4.83
+4611,South Sudan,1995,7.01
+4612,Malawi,1995,9.05
+4613,Georgia,1995,-10.09
+4614,Yemen,1995,9.87
+4615,Luxembourg,1995,8.04
+4616,Moldova,1995,11.84
+4617,Jamaica,1995,9.05
+4618,El Salvador,1995,6.04
+4619,Kyrgyzstan,1995,3.58
+4620,Afghanistan,1995,-1.14
+4621,Brunei,1995,6.03
+4622,Macedonia,1995,8.57
+4623,Bulgaria,1995,32.94
+4624,Tajikistan,1995,2.54
+4625,Cyprus,1995,5.73
+4626,Belize,1995,7.02
+4627,Mali,1995,0.47
+4628,Armenia,1995,3.64
+4629,Albania,1995,2.14
+4630,Latvia,1995,-3.89
+4631,Uruguay,1995,-8.54
+4632,Sierra Leone,1995,3.6
+4633,Mauritius,1995,1.53
+4634,Burundi,1995,5.72
+4635,Haiti,1995,0.97
+4636,Niger,1995,6.23
+4637,Togo,1995,3.64
+4638,Mauritania,1995,1.4
+4639,Rwanda,1995,3.37
+4640,Lesotho,1995,1.61
+4641,Montenegro,1995,-0.34
+4642,Bahamas,1995,2.08
+4643,Iceland,1995,2.02
+4644,Maldives,1995,0.26
+4645,Guinea-Bissau,1995,1.67
+4646,Malta,1995,2.38
+4647,Barbados,1995,1.07
+4648,Eritrea,1995,1.23
+4649,Gambia,1995,0.74
+4650,Timor-Leste,1995,0.46
+4651,Eswatini,1995,0.87
+4652,Costa Rica,1995,7.28
+4653,Seychelles,1995,0.2
+4654,Cape Verde,1995,-0.39
+4655,Antigua and Barbuda,1995,0.27
+4656,Djibouti,1995,0.33
+4657,Andorra,1995,0.43
+4658,Samoa,1995,0.23
+4659,Sao Tome and Principe,1995,0.06
+4660,Comoros,1995,0.14
+4661,Grenada,1995,0.17
+4662,Palau,1995,0.2
+4663,Saint Vincent and the Grenadines,1995,0.1
+4664,Saint Kitts and Nevis,1995,0.15
+4665,Saint Lucia,1995,0.17
+4666,Marshall Islands,1995,0.09
+4667,Tonga,1995,0.1
+4668,Vanuatu,1995,0.07
+4669,Dominica,1995,0.15
+4670,Micronesia,1995,0.09
+4671,Liechtenstein,1995,0.23
+4672,Cook Islands,1995,0.02
+4673,Kiribati,1995,0.03
+4674,Bhutan,1995,-6.38
+4675,Nauru,1995,0.11
+4676,Tuvalu,1995,0.01
+4677,Niue,1995,0.01
+4678,Fiji,1995,-1.78
+4679,Ghana,1995,13.6
+4680,World,1994,23260.29
+4681,China,1994,2414.5
+4682,United States,1994,4654.52
+4683,European Union (27),1994,3060.09
+4684,India,1994,466.79
+4685,Indonesia,1994,881.31
+4686,Japan,1994,1087.22
+4687,Russia,1994,1238.41
+4688,Brazil,1994,1261.19
+4689,Germany,1994,824.87
+4690,Iran,1994,240.77
+4691,Canada,1994,503.69
+4692,Democratic Republic of the Congo,1994,369.0
+4693,South Korea,1994,310.79
+4694,Saudi Arabia,1994,218.79
+4695,Mexico,1994,348.29
+4696,South Africa,1994,258.29
+4697,Australia,1994,329.03
+4698,Turkey,1994,136.99
+4699,United Kingdom,1994,524.43
+4700,Malaysia,1994,191.2
+4701,Italy,1994,357.76
+4702,Poland,1994,326.6
+4703,Thailand,1994,148.39
+4704,France,1994,319.62
+4705,Egypt,1994,86.03
+4706,Vietnam,1994,-45.54
+4707,Spain,1994,185.76
+4708,Kazakhstan,1994,195.24
+4709,Pakistan,1994,84.29
+4710,Argentina,1994,158.12
+4711,United Arab Emirates,1994,68.29
+4712,Iraq,1994,99.59
+4713,Venezuela,1994,255.37
+4714,Nigeria,1994,126.52
+4715,Ukraine,1994,367.14
+4716,Colombia,1994,148.92
+4717,Netherlands,1994,158.9
+4718,Algeria,1994,72.12
+4719,Philippines,1994,53.9
+4720,Peru,1994,82.11
+4721,Myanmar,1994,147.62
+4722,Uzbekistan,1994,106.38
+4723,Bangladesh,1994,36.15
+4724,Zimbabwe,1994,26.36
+4725,Czech Republic,1994,115.27
+4726,Belgium,1994,110.99
+4727,Qatar,1994,16.25
+4728,Bolivia,1994,85.35
+4729,Kuwait,1994,33.73
+4730,Tanzania,1994,54.04
+4731,Oman,1994,13.81
+4732,Turkmenistan,1994,32.87
+4733,Greece,1994,78.81
+4734,Ecuador,1994,53.6
+4735,Morocco,1994,23.24
+4736,Angola,1994,16.96
+4737,Israel,1994,43.34
+4738,Mozambique,1994,49.45
+4739,Libya,1994,35.91
+4740,Austria,1994,44.81
+4741,Paraguay,1994,45.37
+4742,Romania,1994,115.79
+4743,Finland,1994,28.8
+4744,Portugal,1994,48.77
+4745,Botswana,1994,44.3
+4746,Papua New Guinea,1994,31.23
+4747,Hungary,1994,59.41
+4748,Ethiopia,1994,28.56
+4749,Singapore,1994,39.19
+4750,Solomon Islands,1994,4.1
+4751,Serbia,1994,36.73
+4752,Cameroon,1994,60.14
+4753,Sudan,1994,25.8
+4754,Zambia,1994,19.43
+4755,Cambodia,1994,5.64
+4756,Belarus,1994,31.66
+4757,Côte d'Ivoire,1994,63.39
+4758,Switzerland,1994,41.13
+4759,Ireland,1994,30.45
+4760,Denmark,1994,63.53
+4761,Slovakia,1994,32.27
+4762,Bahrain,1994,13.37
+4763,Azerbaijan,1994,46.0
+4764,Chile,1994,18.01
+4765,Burkina Faso,1994,12.88
+4766,Syria,1994,31.21
+4767,Lebanon,1994,11.29
+4768,Laos,1994,11.14
+4769,Tunisia,1994,15.73
+4770,Nicaragua,1994,22.06
+4771,Jordan,1994,12.99
+4772,Mongolia,1994,14.5
+4773,Chad,1994,8.05
+4774,Dominican Republic,1994,3.87
+4775,Sri Lanka,1994,10.4
+4776,Uganda,1994,16.56
+4777,Cuba,1994,10.79
+4778,New Zealand,1994,-1.61
+4779,Guatemala,1994,21.56
+4780,North Korea,1994,95.11
+4781,Bosnia and Herzegovina,1994,6.42
+4782,Sweden,1994,60.35
+4783,Benin,1994,15.4
+4784,Norway,1994,18.63
+4785,Somalia,1994,17.98
+4786,Estonia,1994,16.08
+4787,Trinidad and Tobago,1994,13.1
+4788,Guyana,1994,8.38
+4789,Guinea,1994,11.9
+4790,Honduras,1994,8.8
+4791,Nepal,1994,0.18
+4792,Namibia,1994,12.2
+4793,Liberia,1994,13.82
+4794,Panama,1994,10.03
+4795,Slovenia,1994,4.2
+4796,Central African Republic,1994,14.12
+4797,Senegal,1994,7.49
+4798,Republic of Congo,1994,12.21
+4799,Madagascar,1994,29.97
+4800,Croatia,1994,13.98
+4801,Suriname,1994,5.28
+4802,Gabon,1994,8.05
+4803,Lithuania,1994,15.5
+4804,Kenya,1994,1.51
+4805,Equatorial Guinea,1994,4.83
+4806,South Sudan,1994,6.94
+4807,Malawi,1994,9.04
+4808,Georgia,1994,-7.82
+4809,Yemen,1994,8.48
+4810,Luxembourg,1994,10.2
+4811,Moldova,1994,13.83
+4812,Jamaica,1994,8.74
+4813,El Salvador,1994,5.54
+4814,Kyrgyzstan,1994,5.52
+4815,Afghanistan,1994,-1.08
+4816,Brunei,1994,5.66
+4817,Macedonia,1994,8.59
+4818,Bulgaria,1994,31.76
+4819,Tajikistan,1994,3.06
+4820,Cyprus,1994,5.86
+4821,Belize,1994,7.01
+4822,Mali,1994,0.47
+4823,Armenia,1994,2.87
+4824,Albania,1994,2.33
+4825,Latvia,1994,-2.74
+4826,Uruguay,1994,-8.97
+4827,Sierra Leone,1994,3.83
+4828,Mauritius,1994,1.49
+4829,Burundi,1994,5.6
+4830,Haiti,1994,0.26
+4831,Niger,1994,6.25
+4832,Togo,1994,3.57
+4833,Mauritania,1994,1.34
+4834,Rwanda,1994,3.36
+4835,Lesotho,1994,1.58
+4836,Montenegro,1994,-0.34
+4837,Bahamas,1994,2.04
+4838,Iceland,1994,2.11
+4839,Maldives,1994,0.2
+4840,Guinea-Bissau,1994,1.67
+4841,Malta,1994,2.51
+4842,Barbados,1994,1.03
+4843,Eritrea,1994,1.17
+4844,Gambia,1994,0.73
+4845,Timor-Leste,1994,0.46
+4846,Eswatini,1994,0.91
+4847,Costa Rica,1994,7.32
+4848,Seychelles,1994,0.21
+4849,Cape Verde,1994,-0.4
+4850,Antigua and Barbuda,1994,0.25
+4851,Djibouti,1994,0.33
+4852,Andorra,1994,0.41
+4853,Samoa,1994,0.23
+4854,Sao Tome and Principe,1994,0.06
+4855,Comoros,1994,0.13
+4856,Grenada,1994,0.16
+4857,Palau,1994,0.2
+4858,Saint Vincent and the Grenadines,1994,0.09
+4859,Saint Kitts and Nevis,1994,0.15
+4860,Saint Lucia,1994,0.14
+4861,Marshall Islands,1994,0.09
+4862,Tonga,1994,0.09
+4863,Vanuatu,1994,0.06
+4864,Dominica,1994,0.13
+4865,Micronesia,1994,0.08
+4866,Liechtenstein,1994,0.22
+4867,Cook Islands,1994,0.02
+4868,Kiribati,1994,0.03
+4869,Bhutan,1994,-6.42
+4870,Nauru,1994,0.11
+4871,Tuvalu,1994,0.01
+4872,Niue,1994,0.01
+4873,Fiji,1994,-1.79
+4874,Ghana,1994,13.34
+4875,World,1993,23124.0
+4876,China,1993,2294.12
+4877,United States,1993,4581.76
+4878,European Union (27),1993,3072.4
+4879,India,1993,431.31
+4880,Indonesia,1993,869.88
+4881,Japan,1993,1033.99
+4882,Russia,1993,1447.33
+4883,Brazil,1993,1253.64
+4884,Germany,1993,836.08
+4885,Iran,1993,210.86
+4886,Canada,1993,487.56
+4887,Democratic Republic of the Congo,1993,369.14
+4888,South Korea,1993,284.2
+4889,Saudi Arabia,1993,206.21
+4890,Mexico,1993,323.14
+4891,South Africa,1993,252.71
+4892,Australia,1993,322.72
+4893,Turkey,1993,138.69
+4894,United Kingdom,1993,529.56
+4895,Malaysia,1993,185.4
+4896,Italy,1993,362.41
+4897,Poland,1993,330.86
+4898,Thailand,1993,134.23
+4899,France,1993,324.68
+4900,Egypt,1993,91.43
+4901,Vietnam,1993,-48.04
+4902,Spain,1993,175.41
+4903,Kazakhstan,1993,217.53
+4904,Pakistan,1993,81.79
+4905,Argentina,1993,155.35
+4906,United Arab Emirates,1993,62.15
+4907,Iraq,1993,88.63
+4908,Venezuela,1993,255.18
+4909,Nigeria,1993,130.4
+4910,Ukraine,1993,450.79
+4911,Colombia,1993,148.27
+4912,Netherlands,1993,159.74
+4913,Algeria,1993,74.05
+4914,Philippines,1993,49.87
+4915,Peru,1993,81.29
+4916,Myanmar,1993,146.79
+4917,Uzbekistan,1993,112.94
+4918,Bangladesh,1993,35.18
+4919,Zimbabwe,1993,27.48
+4920,Czech Republic,1993,121.54
+4921,Belgium,1993,106.19
+4922,Qatar,1993,15.49
+4923,Bolivia,1993,84.14
+4924,Kuwait,1993,29.24
+4925,Tanzania,1993,54.05
+4926,Oman,1993,14.08
+4927,Turkmenistan,1993,26.63
+4928,Greece,1993,77.17
+4929,Ecuador,1993,52.71
+4930,Morocco,1993,21.08
+4931,Angola,1993,17.17
+4932,Israel,1993,40.48
+4933,Mozambique,1993,49.65
+4934,Libya,1993,30.84
+4935,Austria,1993,44.33
+4936,Paraguay,1993,44.85
+4937,Romania,1993,118.34
+4938,Finland,1993,22.34
+4939,Portugal,1993,47.26
+4940,Botswana,1993,44.47
+4941,Papua New Guinea,1993,31.39
+4942,Hungary,1993,60.01
+4943,Ethiopia,1993,28.24
+4944,Singapore,1993,37.32
+4945,Solomon Islands,1993,4.09
+4946,Serbia,1993,40.3
+4947,Cameroon,1993,59.52
+4948,Sudan,1993,24.33
+4949,Zambia,1993,19.8
+4950,Cambodia,1993,5.55
+4951,Belarus,1993,43.24
+4952,Côte d'Ivoire,1993,63.25
+4953,Switzerland,1993,41.99
+4954,Ireland,1993,29.26
+4955,Denmark,1993,59.63
+4956,Slovakia,1993,34.89
+4957,Bahrain,1993,13.07
+4958,Azerbaijan,1993,51.94
+4959,Chile,1993,14.94
+4960,Burkina Faso,1993,12.88
+4961,Syria,1993,30.09
+4962,Lebanon,1993,10.34
+4963,Laos,1993,11.11
+4964,Tunisia,1993,15.6
+4965,Nicaragua,1993,21.74
+4966,Jordan,1993,12.2
+4967,Mongolia,1993,16.02
+4968,Chad,1993,8.04
+4969,Dominican Republic,1993,2.25
+4970,Sri Lanka,1993,9.72
+4971,Uganda,1993,16.65
+4972,Cuba,1993,9.26
+4973,New Zealand,1993,-1.98
+4974,Guatemala,1993,21.23
+4975,North Korea,1993,103.07
+4976,Bosnia and Herzegovina,1993,16.66
+4977,Sweden,1993,58.36
+4978,Benin,1993,15.41
+4979,Norway,1993,16.98
+4980,Somalia,1993,17.99
+4981,Estonia,1993,16.52
+4982,Trinidad and Tobago,1993,12.56
+4983,Guyana,1993,8.06
+4984,Guinea,1993,11.86
+4985,Honduras,1993,8.45
+4986,Nepal,1993,-0.36
+4987,Namibia,1993,11.98
+4988,Liberia,1993,13.82
+4989,Panama,1993,9.79
+4990,Slovenia,1993,4.16
+4991,Central African Republic,1993,14.12
+4992,Senegal,1993,7.39
+4993,Republic of Congo,1993,12.43
+4994,Madagascar,1993,29.75
+4995,Croatia,1993,14.64
+4996,Suriname,1993,5.28
+4997,Gabon,1993,8.31
+4998,Lithuania,1993,16.42
+4999,Kenya,1993,1.51
+5000,Equatorial Guinea,1993,4.82
+5001,South Sudan,1993,6.94
+5002,Malawi,1993,9.02
+5003,Georgia,1993,-2.17
+5004,Yemen,1993,8.12
+5005,Luxembourg,1993,11.03
+5006,Moldova,1993,17.11
+5007,Jamaica,1993,8.68
+5008,El Salvador,1993,5.0
+5009,Kyrgyzstan,1993,9.09
+5010,Afghanistan,1993,-1.03
+5011,Brunei,1993,5.38
+5012,Macedonia,1993,8.89
+5013,Bulgaria,1993,33.91
+5014,Tajikistan,1993,5.19
+5015,Cyprus,1993,5.62
+5016,Belize,1993,7.02
+5017,Mali,1993,0.46
+5018,Armenia,1993,5.17
+5019,Albania,1993,2.26
+5020,Latvia,1993,-1.2
+5021,Uruguay,1993,-8.75
+5022,Sierra Leone,1993,3.81
+5023,Mauritius,1993,1.45
+5024,Burundi,1993,5.6
+5025,Haiti,1993,0.77
+5026,Niger,1993,6.27
+5027,Togo,1993,3.3
+5028,Mauritania,1993,1.31
+5029,Rwanda,1993,3.38
+5030,Lesotho,1993,1.54
+5031,Montenegro,1993,-0.34
+5032,Bahamas,1993,2.1
+5033,Iceland,1993,2.0
+5034,Maldives,1993,0.2
+5035,Guinea-Bissau,1993,1.67
+5036,Malta,1993,2.81
+5037,Barbados,1993,0.99
+5038,Eritrea,1993,1.07
+5039,Gambia,1993,0.73
+5040,Timor-Leste,1993,0.46
+5041,Eswatini,1993,0.6
+5042,Costa Rica,1993,6.65
+5043,Seychelles,1993,0.19
+5044,Cape Verde,1993,-0.4
+5045,Antigua and Barbuda,1993,0.25
+5046,Djibouti,1993,0.34
+5047,Andorra,1993,0.41
+5048,Samoa,1993,0.23
+5049,Sao Tome and Principe,1993,0.05
+5050,Comoros,1993,0.13
+5051,Grenada,1993,0.15
+5052,Palau,1993,0.2
+5053,Saint Vincent and the Grenadines,1993,0.08
+5054,Saint Kitts and Nevis,1993,0.14
+5055,Saint Lucia,1993,0.13
+5056,Marshall Islands,1993,0.09
+5057,Tonga,1993,0.09
+5058,Vanuatu,1993,0.06
+5059,Dominica,1993,0.13
+5060,Micronesia,1993,0.08
+5061,Liechtenstein,1993,0.24
+5062,Cook Islands,1993,0.02
+5063,Kiribati,1993,0.03
+5064,Bhutan,1993,-6.44
+5065,Nauru,1993,0.11
+5066,Tuvalu,1993,0.01
+5067,Niue,1993,0.01
+5068,Fiji,1993,-1.79
+5069,Ghana,1993,13.07
+5070,World,1992,22988.29
+5071,China,1992,2068.77
+5072,United States,1992,4461.62
+5073,European Union (27),1992,3133.06
+5074,India,1992,409.09
+5075,Indonesia,1992,855.3
+5076,Japan,1992,1041.79
+5077,Russia,1992,1630.98
+5078,Brazil,1992,1247.13
+5079,Germany,1992,841.83
+5080,Iran,1992,212.99
+5081,Canada,1992,490.88
+5082,Democratic Republic of the Congo,1992,369.19
+5083,South Korea,1992,253.77
+5084,Saudi Arabia,1992,199.35
+5085,Mexico,1992,312.07
+5086,South Africa,1992,245.11
+5087,Australia,1992,318.72
+5088,Turkey,1992,132.88
+5089,United Kingdom,1992,542.02
+5090,Malaysia,1992,183.09
+5091,Italy,1992,367.75
+5092,Poland,1992,330.22
+5093,Thailand,1992,119.61
+5094,France,1992,343.81
+5095,Egypt,1992,91.89
+5096,Vietnam,1992,-52.98
+5097,Spain,1992,189.79
+5098,Kazakhstan,1992,254.83
+5099,Pakistan,1992,74.97
+5100,Argentina,1992,151.67
+5101,United Arab Emirates,1992,59.64
+5102,Iraq,1992,67.26
+5103,Venezuela,1992,249.79
+5104,Nigeria,1992,132.4
+5105,Ukraine,1992,526.12
+5106,Colombia,1992,145.7
+5107,Netherlands,1992,154.74
+5108,Algeria,1992,66.73
+5109,Philippines,1992,46.14
+5110,Peru,1992,80.43
+5111,Myanmar,1992,146.26
+5112,Uzbekistan,1992,112.28
+5113,Bangladesh,1992,34.43
+5114,Zimbabwe,1992,28.87
+5115,Czech Republic,1992,124.7
+5116,Belgium,1992,108.42
+5117,Qatar,1992,14.68
+5118,Bolivia,1992,83.13
+5119,Kuwait,1992,22.99
+5120,Tanzania,1992,53.99
+5121,Oman,1992,14.9
+5122,Turkmenistan,1992,28.1
+5123,Greece,1992,77.25
+5124,Ecuador,1992,53.78
+5125,Morocco,1992,20.37
+5126,Angola,1992,16.64
+5127,Israel,1992,36.83
+5128,Mozambique,1992,49.45
+5129,Libya,1992,30.3
+5130,Austria,1992,44.19
+5131,Paraguay,1992,44.51
+5132,Romania,1992,126.69
+5133,Finland,1992,21.15
+5134,Portugal,1992,48.24
+5135,Botswana,1992,44.52
+5136,Papua New Guinea,1992,31.36
+5137,Hungary,1992,59.63
+5138,Ethiopia,1992,27.81
+5139,Singapore,1992,32.13
+5140,Solomon Islands,1992,4.08
+5141,Serbia,1992,45.99
+5142,Cameroon,1992,55.38
+5143,Sudan,1992,25.67
+5144,Zambia,1992,20.13
+5145,Cambodia,1992,5.52
+5146,Belarus,1992,54.78
+5147,Côte d'Ivoire,1992,63.07
+5148,Switzerland,1992,44.25
+5149,Ireland,1992,29.13
+5150,Denmark,1992,57.35
+5151,Slovakia,1992,36.66
+5152,Bahrain,1992,12.27
+5153,Azerbaijan,1992,43.05
+5154,Chile,1992,14.12
+5155,Burkina Faso,1992,12.87
+5156,Syria,1992,30.73
+5157,Lebanon,1992,7.03
+5158,Laos,1992,11.1
+5159,Tunisia,1992,14.26
+5160,Nicaragua,1992,21.77
+5161,Jordan,1992,11.92
+5162,Mongolia,1992,17.03
+5163,Chad,1992,8.03
+5164,Dominican Republic,1992,2.35
+5165,Sri Lanka,1992,9.88
+5166,Uganda,1992,16.65
+5167,Cuba,1992,11.27
+5168,New Zealand,1992,-1.49
+5169,Guatemala,1992,20.95
+5170,North Korea,1992,111.05
+5171,Bosnia and Herzegovina,1992,19.22
+5172,Sweden,1992,58.61
+5173,Benin,1992,15.35
+5174,Norway,1992,15.4
+5175,Somalia,1992,18.03
+5176,Estonia,1992,21.97
+5177,Trinidad and Tobago,1992,12.01
+5178,Guyana,1992,8.05
+5179,Guinea,1992,11.83
+5180,Honduras,1992,8.28
+5181,Nepal,1992,-0.54
+5182,Namibia,1992,11.78
+5183,Liberia,1992,13.8
+5184,Panama,1992,9.63
+5185,Slovenia,1992,3.42
+5186,Central African Republic,1992,14.11
+5187,Senegal,1992,7.46
+5188,Republic of Congo,1992,12.45
+5189,Madagascar,1992,29.72
+5190,Croatia,1992,14.1
+5191,Suriname,1992,5.27
+5192,Gabon,1992,8.22
+5193,Lithuania,1992,20.67
+5194,Kenya,1992,1.6
+5195,Equatorial Guinea,1992,3.9
+5196,South Sudan,1992,6.94
+5197,Malawi,1992,8.93
+5198,Georgia,1992,1.81
+5199,Yemen,1992,9.13
+5200,Luxembourg,1992,10.83
+5201,Moldova,1992,20.02
+5202,Jamaica,1992,8.51
+5203,El Salvador,1992,4.44
+5204,Kyrgyzstan,1992,12.78
+5205,Afghanistan,1992,-0.96
+5206,Brunei,1992,5.1
+5207,Macedonia,1992,8.59
+5208,Bulgaria,1992,33.38
+5209,Tajikistan,1992,7.71
+5210,Cyprus,1992,5.36
+5211,Belize,1992,7.06
+5212,Mali,1992,0.45
+5213,Armenia,1992,11.02
+5214,Albania,1992,2.43
+5215,Latvia,1992,1.01
+5216,Uruguay,1992,-8.47
+5217,Sierra Leone,1992,3.8
+5218,Mauritius,1992,1.3
+5219,Burundi,1992,5.59
+5220,Haiti,1992,0.97
+5221,Niger,1992,6.2
+5222,Togo,1992,3.41
+5223,Mauritania,1992,1.29
+5224,Rwanda,1992,3.38
+5225,Lesotho,1992,1.5
+5226,Montenegro,1992,-0.34
+5227,Bahamas,1992,2.53
+5228,Iceland,1992,1.96
+5229,Maldives,1992,0.23
+5230,Guinea-Bissau,1992,1.66
+5231,Malta,1992,2.17
+5232,Barbados,1992,1.18
+5233,Eritrea,1992,0.87
+5234,Gambia,1992,0.73
+5235,Timor-Leste,1992,0.46
+5236,Eswatini,1992,0.7
+5237,Costa Rica,1992,6.61
+5238,Seychelles,1992,0.18
+5239,Cape Verde,1992,-0.4
+5240,Antigua and Barbuda,1992,0.29
+5241,Djibouti,1992,0.34
+5242,Andorra,1992,0.41
+5243,Samoa,1992,0.22
+5244,Sao Tome and Principe,1992,0.05
+5245,Comoros,1992,0.13
+5246,Grenada,1992,0.16
+5247,Palau,1992,0.2
+5248,Saint Vincent and the Grenadines,1992,0.07
+5249,Saint Kitts and Nevis,1992,0.15
+5250,Saint Lucia,1992,0.13
+5251,Marshall Islands,1992,0.08
+5252,Tonga,1992,0.08
+5253,Vanuatu,1992,0.06
+5254,Dominica,1992,0.14
+5255,Micronesia,1992,0.08
+5256,Liechtenstein,1992,0.23
+5257,Cook Islands,1992,0.02
+5258,Kiribati,1992,0.02
+5259,Bhutan,1992,-6.41
+5260,Nauru,1992,0.12
+5261,Tuvalu,1992,0.01
+5262,Niue,1992,0.01
+5263,Fiji,1992,-1.78
+5264,Ghana,1992,12.96
+5265,World,1991,23056.4
+5266,China,1991,1952.78
+5267,United States,1991,4389.5
+5268,European Union (27),1991,3247.48
+5269,India,1991,386.17
+5270,Indonesia,1991,846.23
+5271,Japan,1991,1029.99
+5272,Russia,1991,1766.89
+5273,Brazil,1991,1243.65
+5274,Germany,1991,881.44
+5275,Iran,1991,197.26
+5276,Canada,1991,477.81
+5277,Democratic Republic of the Congo,1991,369.45
+5278,South Korea,1991,231.61
+5279,Saudi Arabia,1991,186.61
+5280,Mexico,1991,308.41
+5281,South Africa,1991,248.61
+5282,Australia,1991,315.07
+5283,Turkey,1991,126.88
+5284,United Kingdom,1991,559.38
+5285,Malaysia,1991,177.54
+5286,Italy,1991,369.55
+5287,Poland,1991,338.47
+5288,Thailand,1991,109.85
+5289,France,1991,355.84
+5290,Egypt,1991,88.98
+5291,Vietnam,1991,-53.98
+5292,Spain,1991,179.52
+5293,Kazakhstan,1991,246.71
+5294,Pakistan,1991,68.35
+5295,Argentina,1991,149.64
+5296,United Arab Emirates,1991,61.5
+5297,Iraq,1991,46.63
+5298,Venezuela,1991,247.44
+5299,Nigeria,1991,121.56
+5300,Ukraine,1991,603.4
+5301,Colombia,1991,143.07
+5302,Netherlands,1991,155.95
+5303,Algeria,1991,67.51
+5304,Philippines,1991,42.77
+5305,Peru,1991,79.5
+5306,Myanmar,1991,146.1
+5307,Uzbekistan,1991,117.79
+5308,Bangladesh,1991,33.44
+5309,Zimbabwe,1991,28.7
+5310,Czech Republic,1991,127.46
+5311,Belgium,1991,110.05
+5312,Qatar,1991,14.61
+5313,Bolivia,1991,82.08
+5314,Kuwait,1991,35.73
+5315,Tanzania,1991,53.99
+5316,Oman,1991,16.1
+5317,Turkmenistan,1991,37.79
+5318,Greece,1991,74.89
+5319,Ecuador,1991,52.73
+5320,Morocco,1991,18.56
+5321,Angola,1991,16.8
+5322,Israel,1991,34.5
+5323,Mozambique,1991,49.29
+5324,Libya,1991,33.32
+5325,Austria,1991,48.95
+5326,Paraguay,1991,44.05
+5327,Romania,1991,143.08
+5328,Finland,1991,24.01
+5329,Portugal,1991,44.23
+5330,Botswana,1991,43.95
+5331,Papua New Guinea,1991,31.35
+5332,Hungary,1991,66.18
+5333,Ethiopia,1991,28.63
+5334,Singapore,1991,31.24
+5335,Solomon Islands,1991,4.07
+5336,Serbia,1991,49.29
+5337,Cameroon,1991,55.5
+5338,Sudan,1991,25.94
+5339,Zambia,1991,20.16
+5340,Cambodia,1991,5.47
+5341,Belarus,1991,63.29
+5342,Côte d'Ivoire,1991,63.09
+5343,Switzerland,1991,44.21
+5344,Ireland,1991,29.05
+5345,Denmark,1991,63.07
+5346,Slovakia,1991,38.5
+5347,Bahrain,1991,10.34
+5348,Azerbaijan,1991,65.45
+5349,Chile,1991,12.19
+5350,Burkina Faso,1991,12.86
+5351,Syria,1991,31.44
+5352,Lebanon,1991,7.05
+5353,Laos,1991,11.05
+5354,Tunisia,1991,13.5
+5355,Nicaragua,1991,21.46
+5356,Jordan,1991,9.78
+5357,Mongolia,1991,18.93
+5358,Chad,1991,8.02
+5359,Dominican Republic,1991,0.96
+5360,Sri Lanka,1991,8.62
+5361,Uganda,1991,16.64
+5362,Cuba,1991,16.6
+5363,New Zealand,1991,-3.27
+5364,Guatemala,1991,20.16
+5365,North Korea,1991,123.71
+5366,Bosnia and Herzegovina,1991,24.7
+5367,Sweden,1991,56.1
+5368,Benin,1991,15.33
+5369,Norway,1991,12.21
+5370,Somalia,1991,18.06
+5371,Estonia,1991,29.58
+5372,Trinidad and Tobago,1991,13.08
+5373,Guyana,1991,8.12
+5374,Guinea,1991,11.8
+5375,Honduras,1991,8.0
+5376,Nepal,1991,-0.59
+5377,Namibia,1991,11.68
+5378,Liberia,1991,13.77
+5379,Panama,1991,9.12
+5380,Slovenia,1991,3.34
+5381,Central African Republic,1991,14.11
+5382,Senegal,1991,7.22
+5383,Republic of Congo,1991,12.51
+5384,Madagascar,1991,29.71
+5385,Croatia,1991,13.78
+5386,Suriname,1991,5.26
+5387,Gabon,1991,7.96
+5388,Lithuania,1991,34.96
+5389,Kenya,1991,1.54
+5390,Equatorial Guinea,1991,3.9
+5391,South Sudan,1991,6.94
+5392,Malawi,1991,8.93
+5393,Georgia,1991,7.24
+5394,Yemen,1991,8.5
+5395,Luxembourg,1991,11.14
+5396,Moldova,1991,24.3
+5397,Jamaica,1991,7.76
+5398,El Salvador,1991,4.15
+5399,Kyrgyzstan,1991,19.4
+5400,Afghanistan,1991,0.35
+5401,Brunei,1991,4.9
+5402,Macedonia,1991,8.38
+5403,Bulgaria,1991,36.85
+5404,Tajikistan,1991,10.21
+5405,Cyprus,1991,5.0
+5406,Belize,1991,6.99
+5407,Mali,1991,0.43
+5408,Armenia,1991,20.82
+5409,Albania,1991,4.3
+5410,Latvia,1991,4.27
+5411,Uruguay,1991,-8.87
+5412,Sierra Leone,1991,3.7
+5413,Mauritius,1991,1.23
+5414,Burundi,1991,5.62
+5415,Haiti,1991,1.07
+5416,Niger,1991,6.24
+5417,Togo,1991,3.59
+5418,Mauritania,1991,1.26
+5419,Rwanda,1991,3.38
+5420,Lesotho,1991,1.45
+5421,Montenegro,1991,-0.34
+5422,Bahamas,1991,1.88
+5423,Iceland,1991,1.93
+5424,Maldives,1991,0.16
+5425,Guinea-Bissau,1991,1.66
+5426,Malta,1991,2.21
+5427,Barbados,1991,0.98
+5428,Eritrea,1991,0.43
+5429,Gambia,1991,0.73
+5430,Timor-Leste,1991,0.46
+5431,Eswatini,1991,0.81
+5432,Costa Rica,1991,5.53
+5433,Seychelles,1991,0.18
+5434,Cape Verde,1991,-0.41
+5435,Antigua and Barbuda,1991,0.22
+5436,Djibouti,1991,0.34
+5437,Andorra,1991,0.41
+5438,Samoa,1991,0.22
+5439,Sao Tome and Principe,1991,0.06
+5440,Comoros,1991,0.12
+5441,Grenada,1991,0.12
+5442,Palau,1991,0.0
+5443,Saint Vincent and the Grenadines,1991,0.04
+5444,Saint Kitts and Nevis,1991,0.11
+5445,Saint Lucia,1991,0.04
+5446,Marshall Islands,1991,0.0
+5447,Tonga,1991,0.09
+5448,Vanuatu,1991,0.07
+5449,Dominica,1991,0.12
+5450,Micronesia,1991,-0.03
+5451,Liechtenstein,1991,0.23
+5452,Cook Islands,1991,0.02
+5453,Kiribati,1991,0.02
+5454,Bhutan,1991,-6.44
+5455,Nauru,1991,0.13
+5456,Tuvalu,1991,0.0
+5457,Niue,1991,0.01
+5458,Fiji,1991,-1.81
+5459,Ghana,1991,12.44
+5460,World,1990,22849.92
+5461,China,1990,1823.96
+5462,United States,1990,4426.4
+5463,European Union (27),1990,3286.44
+5464,India,1990,341.32
+5465,Indonesia,1990,832.39
+5466,Japan,1990,1016.89
+5467,Russia,1990,1790.34
+5468,Brazil,1990,1236.73
+5469,Germany,1990,904.38
+5470,Iran,1990,158.83
+5471,Canada,1990,483.99
+5472,Democratic Republic of the Congo,1990,370.89
+5473,South Korea,1990,206.81
+5474,Saudi Arabia,1990,166.39
+5475,Mexico,1990,290.01
+5476,South Africa,1990,253.94
+5477,Australia,1990,313.95
+5478,Turkey,1990,122.28
+5479,United Kingdom,1990,545.73
+5480,Malaysia,1990,170.4
+5481,Italy,1990,370.74
+5482,Poland,1990,337.06
+5483,Thailand,1990,100.74
+5484,France,1990,331.69
+5485,Egypt,1990,86.41
+5486,Vietnam,1990,-53.88
+5487,Spain,1990,172.32
+5488,Kazakhstan,1990,236.74
+5489,Pakistan,1990,69.1
+5490,Argentina,1990,144.16
+5491,United Arab Emirates,1990,55.4
+5492,Iraq,1990,64.71
+5493,Venezuela,1990,248.17
+5494,Nigeria,1990,113.84
+5495,Ukraine,1990,640.09
+5496,Colombia,1990,141.35
+5497,Netherlands,1990,149.83
+5498,Algeria,1990,68.47
+5499,Philippines,1990,43.25
+5500,Peru,1990,80.38
+5501,Myanmar,1990,146.17
+5502,Uzbekistan,1990,116.97
+5503,Bangladesh,1990,34.13
+5504,Zimbabwe,1990,26.94
+5505,Czech Republic,1990,140.76
+5506,Belgium,1990,105.4
+5507,Qatar,1990,12.54
+5508,Bolivia,1990,81.99
+5509,Kuwait,1990,29.23
+5510,Tanzania,1990,54.02
+5511,Oman,1990,11.89
+5512,Turkmenistan,1990,44.65
+5513,Greece,1990,74.69
+5514,Ecuador,1990,52.17
+5515,Morocco,1990,16.83
+5516,Angola,1990,16.6
+5517,Israel,1990,33.78
+5518,Mozambique,1990,49.47
+5519,Libya,1990,36.09
+5520,Austria,1990,44.8
+5521,Paraguay,1990,44.1
+5522,Romania,1990,173.34
+5523,Finland,1990,23.44
+5524,Portugal,1990,42.53
+5525,Botswana,1990,44.02
+5526,Papua New Guinea,1990,31.35
+5527,Hungary,1990,69.04
+5528,Ethiopia,1990,28.6
+5529,Singapore,1990,29.67
+5530,Solomon Islands,1990,4.07
+5531,Serbia,1990,58.99
+5532,Cameroon,1990,55.76
+5533,Sudan,1990,26.5
+5534,Zambia,1990,20.02
+5535,Cambodia,1990,5.43
+5536,Belarus,1990,66.9
+5537,Côte d'Ivoire,1990,63.0
+5538,Switzerland,1990,41.87
+5539,Ireland,1990,28.53
+5540,Denmark,1990,52.43
+5541,Slovakia,1990,45.38
+5542,Bahrain,1990,10.74
+5543,Azerbaijan,1990,55.94
+5544,Chile,1990,13.05
+5545,Burkina Faso,1990,12.85
+5546,Syria,1990,28.89
+5547,Lebanon,1990,5.63
+5548,Laos,1990,11.02
+5549,Tunisia,1990,12.83
+5550,Nicaragua,1990,21.47
+5551,Jordan,1990,9.93
+5552,Mongolia,1990,17.14
+5553,Chad,1990,8.01
+5554,Dominican Republic,1990,0.59
+5555,Sri Lanka,1990,8.47
+5556,Uganda,1990,16.62
+5557,Cuba,1990,24.59
+5558,New Zealand,1990,-3.58
+5559,Guatemala,1990,20.05
+5560,North Korea,1990,129.72
+5561,Bosnia and Herzegovina,1990,27.22
+5562,Sweden,1990,55.21
+5563,Benin,1990,15.37
+5564,Norway,1990,14.15
+5565,Somalia,1990,18.08
+5566,Estonia,1990,33.23
+5567,Trinidad and Tobago,1990,14.19
+5568,Guyana,1990,8.15
+5569,Guinea,1990,11.78
+5570,Honduras,1990,7.99
+5571,Nepal,1990,-0.83
+5572,Namibia,1990,
+5573,Liberia,1990,13.85
+5574,Panama,1990,8.68
+5575,Slovenia,1990,4.13
+5576,Central African Republic,1990,14.12
+5577,Senegal,1990,7.21
+5578,Republic of Congo,1990,10.27
+5579,Madagascar,1990,29.65
+5580,Croatia,1990,19.48
+5581,Suriname,1990,4.98
+5582,Gabon,1990,7.74
+5583,Lithuania,1990,32.89
+5584,Kenya,1990,1.78
+5585,Equatorial Guinea,1990,3.89
+5586,South Sudan,1990,6.94
+5587,Malawi,1990,8.86
+5588,Georgia,1990,15.22
+5589,Yemen,1990,6.64
+5590,Luxembourg,1990,10.68
+5591,Moldova,1990,30.23
+5592,Jamaica,1990,7.83
+5593,El Salvador,1990,3.46
+5594,Kyrgyzstan,1990,21.74
+5595,Afghanistan,1990,0.58
+5596,Brunei,1990,5.43
+5597,Macedonia,1990,8.59
+5598,Bulgaria,1990,51.81
+5599,Tajikistan,1990,11.05
+5600,Cyprus,1990,4.49
+5601,Belize,1990,6.89
+5602,Mali,1990,0.42
+5603,Armenia,1990,19.98
+5604,Albania,1990,6.24
+5605,Latvia,1990,5.84
+5606,Uruguay,1990,-9.39
+5607,Sierra Leone,1990,3.69
+5608,Mauritius,1990,1.14
+5609,Burundi,1990,5.58
+5610,Haiti,1990,1.09
+5611,Niger,1990,6.27
+5612,Togo,1990,3.64
+5613,Mauritania,1990,1.24
+5614,Rwanda,1990,3.43
+5615,Lesotho,1990,1.39
+5616,Montenegro,1990,-0.34
+5617,Bahamas,1990,1.78
+5618,Iceland,1990,1.96
+5619,Maldives,1990,0.16
+5620,Guinea-Bissau,1990,1.66
+5621,Malta,1990,2.31
+5622,Barbados,1990,0.98
+5623,Eritrea,1990,0.43
+5624,Gambia,1990,0.72
+5625,Timor-Leste,1990,0.46
+5626,Eswatini,1990,0.82
+5627,Costa Rica,1990,5.33
+5628,Seychelles,1990,0.15
+5629,Cape Verde,1990,-0.41
+5630,Antigua and Barbuda,1990,0.21
+5631,Djibouti,1990,0.33
+5632,Andorra,1990,0.41
+5633,Samoa,1990,0.22
+5634,Sao Tome and Principe,1990,0.06
+5635,Comoros,1990,0.12
+5636,Grenada,1990,0.11
+5637,Palau,1990,0.0
+5638,Saint Vincent and the Grenadines,1990,0.03
+5639,Saint Kitts and Nevis,1990,0.11
+5640,Saint Lucia,1990,0.03
+5641,Marshall Islands,1990,0.0
+5642,Tonga,1990,0.08
+5643,Vanuatu,1990,0.07
+5644,Dominica,1990,0.12
+5645,Micronesia,1990,0.0
+5646,Liechtenstein,1990,0.22
+5647,Cook Islands,1990,0.02
+5648,Kiribati,1990,0.02
+5649,Bhutan,1990,-6.48
+5650,Nauru,1990,0.13
+5651,Tuvalu,1990,0.0
+5652,Niue,1990,0.01
+5653,Fiji,1990,-1.81
+5654,Ghana,1990,12.67
