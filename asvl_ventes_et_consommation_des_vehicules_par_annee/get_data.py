@@ -189,6 +189,8 @@ Cela pourrait perturber les résultats. Enfin les bases de données du CCFA sont
 En les utilisant on arrive globalement à un total de 50 % (variable selon les années) de parts du marché français,
 ce qui omet la moitié des véhicules en circulation. Il est à noter qu'à l'origine nous voulions utiliser la base de données de la SIV auto,
 plus complète que celle du CCFA, mais nous nous sommes heurtés à de trop grandes difficultés administratives.
+Pour plus de détails sur notre façon de procéder, nous vous invitons à lire notre feuille python :
+asvl_ventes_et_consommation_des_vehicules_par_annee/vehicles.ipynb sur le projet delta !
 
 Alain Salanié et Victor Litoux
             """)
