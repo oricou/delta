@@ -6,7 +6,6 @@ import pickle
 import pandas as pd
 import json
 import plotly.express as px
-from IPython.display import Image
 
 app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
 
@@ -27,7 +26,7 @@ carte = px.scatter_mapbox(dfJoinCity, lat="gps_lat", lon="gps_lng", hover_name="
                         color_continuous_scale='jet',
                         size_max=50, zoom=5, height=800, mapbox_style="carto-positron")
 
-region = px.choropleth_mapbox(dfJoinRegion, geojson=departements, 
+region = px.choropleth_mapbox(dfJoinRegion, geojson=departements,
                            locations='department_code', featureidkey = 'properties.code', # join keys
                            color='Nombre de catastrophe', color_continuous_scale="jet",
                            mapbox_style="carto-positron",
@@ -59,7 +58,7 @@ app.layout = html.Div(children = [
         }),
     html.Br(),
     html.Br(),
-    
+
 ################################################################################################################################
     html.Div(children = [
         html.H3(children='Carte des catastrophes naturelles en France métropolitaine depuis 1982 par ville et village.'),
@@ -68,13 +67,13 @@ app.layout = html.Div(children = [
             id='graph-carte',
             figure=carte
         ),
-        
+
         dcc.Markdown("""
             Cette carte est interactive. Vous pouvez vous amuser à zoomer et dézoomer pour rechercher une ville particulière ou analyser une région plus précisément. Les couleurs sont générées logarithmiquement à partir du nombre de catastrophes par ville. Passez votre souris sur une ville pour obtenir des informations comme le nombre de catastrophes.
             """),
-        
+
         html.H6(children="Notes :"),
-        
+
         dcc.Markdown("""
                * Nous pouvons remarquer les différentes régions qui sont les plus touchées par les catastrophes.
                * Le bassin d'Arcachon.
@@ -86,10 +85,10 @@ app.layout = html.Div(children = [
                * Le Nord de la France, souvent soumis à de fortes rafales de vent.
         """)
     ]),
-        
-        
+
+
 ################################################################################################################################
-    
+
     html.Br(),
     html.Div(children = [
         html.H3(children='Carte des catastrophes naturelles en France métropolitaine depuis 1982 par région'),
@@ -98,16 +97,16 @@ app.layout = html.Div(children = [
             id='region-graph',
             figure=region
         ),
-        
+
         html.H6(children="Notes :"),
-        
+
         dcc.Markdown("""
-               * On peut noter que les trois départements les plus impactés sont la Haute Garonne, la Gironde et le Pas De Calais.     
+               * On peut noter que les trois départements les plus impactés sont la Haute Garonne, la Gironde et le Pas De Calais.
                * Ici, nous voyons le problème de manière plus générale, nous voyons moins l'impact de la côte, de la grande ville etc. mais plutôt les différentes régions comme les montagnes, le bassin d'Archachon pour les tempêtes atlantiques et encore le nord de la France pour les fortes rafales de vent.
         """)
-    ]),  
+    ]),
 ################################################################################################################################
-    
+
     html.Br(),
         html.Div(children = [
         html.H3(children='Graphique à barres représentant le nombre de catastrophes par mois'),
@@ -115,11 +114,11 @@ app.layout = html.Div(children = [
             id='month-graph',
             figure=month
         ),
-        
+
         html.H6(children="Notes :"),
-        
+
         dcc.Markdown("""
-               * Nous notons ici que les catastrophes se produisent le plus souvent en été et en hiver, lorsque les températures sont les plus extrêmes.     
+               * Nous notons ici que les catastrophes se produisent le plus souvent en été et en hiver, lorsque les températures sont les plus extrêmes.
                * On voit ici que les données peuvent être un peu biaisées, on voit que le mois de décembre est globalement supérieur aux autres mois, ceci est notamment dû à la tempête de décembre 1999 (comme on peut le voir sur le graphique suivant).
         """)
     ]),
@@ -131,15 +130,15 @@ app.layout = html.Div(children = [
             id='year-graph',
             figure=year
         ),
-        
+
         html.H6(children="Notes :"),
-        
+
         dcc.Markdown("""
                * On peut voir ici que la tempête de 1999 a été violente.
                """)
     ])
-    
-    
+
+
 ], style={
         'margin' : '30px 60px 10px 60px',
 })
