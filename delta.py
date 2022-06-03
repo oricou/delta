@@ -4,7 +4,6 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
-import chart as chart_EMMH
 from EMMH_Etudes_evolution_des_crimes_en_France_depuis_1996.map import map as map_EMMH
 from EMMH_Etudes_evolution_des_crimes_en_France_depuis_1996.chart import chart as chart_EMMH
 
