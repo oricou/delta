@@ -59,8 +59,8 @@ class Tab_a_propos:
 
         self.layout = dash.html.Div(
             [
-                dbc.Row([dash.html.Div(children=card_1_content)]),
-                dbc.Row([dash.html.Div(children=card_2_content)]),
-                dbc.Row([dash.html.Div(children=card_3_content)]),
+                dash.html.Div(children=card_1_content),
+                dash.html.Div(children=card_2_content),
+                dash.html.Div(children=card_3_content),
             ],
         )

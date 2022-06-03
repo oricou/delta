@@ -77,9 +77,9 @@ class Tab_grandes_ecoles:
                                         children="Offre et demande de l'éducation supérieure",
                                         style={"text-align": "left"},
                                     ),
-                                    dbc.Row(
-                                        [
-                                            dbc.Col(
+                                    dash.html.Div(
+                                        children=[
+                                            dash.html.Div(
                                                 dash.dcc.Loading(
                                                     dash.dcc.Graph(
                                                         id="grandes_ecoles_map_2",
@@ -88,8 +88,12 @@ class Tab_grandes_ecoles:
                                                         ),
                                                     ),
                                                 ),
+                                                style={
+                                                    "width": "49%",
+                                                    "display": "inline-block",
+                                                },
                                             ),
-                                            dbc.Col(
+                                            dash.html.Div(
                                                 dash.dcc.Loading(
                                                     dash.dcc.Graph(
                                                         id="grandes_ecoles_map_3",
@@ -98,10 +102,14 @@ class Tab_grandes_ecoles:
                                                         ),
                                                     ),
                                                 ),
+                                                style={
+                                                    "width": "49%",
+                                                    "display": "inline-block",
+                                                },
                                             ),
                                         ]
                                     ),
-                                    dbc.Row(
+                                    dash.html.Div(
                                         dash.dcc.Loading(
                                             type="default",
                                             children=dash.dcc.Graph(
@@ -110,6 +118,7 @@ class Tab_grandes_ecoles:
                                             ),
                                         )
                                     ),
+                                    dash.html.Br(),
                                     dash.html.Div(
                                         [
                                             dbc.Button(

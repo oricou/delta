@@ -98,27 +98,25 @@ class Tab_classes_preparatoires:
                     ),
                     dash.html.Div(
                         [
-                            dbc.Row(
-                                [
-                                    dbc.Col(
-                                        dash.dcc.Loading(
-                                            type="default",
-                                            children=dash.dcc.Graph(
-                                                id="classes_preparatoires_graph_1",
-                                                figure={},
-                                            ),
-                                        )
+                            dash.html.Div(
+                                dash.dcc.Loading(
+                                    type="default",
+                                    children=dash.dcc.Graph(
+                                        id="classes_preparatoires_graph_1",
+                                        figure={},
                                     ),
-                                    dbc.Col(
-                                        dash.dcc.Loading(
-                                            type="default",
-                                            children=dash.dcc.Graph(
-                                                id="classes_preparatoires_graph_2",
-                                                figure={},
-                                            ),
-                                        )
+                                ),
+                                style={"width": "49%", "display": "inline-block"},
+                            ),
+                            dash.html.Div(
+                                dash.dcc.Loading(
+                                    type="default",
+                                    children=dash.dcc.Graph(
+                                        id="classes_preparatoires_graph_2",
+                                        figure={},
                                     ),
-                                ]
+                                ),
+                                style={"width": "49%", "display": "inline-block"},
                             ),
                         ]
                     ),
