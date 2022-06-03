@@ -56,6 +56,17 @@ class Tab_a_propos:
             ),
         ]
 
+        # ---------------------------------------------------------------------------- #
+        #                                OLD VERSION TAB                               #
+        # ---------------------------------------------------------------------------- #
+
+        card_4_content = [
+            dash.html.H5("Ancienne version", className="card-title"),
+            dash.dcc.Markdown(
+                "La version originale de ce projet utilisait la bibliothèque *Dash Bootstrap Components* (https://dash-bootstrap-components.opensource.faculty.ai/) recommandée sur le site de Plotly. L'usage de cette bibliothèque nous ayant à postériori était interdit, nous avons dû complètement refacto le projet afin que vous puissiez voir la page que vous avez actuellement sous les yeux. Le projet original nous ayant cependant demandé des efforts considérables, vous pouvez le consulter ici : https://ricou3.herokuapp.com/ et éventuellement prendre compte de ce travail supplémentaire dans votre notation. **Merci du fond du coeur pour votre lecture et votre intérêt!**"
+            ),
+        ]
+
         self.layout = dash.html.Div(
             [
                 dash.html.Div(
@@ -81,6 +92,15 @@ class Tab_a_propos:
                     style={
                         "background-color": "#D77869",
                         "border": "1px solid #BF422E",
+                        "border-radius": "4px",
+                    },
+                ),
+                dash.html.Br(),
+                dash.html.Div(
+                    children=card_4_content,
+                    style={
+                        "background-color": "#DAE278",
+                        "border": "1px solid #C5D12B",
                         "border-radius": "4px",
                     },
                 ),
