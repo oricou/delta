@@ -150,14 +150,14 @@ class Vehicules():
             html.H3(children='Evolution de la moyenne de la consommation des véhicules les plus vendus au fil des années'),
 
             dcc.Markdown("""
-                    ### Introduction :
+### Introduction :
 Notre projet consistait à la base à analyser si les français achetaient plutôt des voitures polluantes ou plutôt écologiques. Nous avions à disposition de nombreuses données,
 comme le type de carburant des dits véhicules, grâce à l'ADEME qui recense les modèles de véhicules actuellement en vente et leur emprunte écologique (https://carlabelling.ademe.fr/)
 et le CCFA, qui regroupe les véhicules les plus vendus par année et par catégorie en France (https://ccfa.fr/dossiers-de-presse/).
                                  """),
 
             dcc.Markdown("""
-            ### Analyse :
+### Analyse :
 Commençons par voir notre objectif initial : est-ce que au fil des années les français achètent plus de voitures polluantes
 ou bien cette courbe va-t-elle à la baisse ? Pour celà pondérons les rejets de CO2 de chaque véhicule pour chaque année en
 fonction de ses parts de marché français et traçons une courbe pour voir cela :
@@ -207,8 +207,8 @@ Alain Salanié et Victor Litoux
 
         self.app.callback(
             dash.dependencies.Output('veh-main-graph', 'figure'),
-            dash.dependencies.Input('veh-mean', 'value'))(self.update_graph)
-
+            dash.dependencies.Input('veh-mean', 'value'))#(self.update_graph)
+"""
     def update_graph(self, mean):
         fig = px.line(self.df, template='plotly_white')
         fig.update_traces(hovertemplate='%{y} décès le %{x:%d/%m/%y}', name='')
@@ -228,7 +228,7 @@ Alain Salanié et Victor Litoux
             fig.add_scatter(x=self.df.index, mode='lines', marker={'color': 'red'})
 
         return fig
-
+"""
 
 if __name__ == '__main__':
     mpj = Vehicules()
