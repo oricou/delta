@@ -1,1 +1,1 @@
-web: gunicorn delta:app
+web: gunicorn delta:server
