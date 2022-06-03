@@ -4,6 +4,9 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
+import chart as chart_EMMH
+from EMMH_Etudes_evolution_des_crimes_en_France_depuis_1996.map import map as map_EMMH
+from EMMH_Etudes_evolution_des_crimes_en_France_depuis_1996.chart import chart as chart_EMMH
 
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -12,6 +15,8 @@ server = app.server
 pop = population.WorldPopulationStats(app)
 nrg = energies.Energies(app)
 dec = deces.Deces(app)
+_map_EMMH = map_EMMH.Map(app)
+_chart_EMMH = chart_EMMH.Chart(app)
 
 main_layout = html.Div([
     html.Div(className = "row",
@@ -25,6 +30,10 @@ main_layout = html.Div([
                               dcc.Link(html.Button('Natalité vs revenus', style={'width':"100%"}), href='/population'),
                               html.Br(),
                               dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
+                              html.Br(),
+                              dcc.Link(html.Button("Evolut° Crimes en France: Carte", style={'width':"100%"}), href='/map'),
+                              html.Br(),
+                              dcc.Link(html.Button('Evolut° Crimes en France: Graphe', style={'width':"100%"}), href='/chart'),
                               html.Br(),
                               html.Br(),
                               html.Br(),
@@ -66,6 +75,10 @@ def display_page(pathname):
         return pop.main_layout
     elif pathname == '/deces':
         return dec.main_layout
+    elif pathname == '/map':
+        return _map_EMMH.main_layout
+    elif pathname == '/chart':
+        return _chart_EMMH.main_layout
     else:
         return home_page
 
