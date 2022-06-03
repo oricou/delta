@@ -17,3 +17,4 @@ gunicorn
 flask
 scipy
 statsmodels
+gunicorn
