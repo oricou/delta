@@ -11,13 +11,13 @@ from dash import Dash, dcc, html, Input, Output, State
 class Cancer():
     #Store dataframes:
     def __init__(self, application = None):
-        self.Africa = pd.read_pickle("cerg_cancer/data/Africa.pkl", compression="gzip")
-        self.Asia = pd.read_pickle("cerg_cancer/data/Asia.pkl", compression="gzip")
-        self.Europe = pd.read_pickle("cerg_cancer/data/Europe.pkl", compression="gzip")
-        self.North_america = pd.read_pickle("cerg_cancer/data/North_america.pkl", compression="gzip")
-        self.South_america = pd.read_pickle("cerg_cancer/data/South_america.pkl", compression="gzip")
-        self.Oceania = pd.read_pickle("cerg_cancer/data/Oceania.pkl", compression="gzip")
-        self.World = pd.read_pickle("cerg_cancer/data/World.pkl", compression="gzip")
+        self.Africa = pd.read_pickle("CE_RG_cancer_repartition/data/Africa.pkl", compression="gzip")
+        self.Asia = pd.read_pickle("CE_RG_cancer_repartition/data/Asia.pkl", compression="gzip")
+        self.Europe = pd.read_pickle("CE_RG_cancer_repartition/data/Europe.pkl", compression="gzip")
+        self.North_america = pd.read_pickle("CE_RG_cancer_repartition/data/North_america.pkl", compression="gzip")
+        self.South_america = pd.read_pickle("CE_RG_cancer_repartition/data/South_america.pkl", compression="gzip")
+        self.Oceania = pd.read_pickle("CE_RG_cancer_repartition/data/Oceania.pkl", compression="gzip")
+        self.World = pd.read_pickle("CE_RG_cancer_repartition/data/World.pkl", compression="gzip")
         
         self.continent = ['Asia', 'Europe', 'Africa', 'Oceania', 
                                  'North-america', 'South-america']

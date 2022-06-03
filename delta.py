@@ -22,7 +22,7 @@ from ABNZ_Pollution_aux_US_et_corrélation_avec_le_prix_du_carburant import poll
 from phllhlv_emissionglobalwarming import global_warming
 from tdmr_quality_of_life_and_worktime import tdmr_quality_of_life_and_worktime as tdmr
 from strl_EvolutionDesSalairesAnnuelsMoyens import income
-from cerg_cancer import cancer
+from CE_RG_cancer_repartition import cancer
 from ACJW_MusicPopularityFactor import Music
 from RCNT_sujetTelevise import sujetTelevise
 from ym_jf_energy_mix import energymix
@@ -49,7 +49,7 @@ from lmsb_animalcrossing import lmsb_animalcrossing as ac
 from SM_HB_accidents import accidents
 from parrainage import parrainage
 from tpmm_RGPD import RGPD
-#from bars import bars
+from bars import bars
 from companies import companies
 from dc_sujet import covid_basics
 from rbmb_electricityVSgaz import electricityVSgaz
