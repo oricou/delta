@@ -13,8 +13,8 @@ class Tab_classes_preparatoires:
 
         self.app = dash_app
 
-        self.layout = dbc.Card(
-            dbc.CardBody(
+        self.layout = dash.html.Div(
+            dash.html.Div(
                 [
                     # ---------------------------------------------------------------------------- #
                     #                                  FIRST PART                                  #
@@ -63,7 +63,7 @@ class Tab_classes_preparatoires:
                                 className="me-1",
                             ),
                             dbc.Collapse(
-                                dbc.Card(
+                                dash.html.Div(
                                     children=[
                                         dash.dcc.Markdown(
                                             "* On remarque que le nombre de Classes Préparatoires n'a cessé de croitre au cours des 18 dernières années."
@@ -75,8 +75,6 @@ class Tab_classes_preparatoires:
                                             "* On identifie sans peine la *diagonale du vide*, zone géographique qui découpe la France du sud-ouest au nord-est et dont les Classes Préparatoires semblent singulièrement absentes."
                                         ),
                                     ],
-                                    color="success",
-                                    outline=True,
                                 ),
                                 id="classes_preparatoires_collapse_comment_1",
                                 is_open=False,
@@ -128,7 +126,7 @@ class Tab_classes_preparatoires:
                                 className="me-1",
                             ),
                             dbc.Collapse(
-                                dbc.Card(
+                                dash.html.Div(
                                     children=[
                                         dash.dcc.Markdown(
                                             "* Paris se trouvant à environ 700km de sa plus lointaine frontière terrestre, la décroissance du nombre de Classes Préparatoires au km² que l'on observe à partir de cette distance de la capitale semble cohérente."
@@ -140,8 +138,6 @@ class Tab_classes_preparatoires:
                                             "* On note une décroissance générale du nombre d'élève par établissement à mesure que l'on s'éloigne de la capitale."
                                         ),
                                     ],
-                                    color="success",
-                                    outline=True,
                                 ),
                                 id="classes_preparatoires_collapse_comment_2",
                                 is_open=False,
@@ -181,7 +177,7 @@ class Tab_classes_preparatoires:
                                 className="me-1",
                             ),
                             dbc.Collapse(
-                                dbc.Card(
+                                dash.html.Div(
                                     children=[
                                         dash.dcc.Markdown(
                                             "* La couleur blanche correspondant à des Classes Préparatoires dont la proportion de filles inscrites est dans la moyenne, on peut constater que cette proportion n'a que modérément évolué au cours des 18 dernières années, passant d'environ **19% en 2004** à **23% en 2019**."
@@ -190,11 +186,7 @@ class Tab_classes_preparatoires:
                                             "* Cette carte confirme également nos premières observations quant à la répartition des Classes Préparatoires sur le territoire : En réinitialisant le niveau de zoom, on observe une densité nettement supérieure au niveau de **Paris** tandis qu'on distingue à peine les plus grandes villes, **Marseille, Lyon, Nancy ou Lille.**"
                                         ),
                                     ],
-                                    color="success",
-                                    outline=True,
                                 ),
-                                id="classes_preparatoires_collapse_comment_3",
-                                is_open=False,
                             ),
                             dash.html.Br(),
                         ],
@@ -202,7 +194,6 @@ class Tab_classes_preparatoires:
                     ),
                 ]
             ),
-            className="h-0",
         )
 
         # ---------------------------------------------------------------------------- #

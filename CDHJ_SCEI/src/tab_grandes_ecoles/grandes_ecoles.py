@@ -15,9 +15,9 @@ class Tab_grandes_ecoles:
         #                               TAB ARCHITECTURE                               #
         # ---------------------------------------------------------------------------- #
 
-        self.layout = dbc.Card(
-            dbc.CardBody(
-                [
+        self.layout = (
+            dash.html.Div(
+                children=[
                     dbc.Accordion(
                         [
                             # ---------------------------------------------------------------------------- #
@@ -51,14 +51,12 @@ class Tab_grandes_ecoles:
                                                 className="me-1",
                                             ),
                                             dbc.Collapse(
-                                                dbc.Card(
+                                                dash.html.Div(
                                                     children=[
                                                         dash.dcc.Markdown(
                                                             "* On remarque qu'à l'instar des Classes Préparatoires, les Grandes Ecoles sont majoritairement regroupées dans Paris et ses alentours. Cependant, leur localisation est davantage dispersée et on observe nombre d'entre elles dans d'autres pays, notamment la côte est des Etats-Unis."
                                                         )
                                                     ],
-                                                    color="success",
-                                                    outline=True,
                                                 ),
                                                 id="grandes_ecoles_collapse_comment_1",
                                                 is_open=False,
@@ -122,7 +120,7 @@ class Tab_grandes_ecoles:
                                                 className="me-1",
                                             ),
                                             dbc.Collapse(
-                                                dbc.Card(
+                                                dash.html.Div(
                                                     children=[
                                                         dash.dcc.Markdown(
                                                             "* Les disparitions soudaines *(Notamment 2015-2016)* et les variations imprévisibles de la taille des points *(Notamment 2018-2019)* d'une année à l'autre sur les deux premiers graphes nous laisse supposer **des données collectées de manière non homogène**."
@@ -140,8 +138,6 @@ class Tab_grandes_ecoles:
                                                             "* Un graphique similaire mettant en relation le rang du dernier integré et le nombre d'étudiants inscrits aurait également pu être intéressant mais le trop grand nombre de données manquantes nous l'a hélas rendu impossible."
                                                         ),
                                                     ],
-                                                    color="success",
-                                                    outline=True,
                                                 ),
                                                 id="grandes_ecoles_collapse_comment_2",
                                                 is_open=False,
@@ -219,14 +215,12 @@ class Tab_grandes_ecoles:
                                                 className="me-1",
                                             ),
                                             dbc.Collapse(
-                                                dbc.Card(
+                                                dash.html.Div(
                                                     children=[
                                                         dash.dcc.Markdown(
                                                             "* La catégorie *Autres régions dont la proportion est inférieure à la moyenne* correspond à la somme des scores de ces autres régions et a vocation à éviter que les graphes ne soient surchargés"
                                                         ),
                                                     ],
-                                                    color="success",
-                                                    outline=True,
                                                 ),
                                                 id="grandes_ecoles_collapse_comment_3",
                                                 is_open=False,
@@ -243,7 +237,6 @@ class Tab_grandes_ecoles:
                     ),
                 ]
             ),
-            className="h-0",
         )
 
         # ---------------------------------------------------------------------------- #
