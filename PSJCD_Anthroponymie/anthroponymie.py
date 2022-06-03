@@ -11,9 +11,10 @@ from urllib.request import urlopen
 import json
 import geopandas as gpd
 import re
+from Levenshtein import ratio
 
 from PSJCD_Anthroponymie.get_data import get_nomsParDpt
-
+"""
 def ratio(s1, s2):
     rows = len(s1) + 1
     cols = len(s2) + 1
@@ -27,6 +28,7 @@ def ratio(s1, s2):
             edit = prev[c - 1] + (not dist)
             cur[c] = min(edit, deletion, insertion)
     return 1 - cur[-1] / max(rows - 1, cols - 1)
+"""
 
 class Anthroponymie():
     def __init__(self, application=None):
