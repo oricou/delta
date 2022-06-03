@@ -93,17 +93,17 @@ class Chloro():
         self.chldf_coastline_hiver = pd.read_pickle("data/chldf_coastline_2019-12-20.pkl")
         self.fapardf_coastline_hiver = pd.read_pickle("data/fapardf_coastline_2019-12-20.pkl")
        
-
+        print("what")
         colormaps = ["viridis", "plasma", "bluered_r", "algae_r", "gray"]
       
         self.main_layout = html.Div(children=[
             html.H3(children='FAPAR x Chlorophylle'),
             html.Br(),
-            html.Div([ dcc.Graph(id='map'), ], style={'width':'100%',}),
+            html.Div([ dcc.Graph(id='chl_map'), ], style={'width':'100%',}),
             html.Br(),
             html.Div([
                 html.Div([ html.Div('Filtrage des points'),
-                           dcc.RadioItems(id='map_mode', 
+                           dcc.RadioItems(id='chl_map_mode', 
                                      options=[{'label':'Carte complète', 'value':self.NO_COASTLINE},
                                               {'label':'Côtes uniquement', 'value':self.COASTLINE}],
                                      value=self.COASTLINE,
@@ -111,7 +111,7 @@ class Chloro():
                             ], style={'width': '12em'} ),
 
                 html.Div([ html.Div('Période des données'),
-                           dcc.RadioItems(id='map_period', 
+                           dcc.RadioItems(id='chl_map_period', 
                                      options=[{'label':'Eté', 'value':self.SUMMER},
                                               {'label':'Hiver', 'value':self.WINTER}],
                                      value=self.SUMMER,
@@ -119,14 +119,14 @@ class Chloro():
                             ], style={'width': '12em'} ),
 
                 html.Div([ html.Div('Seuillage FAPAR'),
-                           dcc.RadioItems(id='map_fapar_treshold_type', 
+                           dcc.RadioItems(id='chl_map_fapar_treshold_type', 
                                      options=[{'label':'Aucun', 'value':self.NONE},
                                               {'label':'Supérieur à', 'value':self.GREATER},
                                               {'label':'Inférieur à', 'value':self.LESSER}],
                                      value=self.NONE,
                                      labelStyle={'display':'block'}),
                             dcc.Input(
-                                    id="map_fapar_treshold", 
+                                    id="chl_map_fapar_treshold", 
                                     type="number",
                                     debounce=True, 
                                     placeholder="Seuil", 
@@ -135,14 +135,14 @@ class Chloro():
                            ], style={'width': '17em'} ),
 
                 html.Div([ html.Div('Seuillage chlorophylle'),
-                           dcc.RadioItems(id='map_chl_treshold_type', 
+                           dcc.RadioItems(id='chl_map_chl_treshold_type', 
                                      options=[{'label':'Aucun', 'value':self.NONE},
                                               {'label':'Supérieur à', 'value':self.GREATER},
                                               {'label':'Inférieur à', 'value':self.LESSER}],
                                      value=self.NONE,
                                      labelStyle={'display':'block'}),
                             dcc.Input(
-                                    id="map_chl_treshold", 
+                                    id="chl_map_chl_treshold", 
                                     type="number",
                                     debounce=True, 
                                     placeholder="Seuil", 
@@ -153,7 +153,7 @@ class Chloro():
 
                 html.Div([ html.Div('Colormap FAPAR'),
                            dcc.Dropdown(
-                               id='map_fapar_colormap',
+                               id='chl_map_fapar_colormap',
                                options=[{'label': item, 'value': item} for item in colormaps],
                                value="bluered_r",
                                clearable=False,
@@ -162,7 +162,7 @@ class Chloro():
                            
                            html.Div('Colormap Chlorophylle'),
                            dcc.Dropdown(
-                               id='map_chl_colormap',
+                               id='chl_map_chl_colormap',
                                options=[{'label': item, 'value': item} for item in colormaps],
                                value="viridis",
                                clearable=False
@@ -218,15 +218,15 @@ class Chloro():
             self.app.layout = self.main_layout
 
         self.app.callback(
-                    dash.dependencies.Output('map', 'figure'),
-                    [dash.dependencies.Input('map_mode', 'value'),
-                     dash.dependencies.Input('map_period', 'value'), 
-                     dash.dependencies.Input('map_chl_treshold_type', 'value'),
-                     dash.dependencies.Input('map_fapar_treshold_type', 'value'),
-                     dash.dependencies.Input('map_chl_treshold', 'value'),
-                     dash.dependencies.Input('map_fapar_treshold', 'value'),
-                     dash.dependencies.Input('map_chl_colormap', 'value'),
-                     dash.dependencies.Input('map_fapar_colormap', 'value')])(self.update_graph)
+                    dash.dependencies.Output('chl_map', 'figure'),
+                    [dash.dependencies.Input('chl_map_mode', 'value'),
+                     dash.dependencies.Input('chl_map_period', 'value'), 
+                     dash.dependencies.Input('chl_map_chl_treshold_type', 'value'),
+                     dash.dependencies.Input('chl_map_fapar_treshold_type', 'value'),
+                     dash.dependencies.Input('chl_map_chl_treshold', 'value'),
+                     dash.dependencies.Input('chl_map_fapar_treshold', 'value'),
+                     dash.dependencies.Input('chl_map_chl_colormap', 'value'),
+                     dash.dependencies.Input('chl_map_fapar_colormap', 'value')])(self.update_graph)
 
 
 
