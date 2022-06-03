@@ -93,7 +93,6 @@ class Chloro():
         self.chldf_coastline_hiver = pd.read_pickle("data/chldf_coastline_2019-12-20.pkl")
         self.fapardf_coastline_hiver = pd.read_pickle("data/fapardf_coastline_2019-12-20.pkl")
        
-        print("what")
         colormaps = ["viridis", "plasma", "bluered_r", "algae_r", "gray"]
       
         self.main_layout = html.Div(children=[
