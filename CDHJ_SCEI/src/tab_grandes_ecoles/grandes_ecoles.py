@@ -184,13 +184,17 @@ class Tab_grandes_ecoles:
                                             )[0],
                                         ),
                                     ),
-                                    dbc.Alert(
+                                    dash.html.Div(
                                         "Aucune donnée n'est disponible pour ce coucours sur la période sélectionnée.",
                                         id="grandes_ecoles_alert_pie_1",
-                                        dismissable=True,
-                                        is_open=False,
-                                        color="danger",
+                                        style={
+                                            "background-color": "#FF6240",
+                                            "box-shadow": "3px 3px 3px grey",
+                                            "border": "1px solid red",
+                                            "display": "none",
+                                        },
                                     ),
+                                    dash.html.Br(),
                                     dash.dcc.Slider(
                                         min(graph_pie.stats_lycees["year"]),
                                         max(graph_pie.stats_lycees["year"]),
@@ -245,7 +249,7 @@ class Tab_grandes_ecoles:
 
         @self.app.callback(
             dash.Output("grandes_ecoles_graph_pie_1", "figure"),
-            dash.Output("grandes_ecoles_alert_pie_1", "is_open"),
+            dash.Output("grandes_ecoles_alert_pie_1", "style"),
             dash.Input("grandes_ecoles_dropdown_pie_1", "value"),
             dash.Input("grandes_ecoles_slide_pie_1", "value"),
         )

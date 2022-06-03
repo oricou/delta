@@ -18,7 +18,12 @@ def update_pie(concours, year):
     if len(data) == 0:
         return (
             {},
-            True,
+            {
+                "background-color": "#FF6240",
+                "box-shadow": "3px 3px 3px grey",
+                "border": "1px solid red",
+                "display": "block",
+            },
         )
 
     data = data.groupby("postalcode").agg(
@@ -73,4 +78,9 @@ def update_pie(concours, year):
             concours, year
         ),
     )
-    return fig, False
+    return fig, {
+        "background-color": "#FF6240",
+        "box-shadow": "3px 3px 3px grey",
+        "border": "1px solid red",
+        "display": "none",
+    }

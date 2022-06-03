@@ -49,10 +49,16 @@ class Tab_classes_preparatoires:
                         value=graph_map.stats_lycees.year.min(),
                         style={"width": "40%"},
                     ),
-                    dbc.Alert(
+                    dash.html.Br(),
+                    dash.html.Div(
                         "Sur la carte ci-dessus, les Classes Préparatoires ayant pour la première fois cette année formé des élèves participant aux concours sont indiquées en rouge.",
-                        color="primary",
+                        style={
+                            "background-color": "#FF6240",
+                            "box-shadow": "3px 3px 3px grey",
+                            "border": "1px solid red",
+                        },
                     ),
+                    dash.html.Br(),
                     dash.html.Div(
                         [
                             dbc.Button(
@@ -163,9 +169,13 @@ class Tab_classes_preparatoires:
                             )
                         ),
                     ),
-                    dbc.Alert(
+                    dash.html.Div(
                         "Sur la carte ci-dessus, la taille des points et leur impact sur la densité de coloration correspond à la proportion de filles inscrites par Classe Préparatoire. La couleur neutre (*blanc*) correspond a des Classes Préparatoires dont la proportion de filles inscrites est dans la moyenne.",
-                        color="primary",
+                        style={
+                            "background-color": "#FF6240",
+                            "box-shadow": "3px 3px 3px grey",
+                            "border": "1px solid red",
+                        },
                     ),
                     dash.html.Div(
                         [
