@@ -24,7 +24,7 @@ class Map():
 
         self.main_layout = html.Div(children=[
             html.H3(children='Carte sur l\'évolution du nombre de crimes en France.'),
-            html.A(children='lien vers les graphiques (deuxième partie)', href='/chart'),
+            html.A(children='lien vers les graphiques (deuxième partie)', href='/EMMH_chart'),
             html.Div([ dcc.Graph(id='map-main-graph'), ], style={'width':'100%', }),
 
             html.Br(),

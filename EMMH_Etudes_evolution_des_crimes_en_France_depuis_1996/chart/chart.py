@@ -20,7 +20,7 @@ class Chart():
 
         self.main_layout = html.Div(children=[
             html.H3(children='Graphiques sur l\'évolution du nombre de crimes en France.'),
-            html.A(children='lien vers la carte (première partie)', href='/map'),
+            html.A(children='lien vers la carte (première partie)', href='/EMMH_map'),
             html.Div(
                 [
                     dcc.Graph(id='chart-heatmap'),

@@ -341,9 +341,9 @@ def init():
             return mvs.main_layout
         elif pathname == "/ab-wg_apb-parcoursup":
             return apb.main_layout
-        elif pathname == '/map':
+        elif pathname == '/EMMH_map':
             return _map_EMMH.main_layout
-        elif pathname == '/chart':
+        elif pathname == '/EMMH_chart':
             return _chart_EMMH.main_layout
         else:
             return home_page
