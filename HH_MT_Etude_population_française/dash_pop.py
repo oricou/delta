@@ -1,17 +1,12 @@
 # Dash app to display it
 import json
-import sys
+
 import dash
-import flask
+import pandas as pd
+import plotly.express as px
 from dash import dcc
 from dash import html
-from dash.dependencies import Input, Output, State
-import pandas as pd
-import numpy as np
-import plotly.graph_objs as go
-import plotly.express as px
-import dateutil as du
-from datetime import date
+from dash.dependencies import Input, Output
 
 
 class Population():
@@ -209,7 +204,7 @@ class Population():
                             'float': 'right'
                         }),
                     html.Div([
-                        dcc.Graph(id='histo-plot-graph'),
+                        dcc.Graph(id='histo-plot-graph-eh'),
                     ],
                         style={
                             'width': '80%',
@@ -257,7 +252,7 @@ class Population():
             ])(self.update_map_data_type)
 
         self.app.callback(
-            Output(component_id='histo-plot-graph',
+            Output(component_id='histo-plot-graph-eh',
                    component_property='figure'), [
                 Input(component_id='slider-date-histo',
                       component_property='value'),
