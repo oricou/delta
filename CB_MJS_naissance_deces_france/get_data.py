@@ -147,10 +147,14 @@ def create_pop():
 #   MAIN
 #####
 
+folder = 'data/'
+if not exists(folder):
+    os.mkdir(folder)
+
 #   POPULATION
 
 # 2020
-pkl = 'population2020.pkl'
+pkl = folder + 'population2020.pkl'
 if not exists(pkl):
     url = 'https://www.insee.fr/fr/statistiques/fichier/4277596/T20F013.xlsx'
     with requests.get(url) as res:
@@ -159,7 +163,7 @@ if not exists(pkl):
 # from 1970 to 2020
 pop_to_concat = []
 pop_years = [1968, 1975, 1982, 1990, 1999, 2008, 2013, 2018]
-pkl = 'population_dep_1968_2018.pkl'
+pkl = folder + 'population_dep_1968_2018.pkl'
 file = 'pop-sexe-age-quinquennal6818.xls'
 url = 'https://www.insee.fr/fr/statistiques/fichier/1893204/pop-sexe-age-quinquennal6817.zip'
 if exec_zip(url, file, pkl, population):
@@ -168,7 +172,7 @@ if exec_zip(url, file, pkl, population):
 # DECES
 
 # 2020
-pkl = 'deces_par_departements2020.pkl'
+pkl = folder + 'deces_par_departements2020.pkl'
 if not exists(pkl):
     url = 'https://www.insee.fr/fr/statistiques/fichier/5431034/etatcivil2020_dec2020_csv.zip'
     exec_zip(url, 'FD_DEC_2020.csv', pkl, deces2020)
@@ -177,20 +181,20 @@ if not exists(pkl):
 # NAISSANCES
 
 # 2020
-pkl = 'naissances_par_departements2020.pkl'
+pkl = folder + 'naissances_par_departements2020.pkl'
 if not exists(pkl):
     url = 'https://www.insee.fr/fr/statistiques/fichier/5419785/etatcivil2020_nais2020_csv.zip'
     exec_zip(url, 'nais2020.csv', pkl, naissances2020)
 
 # from 1970 to 2020
-pkl = 'naissances_par_dep_1970_2020.pkl'
+pkl = folder + 'naissances_par_dep_1970_2020.pkl'
 if not exists(pkl):
     url = 'https://www.insee.fr/fr/statistiques/fichier/2540004/dpt2020_csv.zip'
     exec_zip(url, 'dpt2020.csv', pkl, naissances)
 
 
 # GEOJSON used to display departements on map
-departements_geojson_file = 'departements-avec-outre-mer.geojson'
+departements_geojson_file = folder + 'departements-avec-outre-mer.geojson'
 if not exists(departements_geojson_file):
     url = 'https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements-avec-outre-mer.geojson'
     with requests.get(url) as res:

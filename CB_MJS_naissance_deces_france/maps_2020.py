@@ -11,11 +11,12 @@ import json
 class Carte(object):
     def __init__(self, application=None):
 
-        self.df = pd.read_pickle('data/deces_par_departements2020.pkl')
+        folder = 'CB_MJS_naissance_deces_france/'
+        self.df = pd.read_pickle(folder + 'data/deces_par_departements2020.pkl')
 
-        self.df_naiss = pd.read_pickle('data/naissances_par_departements2020.pkl')
+        self.df_naiss = pd.read_pickle(folder + 'data/naissances_par_departements2020.pkl')
 
-        departements = json.load(open('data/departements-avec-outre-mer.geojson'))
+        departements = json.load(open(folder + 'data/departements-avec-outre-mer.geojson'))
 
         fig = px.choropleth_mapbox(self.df, geojson=departements,
                                    locations='DEP', featureidkey='properties.code',  # join keys

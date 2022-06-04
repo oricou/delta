@@ -1,1 +1,0 @@
-/home/clement/Documents/delta/CB_MJS_naissance_deces_france/data/naissances_par_dep_1970_2020.pkl

@@ -13,15 +13,16 @@ class Birth_Map:
 
     def __init__(self, application=None):
 
-        self.df_naiss = pd.read_pickle('data/naissances_par_dep_1970_2020.pkl')
-        self.df_pop = pd.read_pickle('data/population_dep_1968_2018.pkl')
+        folder = 'CB_MJS_naissance_deces_france/'
+        self.df_naiss = pd.read_pickle(folder + 'data/naissances_par_dep_1970_2020.pkl')
+        self.df_pop = pd.read_pickle(folder + 'data/population_dep_1968_2018.pkl')
         self.years = sorted(set(self.df_naiss.index.values))
         self.year = self.years[0]
         self.df_dict = {}
-        self.departements = json.load(open('data/departements-avec-outre-mer.geojson'))
+        self.departements = json.load(open(folder + 'data/departements-avec-outre-mer.geojson'))
 
         for year in self.df_naiss.index.values:
-            self.df_dict.update({year: pd.read_pickle(f'data/population_birth_rate/{year}.pkl')})
+            self.df_dict.update({year: pd.read_pickle(folder + f'data/population_birth_rate/{year}.pkl')})
 
         self.main_layout = html.Div(id='main-layout-page', children=[
 
