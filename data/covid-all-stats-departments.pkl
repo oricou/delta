@@ -1,0 +1,1 @@
+../dc_sujet/data/covid-all-stats-departments.pkl
