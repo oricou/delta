@@ -23,23 +23,25 @@ def population2020(file, pkl_name):
     return df.to_pickle(pkl_name)
 
 def deces2020(file, pkl_name):
+    global population2020_pkl
     deces2020 = pd.read_csv(file, sep=";", encoding="latin1", header=0, dtype=str)
     df = deces2020[['DEPDEC', 'LIEUDECR']].groupby(by=['DEPDEC']).count()
     df.reset_index(inplace=True)
     df.rename(columns={'DEPDEC': 'DEP', 'LIEUDECR': 'DECES'}, inplace=True)
     # get departements population
-    population2020 = pd.read_pickle('population2020.pkl')
+    population2020 = pd.read_pickle(population2020_pkl)
     df = pd.merge(df, population2020, on='DEP')
     df["deces pour 10000"] = (df.DECES * 1000) // df['population']
     return df.to_pickle(pkl_name)
 
 def naissances2020(file, pkl_name):
+    global population2020_pkl
     naissances2020 = pd.read_csv(file, sep=";", encoding="latin1", header=0, dtype=str)
     df = naissances2020[["DEPNAIS", "ANAIS"]].groupby(by=["DEPNAIS"]).count()
     df.reset_index(inplace=True)
     df.rename(columns={"DEPNAIS": "DEP", "ANAIS": "NAISSANCES"}, inplace=True)
     # get departements population
-    population2020 = pd.read_pickle('population2020.pkl')
+    population2020 = pd.read_pickle(population2020_pkl)
     df = pd.merge(df, population2020, on='DEP')
     df["Naissances pour 10000"] = (df.NAISSANCES * 1000) // df.population
     df.to_pickle(pkl_name)
@@ -106,10 +108,11 @@ def closest(k):
 
 
 def create_pop():
-    df2 = pd.read_pickle('naissances_par_dep_1970_2020.pkl')
-    df_pop = pd.read_pickle('population_dep_1968_2018.pkl')
+    data_folder = 'data/'
+    df2 = pd.read_pickle(data_folder + 'naissances_par_dep_1970_2020.pkl')
+    df_pop = pd.read_pickle(data_folder + 'population_dep_1968_2018.pkl')
 
-    folder = 'population_birth_rate'
+    folder = data_folder + 'population_birth_rate'
     if not exists(folder):
         os.mkdir(folder)
 
@@ -154,11 +157,11 @@ if not exists(folder):
 #   POPULATION
 
 # 2020
-pkl = folder + 'population2020.pkl'
-if not exists(pkl):
+population2020_pkl = folder + 'population2020.pkl'
+if not exists(population2020_pkl):
     url = 'https://www.insee.fr/fr/statistiques/fichier/4277596/T20F013.xlsx'
     with requests.get(url) as res:
-        population2020(BytesIO(res.content), pkl)
+        population2020(BytesIO(res.content), population2020_pkl)
 
 # from 1970 to 2020
 pop_to_concat = []
