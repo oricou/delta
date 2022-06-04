@@ -7,6 +7,7 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
+from CB_MJS_naissance_deces_france import maps_page
 from MC_AB_consommationEtProductionEnergétique import petrole
 from SG_AH_pollution_des_transports import pollution
 from pbmc_accidents_routiers import pbmc_accidents_routiers as pbmc
@@ -122,7 +123,11 @@ def init():
     mvs = movies.MoviesStats(app)
     apb = apb_parcoursup.APB_PARCOURSUP(app)
 
+    maps = maps_page.MapsPage(app)
+
     # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+
 
     main_layout = html.Div([
         html.Div(className = "row",
@@ -134,6 +139,7 @@ def init():
                                   dcc.Link(html.Button("Prix d'énergies", style={'width':"100%"}), href='/energies'),
                                   dcc.Link(html.Button('Natalité vs revenus', style={'width':"100%"}), href='/pop'),
                                   dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
+                                  dcc.Link(html.Button('Naissances et Décès en France', style={'width': "100%"}), href='/CB_MJS'),
                                   dcc.Link(html.Button('MDMR_NYPDCallsMeteoNY', style={'width':"100%"}), href='/MDMR_NYPDCallsMeteoNY'),
                                   dcc.Link(html.Button('Accident Routiers', style={'width':"100%", 'margin':0, 'padding': 0}), href='/accidents_routiers'),
                                   dcc.Link(html.Button('Médailles Olympique', style={'width': "100%"}), href='/olympics'),
@@ -187,7 +193,7 @@ def init():
                                   dcc.Link(html.Button('Formations supérieur', style={'width': "100%"}), href='/formations'),
                                   dcc.Link(html.Button("Criminalité et Education", style={"width": "100%"}), href="/criminalite-education"),
                                   dcc.Link(html.Button('Rentabilité des films', style={'width':"100%"}), href='/ADHD_Movies'),
-                                  dcc.Link( html.Button("APB / Parcoursup", style={"width": "100%"}), href="/ab-wg_apb-parcoursup",),
+                                  dcc.Link(html.Button("APB / Parcoursup", style={"width": "100%"}), href="/ab-wg_apb-parcoursup",),
                                   html.Br(),
                                   html.Br(),
                                   html.Br(),
@@ -254,7 +260,7 @@ def init():
             return inc.main_layout
         elif pathname == '/pollution':
             return pol.main_layout
-            return dec.main_layout 
+            return dec.main_layout
         elif pathname == '/cancer':
             return cncr.main_layout
         elif pathname == '/music':
@@ -335,6 +341,8 @@ def init():
             return mvs.main_layout
         elif pathname == "/ab-wg_apb-parcoursup":
             return apb.main_layout
+        elif pathname == '/CB_MJS':
+            return maps.main_layout
         else:
             return home_page
     return app

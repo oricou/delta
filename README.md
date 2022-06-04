@@ -1,28 +1,34 @@
 # Δelta δata
 
-### Analyse de données ouvertes
 
-L'exercice consiste à prendre des données ouvertes et à les mettre en forme pour aider à l'analyse. Cela peut se faire
-sous forme d'articles avec des graphiques (voir les feuilles Jupyter dans le dépôt) ou de graphiques interactifs (
-voir  https://delta.lrde.epita.fr/).
+### Le projet : evolution des deces et naissances en France
 
-### Code source
 
-Ce dépôt GitHub propose des pages Jupyter et des service Dash pour analyser des données ouvertes. Les sous-dépôts sont :
+Ce projet a pour but de nous permettre de visualiser l'evolution des deces et des naissances en France par departement de 1970 à 2020 et egalement les naissances et deces en 2020.
+Le graphique nous permets de visualiser cette evolution, vous pouvez donc, à l'aide de votre souris, survoler les differents departement de la France et ainsi comparer les données observées.
 
-* [Natalité / revenus](https://github.com/oricou/delta/tree/main/population) : exemple classique qui montre la chute de
-  natalité à travers le monde et la croissance des revenus
-* [Prix de l'énergie](https://github.com/oricou/delta/tree/main/energies) : compare le prix grand public de différentes
-  énergies en France
-* [Sondages présidentiels et temps de parole dans les médias](https://github.com/nsppolls/nsppolls/blob/master/presidentielle.csv) :
-  compare le temps de parole des candidats dans les médias et dans les intentions de vote données grâce aux différents
-  sondages.
 
 ### Get Data
 
-Le fichier `get_data.py` permet de récupérer les données depuis un lien et de les transformer pour notre utilisation.
-Exécuter ce fichier mettra à jour les données.
 
-Note : le choix du français est volontaire, il s'agit de promouvoir l'usage
-des données ouvertes auprès du grand public en France. Cela étant il
-est possible d'en faire une version dans une autre langue.
+En récuperant et en executant le fichier `get_data.py`, vous pourrez ainsi créer et mettre à jour les données.
+ 
+
+### AUTEURS 
+
+
+- Clément BIEBER
+
+- Mohamed-Jordan SOUMANO
+
+
+### SOURCES
+
+
+deces2020: https://www.insee.fr/fr/statistiques/5431034?sommaire=5419788&q=d%C3%A9c%C3%A8s
+
+naissances2020: https://www.insee.fr/fr/statistiques/5419785
+
+population: https://www.insee.fr/fr/statistiques/1893204#consulter
+
+naissances: https://www.insee.fr/fr/statistiques/2540004?sommaire=4767262
