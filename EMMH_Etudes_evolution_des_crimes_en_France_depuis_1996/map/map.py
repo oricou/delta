@@ -12,9 +12,14 @@ import dateutil as du
 from urllib.request import urlopen
 import json
 
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+import get_data
+
 class Map():
 
     def __init__(self, application = None):
+        get_data.main()
         self.ts_df = pd.read_pickle('data/ts_db.pkl')
         self.departament = self.ts_df[(self.ts_df['Département'] != 'France_Métro') & (self.ts_df['Département'] != 'France_Entière')]
         with urlopen('https://france-geojson.gregoiredavid.fr/repo/departements.geojson') as response:

@@ -21,7 +21,7 @@ def read_excel_sheets(xls_path):
         df.append(sheet)
     return pd.concat(df)
 
-if __name__ == "__main__":
+def main():
     data_dir = pathlib.Path('data')
     if not data_dir.is_dir():
         data_dir.mkdir()
@@ -48,3 +48,6 @@ if __name__ == "__main__":
                     file.write(requests.get(v).content)
             dfs[name_db] = read_excel_sheets('data/' + k)
             dfs[name_db].to_pickle(f'data/{name_db}.pkl')
+
+if __name__ == "__main__":
+    main()
