@@ -19,6 +19,7 @@ import get_data
 class Map():
 
     def __init__(self, application = None):
+        # download data if needed
         get_data.main()
         self.ts_df = pd.read_pickle('data/ts_db.pkl')
         self.departament = self.ts_df[(self.ts_df['Département'] != 'France_Métro') & (self.ts_df['Département'] != 'France_Entière')]
