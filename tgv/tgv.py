@@ -5,8 +5,8 @@ from dash.dependencies import Input, Output
 
 import folium
 import branca.colormap as cm
-from make_df import make_df
-from front import make_layout, get_stylesheet
+from .make_df import make_df
+from .front import make_layout, get_stylesheet
 
 
 class TGV:

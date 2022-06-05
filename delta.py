@@ -7,7 +7,6 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
-<<<<<<< HEAD
 from MC_AB_consommationEtProductionEnergétique import petrole
 from SG_AH_pollution_des_transports import pollution
 from pbmc_accidents_routiers import pbmc_accidents_routiers as pbmc
@@ -62,11 +61,11 @@ from formations import formations as formations_lib
 from APAAL_criminalite_education import criminalite_education
 from ADHD_Movies import movies
 from ab_wg_apb_parcoursup import apb_parcoursup
-from tgv import tgv
+from tgv import tgv, front
 
 #@profile
 def init():
-    app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True, external_stylesheets=tgv.get_stylesheet())
+    app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True, external_stylesheets=front.get_stylesheet())
     pop = population.WorldPopulationStats(app)
     dec = deces.Deces(app)
     nrg = energies.Energies(app)
@@ -123,6 +122,7 @@ def init():
     crim_edu = criminalite_education.Criminalite_Education(app)
     mvs = movies.MoviesStats(app)
     apb = apb_parcoursup.APB_PARCOURSUP(app)
+    tgv = tgv.TGV(app)
 
     # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -189,7 +189,8 @@ def init():
                                   dcc.Link(html.Button('Formations supérieur', style={'width': "100%"}), href='/formations'),
                                   dcc.Link(html.Button("Criminalité et Education", style={"width": "100%"}), href="/criminalite-education"),
                                   dcc.Link(html.Button('Rentabilité des films', style={'width':"100%"}), href='/ADHD_Movies'),
-                                  dcc.Link( html.Button("APB / Parcoursup", style={"width": "100%"}), href="/ab-wg_apb-parcoursup",),
+                                  dcc.Link(html.Button("APB / Parcoursup", style={"width": "100%"}), href="/ab-wg_apb-parcoursup"),
+                                  dcc.Link(html.Button('Régularité des TGV', style={'width':"100%"}), href='/tgv'),
                                   html.Br(),
                                   html.Br(),
                                   html.Br(),
@@ -337,76 +338,14 @@ def init():
             return mvs.main_layout
         elif pathname == "/ab-wg_apb-parcoursup":
             return apb.main_layout
+        elif pathname == '/tgv':
+            return tgv.main_layout
         else:
             return home_page
     return app
 
 app = init()
 server = app.server
-pop = population.WorldPopulationStats(app)
-nrg = energies.Energies(app)
-dec = deces.Deces(app)
-tgv = tgv.TGV(app)
-
-main_layout = html.Div([
-    html.Div(className = "row",
-             children=[ 
-                 dcc.Location(id='url', refresh=False),
-                 html.Div(className="two columns",
-                          children = [
-                              html.Center(html.H2("Δelta δata")),
-                              dcc.Link(html.Button("Prix d'énergies", style={'width':"100%"}), href='/energies'),
-                              html.Br(),
-                              dcc.Link(html.Button('Natalité vs revenus', style={'width':"100%"}), href='/population'),
-                              html.Br(),
-                              dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
-                              html.Br(),
-                              dcc.Link(html.Button('Régularité des TGV', style={'width':"100%"}), href='/tgv'),
-                              html.Br(),
-                              html.Br(),
-                              html.Br(),
-                              html.Center(html.A('Code source', href='https://github.com/eliottness/delta')),
-                          ]),
-                 html.Div(id='page_content', className="ten columns"),
-            ]),
-])
-
-
-home_page = html.Div([
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    dcc.Markdown("Choisissez le jeu de données dans l'index à gauche."),
-])
-
-to_be_done_page = html.Div([
-    dcc.Markdown("404 -- Désolé cette page n'est pas disponible."),
-])
-
-app.layout = main_layout
-
-# "complete" layout (not sure that I need that)
-app.validation_layout = html.Div([
-    main_layout,
-    to_be_done_page,
-    pop.main_layout,
-])
-
-# Update the index
-@app.callback(dash.dependencies.Output('page_content', 'children'),
-              [dash.dependencies.Input('url', 'pathname')])
-def display_page(pathname):
-    if pathname == '/energies':
-        return nrg.main_layout
-    elif pathname == '/population':
-        return pop.main_layout
-    elif pathname == '/deces':
-        return dec.main_layout
-    elif pathname == '/tgv':
-        return tgv.main_layout
-    else:
-        return home_page
 
 if __name__ == '__main__':
     profile = False
