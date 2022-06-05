@@ -61,6 +61,10 @@ from formations import formations as formations_lib
 from APAAL_criminalite_education import criminalite_education
 from ADHD_Movies import movies
 from ab_wg_apb_parcoursup import apb_parcoursup
+from AHCB_movie_data_analysis.producteurs import producteurs
+from AHCB_movie_data_analysis.theme_popularite import theme_popularite
+from AHCB_movie_data_analysis.evolution_production import evolution_production
+
 
 #@profile
 def init():
@@ -88,7 +92,7 @@ def init():
     nrgmix = energymix.EnergyMix(app)
     ele = electricite.Eletricite(app)
     imp = impact.Impact(app)
-    chs = chess.Chess(app)
+    # chs = chess.Chess(app)
     pol = dash_app_pollution.PollutionFrancaise(app)
     drd = dec # ybjd.DecesFranceRevenu(app)
     spo = spotify.Spotify(app)
@@ -99,8 +103,8 @@ def init():
     billboard = top_100_billboard_usa.Top100BillboardUSA(app)
     meteor = abih.Abih(app)
     tbgt = tbgt_lib.TBGT(app)
-    psb = postbac.PostBac(app)
-    pres = presidentielle.Presidentielles(app)
+    # psb = postbac.PostBac(app)
+    # pres = presidentielle.Presidentielles(app)
     md = md_lib.Mariage(app)
     net = netflix.NetflixStats(app)
     obcal = obesity_calories.Obesity_calories(app)
@@ -110,17 +114,23 @@ def init():
     par = parrainage.Parrainage(app)
     rgpd = RGPD.RGPD(app)
     bar = dec # bars.Bars(app)
-    comp = companies.FrenchCompaniesStats(app)
-    covid = covid_basics.CovidBasics(app)
-    elcVgaz = electricityVSgaz.Stats(app)
-    bmo_ = bmo.Bmo(app)
-    rd_acc = radar_accidents.Radar_Accidents(app)
-    urb = urban.UrbanPolutionStats(app)
-    lol = champs_win_rate.ChampWinRate(app)
-    formations = formations_lib.Formations(app)
-    crim_edu = criminalite_education.Criminalite_Education(app)
-    mvs = movies.MoviesStats(app)
-    apb = apb_parcoursup.APB_PARCOURSUP(app)
+    # comp = companies.FrenchCompaniesStats(app)
+    # covid = covid_basics.CovidBasics(app)
+    # elcVgaz = electricityVSgaz.Stats(app)
+    # bmo_ = bmo.Bmo(app)
+    # rd_acc = radar_accidents.Radar_Accidents(app)
+    # urb = urban.UrbanPolutionStats(app)
+    # lol = champs_win_rate.ChampWinRate(app)
+    # formations = formations_lib.Formations(app)
+    # crim_edu = criminalite_education.Criminalite_Education(app)
+    # mvs = movies.MoviesStats(app)
+    # apb = apb_parcoursup.APB_PARCOURSUP(app)
+    print("yo")
+    prd = producteurs.Producer(app)
+    thp = theme_popularite.ThemeAnalysis(app)
+    evprd = evolution_production.MovieProduction(app)
+    print("hello")
+
 
     # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -188,6 +198,9 @@ def init():
                                   dcc.Link(html.Button("Criminalité et Education", style={"width": "100%"}), href="/criminalite-education"),
                                   dcc.Link(html.Button('Rentabilité des films', style={'width':"100%"}), href='/ADHD_Movies'),
                                   dcc.Link( html.Button("APB / Parcoursup", style={"width": "100%"}), href="/ab-wg_apb-parcoursup",),
+                                  dcc.Link( html.Button("Cinéma : Production", style={"width": "100%"}), href="/ahcb_movie_production",),
+                                  dcc.Link( html.Button("Cinéma : Thème", style={"width": "100%"}), href="/ahcb_movie_theme",),
+                                  dcc.Link( html.Button("Cinéma : Producteurs", style={"width": "100%"}), href="/ahcb_movie_producer",),
                                   html.Br(),
                                   html.Br(),
                                   html.Br(),
@@ -335,6 +348,12 @@ def init():
             return mvs.main_layout
         elif pathname == "/ab-wg_apb-parcoursup":
             return apb.main_layout
+        elif pathname == "/ahcb_movie_production":
+            return evprd.main_layout
+        elif pathname == "/ahcb_movie_producer":
+            return prd.main_layout
+        elif pathname == "/ahcb_movie_theme":
+            return thp.main_layout
         else:
             return home_page
     return app
