@@ -63,6 +63,7 @@ from ADHD_Movies import movies
 from ab_wg_apb_parcoursup import apb_parcoursup
 from alcool import alcool
 
+
 #@profile
 def init():
     app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
@@ -191,6 +192,7 @@ def init():
                                   dcc.Link(html.Button('Rentabilité des films', style={'width':"100%"}), href='/ADHD_Movies'),
                                   dcc.Link( html.Button("APB / Parcoursup", style={"width": "100%"}), href="/ab-wg_apb-parcoursup",),
                                   dcc.Link(html.Button("Alcool vs revenus", style={'width':"100%"}), href='/alcool'),
+
                                   html.Br(),
                                   html.Br(),
                                   html.Br(),
