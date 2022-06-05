@@ -1,8 +1,6 @@
 # import required packages
-import dash
 from dash import dcc
 from dash import html
-import dash_bootstrap_components as dbc
 import plotly.graph_objs as go
 import numpy as np
 import pandas as pd
@@ -63,7 +61,7 @@ class YoutubeTrendsStats():
         self.other_figure = self.create_figure2(self.df)
 
         # page layout
-        self.app = dash.Dash(external_stylesheets = [dbc.themes.BOOTSTRAP])
+        self.app = application#dash.Dash()
 
         div_content = html.Div(children=[
                 # html.H3(children='Évolution des proportions des catégories youtube en tendances dans le monde'),
@@ -119,13 +117,6 @@ class YoutubeTrendsStats():
                             "index": "Country",
                             "variable": "Year"
                         })
-        #fig.update_layout(
-        #    title_font_size=22,
-        #    font_family="Serif",
-        #    title_font_family="Times New Roman",
-        #    title_font_color="black"
-        #)
-        #fig.update_xaxes(title_font_family="Serif")
         return fig
 
     # define figure creation function
@@ -134,7 +125,6 @@ class YoutubeTrendsStats():
 
         # make list of continents
         countries = result['country'].unique()
-        print(countries)
 
         domains = [
             {'x': [0.0, 0.25], 'y': [0.0, 0.33]},
@@ -150,7 +140,6 @@ class YoutubeTrendsStats():
             {'x': [0.75, 1.0], 'y': [0.33, 0.66]},
             {'x': [0.75, 1.0], 'y': [0.66, 1.0]}
         ]
-        #countries = ["France", "Canada"]
         # make figure
         fig_dict = {
             "data": [],
@@ -263,4 +252,4 @@ class YoutubeTrendsStats():
 
 if __name__ == "__main__":
     yt = YoutubeTrendsStats()
-    yt.run(port=8055)
+    yt.app.run(port=8055)
