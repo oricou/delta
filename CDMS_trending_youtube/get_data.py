@@ -14,17 +14,17 @@ def load_data(list_file, list_country):
     return datas
 
 def create_dataframe():
-    list_file = ["category/archive/BR_youtube_trending_data.csv",
-        "category/archive/CA_youtube_trending_data.csv",
-        "category/archive/DE_youtube_trending_data.csv",
-        "category/archive/FR_youtube_trending_data.csv",
-        "category/archive/GB_youtube_trending_data.csv",
-        "category/archive/IN_youtube_trending_data.csv",
-        "category/archive/JP_youtube_trending_data.csv",
-        "category/archive/KR_youtube_trending_data.csv",
-        "category/archive/MX_youtube_trending_data.csv",
-        "category/archive/RU_youtube_trending_data.csv",
-        "category/archive/US_youtube_trending_data.csv"]
+    list_file = ["tmp/archive/BR_youtube_trending_data.csv",
+        "tmp/archive/CA_youtube_trending_data.csv",
+        "tmp/archive/DE_youtube_trending_data.csv",
+        "tmp/archive/FR_youtube_trending_data.csv",
+        "tmp/archive/GB_youtube_trending_data.csv",
+        "tmp/archive/IN_youtube_trending_data.csv",
+        "tmp/archive/JP_youtube_trending_data.csv",
+        "tmp/archive/KR_youtube_trending_data.csv",
+        "tmp/archive/MX_youtube_trending_data.csv",
+        "tmp/archive/RU_youtube_trending_data.csv",
+        "tmp/archive/US_youtube_trending_data.csv"]
 
     data = load_data(list_file, list_country)
     data.drop(columns=['channelId', 'description','thumbnail_link','video_id'], inplace=True, axis=1)
