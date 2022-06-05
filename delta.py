@@ -61,10 +61,11 @@ from formations import formations as formations_lib
 from APAAL_criminalite_education import criminalite_education
 from ADHD_Movies import movies
 from ab_wg_apb_parcoursup import apb_parcoursup
+from tgv import tgv, front
 
 #@profile
 def init():
-    app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
+    app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True, external_stylesheets=front.get_stylesheet())
     pop = population.WorldPopulationStats(app)
     dec = deces.Deces(app)
     nrg = energies.Energies(app)
@@ -121,6 +122,7 @@ def init():
     crim_edu = criminalite_education.Criminalite_Education(app)
     mvs = movies.MoviesStats(app)
     apb = apb_parcoursup.APB_PARCOURSUP(app)
+    tgv = tgv.TGV(app)
 
     # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -187,7 +189,8 @@ def init():
                                   dcc.Link(html.Button('Formations supérieur', style={'width': "100%"}), href='/formations'),
                                   dcc.Link(html.Button("Criminalité et Education", style={"width": "100%"}), href="/criminalite-education"),
                                   dcc.Link(html.Button('Rentabilité des films', style={'width':"100%"}), href='/ADHD_Movies'),
-                                  dcc.Link( html.Button("APB / Parcoursup", style={"width": "100%"}), href="/ab-wg_apb-parcoursup",),
+                                  dcc.Link(html.Button("APB / Parcoursup", style={"width": "100%"}), href="/ab-wg_apb-parcoursup"),
+                                  dcc.Link(html.Button('Régularité des TGV', style={'width':"100%"}), href='/tgv'),
                                   html.Br(),
                                   html.Br(),
                                   html.Br(),
@@ -335,6 +338,8 @@ def init():
             return mvs.main_layout
         elif pathname == "/ab-wg_apb-parcoursup":
             return apb.main_layout
+        elif pathname == '/tgv':
+            return tgv.main_layout
         else:
             return home_page
     return app
