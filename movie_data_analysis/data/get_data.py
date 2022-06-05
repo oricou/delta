@@ -1,6 +1,14 @@
 import pandas as pd
 import numpy as np
 import csv
+import os
+
+os.makedirs("movie_data_analysis/evolution_production/data", exist_ok=True)
+os.makedirs("movie_data_analysis/critique_budget/data", exist_ok=True)
+os.makedirs("movie_data_analysis/keywords_popularite/data", exist_ok=True)
+os.makedirs("movie_data_analysis/producteurs/data", exist_ok=True)
+os.makedirs("movie_data_analysis/theme_popularite/data", exist_ok=True)
+
 
 df = pd.read_csv("movie_data_analysis/data/movies_metadata.csv", dtype={'popularity': 'str'})
 

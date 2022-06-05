@@ -143,8 +143,7 @@ class MovieProduction():
                         # dash.dependencies.Input('bgr-price-type', 'value'),
                     #   dash.dependencies.Input('bgr-which-month', 'value'),
                     #   dash.dependencies.Input('bgr-which-year', 'value'),
-                    dash.dependencies.Input('bgr-inflation-bool', 'value'),
-                      dash.dependencies.Input('bgr-yaxis-type', 'value')]
+                    dash.dependencies.Input('bgr-inflation-bool', 'value'),]
                       )(self.update_graph)
         # self.app.callback(
         #             [ dash.dependencies.Output('bgr-which-month', 'disabled'),
@@ -152,7 +151,7 @@ class MovieProduction():
         #               dash.dependencies.Input('bgr-price-type', 'value') )(self.disable_month_year)
     
 
-    def update_graph(self, inflation, xaxis_type):
+    def update_graph(self, inflation):
         if not inflation:
             df = self.bdg_sums
         else:
@@ -168,7 +167,6 @@ class MovieProduction():
         fig.update_layout(
             xaxis = dict(title='Année',),
             yaxis = dict(title="Budget total par genre",
-                type= 'linear' if xaxis_type == 'Linéaire' else 'log'
             ),
 
          margin={'l': 40, 'b': 30, 't': 10, 'r': 0},
