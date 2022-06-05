@@ -1,0 +1,177 @@
+Rank,Country,Region,Score,ISO,Surveys Used
+1,Denmark,EU,90,DNK,7
+1,Finland,EU,90,FIN,7
+1,New Zealand,AP,90,NZL,7
+4,Sweden,EU,88,SWE,7
+5,Singapore,AP,87,SGP,9
+6,Switzerland,EU,86,CHE,6
+7,Australia,AP,85,AUS,8
+7,Norway,EU,85,NOR,7
+9,Canada,AM,84,CAN,7
+9,Netherlands,EU,84,NLD,7
+11,Iceland,EU,82,ISL,6
+12,Luxembourg,EU,80,LUX,6
+13,Germany,EU,79,DEU,8
+14,Hong Kong,AP,77,HKG,8
+15,Barbados,AM,76,BRB,3
+16,Belgium,EU,75,BEL,7
+17,Japan,AP,74,JPN,9
+17,United Kingdom,EU,74,GBR,8
+19,United States,AM,73,USA,9
+20,Chile,AM,72,CHL,9
+20,Uruguay,AM,72,URY,6
+22,Bahamas,AM,71,BHS,3
+22,France,EU,71,FRA,8
+22,Saint Lucia,AM,71,LCA,3
+25,Austria,EU,69,AUT,8
+25,Ireland,EU,69,IRL,6
+27,Qatar,ME,68,QAT,6
+27,United Arab Emirates,ME,68,ARE,7
+29,Cyprus,EU,66,CYP,4
+30,Botswana,AF,65,BWA,7
+30,Spain,EU,65,ESP,7
+32,Estonia,EU,64,EST,8
+33,Bhutan,AP,63,BTN,3
+33,Portugal,EU,63,PRT,7
+33,Puerto Rico,AM,63,PRI,3
+36,Saint Vincent and the Grenadines,AM,62,VCT,3
+37,Slovenia,EU,61,SVN,8
+37,Taiwan,AP,61,TWN,7
+39,Cape Verde,AF,60,CPV,4
+39,Israel,ME,60,ISR,5
+41,Dominica,AM,58,DMA,3
+41,Poland,EU,58,POL,10
+43,Malta,EU,57,MLT,4
+43,Mauritius,AF,57,MUS,5
+45,Korea (South),AP,56,KOR,10
+46,Brunei,AP,55,BRN,3
+46,Hungary,EU,55,HUN,10
+48,Costa Rica,AM,54,CRI,5
+48,Lithuania,EU,54,LTU,7
+50,Rwanda,AF,53,RWA,5
+51,Georgia,EE,52,GEO,6
+51,Seychelles,AF,52,SYC,4
+53,Bahrain,ME,51,BHR,5
+54,Czech Republic,EU,49,CZE,10
+54,Latvia,EU,49,LVA,6
+54,Malaysia,AP,49,MYS,9
+54,Turkey,EE,49,TUR,9
+58,Cuba,AM,48,CUB,4
+58,Jordan,ME,48,JOR,7
+58,Namibia,AF,48,NAM,6
+61,Oman,ME,47,OMN,5
+62,Croatia,EE,46,HRV,8
+62,Slovakia,EU,46,SVK,8
+64,Ghana,AF,45,GHA,9
+64,Lesotho,AF,45,LSO,5
+66,Kuwait,ME,44,KWT,5
+66,Romania,EU,44,ROU,8
+66,Saudi Arabia,ME,44,SAU,5
+69,Brazil,AM,43,BRA,8
+69,Macedonia,EE,43,MKD,6
+69,South Africa,AF,43,ZAF,9
+72,Bosnia and Herzegovina,EE,42,BIH,7
+72,Italy,EU,42,ITA,7
+72,Sao Tome and Principe,AF,42,STP,3
+75,Bulgaria,EU,41,BGR,8
+75,Liberia,AF,41,LBR,7
+75,Montenegro,EE,41,MNE,4
+75,Tunisia,ME,41,TUN,7
+79,Sri Lanka,AP,40,LKA,7
+80,China,AP,39,CHN,9
+80,Serbia,EE,39,SRB,7
+80,Trinidad and Tobago,AM,39,TTO,4
+83,Burkina Faso,AF,38,BFA,7
+83,El Salvador,AM,38,SLV,6
+83,Jamaica,AM,38,JAM,6
+83,Panama,AM,38,PAN,6
+83,Peru,AM,38,PER,7
+88,Malawi,AF,37,MWI,8
+88,Morocco,ME,37,MAR,8
+88,Suriname,AM,37,SUR,3
+88,Swaziland,AF,37,SWZ,4
+88,Thailand,AP,37,THA,8
+88,Zambia,AF,37,ZMB,8
+94,Benin,AF,36,BEN,6
+94,Colombia,AM,36,COL,7
+94,Djibouti,AF,36,DJI,3
+94,Greece,EU,36,GRC,7
+94,India,AP,36,IND,10
+94,Moldova,EE,36,MDA,8
+94,Mongolia,AP,36,MNG,7
+94,Senegal,AF,36,SEN,9
+102,Argentina,AM,35,ARG,8
+102,Gabon,AF,35,GAB,5
+102,Tanzania,AF,35,TZA,8
+105,Algeria,ME,34,DZA,6
+105,Armenia,EE,34,ARM,6
+105,Bolivia,AM,34,BOL,7
+105,Gambia,AF,34,GMB,5
+105,Kosovo,EE,34,KSV,3
+105,Mali,AF,34,MLI,6
+105,Mexico,AM,34,MEX,9
+105,Philippines,AP,34,PHL,9
+113,Albania,EE,33,ALB,7
+113,Ethiopia,AF,33,ETH,8
+113,Guatemala,AM,33,GTM,6
+113,Niger,AF,33,NER,5
+113,Timor-Leste,AP,33,TLS,3
+118,Dominican Republic,AM,32,DOM,6
+118,Ecuador,AM,32,ECU,6
+118,Egypt,ME,32,EGY,7
+118,Indonesia,AP,32,IDN,9
+118,Madagascar,AF,32,MDG,8
+123,Belarus,EE,31,BLR,5
+123,Mauritania,AF,31,MRT,5
+123,Mozambique,AF,31,MOZ,7
+123,Sierra Leone,AF,31,SLE,8
+123,Vietnam,AP,31,VNM,8
+128,Lebanon,ME,30,LBN,6
+128,Togo,AF,30,TGO,5
+130,C�te d�Ivoire,AF,29,CIV,8
+130,Nicaragua,AM,29,NIC,7
+130,Uganda,AF,29,UGA,8
+133,Comoros,AF,28,COM,3
+133,Guyana,AM,28,GUY,4
+133,Honduras,AM,28,HND,6
+133,Iran,ME,28,IRN,6
+133,Kazakhstan,EE,28,KAZ,8
+133,Russia,EE,28,RUS,9
+139,Azerbaijan,EE,27,AZE,6
+139,Kenya,AF,27,KEN,8
+139,Nepal,AP,27,NPL,5
+139,Nigeria,AF,27,NGA,9
+139,Pakistan,AP,27,PAK,8
+144,Bangladesh,AP,26,BGD,7
+144,Cameroon,AF,26,CMR,8
+144,Central African Republic,AF,26,CAF,4
+144,Congo Republic,AF,26,COG,6
+144,Syria,ME,26,SYR,5
+144,Ukraine,EE,26,UKR,8
+150,Eritrea,AF,25,ERI,4
+150,Guinea-Bissau,AF,25,GNB,4
+150,Papua New Guinea,AP,25,PNG,5
+150,Paraguay,AM,25,PRY,5
+154,Guinea,AF,24,GIN,7
+154,Kyrgyzstan,EE,24,KGZ,6
+156,Yemen,ME,23,YEM,6
+157,Angola,AF,22,AGO,7
+157,Cambodia,AP,22,KHM,7
+157,Tajikistan,EE,22,TJK,5
+160,Democratic Republic of the Congo,AF,21,COD,5
+160,Laos,AP,21,LAO,3
+160,Libya,ME,21,LBY,6
+163,Equatorial Guinea,AF,20,GNQ,3
+163,Zimbabwe,AF,20,ZWE,8
+165,Burundi,AF,19,BDI,5
+165,Chad,AF,19,TCD,5
+165,Haiti,AM,19,HTI,5
+165,Venezuela,AM,19,VEN,7
+169,Iraq,ME,18,IRQ,4
+170,Turkmenistan,EE,17,TKM,3
+170,Uzbekistan,EE,17,UZB,6
+172,Myanmar,AP,15,MMR,4
+173,Sudan,AF,13,SDN,6
+174,Afghanistan,AP,8,AFG,3
+174,Korea (North),AP,8,PRK,3
+174,Somalia,AF,8,SOM,4
