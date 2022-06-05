@@ -1,4 +1,4 @@
-## The dataset that was required for this category was not available due to a great amont of datas !
+## The dataset that was required was not pushable due to a great amont of datas !
 
 - Download the complete dataset within this link (it requires a Kaggle account thow) :
 https://www.kaggle.com/datasets/rsrishav/youtube-trending-video-dataset/download
