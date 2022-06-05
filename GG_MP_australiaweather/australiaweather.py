@@ -16,7 +16,7 @@ class australiaWeather():
 
     def __init__(self, application = None):
         os.getcwd()
-        df = pd.read_csv('australiaweather/data/stations_mesures.csv', sep=' ', names=['ID', 'lat','long','info','from','to'])
+        df = pd.read_csv('GG_MP_australiaweather/data/stations_mesures.csv', sep=' ', names=['ID', 'lat','long','info','from','to'])
         df = df.drop(columns=['lat','long','info'])
         df = df.groupby('ID', as_index =False).agg({'from' : 'min', 'to' : 'max'})#.sort_values(by=['from','to'], ascending=True)
         
@@ -24,14 +24,14 @@ class australiaWeather():
         
         self.number = len(df.index) - 150
 
-        self.data_inv = pd.read_pickle('australiaweather/data/data_inventory.pkl')
+        self.data_inv = pd.read_pickle('GG_MP_australiaweather/data/data_inventory.pkl')
         
         self.data_colors = {'PRCP':'darkblue', 'DAPR':'red', 'DWPR':'green', 'MDPR':'brown', 'TMAX':'navy', 'TMIN':'crimson', 'DATX':'magenta', 'MDTX':'cyan', 'DATN':'purple', 'MDTN':'gray', 'TAVG':'coral'}
         self.data = {'PRCP':'Precipitation', 'DAPR':'DAPR', 'DWPR':'DWPR', 'MDPR':'MDPR', 'TMAX':'Temperature maximum', 'TMIN':'Temperature minimum', 'DATX':'DATX', 'MDTX':'MDTX', 'DATN':'DATN', 'MDTN':'MDTN', 'TAVG':'Temperature moyenne'}
 
-        self.mesures_by_stations = pd.read_pickle('australiaweather/data/mesures_by_stations.csv')
-        self.price = pd.read_pickle('australiaweather/data/prices.pkl')
-        self.geo_json='data/geo_datas/states.geojson'
+        self.mesures_by_stations = pd.read_pickle('GG_MP_australiaweather/data/mesures_by_stations.csv')
+        self.price = pd.read_pickle('GG_MP_australiaweather/data/prices.pkl')
+        self.geo_json='GG_MP_australiaweather/data/geo_datas/states.geojson'
         self.years = self.mesures_by_stations["date"].unique()
         self.y_start = self.years.min()
         self.y_end = self.years[:-2]
