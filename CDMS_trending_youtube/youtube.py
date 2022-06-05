@@ -56,7 +56,7 @@ def is_korean(word):
 
 class YoutubeTrendsStats():
     def __init__(self, application = None):
-        self.df = pd.read_pickle('./data/df_youtube.pkl')
+        self.df = pd.read_pickle('CDMS_trending_youtube/data/df_youtube.pkl')
         self.figure = self.create_figure(self.df)
         self.other_figure = self.create_figure2(self.df)
 
