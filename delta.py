@@ -7,6 +7,7 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
+from OEJD_decesParArmeAFeu.usamap import usamap
 from MC_AB_consommationEtProductionEnergétique import petrole
 from SG_AH_pollution_des_transports import pollution
 from pbmc_accidents_routiers import pbmc_accidents_routiers as pbmc
@@ -121,6 +122,7 @@ def init():
     crim_edu = criminalite_education.Criminalite_Education(app)
     mvs = movies.MoviesStats(app)
     apb = apb_parcoursup.APB_PARCOURSUP(app)
+    oejd_frm = usamap.Usamap(app)
 
     # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -188,6 +190,7 @@ def init():
                                   dcc.Link(html.Button("Criminalité et Education", style={"width": "100%"}), href="/criminalite-education"),
                                   dcc.Link(html.Button('Rentabilité des films', style={'width':"100%"}), href='/ADHD_Movies'),
                                   dcc.Link( html.Button("APB / Parcoursup", style={"width": "100%"}), href="/ab-wg_apb-parcoursup",),
+                                  dcc.Link(html.Button('Décès par arme à feu', style={'width':"100%"}), href='/OEJD_decesParArmeAFeu'),
                                   html.Br(),
                                   html.Br(),
                                   html.Br(),
@@ -252,9 +255,11 @@ def init():
             return pet.main_layout
         elif pathname == '/salaires':
             return inc.main_layout
+        elif pathname == '/OEJD_decesParArmeAFeu':
+            return oejd_frm.main_layout
         elif pathname == '/pollution':
             return pol.main_layout
-            return dec.main_layout 
+            return dec.main_layout
         elif pathname == '/cancer':
             return cncr.main_layout
         elif pathname == '/music':
