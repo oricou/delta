@@ -13,7 +13,6 @@ from scipy import stats
 from scipy import fft
 import datetime
 import os
-from unidecode import unidecode
 import json
 
 class Brevet():
@@ -85,7 +84,24 @@ class Brevet():
         grandes_villes = habitant_ville[habitant_ville["Population municipale (historique depuis 1876) 2018"] >= 50000]["Libellé"]
 
         # On passe les noms des villes en majuscule et on enlève les accents (ex : Besançon -> BESANCON)
-        grandes_villes = grandes_villes.map(lambda x: unidecode(x).upper())
+        def my_upper(word):
+            normal_map = {'À': 'A', 'Á': 'A', 'Â': 'A', 'Ã': 'A', 'Ä': 'A',
+                          'à': 'a', 'á': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a', 'ª': 'A',
+                          'È': 'E', 'É': 'E', 'Ê': 'E', 'Ë': 'E',
+                          'è': 'e', 'é': 'e', 'ê': 'e', 'ë': 'e',
+                          'Í': 'I', 'Ì': 'I', 'Î': 'I', 'Ï': 'I',
+                          'í': 'i', 'ì': 'i', 'î': 'i', 'ï': 'i',
+                          'Ò': 'O', 'Ó': 'O', 'Ô': 'O', 'Õ': 'O', 'Ö': 'O',
+                          'ò': 'o', 'ó': 'o', 'ô': 'o', 'õ': 'o', 'ö': 'o', 'º': 'O',
+                          'Ù': 'U', 'Ú': 'U', 'Û': 'U', 'Ü': 'U',
+                          'ù': 'u', 'ú': 'u', 'û': 'u', 'ü': 'u',
+                          'Ñ': 'N', 'ñ': 'n',
+                          'Ç': 'C', 'ç': 'c',
+                          '§': 'S',  '³': '3', '²': '2', '¹': '1'}
+            normalize = str.maketrans(normal_map)
+            return word.translate(normalize).upper()
+
+        grandes_villes = grandes_villes.map(lambda x: my_upper(x))
 
         grandes_villes = grandes_villes.to_frame()
 
