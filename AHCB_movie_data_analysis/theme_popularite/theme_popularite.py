@@ -44,7 +44,7 @@ class ThemeAnalysis():
             html.Div('Commencez par cliquer sur une date de votre choix sur le slider. Déplacez la souris sur une bulle pour avoir les graphiques du thème en bas. Utilisez le slider pour choisir l\'année.'), 
 
             html.Div([
-                    html.Div([ dcc.Graph(id='wps-main-graph', animate=True), ], style={'width':'90%', }),
+                    html.Div([ dcc.Graph(id='theme-main-graph', animate=True), ], style={'width':'90%', }),
 
                     html.Div([
                         html.Br(),
@@ -62,7 +62,7 @@ class ThemeAnalysis():
             html.Div([
                 html.Div(
                     dcc.Slider(
-                            id='wps-crossfilter-year-slider',
+                            id='theme-crossfilter-year-slider',
                             min=self.years[0],
                             max=self.years[-1],
                             step = 1,
@@ -77,14 +77,14 @@ class ThemeAnalysis():
                 }),
 
             html.Br(),
-            html.Div(id='wps-div-theme'),
+            html.Div(id='theme-div-theme'),
 
             html.Div([
-                dcc.Graph(id='wps-revenue-time-series', 
+                dcc.Graph(id='theme-revenue-time-series', 
                           style={'width':'33%', 'display':'inline-block'}),
-                dcc.Graph(id='wps-budget-time-series',
+                dcc.Graph(id='theme-budget-time-series',
                           style={'width':'33%', 'display':'inline-block', 'padding-left': '0.5%'}),
-                dcc.Graph(id='wps-moviecount-bar-plot',
+                dcc.Graph(id='theme-moviecount-bar-plot',
                           style={'width':'33%', 'display':'inline-block', 'padding-left': '0.5%'}),
             ], style={ 'display':'flex', 
                        'borderTop': 'thin lightgrey solid',
@@ -109,20 +109,20 @@ class ThemeAnalysis():
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
         self.app.callback(
-            dash.dependencies.Output('wps-main-graph', 'figure'),
-            [dash.dependencies.Input('wps-crossfilter-year-slider', 'value')])(self.update_graph)
+            dash.dependencies.Output('theme-main-graph', 'figure'),
+            [dash.dependencies.Input('theme-crossfilter-year-slider', 'value')])(self.update_graph)
         self.app.callback(
-            dash.dependencies.Output('wps-div-theme', 'children'),
-            dash.dependencies.Input('wps-main-graph', 'hoverData'))(self.theme_chosen)
+            dash.dependencies.Output('theme-div-theme', 'children'),
+            dash.dependencies.Input('theme-main-graph', 'hoverData'))(self.theme_chosen)
         self.app.callback(
-            dash.dependencies.Output('wps-revenue-time-series', 'figure'),
-            [dash.dependencies.Input('wps-main-graph', 'hoverData'),])(self.update_revenue_timeseries)
+            dash.dependencies.Output('theme-revenue-time-series', 'figure'),
+            [dash.dependencies.Input('theme-main-graph', 'hoverData'),])(self.update_revenue_timeseries)
         self.app.callback(
-            dash.dependencies.Output('wps-budget-time-series', 'figure'),
-            [dash.dependencies.Input('wps-main-graph', 'hoverData'),])(self.update_budget_timeseries)
+            dash.dependencies.Output('theme-budget-time-series', 'figure'),
+            [dash.dependencies.Input('theme-main-graph', 'hoverData'),])(self.update_budget_timeseries)
         self.app.callback(
-            dash.dependencies.Output('wps-moviecount-bar-plot', 'figure'),
-            [dash.dependencies.Input('wps-main-graph', 'hoverData'),])(self.update_moviecount_barplot)
+            dash.dependencies.Output('theme-moviecount-bar-plot', 'figure'),
+            [dash.dependencies.Input('theme-main-graph', 'hoverData'),])(self.update_moviecount_barplot)
 
 
     def update_graph(self, year):

@@ -67,11 +67,11 @@ class Producer():
             html.Div([
 
                 html.Div([
-                    dcc.Graph(id='wps-country-movie-pie', 
+                    dcc.Graph(id='prod-country-movie-pie', 
                             style={'width':'33%', 'display':'inline-block'}),
-                    dcc.Graph(id='wps-country-budget-pie',
+                    dcc.Graph(id='prod-country-budget-pie',
                             style={'width':'33%', 'display':'inline-block', 'padding-left': '0.5%'}),
-                    dcc.Graph(id='wps-producer-budget-pie',
+                    dcc.Graph(id='prod-producer-budget-pie',
                             style={'width':'33%', 'display':'inline-block', 'padding-left': '0.5%'}),
                 ], style={ 'display':'flex', 
                         'borderTop': 'thin lightgrey solid',
@@ -86,7 +86,7 @@ class Producer():
                     html.Br(),
                     html.Button(
                         self.START,
-                        id='wps-button-start-stop', 
+                        id='prod-button-start-stop', 
                         style={'display':'inline-block'}
                     ),
                 ], style={'margin-left':'15px', 'width': '7em', 'float':'right'}),
@@ -98,7 +98,7 @@ class Producer():
                  html.Div([
                 html.Div(
                     dcc.Slider(
-                            id='wps-crossfilter-year-slider',
+                            id='prod-crossfilter-year-slider',
                             min=self.years[0],
                             max=self.years[-1],
                             step = 1,
@@ -108,7 +108,7 @@ class Producer():
                     style={'display':'inline-block', 'width':"90%"}
                 ),
                 dcc.Interval(            # fire a callback periodically
-                    id='wps-auto-stepper',
+                    id='prod-auto-stepper',
                     interval=500,       # in milliseconds
                     max_intervals = -1,  # start running
                     n_intervals = 0
@@ -138,26 +138,26 @@ class Producer():
             self.app.layout = self.main_layout
 
         self.app.callback(
-            dash.dependencies.Output('wps-button-start-stop', 'children'),
-            dash.dependencies.Input('wps-button-start-stop', 'n_clicks'),
-            dash.dependencies.State('wps-button-start-stop', 'children'))(self.button_on_click)
+            dash.dependencies.Output('prod-button-start-stop', 'children'),
+            dash.dependencies.Input('prod-button-start-stop', 'n_clicks'),
+            dash.dependencies.State('prod-button-start-stop', 'children'))(self.button_on_click)
         self.app.callback(
-            dash.dependencies.Output('wps-auto-stepper', 'max_interval'),
-            [dash.dependencies.Input('wps-button-start-stop', 'children')])(self.run_movie)
+            dash.dependencies.Output('prod-auto-stepper', 'max_interval'),
+            [dash.dependencies.Input('prod-button-start-stop', 'children')])(self.run_movie)
         self.app.callback(
-            dash.dependencies.Output('wps-crossfilter-year-slider', 'value'),
-            dash.dependencies.Input('wps-auto-stepper', 'n_intervals'),
-            [dash.dependencies.State('wps-crossfilter-year-slider', 'value'),
-             dash.dependencies.State('wps-button-start-stop', 'children')])(self.on_interval)
+            dash.dependencies.Output('prod-crossfilter-year-slider', 'value'),
+            dash.dependencies.Input('prod-auto-stepper', 'n_intervals'),
+            [dash.dependencies.State('prod-crossfilter-year-slider', 'value'),
+             dash.dependencies.State('prod-button-start-stop', 'children')])(self.on_interval)
         self.app.callback(
-            dash.dependencies.Output('wps-country-budget-pie', 'figure'),
-            [dash.dependencies.Input('wps-crossfilter-year-slider', 'value')])(self.update_country_budget_pie)
+            dash.dependencies.Output('prod-country-budget-pie', 'figure'),
+            [dash.dependencies.Input('prod-crossfilter-year-slider', 'value')])(self.update_country_budget_pie)
         self.app.callback(
-            dash.dependencies.Output('wps-country-movie-pie', 'figure'),
-            [dash.dependencies.Input('wps-crossfilter-year-slider', 'value')])(self.update_country_movie_pie)
+            dash.dependencies.Output('prod-country-movie-pie', 'figure'),
+            [dash.dependencies.Input('prod-crossfilter-year-slider', 'value')])(self.update_country_movie_pie)
         self.app.callback(
-            dash.dependencies.Output('wps-producer-budget-pie', 'figure'),
-            [dash.dependencies.Input('wps-crossfilter-year-slider', 'value')])(self.update_producer_budget_pie)
+            dash.dependencies.Output('prod-producer-budget-pie', 'figure'),
+            [dash.dependencies.Input('prod-crossfilter-year-slider', 'value')])(self.update_producer_budget_pie)
 
 
     # graph movie count per country vs years
