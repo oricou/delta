@@ -14,4 +14,3 @@ dash
 gunicorn
 flask
 scipy
-unidecode
