@@ -1,12 +1,7 @@
 import dash
-import json
 from dash import dcc
 from dash import html
-import pandas as pd
-import numpy as np
-import plotly.express as px
-import plotly.graph_objs as go
-from scipy import stats
+import pickle
 
 
 class Criminalite_Education:
@@ -14,65 +9,13 @@ class Criminalite_Education:
 
         # Education
 
-        education_df = pd.read_csv("APAAL_criminalite_education/data/education.csv")
-        suspension_ward = education_df.groupby("ward", as_index=False).mean()
-
-        wards = json.load(open("APAAL_criminalite_education/data/wards.geojson"))
-
-        fig_education = go.Figure(
-            px.choropleth_mapbox(
-                suspension_ward,
-                geojson=wards,
-                locations="ward",
-                featureidkey="properties.ward",
-                color="suspension",
-                color_continuous_scale=["green", "yellow", "red"],
-                mapbox_style="carto-positron",
-                zoom=9,
-                center={
-                    "lat": 41.8375,
-                    "lon": -87.7340,
-                },  # Chicago : 41° 52′ 55″ N, 87° 34′ 40″ O
-                opacity=0.5,
-                labels={"suspension": "Student average suspension (%)"},
-            )
-        )
-
-        fig_education.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
+        with open('APAAL_criminalite_education/data/fig_education.pickle', 'rb') as handle:
+            fig_education = pickle.load(handle)
 
         # Crimes
 
-        crimes_csv = "APAAL_criminalite_education/data/reductedDB_2015-2017.csv"
-        crimes_df = pd.read_csv(crimes_csv, parse_dates=[0])
-
-        ward_count = crimes_df.drop(
-            crimes_df.columns.difference(["Ward", "IUCR"]), axis=1
-        )
-        ward_count = ward_count.groupby(by="Ward", as_index=False).count()
-        ward_count = ward_count.rename(columns={"IUCR": "Nb of crimes"})
-
-        fig_crimes = go.Figure(
-            px.choropleth_mapbox(
-                ward_count,
-                geojson=wards,
-                locations="Ward",
-                featureidkey="properties.ward",
-                color="Nb of crimes",
-                color_continuous_scale=["green", "yellow", "red"],
-                mapbox_style="carto-positron",
-                zoom=9,
-                center={
-                    "lat": 41.8375,
-                    "lon": -87.7340,
-                },  # Chicago : 41° 52′ 55″ N, 87° 34′ 40″ O
-                opacity=0.5,
-                labels={
-                    "Crimes": "Crime repartition between Chicago wards between 2015 and 2017"
-                },
-            )
-        )
-
-        fig_crimes.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
+        with open('APAAL_criminalite_education/data/fig_crimes.pickle', 'rb') as handle:
+            fig_crimes = pickle.load(handle)
 
         self.main_layout = html.Div(
             children=[
