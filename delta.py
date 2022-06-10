@@ -6,6 +6,7 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
+from PBBB_acces_fibre_france import debit
 from MC_AB_consommationEtProductionEnergétique import petrole
 from SG_AH_pollution_des_transports import pollution
 from pbmc_accidents_routiers import pbmc_accidents_routiers as pbmc
@@ -75,6 +76,7 @@ def init():
     server = app.server
     pop = population.WorldPopulationStats(app)
     dec = deces.Deces(app)
+    deb = debit.HautDebit(app)
     nrg = energies.Energies(app)
     pm =  pbmc.Pbmc(app)
     oly = olympics.Olympic(app)
@@ -138,6 +140,7 @@ def init():
     popfr = dash_pop.Population(app)
     # pint = pib.Pib(app)
 
+
     # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
     main_layout = html.Div([
@@ -154,6 +157,7 @@ def init():
                                   dcc.Link(html.Button('Accident Routiers', style={'width':"100%", 'margin':0, 'padding': 0}), href='/accidents_routiers'),
                                   dcc.Link(html.Button('Médailles Olympique', style={'width': "100%"}), href='/olympics'),
                                   dcc.Link(html.Button("Génération d'énergie UE", style={'width':"100%"}), href='/Energy_generation'),
+                                  dcc.Link(html.Button('Haut débit en France', style={'width':"100%"}), href='/haut-debit'),
                                   dcc.Link(html.Button('Utilisation Vélibs', style={'width':"100%"}), href='/EVHB_velib'),
                                   dcc.Link(html.Button('Conception du bonheur', style={'width':"100%"}), href='/bonheur'),
                                   dcc.Link(html.Button('Inégalités de revenus', style={'width':"100%"}), href='/mzgl_inegalites'),
@@ -298,6 +302,8 @@ def init():
             return imp.main_layout
         elif pathname == "/chess":
             return chs.main_layout
+        elif pathname == '/haut-debit':
+            return deb.main_layout
         elif pathname == "/pollution" :
             return pol.main_layout
         elif pathname == '/ybjd_deces_en_france_selon_le_revenu_par_departement':
