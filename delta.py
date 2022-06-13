@@ -60,6 +60,7 @@ from __LeagueOfLegendsChampionsStats import champs_win_rate
 from fwgp_formations import formations as formations_lib
 from APAAL_criminalite_education import criminalite_education
 from ADHD_Movies import movies
+from pgab_accidents import accidents as pgab_accidents
 from ab_wg_apb_parcoursup import apb_parcoursup
 from ARLP_film_success_throughout_years_by_genre_1970_2020 import filmsuccess
 from AMEG_vaccination import AMEG_vaccination
@@ -129,6 +130,7 @@ def init():
     for_sup = formations_lib.Formations(app)
     crim_edu = criminalite_education.Criminalite_Education(app)
     mvs = movies.MoviesStats(app)
+    pgab_acc = pgab_accidents.Accidents(app)
     apb = apb_parcoursup.APB_PARCOURSUP(app)
     filmsuc = filmsuccess.FilmSuccess(app)
     vac = AMEG_vaccination.Vaccinations(app)
@@ -152,6 +154,7 @@ def init():
                                   dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
                                   dcc.Link(html.Button('MDMR_NYPDCallsMeteoNY', style={'width':"100%"}), href='/MDMR_NYPDCallsMeteoNY'),
                                   dcc.Link(html.Button('Accident Routiers', style={'width':"100%", 'margin':0, 'padding': 0}), href='/accidents_routiers'),
+                                  dcc.Link(html.Button('Accidents de la route', style={'width':"100%"}), href='/pgab_accidents'),
                                   dcc.Link(html.Button('Médailles Olympique', style={'width': "100%"}), href='/olympics'),
                                   dcc.Link(html.Button("Génération d'énergie UE", style={'width':"100%"}), href='/Energy_generation'),
                                   dcc.Link(html.Button('Utilisation Vélibs', style={'width':"100%"}), href='/EVHB_velib'),
@@ -256,6 +259,8 @@ def init():
             return dec.main_layout
         elif pathname == '/accidents_routiers':
             return pm.main_layout
+        elif pathname == '/pgab_accidents':
+            return pgab_acc.main_layout
         elif pathname == '/olympics':
             return oly.main_layout
         elif pathname == '/Energy_generation':
