@@ -9,7 +9,8 @@ from bars.get_data_bars import *
 data_bars = init_data_bars()
 data_revenus = init_data_revenus()
 barNumber = init_barNumber()
-departements = json.load(open('./bars/data/departements-version-simplifiee.geojson'))
+departements = json.load(
+    open('./bars/data/departements-version-simplifiee.geojson'))
 data_bars_revenus = init_data_bars_revenus(data_bars, data_revenus)
 
 
@@ -19,7 +20,8 @@ class Bars():
 
         nbBar_revenu_byCp = init_nbBar_revenu_byCp(data_bars_revenus)
         data_bars_revenus_unique = data_bars_revenus.iloc[:, :6].drop_duplicates().merge(
-            nbBar_revenu_byCp[['Postal code', 'Revenu fiscal de référence par foyer fiscal']], on=['Postal code'],
+            nbBar_revenu_byCp[['Postal code', 'Revenu fiscal de référence par foyer fiscal']], on=[
+                'Postal code'],
             how='inner')
         fig_dep_1 = px.choropleth_mapbox(barNumber, geojson=departements,
                                          locations='Département', featureidkey='properties.code',  # join keys
@@ -69,8 +71,10 @@ class Bars():
         fig_conc_revnFisc.update_layout(mapbox_style="carto-darkmatter")
         fig_conc_revnFisc.update_layout(margin=dict(b=0, t=0, l=0, r=0))
 
-        code_postaux_geo = json.load(open('./bars/data/contours-codes-postaux.geojson'))
-        tmp = nbBar_revenu_byCp.drop('Revenu fiscal de référence par foyer fiscal', axis=1)
+        code_postaux_geo = json.load(
+            open('./bars/data/contours-codes-postaux.geojson'))
+        tmp = nbBar_revenu_byCp.drop(
+            'Revenu fiscal de référence par foyer fiscal', axis=1)
         tmp['Revenu par foyer fiscal'] = nbBar_revenu_byCp['Revenu fiscal de référence par foyer fiscal'].round(
             decimals=1)
 
@@ -84,7 +88,8 @@ class Bars():
                                       opacity=0.75,
                                       labels={'prix': 'Nombre de bars'}
                                       )
-        fig_CP.update_layout(mapbox_style="carto-darkmatter", margin={"r": 0, "t": 0, "l": 0, "b": 0})
+        fig_CP.update_layout(mapbox_style="carto-darkmatter",
+                             margin={"r": 0, "t": 0, "l": 0, "b": 0})
 
         mean_by_bar_number = init_mean_by_bar_number(nbBar_revenu_byCp)
         fig_blue_1 = px.histogram(data_frame=mean_by_bar_number, x='Revenu fiscal de référence par foyer fiscal',
@@ -116,7 +121,8 @@ class Bars():
 """),
                 html.Div(
                     [
-                        dcc.Graph(id='fig_concentration', figure=fig_concentration1),
+                        dcc.Graph(id='fig_concentration',
+                                  figure=fig_concentration1),
                         dcc.RadioItems(
                             id='radio_concentration',
                             options=[{'label': 'Concentration des bars en France', 'value': 'graph1'},
@@ -247,7 +253,8 @@ class Bars():
             return fig_blue_7
         else:
             fig_blue_6 = px.line(x=np.arange(len(nbBar_revenu_byCp)),
-                                 y=np.sort(nbBar_revenu_byCp['Revenu fiscal de référence par foyer fiscal']),
+                                 y=np.sort(
+                                     nbBar_revenu_byCp['Revenu fiscal de référence par foyer fiscal']),
                                  log_y=True,
                                  title='Revenu fiscal de référence des %d bars' % len(nbBar_revenu_byCp), labels={
                     "y": "Revenu fiscal de référence par foyer fiscal"})
