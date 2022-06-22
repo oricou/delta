@@ -161,6 +161,7 @@ def make_layout(chess_games: DataFrame):
                 style={"font-weight": "bold"},
             ),
             html.Hr(style={"margin-top": "-14px"}),
+            html.Br(),
             html.Div(
                 html.Div(
                     children=[
@@ -194,8 +195,10 @@ def make_layout(chess_games: DataFrame):
                 id="active_filters",
                 style={"display": "block"},
             ),
+            html.Br(),
             html.Hr(),
-            dcc.Graph(id="graph", style={"margin-top": "-30px"}),
+            html.Br(),
+            dcc.Graph(id="graph"),
             html.Label(["Axe X:"], style={"font-weight": "bold", "text-align": "left"}),
             dcc.Dropdown(
                 options=x_labels,

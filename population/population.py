@@ -158,7 +158,6 @@ class WorldPopulationStats():
              dash.dependencies.Input('wps-crossfilter-xaxis-type', 'value')])(self.update_pop_timeseries)
 
     def update_graph(self, regions, xaxis_type, year):
-        print(f'updating graph with {regions} -- {xaxis_type} -- {year}')
         dfg = self.df.loc[year]
         dfg = dfg[dfg['region'].isin(regions)]
         fig = px.scatter(dfg, x="incomes", y="fertility",

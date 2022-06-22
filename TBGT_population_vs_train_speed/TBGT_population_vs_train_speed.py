@@ -153,12 +153,13 @@ Regardons plus en détail la ligne `Paris - Montpellier` par exemple. On s'apper
         ], style={"display": "inline-block", "width": "40%",
                   "position": "relative", "vertical-align": "top"})
 
-    def __init__(self, application = None):
+    @property
+    def main_layout(self):
         self.train_df = get_train_data()
         self.pop_df = get_population_data()
         self.cities = get_cities()
 
-        self.main_layout = html.Div(children=[
+        return html.Div(children=[
             html.H3(
                 "Évolution de la population des villes françaises "
                 "vis-à-vis du développement des grandes lignes SNCF"
@@ -177,6 +178,7 @@ Regardons plus en détail la ligne `Paris - Montpellier` par exemple. On s'apper
             "padding": "10px 50px 0px 0px",
         })
 
+    def __init__(self, application = None):
         if (application is not None):
             self.app = application
         else:

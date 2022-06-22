@@ -1,0 +1,243 @@
+year;regions;taxes;salary
+2000;Auvergne-Rhône-Alpes;2021;8974
+2000;Bourgogne-Franche-Comté;1797;8167
+2000;Bretagne;1785;7798
+2000;Centre-Val de Loire;1991;8737
+2000;Corse;1692;6837
+2000;Grand Est;1914;8706
+2000;Hauts-de-France;1740;7998
+2000;Ile-de-France;3695;13608
+2000;Normandie;1776;8185
+2000;Nouvelle-Aquitaine;1798;7781
+2000;Occitanie;1780;7515
+2000;Pays de la Loire;1824;8253
+2000;Provence-Alpes-Côte d'Azur;2096;8240
+2000;France métropolitaine;2216;9247
+2000;France métropolitaine hors Ile-de-France;1875;8242
+2000;DOM;626;5439
+2000;Guadeloupe;793;5638
+2000;Martinique;930;6554
+2000;Guyane;719;5053
+2000;La Réunion;466;5576
+2000;Mayotte;74;1768
+2000;France;2168;9146
+2001;Auvergne-Rhône-Alpes;2088;9382
+2001;Bourgogne-Franche-Comté;1866;8522
+2001;Bretagne;1843;8048
+2001;Centre-Val de Loire;2009;9026
+2001;Corse;1754;6946
+2001;Grand Est;1970;9289
+2001;Hauts-de-France;1760;8327
+2001;Ile-de-France;3856;14096
+2001;Normandie;1839;8529
+2001;Nouvelle-Aquitaine;1897;8149
+2001;Occitanie;1838;7833
+2001;Pays de la Loire;1856;8518
+2001;Provence-Alpes-Côte d'Azur;2220;8651
+2001;France métropolitaine;2294;9629
+2001;France métropolitaine hors Ile-de-France;1934;8599
+2001;DOM;650;5675
+2001;Guadeloupe;840;5917
+2001;Martinique;1014;6853
+2001;Guyane;806;5088
+2001;La Réunion;442;5874
+2001;Mayotte;72;1781
+2001;France;2245;9523
+2002;Auvergne-Rhône-Alpes;2083;9698
+2002;Bourgogne-Franche-Comté;1845;8878
+2002;Bretagne;1810;8177
+2002;Centre-Val de Loire;1965;9368
+2002;Corse;1681;7172
+2002;Grand Est;1980;9703
+2002;Hauts-de-France;1741;8649
+2002;Ile-de-France;3791;14638
+2002;Normandie;1812;8852
+2002;Nouvelle-Aquitaine;1853;8439
+2002;Occitanie;1813;8070
+2002;Pays de la Loire;1812;8703
+2002;Provence-Alpes-Côte d'Azur;2199;8943
+2002;France métropolitaine;2265;9971
+2002;France métropolitaine hors Ile-de-France;1912;8895
+2002;DOM;636;5950
+2002;Guadeloupe;779;6205
+2002;Martinique;1025;7368
+2002;Guyane;728;5168
+2002;La Réunion;450;6125
+2002;Mayotte;97;1916
+2002;France;2215;9862
+2003;Auvergne-Rhône-Alpes;2150;9848
+2003;Bourgogne-Franche-Comté;1915;9082
+2003;Bretagne;1874;8283
+2003;Centre-Val de Loire;2035;9579
+2003;Corse;1761;7282
+2003;Grand Est;2055;9877
+2003;Hauts-de-France;1822;8859
+2003;Ile-de-France;3803;14913
+2003;Normandie;1882;9091
+2003;Nouvelle-Aquitaine;1930;8590
+2003;Occitanie;1898;8174
+2003;Pays de la Loire;1892;8834
+2003;Provence-Alpes-Côte d'Azur;2298;9107
+2003;France métropolitaine;2330;10156
+2003;France métropolitaine hors Ile-de-France;1990;9059
+2003;DOM;671;6194
+2003;Guadeloupe;855;6539
+2003;Martinique;1088;7693
+2003;Guyane;696;5073
+2003;La Réunion;481;6402
+2003;Mayotte;81;2131
+2003;France;2279;10047
+2004;Auvergne-Rhône-Alpes;1734;10125
+2004;Bourgogne-Franche-Comté;1623;9369
+2004;Bretagne;1549;8513
+2004;Centre-Val de Loire;1651;9873
+2004;Corse;1418;7528
+2004;Grand Est;1717;10186
+2004;Hauts-de-France;1480;9143
+2004;Ile-de-France;2295;15365
+2004;Normandie;1593;9386
+2004;Nouvelle-Aquitaine;1581;8844
+2004;Occitanie;1523;8372
+2004;Pays de la Loire;1595;9085
+2004;Provence-Alpes-Côte d'Azur;1630;9350
+2004;France métropolitaine;1739;10456
+2004;France métropolitaine hors Ile-de-France;1610;9322
+2004;DOM;520;6407
+2004;Guadeloupe;497;6828
+2004;Martinique;661;7931
+2004;Guyane;442;5050
+2004;La Réunion;572;6649
+2004;Mayotte;99;2341
+2004;France;1703;10343
+2005;Auvergne-Rhône-Alpes;2318;10484
+2005;Bourgogne-Franche-Comté;2069;9612
+2005;Bretagne;2065;9180
+2005;Centre-Val de Loire;2177;10100
+2005;Corse;1985;8099
+2005;Grand Est;2186;10270
+2005;Hauts-de-France;1980;9508
+2005;Ile-de-France;3993;15381
+2005;Normandie;2042;9648
+2005;Nouvelle-Aquitaine;2098;9304
+2005;Occitanie;2080;8977
+2005;Pays de la Loire;2059;9504
+2005;Provence-Alpes-Côte d'Azur;2511;9806
+2005;France métropolitaine;2502;10768
+2005;France métropolitaine hors Ile-de-France;2157;9701
+2005;DOM;748;6606
+2005;Guadeloupe;965;6936
+2005;Martinique;1194;8129
+2005;Guyane;838;5151
+2005;La Réunion;532;6947
+2005;Mayotte;91;2574
+2005;France;2448;10650
+2006;Auvergne-Rhône-Alpes;2407;11038
+2006;Bourgogne-Franche-Comté;2093;9729
+2006;Bretagne;2111;9328
+2006;Centre-Val de Loire;2234;10459
+2006;Corse;2098;8439
+2006;Grand Est;2237;10629
+2006;Hauts-de-France;2030;9800
+2006;Ile-de-France;4144;15962
+2006;Normandie;2086;9983
+2006;Nouvelle-Aquitaine;2176;9682
+2006;Occitanie;2149;9386
+2006;Pays de la Loire;2132;10031
+2006;Provence-Alpes-Côte d'Azur;2587;10049
+2006;France métropolitaine;2582;11168
+2006;France métropolitaine hors Ile-de-France;2221;10061
+2006;DOM;785;6797
+2006;Guadeloupe;1019;7111
+2006;Martinique;1271;8218
+2006;Guyane;811;5122
+2006;La Réunion;575;7277
+2006;Mayotte;85;2830
+2006;France;2526;11049
+2007;Auvergne-Rhône-Alpes;2478;11416
+2007;Bourgogne-Franche-Comté;2151;10321
+2007;Bretagne;2150;9543
+2007;Centre-Val de Loire;2264;10616
+2007;Corse;2132;8826
+2007;Grand Est;2277;10892
+2007;Hauts-de-France;2069;9969
+2007;Ile-de-France;4255;16879
+2007;Normandie;2134;10241
+2007;Nouvelle-Aquitaine;2216;9914
+2007;Occitanie;2197;9681
+2007;Pays de la Loire;2183;10277
+2007;Provence-Alpes-Côte d'Azur;2634;10282
+2007;France métropolitaine;2642;11563
+2007;France métropolitaine hors Ile-de-France;2269;10335
+2007;DOM;896;6895
+2007;Guadeloupe;1173;7371
+2007;Martinique;1551;8251
+2007;Guyane;915;5208
+2007;La Réunion;615;7315
+2007;Mayotte;90;3117
+2007;France;2587;11433
+2008;Auvergne-Rhône-Alpes;2578;11581
+2008;Bourgogne-Franche-Comté;2231;10417
+2008;Bretagne;2271;10104
+2008;Centre-Val de Loire;2385;11097
+2008;Corse;2261;9078
+2008;Grand Est;2381;11013
+2008;Hauts-de-France;2217;10664
+2008;Ile-de-France;4501;17025
+2008;Normandie;2247;10692
+2008;Nouvelle-Aquitaine;2333;10140
+2008;Occitanie;2296;9870
+2008;Pays de la Loire;2297;10683
+2008;Provence-Alpes-Côte d'Azur;2803;10743
+2008;France métropolitaine;2784;11861
+2008;France métropolitaine hors Ile-de-France;2387;10668
+2008;DOM;999;7206
+2008;Guadeloupe;1256;7843
+2008;Martinique;1338;8536
+2008;Guyane;938;5941
+2008;La Réunion;922;7453
+2008;Mayotte;159;3519
+2008;France;2727;11729
+2009;Auvergne-Rhône-Alpes;2484;11422
+2009;Bourgogne-Franche-Comté;2198;10204
+2009;Bretagne;2233;10180
+2009;Centre-Val de Loire;2335;11010
+2009;Corse;2311;9463
+2009;Grand Est;2319;10916
+2009;Hauts-de-France;2158;10491
+2009;Ile-de-France;4138;16982
+2009;Normandie;2205;10627
+2009;Nouvelle-Aquitaine;2280;10068
+2009;Occitanie;2262;9920
+2009;Pays de la Loire;2241;10718
+2009;Provence-Alpes-Côte d'Azur;2766;10886
+2009;France métropolitaine;2672;11809
+2009;France métropolitaine hors Ile-de-France;2333;10613
+2009;DOM;997;7262
+2009;Guadeloupe;1261;8004
+2009;Martinique;1365;8707
+2009;Guyane;897;6134
+2009;La Réunion;921;7418
+2009;Mayotte;152;3482
+2009;France;2619;11680
+2010;Auvergne-Rhône-Alpes;2557;11743
+2010;Bourgogne-Franche-Comté;2233;10409
+2010;Bretagne;2289;10438
+2010;Centre-Val de Loire;2388;11193
+2010;Corse;2402;9768
+2010;Grand Est;2374;11103
+2010;Hauts-de-France;2208;10700
+2010;Ile-de-France;4201;17428
+2010;Normandie;2246;10818
+2010;Nouvelle-Aquitaine;2331;10310
+2010;Occitanie;2326;10119
+2010;Pays de la Loire;2285;10985
+2010;Provence-Alpes-Côte d'Azur;2841;11190
+2010;France métropolitaine;2730;12087
+2010;France métropolitaine hors Ile-de-France;2390;10854
+2010;DOM;849;7640
+2010;Guadeloupe;1215;8660
+2010;Martinique;1317;9588
+2010;Guyane;835;6739
+2010;La Réunion;627;7467
+2010;Mayotte;127;3538
+2010;France;2671;11962
