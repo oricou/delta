@@ -17,7 +17,7 @@ import pbmc_accidents_routiers.data.get_data as dp
 class Pbmc():
     def __init__(self, application = None):
         self.src = 'https://www.data.gouv.fr/fr/datasets/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2020/'
-        self.df = dp.loadData()
+        self.DATA = None
         self.main_layout = html.Div([
             html.H3("Accident routiers en France"),
             html.Div([
@@ -63,11 +63,17 @@ class Pbmc():
                     dash.dependencies.Output('pbmc-scatter', 'figure'),
                     dash.dependencies.Input('scatter-opts', 'value'))(self.show_scatter)
 
+    def load_data(self):
+        if self.DATA is None:
+            self.DATA = dp.loadData()
+        return self.DATA
+
     def show_hist(self, mean):    
+        data = self.load_data()
         fig = px.histogram(    
-            self.df,    
-            x=self.df["Année"],    
-            color =self.df["Catégorie véhicule"],    
+            data,    
+            x = data["Année"],    
+            color = data["Catégorie véhicule"],    
             facet_col = "Type Accident",    
             facet_col_wrap = 3,    
             title="Gravité des accidents en relation avec les catégories des véhicules",
@@ -85,11 +91,11 @@ class Pbmc():
             "léger" : "#00cc96",    
             "mortel" : "#ef553b",    
             "grave non mortel" : "#636efa"    
-        }    
-        data = dp.getMortality(self.df)    
+        }
+        data = self.load_data()
 
         fig2 = px.scatter_3d(    
-             data,    
+             dp.getMortality(data),
              x = 'Année',    
              y = 'Age véhicule',    
              z = 'count',    

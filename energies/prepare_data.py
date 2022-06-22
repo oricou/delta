@@ -63,5 +63,6 @@ electricite = electricite.reindex(bois.index)
 electricite.drop(columns=["1 kWh (contrat 6 kW)", "1 kWh (contrat 12 kW)", "1 kWh (contrat 15 kW)"],
                  inplace=True)
 
-energie = pd.concat([petrole, bois, electricite])
+energie = petrole.join(bois, how='outer').join(electricite, how='outer')
+#energie = pd.concat([petrole, bois, electricite])  # cela devrait faire comme ci-dessus mais j'ai 3 lignes par index...
 energie.to_pickle('data/energies.pkl')

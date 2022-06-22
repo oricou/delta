@@ -8,7 +8,7 @@ import numpy as np
 from dash import dcc
 from dash import html
 import plotly.graph_objects as go
-import postbac.get_data as gd
+from postbac.get_data import load_data
 from plotly.subplots import make_subplots
 
 class PostBac():
@@ -51,8 +51,9 @@ class PostBac():
     On a pu voir dans cette étude que le baccalauréat est encore une épreuve qui sélectionne avant les études supérieures : l'année 2020, année sans baccalauréat classique, a fait augmenter le nombre d'admis mais aussi le pourcentage de candidat sans affectation\n
     Nos graphiques montrent aussi que des inégalités franches subsistent que Parcoursup n'a pas changés : le manque de parité entre filières en est un exemple (bien qu'il soit complexe d'arriver à un 50/50 parfait, il est difficile de comprendre pourquoi certaines filières ont un rapport 90/10) mais la plus grande inégalité est le plafond de verre que subissent les boursiers. Les écoles privées devenant bien trop cher, il est difficile pour un boursier d'y accéder et ils sont relégués à un choix bien plus restreint que les étudiants non boursiers.
     """
+    dataframe = load_data()
     def __init__(self, application = None):
-        self.df = gd.load_data()
+        self.df = PostBac.dataframe
         self.main_layout = html.Div(children=[
             html.H3(children="Evolution des voeux post bac entre 2016 et 2021"),
             html.H5(children='Thomas Chivet et Antoine Vergnaud'),

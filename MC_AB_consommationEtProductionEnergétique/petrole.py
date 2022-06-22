@@ -53,34 +53,28 @@ class Petrole():
             Il est possible de s'aider des dernier graphes montrant qui sont les gros importateurs de pétrole en Europe, et pour chaque pays, d'où vient son approvisionnement."""),
             html.Div([ html.Div('Année ref.'),
                           dcc.Slider(0, len(self.years) -1, 1,
-                               id='year',
+                               id='pet-year',
                                marks={i: str(self.years[i]) for i in range(len(self.years))},
                                value=len(self.years) // 2
                            ),
                            html.Div('Selectionner les pays dont on souhaite stopper les exportations'),
                            dcc.Dropdown(
-                               id='excluded-countries',
+                               id='pet-excluded-countries',
                                options=[{"label":country_code[i], "value": i} for i in self.partners],
                                value=[],
                                multi=True
                            ),
-                           html.P('L\' unité de "OBS_VALUE" est en milliers de tonnes de pétrole.'),
+                           html.P('L\' unité de "OBS_VALUE" est en milliers de tonnes de pétrole par an.'),
                          ], style={'position': 'sticky', 'top': 0, 'zIndex': 1, 'backgroundColor': 'white', 'width': '100%', 'padding':'4em 0px 0px 0px'}), # bas D haut G
             html.Div([
                 html.Div([
-                    html.H2('Importations de pétrole par pays:'),
-                    html.Div([ dcc.Graph(id='import-graph'), ], style={'width': '50em' })]),
-                html.Div([
-                    html.H2('Exportations de pétrole par pays:'),
-                    html.Div([ dcc.Graph(id='export-graph'), ], style={'width': '50em'})])
-            ], style={'display': 'flex', 'justify-content': 'space-between'}),
-            html.Div([
-                html.Div([
-                    html.H2('Consommation de pétrole par pays:'),
-                    html.Div([ dcc.Graph(id='cons-graph'), ], style={'width': '50em' })]),
-                html.Div([
-                    html.H2('Production de pétrole par pays:'),
-                    html.Div([ dcc.Graph(id='prod-graph'), ], style={'width': '50em'})])
+                    html.H2('Differentes cartes informatives sur le pétrole en Europe:'),
+                    dcc.RadioItems(id='pet-graph-choose',
+                            options=['Importations', 'Exportations', 'Consommations', 'Productions'],
+                            value='Importations',
+                            inline=True,
+                            labelStyle={'font-size': '2em'} ),
+                    html.Div([ dcc.Graph(id='pet-graph'), ], style={'width': '100em' })])
             ], style={'display': 'flex', 'justify-content': 'space-between'}),
             html.Div([
                 html.Div([
@@ -88,21 +82,21 @@ class Petrole():
                     html.H4('Exc = production + importation - exportation - consommation '),
                     html.P('Ici nous pouvons voir la balance totale de pétrole de chaque pays européen à une certaine année.'),
                     html.P('Si un pays est dans le rouge, il perd plus de pétrole qu\'il a et donc tourne sur ses réserves.'),
-                    html.Div([ dcc.Graph(id='rel-graph'), ], style={'width': '100em' })])
+                    html.Div([ dcc.Graph(id='pet-rel-graph'), ], style={'width': '100em' })])
             ], style={'display': 'flex', 'justify-content': 'space-between'}),
             html.Div([
                 html.Div([
                     html.H2('Les 10 plus gros exportateurs de pétrole:'),
-                    html.Div([ dcc.Graph(id='big-import-graph'), ], style={'width': '100em' })])
+                    html.Div([ dcc.Graph(id='pet-big-import-graph'), ], style={'width': '100em' })])
             ], style={'display': 'flex', 'justify-content': 'space-between'}),
             html.Div([
                     html.H2('Selectionner le pays dont on souhaite voir d\'où viennent les importations'),
                         dcc.Dropdown(
-                            id='specific-importation-of-country',
+                            id='pet-specific-importation-of-country',
                             options=[{"label":country_code[i], "value": i} for i in self.countries],
                             value='FR'
                            ),
-                    html.Div([ dcc.Graph(id='specific-import-graph'), ], style={'width': '100em' })
+                    html.Div([ dcc.Graph(id='pet-specific-import-graph'), ], style={'width': '100em' })
             ], style={})
         ], style={
             'backgroundColor': 'white',
@@ -116,34 +110,27 @@ class Petrole():
         else:
             self.app = dash.Dash(__name__)
             self.app.layout = self.main_layout
-        
+
         self.app.callback(
-                    dash.dependencies.Output('import-graph', 'figure'),
-                    [dash.dependencies.Input('year', 'value')])(self.update_graph_import)
+                    dash.dependencies.Output('pet-graph', 'figure'),
+                    [dash.dependencies.Input('pet-year', 'value'),
+                    dash.dependencies.Input('pet-excluded-countries', 'value'),
+                    dash.dependencies.Input('pet-graph-choose', 'value')])(self.update_graph_pet)
         self.app.callback(
-                    dash.dependencies.Output('export-graph', 'figure'),
-                    [dash.dependencies.Input('year', 'value'),
-                    dash.dependencies.Input('excluded-countries', 'value')])(self.update_graph_export)
+                    dash.dependencies.Output('pet-rel-graph', 'figure'),
+                    [dash.dependencies.Input('pet-year', 'value'),
+                    dash.dependencies.Input('pet-excluded-countries', 'value')])(self.update_graph_reliability)
         self.app.callback(
-                    dash.dependencies.Output('cons-graph', 'figure'),
-                    [dash.dependencies.Input('year', 'value')])(self.update_graph_cons)
+                    dash.dependencies.Output('pet-big-import-graph', 'figure'),
+                    [dash.dependencies.Input('pet-year', 'value'),
+                    dash.dependencies.Input('pet-excluded-countries', 'value')])(self.update_biggest_importators)
         self.app.callback(
-                    dash.dependencies.Output('prod-graph', 'figure'),
-                    [dash.dependencies.Input('year', 'value')])(self.update_graph_prod)
-        self.app.callback(
-                    dash.dependencies.Output('rel-graph', 'figure'),
-                    [dash.dependencies.Input('year', 'value'),
-                    dash.dependencies.Input('excluded-countries', 'value')])(self.update_graph_reliability)
-        self.app.callback(
-                    dash.dependencies.Output('big-import-graph', 'figure'),
-                    [dash.dependencies.Input('year', 'value'),
-                    dash.dependencies.Input('excluded-countries', 'value')])(self.update_biggest_importators)
-        self.app.callback(
-                    dash.dependencies.Output('specific-import-graph', 'figure'),
-                    [dash.dependencies.Input('year', 'value'),
-                    dash.dependencies.Input('excluded-countries', 'value'),
-                    dash.dependencies.Input('specific-importation-of-country', 'value')])(self.update_importators)
+                    dash.dependencies.Output('pet-specific-import-graph', 'figure'),
+                    [dash.dependencies.Input('pet-year', 'value'),
+                    dash.dependencies.Input('pet-excluded-countries', 'value'),
+                    dash.dependencies.Input('pet-specific-importation-of-country', 'value')])(self.update_importators)
     
+
     def update_graph_import(self, year):
         year = self.years[year]
         df = self.impor[self.impor.TIME_PERIOD == year].groupby("geo")["OBS_VALUE"].sum()
@@ -215,6 +202,16 @@ class Petrole():
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 
         return fig
+
+    def update_graph_pet(self, year, excluded_countries, graph_choose):
+        if graph_choose == "Importations":
+            return self.update_graph_import(year)
+        if graph_choose == "Exportations":
+            return self.update_graph_export(year, excluded_countries)
+        if graph_choose == "Consommations":
+            return self.update_graph_cons(year)
+
+        return self.update_graph_prod(year)
 
     def update_graph_reliability(self, year, excluded_countries):
         year = self.years[year]
