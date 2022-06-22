@@ -29,7 +29,6 @@ from RCNT_sujetTelevise import sujetTelevise
 from ym_jf_energy_mix import energymix
 from afhy_electricite import electricite
 from NINL_Impact_de_lexposition_aux_particules_fines_face_a_celui_de_la_pollution_sur_lesperance_de_vie_en_europe import impact
-from ps_ap_chessgames.src import chess
 from JD_NJ_Etude_de_la_pollution import dash_app_pollution
 from ybjd_deces_en_france_selon_le_revenu_par_departement import ybjd_deces_en_france_selon_le_revenu_par_departement as ybjd
 from TA_MG_SpotifyMusicPopularity import spotify
@@ -89,7 +88,6 @@ def init():
     nrgmix = energymix.EnergyMix(app)
     ele = electricite.Eletricite(app)
     imp = impact.Impact(app)
-    chs = chess.Chess(app)
     pol = dash_app_pollution.PollutionFrancaise(app)
     drd = dec # ybjd.DecesFranceRevenu(app)
     spo = spotify.Spotify(app)
