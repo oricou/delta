@@ -1,0 +1,52 @@
+.graph-div, .graph-div-types {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 90px;
+}
+
+.graph, .graph-types {
+    width: 80%;
+    display: inline-block;
+    border: 2px solid lightgrey;
+    border-radius: 12px;
+    padding: 3px;
+}
+
+.graph-types, .graph-div-types {
+    width: 100%;
+}
+
+.graph-types-general {
+    width: 70%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.graph-types-in-out {
+    width: 30%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#play_pause_button {
+    width: 80%;
+    height: 35px;
+    background-color: #3D9970;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    font-size: 15px;
+}
+
+.graph-types-slider {
+    display: inline-block;
+    width: 90%;
+    vertical-align: top;
+}
+
+.graph-text {
+    text-align: justify;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
