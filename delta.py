@@ -61,6 +61,7 @@ from fwgp_formations import formations as formations_lib
 from APAAL_criminalite_education import criminalite_education
 from ADHD_Movies import movies
 from ab_wg_apb_parcoursup import apb_parcoursup
+from GG_MP_australiaweather import australiaweather
 from ARLP_film_success_throughout_years_by_genre_1970_2020 import filmsuccess
 from AMEG_vaccination import AMEG_vaccination
 from PMPR_WineStats import dataAnalysis
@@ -130,6 +131,7 @@ def init():
     crim_edu = criminalite_education.Criminalite_Education(app)
     mvs = movies.MoviesStats(app)
     apb = apb_parcoursup.APB_PARCOURSUP(app)
+    prr = australiaweather.australiaWeather(app)
     filmsuc = filmsuccess.FilmSuccess(app)
     vac = AMEG_vaccination.Vaccinations(app)
     wine = dataAnalysis.WineStats(app)
@@ -205,6 +207,7 @@ def init():
                                   dcc.Link(html.Button("Criminalité et Education", style={"width": "100%"}), href="/criminalite-education"),
                                   dcc.Link(html.Button('Rentabilité des films', style={'width':"100%"}), href='/ADHD_Movies'),
                                   dcc.Link( html.Button("APB / Parcoursup", style={"width": "100%"}), href="/ab-wg_apb-parcoursup",),
+                                  dcc.Link(html.Button('Précipitation en australie', style={'width':"100%"}), href='/precipitation'),
                                   dcc.Link(html.Button('Succès des films par genre', style={'width':"100%"}), href='/filmsuccess'),
                                   dcc.Link(html.Button('Vaccination COVID-19', style={'width':'100%'}), href='/AMEG_vaccination'),
                                   dcc.Link(html.Button('Vins dans le monde', style={'width':"100%"}), href='/PMPR_WineStats'),
@@ -364,6 +367,8 @@ def init():
             return mvs.main_layout
         elif pathname == "/ab-wg_apb-parcoursup":
             return apb.main_layout
+        elif pathname == '/precipitation':
+            return prr.main_layout
         elif pathname == '/filmsuccess':
             return filmsuc.main_layout
         elif pathname == '/AMEG_vaccination':
