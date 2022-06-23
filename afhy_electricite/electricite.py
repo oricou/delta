@@ -110,7 +110,7 @@ class Eletricite():
                         # Dropdown to select year
                         dcc.Dropdown(
                             list(df_by_year.index),
-                            "2012",
+                            2012,
                             id='year_selection'
                             )
                     ], style={'width': '90px'} ),
@@ -141,7 +141,7 @@ class Eletricite():
                             html.Div('Jour'),
                             dcc.Dropdown(
                                 list(range(1, 32)),
-                                "1",
+                                1,
                                 id='day_start_bar'
                             )
                         ], style={'width': '90px', 'display': 'inline-block', 'margin':"0px 10px 0px 10px"}),
@@ -149,7 +149,7 @@ class Eletricite():
                             html.Div('Mois'),
                             dcc.Dropdown(
                                 list(range(1, 13)),
-                                "1",
+                                1,
                                 id='month_start_bar'
                             )
                         ], style={'width': '90px', 'display': 'inline-block', 'margin':"0px 10px 0px 10px"}),
@@ -157,7 +157,7 @@ class Eletricite():
                             html.Div('Année'),
                             dcc.Dropdown(
                                 list(range(2012, 2021)),
-                                "2012",
+                                2012,
                                 id='year_start_bar'
                             )
                         ], style={'width': '90px', 'display': 'inline-block', 'margin':"0px 10px 0px 10px"})
@@ -169,7 +169,7 @@ class Eletricite():
                             html.Div('Jour'),
                             dcc.Dropdown(
                                 list(range(1, 32)),
-                                "1",
+                                1,
                                 id='day_end_bar'
                             )
                         ], style={'width': '90px', 'display': 'inline-block', 'margin':"0px 10px 0px 10px"}),
@@ -177,7 +177,7 @@ class Eletricite():
                             html.Div('Mois'),
                             dcc.Dropdown(
                                 list(range(13)),
-                                "1",
+                                1,
                                 id='month_end_bar'
                             )
                         ], style={'width': '90px', 'display': 'inline-block', 'margin':"0px 10px 0px 10px"}),
@@ -185,7 +185,7 @@ class Eletricite():
                             html.Div('Année'),
                             dcc.Dropdown(
                                 list(range(2012, 2021)),
-                                "2013",
+                                2013,
                                 id='year_end_bar'
                             )
                         ], style={'width': '90px', 'display': 'inline-block', 'margin':"0px 10px 0px 10px"})
@@ -357,10 +357,10 @@ class Eletricite():
     def update_bar_graph(self, day_start_bar, month_start_bar, year_start_bar, day_end_bar, month_end_bar, year_end_bar):
         df = self.df_full_selected.copy()
         # Define the start date
-        date_start = str(year_start_bar) + '-' + str(month_start_bar) + '-' + str(day_start_bar)
+        date_start = pd.to_datetime(str(year_start_bar) + '-' + str(month_start_bar) + '-' + str(day_start_bar))
 
         # Define the end date
-        date_end = str(year_end_bar) + '-' + str(month_end_bar) + '-' + str(day_end_bar)
+        date_end = pd.to_datetime(str(year_end_bar) + '-' + str(month_end_bar) + '-' + str(day_end_bar))
 
         # Plot the bar graph
         fig = px.bar(df.loc[date_start: date_end].sum(), color=df.columns, text_auto='.2s')

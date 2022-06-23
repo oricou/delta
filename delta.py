@@ -1,5 +1,4 @@
 import re
-#from this import d
 import dash
 import flask
 from dash import dcc
@@ -34,6 +33,7 @@ from ybjd_deces_en_france_selon_le_revenu_par_departement import ybjd_deces_en_f
 from TA_MG_SpotifyMusicPopularity import spotify
 from aa_sc_metacritic import metacritic
 from TBGP_salaires_inflation import app as tbgp_si_lib
+from EFEB_Etude_sur_levolution_des_retards_TGV_depuis_2018 import chart as EFEB_chart, map as EFEB_map
 from jcwg_naissance_deces import naissance_deces
 from YBYB_Analyse_football import football
 from avel_top_100_billboard_usa import top_100_billboard_usa
@@ -57,19 +57,27 @@ from NHAJ_BMO_and_attractive_zone import bmo
 from lptr_radar_accidents import radar_accidents
 from tc_urban import urban
 from __LeagueOfLegendsChampionsStats import champs_win_rate
-from formations import formations as formations_lib
+from fwgp_formations import formations as formations_lib
 from APAAL_criminalite_education import criminalite_education
 from ADHD_Movies import movies
 from ab_wg_apb_parcoursup import apb_parcoursup
 from GG_MP_australiaweather import australiaweather
+from ARLP_film_success_throughout_years_by_genre_1970_2020 import filmsuccess
+from AMEG_vaccination import AMEG_vaccination
+from PMPR_WineStats import dataAnalysis
+from mf_nc_guerre_ukraine import ukraine
+from corporate_impact import corp_impact
+from HH_MT_Etude_population_française import dash_pop
+# from MP_pib import pib
 
 #@profile
 def init():
     app = dash.Dash(__name__,  title="Delta", suppress_callback_exceptions=True) # , external_stylesheets=external_stylesheets)
+    server = app.server
     pop = population.WorldPopulationStats(app)
     dec = deces.Deces(app)
     nrg = energies.Energies(app)
-    pm =  dec # pbmc.Pbmc(app)
+    pm =  pbmc.Pbmc(app)
     oly = olympics.Olympic(app)
     eeg = Energy_generation.EuropeEnergyGeneration(app)
     vel = velib.Velib(app)
@@ -84,14 +92,14 @@ def init():
     pol = pollution.Pollution(app)
     cncr = cancer.Cancer(app)
     mus = Music.Song(app)
-    ine_gini = dec # inequalities.Inequalities(app)
+    ine_gini = inequalities.Inequalities(app)
     suj = sujetTelevise.TvSubject(app)
     nrgmix = energymix.EnergyMix(app)
     ele = electricite.Eletricite(app)
     imp = impact.Impact(app)
     chs = chess.Chess(app)
     pol = dash_app_pollution.PollutionFrancaise(app)
-    drd = dec # ybjd.DecesFranceRevenu(app)
+    drd = ybjd.DecesFranceRevenu(app)
     spo = spotify.Spotify(app)
     meta = metacritic.Metacritic(app)
     tbgp_si = tbgp_si_lib.SalaryInflation(app)
@@ -99,7 +107,7 @@ def init():
     foot = football.Football(app)
     billboard = top_100_billboard_usa.Top100BillboardUSA(app)
     meteor = abih.Abih(app)
-    tbgt = tbgt_lib.TBGT(app)
+    tbgt = dec # tbgt_lib.TBGT(app)
     psb = postbac.PostBac(app)
     pres = presidentielle.Presidentielles(app)
     md = md_lib.Mariage(app)
@@ -107,6 +115,7 @@ def init():
     obcal = obesity_calories.Obesity_calories(app)
     ana = deathanalysis.DeathAnalysis(app)
     ani = ac.Animal(app)
+    tgv1 = EFEB_chart.Chart(app)
     acc = accidents.Accidents(app)
     par = parrainage.Parrainage(app)
     rgpd = RGPD.RGPD(app)
@@ -114,27 +123,34 @@ def init():
     comp = companies.FrenchCompaniesStats(app)
     covid = covid_basics.CovidBasics(app)
     elcVgaz = electricityVSgaz.Stats(app)
-    bmo_ = bmo.Bmo(app)
+    bmo_ = dec # bmo.Bmo(app)
     rd_acc = radar_accidents.Radar_Accidents(app)
     urb = urban.UrbanPolutionStats(app)
     lol = champs_win_rate.ChampWinRate(app)
-    formations = formations_lib.Formations(app)
+    for_sup = formations_lib.Formations(app)
     crim_edu = criminalite_education.Criminalite_Education(app)
     mvs = movies.MoviesStats(app)
     apb = apb_parcoursup.APB_PARCOURSUP(app)
     prr = australiaweather.australiaWeather(app)
+    filmsuc = filmsuccess.FilmSuccess(app)
+    vac = AMEG_vaccination.Vaccinations(app)
+    wine = dataAnalysis.WineStats(app)
+    ukr = ukraine.Ukraine(app)
+    c_i = corp_impact.CorporateImpact(app)
+    popfr = dash_pop.Population(app)
+    # pint = pib.Pib(app)
 
     # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
     main_layout = html.Div([
         html.Div(className = "row",
-                 children=[
+                 children=[ 
                      dcc.Location(id='url', refresh=False),
                      html.Div(className="two columns",
                               children = [
                                   html.Center(html.H2("Δelta δata")),
                                   dcc.Link(html.Button("Prix d'énergies", style={'width':"100%"}), href='/energies'),
-                                  dcc.Link(html.Button('Natalité vs revenus', style={'width':"100%"}), href='/pop'),
+                                  dcc.Link(html.Button('Natalité vs revenus', style={'width':"100%"}), href='/population'),
                                   dcc.Link(html.Button('Décès journaliers', style={'width':"100%"}), href='/deces'),
                                   dcc.Link(html.Button('MDMR_NYPDCallsMeteoNY', style={'width':"100%"}), href='/MDMR_NYPDCallsMeteoNY'),
                                   dcc.Link(html.Button('Accident Routiers', style={'width':"100%", 'margin':0, 'padding': 0}), href='/accidents_routiers'),
@@ -142,7 +158,7 @@ def init():
                                   dcc.Link(html.Button("Génération d'énergie UE", style={'width':"100%"}), href='/Energy_generation'),
                                   dcc.Link(html.Button('Utilisation Vélibs', style={'width':"100%"}), href='/EVHB_velib'),
                                   dcc.Link(html.Button('Conception du bonheur', style={'width':"100%"}), href='/bonheur'),
-                                  dcc.Link(html.Button('Inégalités de revenus', style={'width':"100%"}), href='/inegalites'),
+                                  dcc.Link(html.Button('Inégalités de revenus', style={'width':"100%"}), href='/mzgl_inegalites'),
                                   dcc.Link(html.Button('Politique et Environnement', style={'width':"100%"}), href='/ALVS_Greenhouse_gas_and_Environmental_Policy_in_Europe'),
                                   dcc.Link(html.Button('Polutions/Pétroles', style={'width':"100%"}), href='/pollution'),
                                   dcc.Link(html.Button('Global Warming', style={'width':"100%"}), href='/global_warming'),
@@ -167,8 +183,9 @@ def init():
                                   dcc.Link(html.Button("Football Classement, Age, €", style={'width':"100%"}), href='/football'),
                                   dcc.Link(html.Button('Top 100 Billboard USA', style={'width':"100%"}), href='/usa_billboard'),
                                   dcc.Link(html.Button('Les météorites', style={'width':"100%"}), href='/meteor'),
+                                  dcc.Link(html.Button("Retards des TGVs depuis 2018", style={"width": "100%"}), href="/efeb_tgv_1",),
                                   dcc.Link(html.Button('Population vs Grandes Lignes', style={'width':"100%", 'margin':0, 'padding': 0}), href='/population_vs_train_speed'),
-                                  dcc.Link(html.Button('Education test', style={'width':"100%"}), href='/postbac'),
+                                  dcc.Link(html.Button('Postbac', style={'width':"100%"}), href='/postbac'),
                                   dcc.Link( html.Button('Présidentielle', style={'width': "100%", 'margin-bottom': '5px'}), href='/presidentielle'),
                                   dcc.Link(html.Button('Mariages', style={'width':"100%"}), href='/EC_DC_Evolution_des_Mariages_en_France'),
                                   dcc.Link(html.Button('Popularité vs sensibilité', style={'width':"100%"}), href='/netflix'),
@@ -186,12 +203,18 @@ def init():
                                   dcc.Link(html.Button('Radars vs accidents', style={'width':"100%"}), href='/radar_accidents'),
                                   dcc.Link(html.Button('CO₂ vs Urbanisation', style={'width':"100%"}), href='/tc_urban'),
                                   dcc.Link(html.Button('League Of Legends Statistics', style={'width': "100%"}), href='/lol'),
-                                  dcc.Link(html.Button('Formations supérieur', style={'width': "100%"}), href='/formations'),
+                                  dcc.Link(html.Button('Parité formations sup', style={'width': "100%"}), href='/formations'),
                                   dcc.Link(html.Button("Criminalité et Education", style={"width": "100%"}), href="/criminalite-education"),
                                   dcc.Link(html.Button('Rentabilité des films', style={'width':"100%"}), href='/ADHD_Movies'),
                                   dcc.Link( html.Button("APB / Parcoursup", style={"width": "100%"}), href="/ab-wg_apb-parcoursup",),
                                   dcc.Link(html.Button('Précipitation en australie', style={'width':"100%"}), href='/precipitation'),
-
+                                  dcc.Link(html.Button('Succès des films par genre', style={'width':"100%"}), href='/filmsuccess'),
+                                  dcc.Link(html.Button('Vaccination COVID-19', style={'width':'100%'}), href='/AMEG_vaccination'),
+                                  dcc.Link(html.Button('Vins dans le monde', style={'width':"100%"}), href='/PMPR_WineStats'),
+                                  dcc.Link(html.Button('Ukraine', style={'width':"100%"}), href='/ukraine'),
+                                  dcc.Link(html.Button('Corporate Envt Impact', style={'width':"100%"}), href='/corp_impact'),
+                                  dcc.Link(html.Button('Population Française', style={'width':"100%"}), href='/popfr'),
+                                  # dcc.Link(html.Button('Accès à Internet vs PIB', style={'width':"100%"}), href='/pib'),
                                   html.Br(),
                                   html.Br(),
                                   html.Br(),
@@ -201,6 +224,8 @@ def init():
                 ]),
     ])
 
+    # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
     home_page = html.Div([
         html.Br(),
         html.Br(),
@@ -208,9 +233,11 @@ def init():
         html.Br(),
         dcc.Markdown("Choisissez le jeu de données dans l'index à gauche."),
     ])
+
     to_be_done_page = html.Div([
         dcc.Markdown("404 -- Désolé cette page n'est pas disponible."),
     ])
+
     app.layout = main_layout
 
     # "complete" layout (not sure that I need that)
@@ -226,7 +253,7 @@ def init():
     def display_page(pathname):
         if pathname == '/energies':
             return nrg.main_layout
-        elif pathname == '/pop':
+        elif pathname == '/population':
             return pop.main_layout
         elif pathname == '/deces':
             return dec.main_layout
@@ -258,7 +285,6 @@ def init():
             return inc.main_layout
         elif pathname == '/pollution':
             return pol.main_layout
-            return dec.main_layout 
         elif pathname == '/cancer':
             return cncr.main_layout
         elif pathname == '/music':
@@ -315,6 +341,8 @@ def init():
             return par.main_layout
         elif pathname == '/rgpd':
             return rgpd.main_layout
+        elif pathname == '/efeb_tgv_1':
+            return tgv1.main_layout
         elif pathname == '/bars':
            return bar.main_layout
         elif pathname == '/companies':
@@ -332,7 +360,7 @@ def init():
         elif pathname == '/lol':
             return lol.main_layout
         elif pathname == '/formations':
-            return formations.main_layout
+            return for_sup.main_layout
         elif pathname == "/criminalite-education":
             return crim_edu.main_layout
         elif pathname == '/ADHD_Movies':
@@ -341,9 +369,24 @@ def init():
             return apb.main_layout
         elif pathname == '/precipitation':
             return prr.main_layout
+        elif pathname == '/filmsuccess':
+            return filmsuc.main_layout
+        elif pathname == '/AMEG_vaccination':
+            return vac.main_layout
+        elif pathname == '/PMPR_WineStats':
+            return wine.main_layout
+        elif pathname == '/ukraine':
+            return ukr.main_layout
+        elif pathname == '/corp_impact':
+            return c_i.main_layout
+        elif pathname == '/popfr':
+            return popfr.main_layout    
+        # elif pathname == "/pib":
+        #     return pint.main_layout
         else:
             return home_page
     return app
+    
 
 app = init()
 server = app.server

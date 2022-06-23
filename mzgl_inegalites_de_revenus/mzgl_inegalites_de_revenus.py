@@ -6,9 +6,9 @@ import plotly.express as px
 import mzgl_inegalites_de_revenus.get_data as gd
 
 # List all percentile to extract in the ine_df
-list_yaxis = [f"p{i}p{i+1}" for i in range(0, 100)]
+mzgl_list_yaxis = [f"p{i}p{i+1}" for i in range(0, 100)]
 # Markers of the years slider
-str_year_slider = {str(y): str(y) for y in range(1995, 2021, 5)}
+mzgl_str_year_slider = {str(y): str(y) for y in range(1995, 2021, 5)}
 
 
 def gini(array):
@@ -50,7 +50,7 @@ class Inegalites_de_revenus:
         # Calculate all Gini coefficient only one time
         self.ine_df = self.ine_df.join(
             (
-                self.ine_df[self.ine_df.index.isin(list_yaxis, level="Percentile")]
+                self.ine_df[self.ine_df.index.isin(mzgl_list_yaxis, level="Percentile")]
                 .groupby(level=[0, 2])["value"]
                 .agg([gini])
             ),
@@ -72,16 +72,18 @@ class Inegalites_de_revenus:
                             children=[
                                 html.Center(
                                     [
-                                        html.H4([], id="title-main-graph"),
-                                        html.Div([dcc.Graph(id="main-graph")]),
+                                        html.H4([], id="mzgl-title-main-graph"),
+                                        html.Div([dcc.Graph(id="mzgl-main-graph")]),
                                         html.Br(),
                                         html.Div(
                                             [
                                                 dcc.Slider(
-                                                    id="Year-Slider", step=1, value=1995
+                                                    id="mzgl-Year-Slider",
+                                                    step=1,
+                                                    value=1995,
                                                 ),
                                                 dcc.Interval(  # fire a callback periodically
-                                                    id="ine-auto-stepper",
+                                                    id="mzgl-ine-auto-stepper",
                                                     interval=1500,  # in milliseconds
                                                     max_intervals=-1,  # start running
                                                     n_intervals=0,
@@ -89,18 +91,18 @@ class Inegalites_de_revenus:
                                             ]
                                         ),
                                         html.Br(),
-                                        html.Div(id="div-country"),
+                                        html.Div(id="mzgl-div-country"),
                                         html.Div(
                                             children=[
                                                 dcc.Graph(
-                                                    id="left-graph",
+                                                    id="mzgl-left-graph",
                                                     style={
                                                         "width": "49.5%",
                                                         "display": "inline-block",
                                                     },
                                                 ),
                                                 dcc.Graph(
-                                                    id="right-graph",
+                                                    id="mzgl-right-graph",
                                                     style={
                                                         "width": "50%",
                                                         "display": "inline-block",
@@ -151,7 +153,7 @@ class Inegalites_de_revenus:
                             children=[
                                 html.Div("Indicateurs en ordonnée"),
                                 dcc.RadioItems(
-                                    id="select-Y",
+                                    id="mzgl-select-Y",
                                     options=[
                                         {
                                             "label": "1% les plus riches",
@@ -180,7 +182,7 @@ class Inegalites_de_revenus:
                                 html.Br(),
                                 html.Div("Indicateurs en abscisse"),
                                 dcc.RadioItems(
-                                    id="select-X",
+                                    id="mzgl-select-X",
                                     options=[
                                         {
                                             "label": "Indice de corruption",
@@ -203,7 +205,7 @@ class Inegalites_de_revenus:
                                 html.Div(
                                     [
                                         dcc.Checklist(
-                                            id="checklist-continent",
+                                            id="mzgl-checklist-continent",
                                             options=[
                                                 {"label": i, "value": i}
                                                 for i in sorted(
@@ -217,7 +219,7 @@ class Inegalites_de_revenus:
                                 ),
                                 html.Button(
                                     self.START,
-                                    id="ine-button-start-stop",
+                                    id="mzgl-ine-button-start-stop",
                                     style={"display": "inline-block"},
                                 ),
                             ],
@@ -237,64 +239,64 @@ class Inegalites_de_revenus:
 
         self.app.callback(
             [
-                dash.dependencies.Output("Year-Slider", "min"),
-                dash.dependencies.Output("Year-Slider", "max"),
-                dash.dependencies.Output("Year-Slider", "value"),
-                dash.dependencies.Output("Year-Slider", "marks"),
+                dash.dependencies.Output("mzgl-Year-Slider", "min"),
+                dash.dependencies.Output("mzgl-Year-Slider", "max"),
+                dash.dependencies.Output("mzgl-Year-Slider", "value"),
+                dash.dependencies.Output("mzgl-Year-Slider", "marks"),
             ],
             [
-                dash.dependencies.Input("select-X", "value"),
-                dash.dependencies.Input("ine-auto-stepper", "n_intervals"),
+                dash.dependencies.Input("mzgl-select-X", "value"),
+                dash.dependencies.Input("mzgl-ine-auto-stepper", "n_intervals"),
             ],
             [
-                dash.dependencies.State("Year-Slider", "value"),
-                dash.dependencies.State("ine-button-start-stop", "children"),
+                dash.dependencies.State("mzgl-Year-Slider", "value"),
+                dash.dependencies.State("mzgl-ine-button-start-stop", "children"),
             ],
         )(self.update_year_slider)
         self.app.callback(
-            dash.dependencies.Output("main-graph", "figure"),
+            dash.dependencies.Output("mzgl-main-graph", "figure"),
             [
-                dash.dependencies.Input("select-Y", "value"),
-                dash.dependencies.Input("select-X", "value"),
-                dash.dependencies.Input("Year-Slider", "value"),
-                dash.dependencies.Input("checklist-continent", "value"),
+                dash.dependencies.Input("mzgl-select-Y", "value"),
+                dash.dependencies.Input("mzgl-select-X", "value"),
+                dash.dependencies.Input("mzgl-Year-Slider", "value"),
+                dash.dependencies.Input("mzgl-checklist-continent", "value"),
             ],
         )(self.update_main_graph)
         self.app.callback(
-            dash.dependencies.Output("title-main-graph", "children"),
+            dash.dependencies.Output("mzgl-title-main-graph", "children"),
             [
-                dash.dependencies.Input("select-Y", "value"),
-                dash.dependencies.Input("select-X", "value"),
+                dash.dependencies.Input("mzgl-select-Y", "value"),
+                dash.dependencies.Input("mzgl-select-X", "value"),
             ],
         )(self.update_title)
         self.app.callback(
-            dash.dependencies.Output("div-country", "children"),
-            dash.dependencies.Input("main-graph", "hoverData"),
+            dash.dependencies.Output("mzgl-div-country", "children"),
+            dash.dependencies.Input("mzgl-main-graph", "hoverData"),
         )(self.get_country)
         self.app.callback(
-            dash.dependencies.Output("left-graph", "figure"),
+            dash.dependencies.Output("mzgl-left-graph", "figure"),
             [
-                dash.dependencies.Input("main-graph", "hoverData"),
-                dash.dependencies.Input("Year-Slider", "value"),
-                dash.dependencies.Input("select-Y", "value"),
+                dash.dependencies.Input("mzgl-main-graph", "hoverData"),
+                dash.dependencies.Input("mzgl-Year-Slider", "value"),
+                dash.dependencies.Input("mzgl-select-Y", "value"),
             ],
         )(self.create_left_graph)
         self.app.callback(
-            dash.dependencies.Output("right-graph", "figure"),
+            dash.dependencies.Output("mzgl-right-graph", "figure"),
             [
-                dash.dependencies.Input("main-graph", "hoverData"),
-                dash.dependencies.Input("select-X", "value"),
+                dash.dependencies.Input("mzgl-main-graph", "hoverData"),
+                dash.dependencies.Input("mzgl-select-X", "value"),
             ],
         )(self.create_right_graph)
         self.app.callback(
-            dash.dependencies.Output("ine-button-start-stop", "children"),
-            dash.dependencies.Input("ine-button-start-stop", "n_clicks"),
-            dash.dependencies.State("ine-button-start-stop", "children"),
+            dash.dependencies.Output("mzgl-ine-button-start-stop", "children"),
+            dash.dependencies.Input("mzgl-ine-button-start-stop", "n_clicks"),
+            dash.dependencies.State("mzgl-ine-button-start-stop", "children"),
         )(self.button_on_click)
         # this one is triggered by the previous one because we cannot have 2 outputs for the same callback
         self.app.callback(
-            dash.dependencies.Output("ine-auto-stepper", "max_interval"),
-            [dash.dependencies.Input("ine-button-start-stop", "children")],
+            dash.dependencies.Output("mzgl-ine-auto-stepper", "max_interval"),
+            [dash.dependencies.Input("mzgl-ine-button-start-stop", "children")],
         )(self.run_movie)
 
     def update_title(self, yaxis, xaxis):
@@ -385,7 +387,7 @@ class Inegalites_de_revenus:
         if yaxis != "G":
             return self.yaxis_graph(code, yaxis)
         tmp = self.ine_df.reset_index(level=1).sort_index().loc[(code, year), :]
-        tmp = tmp[tmp["Percentile"].isin(list_yaxis)]
+        tmp = tmp[tmp["Percentile"].isin(mzgl_list_yaxis)]
         cumsum = list(np.cumsum(np.sort(tmp["value"].array)) * 100)
         cumsum[-1] = 100
         data = [
@@ -521,13 +523,13 @@ class Inegalites_de_revenus:
                     1995,
                     2020,
                     1995,
-                    str_year_slider,
+                    mzgl_str_year_slider,
                 )
             return (
                 1995,
                 2020,
                 year + is_running,
-                str_year_slider,
+                mzgl_str_year_slider,
             )
         years = x_axis_df.reset_index()["Year"]
         min_year, max_year = years.min(), years.max()

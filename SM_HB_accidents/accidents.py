@@ -25,7 +25,7 @@ class Accidents():
 
         self.main_layout = html.Div([
             html.H3(children=['Contextualisation des accidents de la route']),
-            html.Div([dcc.Graph(id='accidents-main-graph')], style={'width':'100%'}),
+            html.Div([dcc.Graph(id='main-graph_SMHB')], style={'width':'100%'}),
             html.Div([
                 dcc.RadioItems(id='line-to-histo',
                     options= [
@@ -99,7 +99,7 @@ class Accidents():
             self.app.layout = self.main_layout
 
         self.app.callback(
-                dependencies.Output('accidents-main-graph', 'figure'),
+                dependencies.Output('main-graph_SMHB', 'figure'),
                 [ dependencies.Input('line-to-histo', 'value'),
                     dependencies.Input('cat-changer', 'value'),
                     ])(self.histo_line_callback)

@@ -1,19 +1,23 @@
 import dash
-from matplotlib.pyplot import legend, title
+import os
 import numpy as np
 import pandas as pd
-import plotly.graph_objs as go
 import plotly.express as px
+import plotly.graph_objs as go
 
+from .get_data import extract_data
 from dash import dcc, html
-from .data.get_data import extract_data
 
 class Inequalities():
     START = 'Start'
     STOP  = 'Stop'
 
     def __init__(self, application = None):
-        self.df = extract_data()
+        # Regenerate data if needed
+        if not os.path.exists('./ARPA_inequality_per_political_party/data/inequalities.pkl'):
+            extract_data()
+
+        self.df = pd.read_pickle('./ARPA_inequality_per_political_party/data/inequalities.pkl')
         self.color = {'Gauche': 'indianred', 'Centre': 'goldenrod', 'Droite': 'darkcyan'}
         self.years = self.df.year.unique()
         self.offset = 0.025
@@ -261,7 +265,7 @@ class Inequalities():
 
         # Update graph display
         fig.update_layout(
-            title="<b>Courbe d'évolution du coefficient de Gini selon l'année, coloré en fonction des partis",
+            title="<b>Evolution du coefficient de Gini selon l'année et les partis politiques",
             title_x=0.0,
             margin={"r":110,"t":60,"l":30,"b":80},
             hovermode='closest',

@@ -68,3 +68,4 @@ def load_data():
     
     dataframe = remove_useless_column(dataframe)
     return dataframe
+
