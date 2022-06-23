@@ -24,12 +24,12 @@ def get_data():
         salaire = pd.read_excel(Excel_salaire, 'DEP').rename(columns = {
             "Ménages fiscaux et revenu disponible en 2019 : comparaisons départementales": "Numéro département",
             'Unnamed: 1' : 'Département',
-            'Unnamed: 2' : 'Nombre de ménages fiscaux',
-            'Unnamed: 3' : 'Ménages fiscaux imposés (en %)',
             'Unnamed: 4' : 'Revenu médian'
         }).dropna().rename(index = {
             'M': 'Total'
         }).drop(columns=[
+            'Unnamed: 2',
+            'Unnamed: 3',
             'Unnamed: 5',
             'Unnamed: 6'
         ])
@@ -44,7 +44,7 @@ def get_data():
             "Unnamed: 4",
             "Unnamed: 5",
             "Unnamed: 6",
-"Unnamed: 8",
+            "Unnamed: 8",
             "Unnamed: 9",
             "Unnamed: 10",
             "Unnamed: 11",
@@ -68,7 +68,7 @@ def get_data():
 
         temp = pd.merge(population, mort_france, how = 'left', on = 'Numéro département')
         tot = pd.merge(temp, salaire, how = 'left', on='Numéro département')
-        tot = tot[['Numéro département', 'Département', 'Population', 'Nombre de morts', 'Nombre de ménages fiscaux', 'Ménages fiscaux imposés (en %)', 'Revenu médian']]
+        tot = tot[['Numéro département', 'Population', 'Nombre de morts', 'Revenu médian']]
 
 
         list = []
@@ -78,15 +78,15 @@ def get_data():
 
         list = []
         for i in range(0, 97):
-            list.append(tot.iat[i, 6] / tot.iat[i, 3])
+            list.append(tot.iat[i, 4] / tot.iat[i, 3])
         tot['Revenu/Nombre de morts'] = list
 
         list = []
         for i in range(0, 97):
-            list.append(int(tot.iat[i, 6] / tot.iat[i, 7]))
+            list.append(int(tot.iat[i, 4] / tot.iat[i, 5]))
         tot['Revenu/Pourcentage de morts'] = list
 
-        tot = tot[['Numéro département', 'Département', 'Population', 'Nombre de morts', 'Pourcentage de morts', 'Nombre de ménages fiscaux', 'Ménages fiscaux imposés (en %)', 'Revenu médian', 'Revenu/Nombre de morts', 'Revenu/Pourcentage de morts']]
+        tot = tot[['Numéro département', 'Revenu/Nombre de morts', 'Revenu/Pourcentage de morts']]
 
         return tot
 

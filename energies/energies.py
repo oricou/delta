@@ -20,7 +20,7 @@ class Energies():
             "Un litre de super sans plomb 98": [1, 'Essence','red'], "Un litre de gazole": [1, 'Gazole','gray'],
             "Un litre de GPLc": [1, 'GPL','lightgreen'], "1 kWh (contrat 3 kW)": [1, 'Electricité','pink'],
             "1 kWh (contrat 9 kW)": [1, 'Electricité','magenta'],
-            "Une tonne de granulés de bois en vrac": [1000 * 4.8, 'Bois', 'brown'],
+            "Une tonne de granulés de bois en vrac": [1000, 'Bois', 'brown'],
             "100 kWh PCI de bois en vrac": [100, 'Electricité','tan']}
 
     densité = {'Essence': 0.75, 'Gazole': 0.85, 'Fioul': 0.85, 'GPL': 0.55}  # kg / l
@@ -133,7 +133,9 @@ class Energies():
                     df[c] = df[c] / (Energies.quoi[c][0] * Energies.calor[alias])
         else:
             df = self.petrole.copy()
-            df /= df.loc[f"{year}-{month}-15"]
+            df.loc[f"{year}-{month}-15"]
+            cols = df.loc[f"{year}-{month}-15"].dropna().index
+            df = df[cols] / df.loc[f"{year}-{month}-15", cols]
         fig = px.line(df[df.columns[0]], template='plotly_white', color_discrete_sequence=[self.quoi[df.columns[0]][2]])
         for i,c in enumerate(df.columns[1:]):
             fig.add_scatter(x=df.index, y=df[c], mode='lines', name=c, text=c, hoverinfo='x+y+text',

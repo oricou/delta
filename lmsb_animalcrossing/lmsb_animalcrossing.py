@@ -132,7 +132,7 @@ class Animal():
         self.onglet = 'POISSON'
         self.pie_chart_colors = ['#C4DDFF', '#7FB5FF', '#001D6E', '#FEE2C5']
         self.df = pd.read_csv('lmsb_animalcrossing/data/fish.csv')
-        
+
         self.df['Where/How'] = self.df['Where/How'].map({
                                         'River (clifftop)' : 'River',
                                         'River (mouth)' : 'River',
@@ -271,7 +271,7 @@ class Animal():
                     style={'width' : '50%'}
                     ),
                     html.Div([
-                        dash_table.DataTable(id='tableau_poisson')], 
+                        dash_table.DataTable(id='tableau_poisson')],
                     style={'width'
                         :'50%'}
                     )
@@ -339,7 +339,6 @@ class Animal():
 
     def difficulty(self, btn1, btn2):
         changed_id = [p['prop_id'] for p in callback_context.triggered][0]
-        print(changed_id)
         fish = self.df
         mean = []
         list_difficulty = ["Very Easy", "Easy", "Medium", "Hard", "Very Hard"]
@@ -348,7 +347,6 @@ class Animal():
             mask = fish['Catch Difficulty'] == i
             filtered_fish = fish[mask]
             mean.append(int(filtered_fish["Sell"].mean()))
-        print(mean)
         trace1 = go.Scatter(
         x = list_difficulty,
         y = mean,
@@ -390,7 +388,7 @@ class Animal():
             mask = fish['Vision'] == i
             filtered_fish = fish[mask]
             mean_vision.append(int(filtered_fish["Sell"].mean()))
-        
+
         trace3 = go.Scatter(
             x = list_vision,
             y = mean_vision,
@@ -477,12 +475,12 @@ class Animal():
                 "data": [{"type" : "bar",
                             "x" : list_month,
                             "y" : res}],
-                "layout": 
+                "layout":
                 {
                     'colorway' : self.trace_color,
-                    "title": 
+                    "title":
                     {
-                        'font': 
+                        'font':
                         {
                             'color' : self.title_color,
                             'size' : '18px',
@@ -510,11 +508,11 @@ class Animal():
                 "data": [{"type" : "bar",
                             "x" : list_month,
                             "y" : res}],
-                "layout": 
+                "layout":
                 {
-                    "title": 
+                    "title":
                     {
-                        'font': 
+                        'font':
                         {
                             'color' : self.title_color,
                             'size' : '18px',
@@ -559,7 +557,7 @@ class Animal():
         fig = go.Figure(data=[go.Pie(labels=lieux, values=res, hole=.2)])
         fig.update_traces(textinfo='value', textfont_size=20,
                 marker=dict(colors= self.pie_chart_colors, line=dict(color='#000000', width=2)))
-        fig.update_layout(clickmode='event+select') 
+        fig.update_layout(clickmode='event+select')
 
         return fig
 
