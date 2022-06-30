@@ -4,6 +4,7 @@ import flask
 from dash import dcc
 from dash import html
 from energies import energies
+from alcool import alcool
 from population import population
 from deces import deces
 from MC_AB_consommationEtProductionEnergétique import petrole
@@ -67,7 +68,6 @@ from PMPR_WineStats import dataAnalysis
 from mf_nc_guerre_ukraine import ukraine
 from corporate_impact import corp_impact
 from HH_MT_Etude_population_française import dash_pop
-from alcool import alcool
 # from MP_pib import pib
 
 #@profile
@@ -98,6 +98,7 @@ def init():
     ele = electricite.Eletricite(app)
     imp = impact.Impact(app)
     chs = chess.Chess(app)
+    alc = alcool.Alcool(app)
     pol = dash_app_pollution.PollutionFrancaise(app)
     drd = ybjd.DecesFranceRevenu(app)
     spo = spotify.Spotify(app)
@@ -137,7 +138,6 @@ def init():
     ukr = ukraine.Ukraine(app)
     c_i = corp_impact.CorporateImpact(app)
     popfr = dash_pop.Population(app)
-    alc = alcool.Alcool(app)
     # pint = pib.Pib(app)
 
     # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -182,6 +182,7 @@ def init():
                                   dcc.Link(html.Button('Naissances et décès', style={'width':"100%"}), href='/jcwg_naissance_deces'),
                                   dcc.Link(html.Button("Football Classement, Age, €", style={'width':"100%"}), href='/football'),
                                   dcc.Link(html.Button('Top 100 Billboard USA', style={'width':"100%"}), href='/usa_billboard'),
+                                  dcc.Link(html.Button("Alcool vs revenus", style={'width':"100%"}), href='/alcool'),
                                   dcc.Link(html.Button('Les météorites', style={'width':"100%"}), href='/meteor'),
                                   dcc.Link(html.Button("Retards des TGVs depuis 2018", style={"width": "100%"}), href="/efeb_tgv_1",),
                                   dcc.Link(html.Button('Population vs Grandes Lignes', style={'width':"100%", 'margin':0, 'padding': 0}), href='/population_vs_train_speed'),
@@ -213,7 +214,6 @@ def init():
                                   dcc.Link(html.Button('Ukraine', style={'width':"100%"}), href='/ukraine'),
                                   dcc.Link(html.Button('Corporate Envt Impact', style={'width':"100%"}), href='/corp_impact'),
                                   dcc.Link(html.Button('Population Française', style={'width':"100%"}), href='/popfr'),
-                                  dcc.Link(html.Button("Alcool vs revenus", style={'width':"100%"}), href='/alcool'),
                                   # dcc.Link(html.Button('Accès à Internet vs PIB', style={'width':"100%"}), href='/pib'),
                                   html.Br(),
                                   html.Br(),
@@ -257,6 +257,8 @@ def init():
             return pop.main_layout
         elif pathname == '/deces':
             return dec.main_layout
+        elif pathname == '/alcool':
+            return alc.main_layout
         elif pathname == '/accidents_routiers':
             return pm.main_layout
         elif pathname == '/olympics':
@@ -379,14 +381,12 @@ def init():
             return c_i.main_layout
         elif pathname == '/popfr':
             return popfr.main_layout    
-        elif pathname == '/alcool':
-            return alc.main_layout
         # elif pathname == "/pib":
         #     return pint.main_layout
         else:
             return home_page
     return app
-
+    
 
 app = init()
 server = app.server

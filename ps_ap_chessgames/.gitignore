@@ -1,0 +1,4 @@
+# Full database
+
+data/*
+!data/get_data.py
