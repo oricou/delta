@@ -39,9 +39,6 @@ RUN pip3 install -r requirements.txt
 
 # Copy the rest of the codebase into the image
 ADD apps.tgz .
-# le jeu qui suit n'est pas dans git, l'idéal serait que l'application delta
-# fasse ce téléchargement pour ne pas être dans le docker non plus
-RUN cd ps_ap_chessgames/; python3 get_data.py 
 
 # Finally, run gunicorn.
-CMD [ "gunicorn", "--timeout=300", "--workers=5", "--threads=1", "-b 0.0.0.0:8000", "delta:server"]
+CMD [ "gunicorn", "--workers=5", "--threads=1", "-b 0.0.0.0:8000", "delta:server"]

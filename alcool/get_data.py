@@ -47,9 +47,11 @@ if __name__ == "alcool.get_data":
         path, url = paths[i], urls[i]
 
         if not os.path.isfile(data_folder + path):
+            print(f"Downloading {path} from {url} in {data_folder}.")
             urllib.request.urlretrieve(url, data_folder + path)
 
         if not os.path.isfile(main_data_folder + path):
+            print(f"Downloading {path} from {url} in {main_data_folder}.")
             urllib.request.urlretrieve(url, main_data_folder + path)
 
 def compute_mean(df, pays):
