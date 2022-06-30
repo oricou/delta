@@ -12,12 +12,23 @@ import dateutil as du
 class Energies():
     mois = {'janv':1, 'févr':2, 'mars':3, 'avr':4, 'mai':5, 'juin':6, 'juil':7, 'août':8, 'sept':9, 'oct':10, 'nov':11, 'déc':12}
 
+<<<<<<< HEAD
     quoi = {"Prix d'une tonne de propane":[1000, 'Propane'], "Bouteille de butane de 13 kg":[13, 'Butane'],
            "100 litres de FOD au tarif C1":[100, 'Fioul'], "Un litre d'essence ordinaire":[1, 'Essence'],
            "Un litre de super carburant ARS":[1, 'Essence'], "Un litre de super sans plomb 95":[1, 'Essence'],
            "Un litre de super sans plomb 98":[1, 'Essence'], "Un litre de gazole":[1, 'Gazole'],
            "Un litre de GPLc":[1, 'GPL'], "1 kWh (contrat 3 kW)":[1, 'Electricité'], "1 kWh (contrat 9 kW)":[1, 'Electricité'],
            "Une tonne de granulés de bois en vrac":[1000*4.8, 'Electricité'], "100 kWh PCI de bois en vrac":[100, 'Electricité']}
+=======
+    quoi = {"Prix d'une tonne de propane": [1000, 'Propane','cyan'], "Bouteille de butane de 13 kg": [13, 'Butane','blue'],
+            "100 litres de FOD au tarif C1": [100, 'Fioul','black'], 
+            "Un litre de super carburant ARS": [1, 'Essence','tomato'], "Un litre de super sans plomb 95": [1, 'Essence','orange'],
+            "Un litre de super sans plomb 98": [1, 'Essence','red'], "Un litre de gazole": [1, 'Gazole','gray'],
+            "Un litre de GPLc": [1, 'GPL','lightgreen'], "1 kWh (contrat 3 kW)": [1, 'Electricité','pink'],
+            "1 kWh (contrat 9 kW)": [1, 'Electricité','magenta'],
+            "Une tonne de granulés de bois en vrac": [1000, 'Bois', 'brown'],
+            "100 kWh PCI de bois en vrac": [100, 'Electricité','tan']}
+>>>>>>> upstream/main
 
     densité =  {'Essence':0.75, 'Gazole':0.85, 'Fioul':0.85, 'GPL':0.55} # kg / l
 
@@ -164,10 +175,20 @@ class Energies():
                     df[c] = df[c] / (Energies.quoi[c][0] * Energies.calor[alias])
         else:
             df = self.petrole.copy()
+<<<<<<< HEAD
             df /= df.loc[f"{year}-{month}-15"]
         fig = px.line(df[df.columns[0]], template='plotly_white')
         for c in df.columns[1:]:
             fig.add_scatter(x = df.index, y=df[c], mode='lines', name=c, text=c, hoverinfo='x+y+text')
+=======
+            df.loc[f"{year}-{month}-15"]
+            cols = df.loc[f"{year}-{month}-15"].dropna().index
+            df = df[cols] / df.loc[f"{year}-{month}-15", cols]
+        fig = px.line(df[df.columns[0]], template='plotly_white', color_discrete_sequence=[self.quoi[df.columns[0]][2]])
+        for i,c in enumerate(df.columns[1:]):
+            fig.add_scatter(x=df.index, y=df[c], mode='lines', name=c, text=c, hoverinfo='x+y+text',
+                            marker_color=self.quoi[c][2])
+>>>>>>> upstream/main
         ytitle = ['Prix en €', 'Prix en € pour 1 mégajoule', 'Prix relative (sans unité)']
         fig.update_layout(
             #title = 'Évolution des prix de différentes énergies',
