@@ -97,7 +97,7 @@ def init():
     nrgmix = energymix.EnergyMix(app)
     ele = electricite.Eletricite(app)
     imp = impact.Impact(app)
-    chs = chess.Chess(app)
+    #chs = chess.Chess(app)
     alc = alcool.Alcool(app)
     pol = dash_app_pollution.PollutionFrancaise(app)
     drd = ybjd.DecesFranceRevenu(app)
@@ -301,8 +301,8 @@ def init():
             return ele.main_layout
         elif pathname == '/impact':
             return imp.main_layout
-        elif pathname == "/chess":
-            return chs.main_layout
+        #elif pathname == "/chess":
+         #   return chs.main_layout
         elif pathname == "/pollution" :
             return pol.main_layout
         elif pathname == '/ybjd_deces_en_france_selon_le_revenu_par_departement':
