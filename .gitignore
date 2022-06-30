@@ -1,11 +1,9 @@
-# tc_urban
-tc_urban/data/Indicators.csv
-tc_urban/data/countries_continents_codes_flags_url.csv
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+*.tgz
+*.lock
 
 # C extensions
 *.so
@@ -78,9 +76,6 @@ docs/_build/
 # PyBuilder
 target/
 
-# Poetry
-poetry.lock
-
 # Jupyter Notebook
 .ipynb_checkpoints
 
@@ -134,5 +129,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-.DS_Store

@@ -4,6 +4,7 @@ import flask
 from dash import dcc
 from dash import html
 from energies import energies
+from alcool import alcool
 from population import population
 from deces import deces
 from MC_AB_consommationEtProductionEnergétique import petrole
@@ -97,6 +98,7 @@ def init():
     ele = electricite.Eletricite(app)
     imp = impact.Impact(app)
     chs = chess.Chess(app)
+    alc = alcool.Alcool(app)
     pol = dash_app_pollution.PollutionFrancaise(app)
     drd = ybjd.DecesFranceRevenu(app)
     spo = spotify.Spotify(app)
@@ -180,6 +182,7 @@ def init():
                                   dcc.Link(html.Button('Naissances et décès', style={'width':"100%"}), href='/jcwg_naissance_deces'),
                                   dcc.Link(html.Button("Football Classement, Age, €", style={'width':"100%"}), href='/football'),
                                   dcc.Link(html.Button('Top 100 Billboard USA', style={'width':"100%"}), href='/usa_billboard'),
+                                  dcc.Link(html.Button("Alcool vs revenus", style={'width':"100%"}), href='/alcool'),
                                   dcc.Link(html.Button('Les météorites', style={'width':"100%"}), href='/meteor'),
                                   dcc.Link(html.Button("Retards des TGVs depuis 2018", style={"width": "100%"}), href="/efeb_tgv_1",),
                                   dcc.Link(html.Button('Population vs Grandes Lignes', style={'width':"100%", 'margin':0, 'padding': 0}), href='/population_vs_train_speed'),
@@ -254,6 +257,8 @@ def init():
             return pop.main_layout
         elif pathname == '/deces':
             return dec.main_layout
+        elif pathname == '/alcool':
+            return alc.main_layout
         elif pathname == '/accidents_routiers':
             return pm.main_layout
         elif pathname == '/olympics':
