@@ -82,4 +82,6 @@ def create_dataframe():
 
 youtube_df = create_dataframe()
 
+os.mkdir("./data")
+
 youtube_df.to_pickle("./data/df_youtube.pkl")
