@@ -1,4 +1,5 @@
 # import required packages
+import dash
 from dash import dcc
 from dash import html
 import plotly.graph_objs as go
@@ -56,19 +57,28 @@ def is_korean(word):
 
 class YoutubeTrendsStats():
     def __init__(self, application = None):
-        self.df = pd.read_pickle('CDMS_trending_youtube/data/df_youtube.pkl')
+
+        try:
+            self.df = pd.read_pickle('./data/df_youtube.pkl')
+        except FileNotFoundError:
+            self.df = pd.read_pickle('./CDMS_trending_youtube/data/df_youtube.pkl')
         self.figure = self.create_figure(self.df)
         self.other_figure = self.create_figure2(self.df)
 
         # page layout
-        self.app = application#dash.Dash()
+        if application:
+            self.app = application
+            # application should have its own layout and use self.main_layout as a page or in a component
+        else:
+            self.app = dash.Dash()
+        
 
         div_content = html.Div(children=[
-                # html.H3(children='Évolution des proportions des catégories youtube en tendances dans le monde'),
+                
 
                 html.Div(dcc.Graph(id = 'main-graph',
                                     figure = self.figure)),
-                # html.H3(children='Pourcentage de musique coréenne en tendance sur le total de musique en tendance pour chaque pays'),
+                
                 html.Div(dcc.Graph(id = 'second-graph',
                                     figure = self.other_figure)),
                 html.Br(),
@@ -252,4 +262,4 @@ class YoutubeTrendsStats():
 
 if __name__ == "__main__":
     yt = YoutubeTrendsStats()
-    yt.app.run(port=8055)
+    yt.run(port=8055)
