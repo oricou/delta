@@ -1,3 +1,4 @@
+from unicodedata import category
 import re
 import dash
 import flask
@@ -6,6 +7,7 @@ from dash import html
 from energies import energies
 from population import population
 from deces import deces
+from CDMS_trending_youtube import youtube
 from MC_AB_consommationEtProductionEnergétique import petrole
 from SG_AH_pollution_des_transports import pollution
 from pbmc_accidents_routiers import pbmc_accidents_routiers as pbmc
@@ -136,6 +138,7 @@ def init():
     ukr = ukraine.Ukraine(app)
     c_i = corp_impact.CorporateImpact(app)
     popfr = dash_pop.Population(app)
+    ytb_trd = youtube.YoutubeTrendsStats(app)
     # pint = pib.Pib(app)
 
     # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -211,6 +214,7 @@ def init():
                                   dcc.Link(html.Button('Ukraine', style={'width':"100%"}), href='/ukraine'),
                                   dcc.Link(html.Button('Corporate Envt Impact', style={'width':"100%"}), href='/corp_impact'),
                                   dcc.Link(html.Button('Population Française', style={'width':"100%"}), href='/popfr'),
+                                  dcc.Link(html.Button('Trending Youtube', style={'width':"100%"}), href='/ytb_trd'),
                                   # dcc.Link(html.Button('Accès à Internet vs PIB', style={'width':"100%"}), href='/pib'),
                                   html.Br(),
                                   html.Br(),
@@ -375,13 +379,14 @@ def init():
         elif pathname == '/corp_impact':
             return c_i.main_layout
         elif pathname == '/popfr':
-            return popfr.main_layout    
+            return popfr.main_layout
+        elif pathname == '/ytb_trd':
+            return ytb_trd.main_layout    
         # elif pathname == "/pib":
         #     return pint.main_layout
         else:
             return home_page
     return app
-    
 
 app = init()
 server = app.server
